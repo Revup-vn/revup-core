@@ -1,0 +1,22 @@
+name: core
+description: Core package for revup app
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  auto_route: ^4.0.1
+  bloc: ^8.0.3
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  dart_code_metrics: ^4.16.0
+  import_sorter: ^4.6.0
+  test: ^1.21.3
+  very_good_analysis: ^3.0.1
+
+import_sorter:
+  comments: false
