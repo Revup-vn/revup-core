@@ -1,5 +1,6 @@
-import 'styles/colors.dart';
 import 'package:flutter/material.dart';
+
+import 'styles/colors.dart';
 
 export 'cubit/cubic.dart';
 
