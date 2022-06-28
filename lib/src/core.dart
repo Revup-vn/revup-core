@@ -14,6 +14,8 @@ import 'theme/theme.dart';
 
 Future<void> bootstrap(
   Tuple2<StackRouter, RouteInformationParser<Object>> route,
+  Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates,
+  Iterable<Locale> locales,
 ) async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
@@ -37,6 +39,8 @@ Future<void> bootstrap(
                 themeMode: state,
                 theme: lightTheme,
                 darkTheme: darkTheme,
+                supportedLocales: locales,
+                localizationsDelegates: localizationsDelegates,
               );
             },
           ),
