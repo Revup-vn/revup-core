@@ -1,0 +1,15 @@
+name: revup
+
+on:
+  pull_request:
+    paths:
+      - "**.dart"
+  push:
+
+jobs:
+  build:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+    with:
+      flutter_channel: stable
+      flutter_version: 3.0.1
+      coverage_excludes: "{**/{*.{g,freezed,gen},*_{page,providers,observer}}.dart,lib/l10n/l10n.dart}"
