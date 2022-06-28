@@ -3,8 +3,8 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 export 'theme_cubit.dart';
 
-abstract class IThemeCubic extends HydratedCubit<ThemeMode> {
-  IThemeCubic(super.state);
+abstract class IThemeCubit extends HydratedCubit<ThemeMode> {
+  IThemeCubit(super.state);
 
   void darkMode();
   void lightMode();

@@ -1,6 +1,5 @@
 import 'package:core/src/theme/cubit/cubic.dart';
 import 'package:flutter/material.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 ///
 /// [ThemeCubit.]
@@ -11,7 +10,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 /// [@see		HydratedCubit]
 /// [@global]
 ///
-class ThemeCubit extends IThemeCubic {
+class ThemeCubit extends IThemeCubit {
   ThemeCubit() : super(ThemeMode.system);
   static const _themeModeMaps = {
     ThemeMode.dark: 'dark',

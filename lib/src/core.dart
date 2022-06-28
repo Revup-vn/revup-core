@@ -23,7 +23,7 @@ Future<void> bootstrap(
 
       await HydratedBlocOverrides.runZoned(
         () async => runApp(
-          BlocBuilder<IThemeCubic, ThemeMode>(
+          BlocBuilder<IThemeCubit, ThemeMode>(
             bloc: ThemeCubit(),
             buildWhen: (m1, m2) => m1 != m2,
             builder: (context, state) {
