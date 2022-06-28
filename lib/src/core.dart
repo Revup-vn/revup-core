@@ -4,10 +4,12 @@ import 'dart:developer';
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-
-import 'package:core/src/observers/observers.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+
+import 'observers/observers.dart';
+import 'theme/theme.dart';
 
 Future<void> bootstrap(
   Tuple2<StackRouter, RouteInformationParser<Object>> route,
@@ -21,12 +23,21 @@ Future<void> bootstrap(
 
       await HydratedBlocOverrides.runZoned(
         () async => runApp(
-          MaterialApp.router(
-            routeInformationParser: route.tail,
-            routerDelegate: AutoRouterDelegate(
-              route.head,
-              navigatorObservers: () => [AppRouteObserver()],
-            ),
+          BlocBuilder<IThemeCubic, ThemeMode>(
+            bloc: ThemeCubit(),
+            buildWhen: (m1, m2) => m1 != m2,
+            builder: (context, state) {
+              return MaterialApp.router(
+                routeInformationParser: route.tail,
+                routerDelegate: AutoRouterDelegate(
+                  route.head,
+                  navigatorObservers: () => [AppRouteObserver()],
+                ),
+                themeMode: state,
+                theme: lightTheme,
+                darkTheme: darkTheme,
+              );
+            },
           ),
         ),
         blocObserver: AppBlocObserver(),
