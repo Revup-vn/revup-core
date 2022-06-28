@@ -1,28 +1,38 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:flutter/widgets.dart';
-
 import 'package:auto_route/auto_route.dart';
-import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 
 import 'package:core/src/observers/observers.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 
 Future<void> bootstrap(
-  FutureOr<Widget> Function(AutoRouterObserver) builder,
+  Tuple2<StackRouter, RouteInformationParser<Object>> route,
 ) async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
   await runZonedGuarded(
     () async {
-      await BlocOverrides.runZoned(
+      WidgetsFlutterBinding.ensureInitialized();
+
+      await HydratedBlocOverrides.runZoned(
         () async => runApp(
-          await builder(
-            AppRouteObserver(),
+          MaterialApp.router(
+            routeInformationParser: route.tail,
+            routerDelegate: AutoRouterDelegate(
+              route.head,
+              navigatorObservers: () => [AppRouteObserver()],
+            ),
           ),
         ),
         blocObserver: AppBlocObserver(),
+        storage: await HydratedStorage.build(
+          storageDirectory: await getTemporaryDirectory(),
+        ),
       );
     },
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
