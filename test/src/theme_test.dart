@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:core/src/theme/theme.dart';
+import 'package:revup_core/src/theme/theme.dart';
 
 void main() {
   group('theme data', () {

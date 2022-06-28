@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:core/src/theme/cubit/cubic.dart';
+import 'package:revup_core/src/theme/cubit/cubic.dart';
 
 ///
 /// [ThemeCubit.]

@@ -1,4 +1,4 @@
-name: core
+name: revup_core
 description: Core package for revup app
 version: 1.0.0+1
 publish_to: none
