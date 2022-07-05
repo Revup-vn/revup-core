@@ -6,10 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flash/flash.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
+import 'components/dialogs/dialogs.dart';
 import 'observers/observers.dart';
 import 'theme/theme.dart';
 
@@ -43,6 +45,20 @@ Future<void> bootstrap({
                 darkTheme: darkTheme,
                 supportedLocales: locales,
                 localizationsDelegates: localizationsDelegates,
+                builder: (ctx, w) {
+                  final isDark =
+                      MediaQuery.of(ctx).platformBrightness == Brightness.dark;
+
+                  return FlashTheme(
+                    flashBarTheme: isDark
+                        ? kDarkDialogueBarScheme
+                        : kLightDialogueBarScheme,
+                    flashDialogTheme: isDark
+                        ? kDarkDialogColorScheme
+                        : kLightDialogColorScheme,
+                    child: w ?? Container(),
+                  );
+                },
               );
             },
           ),

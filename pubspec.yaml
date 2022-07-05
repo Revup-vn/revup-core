@@ -1,6 +1,6 @@
 name: revup_core
 description: Core package for revup app
-version: 1.0.0+2
+version: 1.0.0+3
 publish_to: none
 
 environment:
@@ -10,6 +10,7 @@ dependencies:
   auto_route: ^4.0.1
   dartz: ^0.10.1
   firebase_core: ^1.18.0
+  flash: ^2.0.3+2
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
