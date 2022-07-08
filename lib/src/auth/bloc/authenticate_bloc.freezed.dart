@@ -21,6 +21,7 @@ mixin _$AuthenticateEvent {
     required TResult Function() phoneLoggedIn,
     required TResult Function() googleLoggedIn,
     required TResult Function() infoFilledIn,
+    required TResult Function() signedOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$AuthenticateEvent {
     TResult Function()? phoneLoggedIn,
     TResult Function()? googleLoggedIn,
     TResult Function()? infoFilledIn,
+    TResult Function()? signedOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$AuthenticateEvent {
     TResult Function()? phoneLoggedIn,
     TResult Function()? googleLoggedIn,
     TResult Function()? infoFilledIn,
+    TResult Function()? signedOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$AuthenticateEvent {
     required TResult Function(_phoneLoggedIn value) phoneLoggedIn,
     required TResult Function(_googleLoggedIn value) googleLoggedIn,
     required TResult Function(_infoFilledIn value) infoFilledIn,
+    required TResult Function(_signedOut value) signedOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$AuthenticateEvent {
     TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
     TResult Function(_googleLoggedIn value)? googleLoggedIn,
     TResult Function(_infoFilledIn value)? infoFilledIn,
+    TResult Function(_signedOut value)? signedOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$AuthenticateEvent {
     TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
     TResult Function(_googleLoggedIn value)? googleLoggedIn,
     TResult Function(_infoFilledIn value)? infoFilledIn,
+    TResult Function(_signedOut value)? signedOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -123,6 +129,7 @@ class _$_phoneLoggedIn implements _phoneLoggedIn {
     required TResult Function() phoneLoggedIn,
     required TResult Function() googleLoggedIn,
     required TResult Function() infoFilledIn,
+    required TResult Function() signedOut,
   }) {
     return phoneLoggedIn();
   }
@@ -133,6 +140,7 @@ class _$_phoneLoggedIn implements _phoneLoggedIn {
     TResult Function()? phoneLoggedIn,
     TResult Function()? googleLoggedIn,
     TResult Function()? infoFilledIn,
+    TResult Function()? signedOut,
   }) {
     return phoneLoggedIn?.call();
   }
@@ -143,6 +151,7 @@ class _$_phoneLoggedIn implements _phoneLoggedIn {
     TResult Function()? phoneLoggedIn,
     TResult Function()? googleLoggedIn,
     TResult Function()? infoFilledIn,
+    TResult Function()? signedOut,
     required TResult orElse(),
   }) {
     if (phoneLoggedIn != null) {
@@ -157,6 +166,7 @@ class _$_phoneLoggedIn implements _phoneLoggedIn {
     required TResult Function(_phoneLoggedIn value) phoneLoggedIn,
     required TResult Function(_googleLoggedIn value) googleLoggedIn,
     required TResult Function(_infoFilledIn value) infoFilledIn,
+    required TResult Function(_signedOut value) signedOut,
   }) {
     return phoneLoggedIn(this);
   }
@@ -167,6 +177,7 @@ class _$_phoneLoggedIn implements _phoneLoggedIn {
     TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
     TResult Function(_googleLoggedIn value)? googleLoggedIn,
     TResult Function(_infoFilledIn value)? infoFilledIn,
+    TResult Function(_signedOut value)? signedOut,
   }) {
     return phoneLoggedIn?.call(this);
   }
@@ -177,6 +188,7 @@ class _$_phoneLoggedIn implements _phoneLoggedIn {
     TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
     TResult Function(_googleLoggedIn value)? googleLoggedIn,
     TResult Function(_infoFilledIn value)? infoFilledIn,
+    TResult Function(_signedOut value)? signedOut,
     required TResult orElse(),
   }) {
     if (phoneLoggedIn != null) {
@@ -234,6 +246,7 @@ class _$_googleLoggedIn implements _googleLoggedIn {
     required TResult Function() phoneLoggedIn,
     required TResult Function() googleLoggedIn,
     required TResult Function() infoFilledIn,
+    required TResult Function() signedOut,
   }) {
     return googleLoggedIn();
   }
@@ -244,6 +257,7 @@ class _$_googleLoggedIn implements _googleLoggedIn {
     TResult Function()? phoneLoggedIn,
     TResult Function()? googleLoggedIn,
     TResult Function()? infoFilledIn,
+    TResult Function()? signedOut,
   }) {
     return googleLoggedIn?.call();
   }
@@ -254,6 +268,7 @@ class _$_googleLoggedIn implements _googleLoggedIn {
     TResult Function()? phoneLoggedIn,
     TResult Function()? googleLoggedIn,
     TResult Function()? infoFilledIn,
+    TResult Function()? signedOut,
     required TResult orElse(),
   }) {
     if (googleLoggedIn != null) {
@@ -268,6 +283,7 @@ class _$_googleLoggedIn implements _googleLoggedIn {
     required TResult Function(_phoneLoggedIn value) phoneLoggedIn,
     required TResult Function(_googleLoggedIn value) googleLoggedIn,
     required TResult Function(_infoFilledIn value) infoFilledIn,
+    required TResult Function(_signedOut value) signedOut,
   }) {
     return googleLoggedIn(this);
   }
@@ -278,6 +294,7 @@ class _$_googleLoggedIn implements _googleLoggedIn {
     TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
     TResult Function(_googleLoggedIn value)? googleLoggedIn,
     TResult Function(_infoFilledIn value)? infoFilledIn,
+    TResult Function(_signedOut value)? signedOut,
   }) {
     return googleLoggedIn?.call(this);
   }
@@ -288,6 +305,7 @@ class _$_googleLoggedIn implements _googleLoggedIn {
     TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
     TResult Function(_googleLoggedIn value)? googleLoggedIn,
     TResult Function(_infoFilledIn value)? infoFilledIn,
+    TResult Function(_signedOut value)? signedOut,
     required TResult orElse(),
   }) {
     if (googleLoggedIn != null) {
@@ -345,6 +363,7 @@ class _$_infoFilledIn implements _infoFilledIn {
     required TResult Function() phoneLoggedIn,
     required TResult Function() googleLoggedIn,
     required TResult Function() infoFilledIn,
+    required TResult Function() signedOut,
   }) {
     return infoFilledIn();
   }
@@ -355,6 +374,7 @@ class _$_infoFilledIn implements _infoFilledIn {
     TResult Function()? phoneLoggedIn,
     TResult Function()? googleLoggedIn,
     TResult Function()? infoFilledIn,
+    TResult Function()? signedOut,
   }) {
     return infoFilledIn?.call();
   }
@@ -365,6 +385,7 @@ class _$_infoFilledIn implements _infoFilledIn {
     TResult Function()? phoneLoggedIn,
     TResult Function()? googleLoggedIn,
     TResult Function()? infoFilledIn,
+    TResult Function()? signedOut,
     required TResult orElse(),
   }) {
     if (infoFilledIn != null) {
@@ -379,6 +400,7 @@ class _$_infoFilledIn implements _infoFilledIn {
     required TResult Function(_phoneLoggedIn value) phoneLoggedIn,
     required TResult Function(_googleLoggedIn value) googleLoggedIn,
     required TResult Function(_infoFilledIn value) infoFilledIn,
+    required TResult Function(_signedOut value) signedOut,
   }) {
     return infoFilledIn(this);
   }
@@ -389,6 +411,7 @@ class _$_infoFilledIn implements _infoFilledIn {
     TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
     TResult Function(_googleLoggedIn value)? googleLoggedIn,
     TResult Function(_infoFilledIn value)? infoFilledIn,
+    TResult Function(_signedOut value)? signedOut,
   }) {
     return infoFilledIn?.call(this);
   }
@@ -399,6 +422,7 @@ class _$_infoFilledIn implements _infoFilledIn {
     TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
     TResult Function(_googleLoggedIn value)? googleLoggedIn,
     TResult Function(_infoFilledIn value)? infoFilledIn,
+    TResult Function(_signedOut value)? signedOut,
     required TResult orElse(),
   }) {
     if (infoFilledIn != null) {
@@ -410,6 +434,123 @@ class _$_infoFilledIn implements _infoFilledIn {
 
 abstract class _infoFilledIn implements AuthenticateEvent {
   const factory _infoFilledIn() = _$_infoFilledIn;
+}
+
+/// @nodoc
+abstract class _$$_signedOutCopyWith<$Res> {
+  factory _$$_signedOutCopyWith(
+          _$_signedOut value, $Res Function(_$_signedOut) then) =
+      __$$_signedOutCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_signedOutCopyWithImpl<$Res>
+    extends _$AuthenticateEventCopyWithImpl<$Res>
+    implements _$$_signedOutCopyWith<$Res> {
+  __$$_signedOutCopyWithImpl(
+      _$_signedOut _value, $Res Function(_$_signedOut) _then)
+      : super(_value, (v) => _then(v as _$_signedOut));
+
+  @override
+  _$_signedOut get _value => super._value as _$_signedOut;
+}
+
+/// @nodoc
+
+class _$_signedOut implements _signedOut {
+  const _$_signedOut();
+
+  @override
+  String toString() {
+    return 'AuthenticateEvent.signedOut()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_signedOut);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() phoneLoggedIn,
+    required TResult Function() googleLoggedIn,
+    required TResult Function() infoFilledIn,
+    required TResult Function() signedOut,
+  }) {
+    return signedOut();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? phoneLoggedIn,
+    TResult Function()? googleLoggedIn,
+    TResult Function()? infoFilledIn,
+    TResult Function()? signedOut,
+  }) {
+    return signedOut?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? phoneLoggedIn,
+    TResult Function()? googleLoggedIn,
+    TResult Function()? infoFilledIn,
+    TResult Function()? signedOut,
+    required TResult orElse(),
+  }) {
+    if (signedOut != null) {
+      return signedOut();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_phoneLoggedIn value) phoneLoggedIn,
+    required TResult Function(_googleLoggedIn value) googleLoggedIn,
+    required TResult Function(_infoFilledIn value) infoFilledIn,
+    required TResult Function(_signedOut value) signedOut,
+  }) {
+    return signedOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
+    TResult Function(_googleLoggedIn value)? googleLoggedIn,
+    TResult Function(_infoFilledIn value)? infoFilledIn,
+    TResult Function(_signedOut value)? signedOut,
+  }) {
+    return signedOut?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
+    TResult Function(_googleLoggedIn value)? googleLoggedIn,
+    TResult Function(_infoFilledIn value)? infoFilledIn,
+    TResult Function(_signedOut value)? signedOut,
+    required TResult orElse(),
+  }) {
+    if (signedOut != null) {
+      return signedOut(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _signedOut implements AuthenticateEvent {
+  const factory _signedOut() = _$_signedOut;
 }
 
 AuthenticateState _$AuthenticateStateFromJson(Map<String, dynamic> json) {

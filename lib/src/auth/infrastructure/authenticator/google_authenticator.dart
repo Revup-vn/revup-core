@@ -2,16 +2,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../../utils/constants.dart';
 import '../../utils/utils.dart';
-import '../user.dart';
+import 'authenticator.dart';
 
-class GoogleAuthenticator {
-  GoogleAuthenticator(this._googleSignIn, this._auth, this._store);
+class GoogleAuthenticator extends Authenticator {
+  GoogleAuthenticator(this._googleSignIn, this._auth, FirebaseFirestore store)
+      : super(store);
 
   final GoogleSignIn _googleSignIn;
   final FirebaseAuth _auth;
-  final FirebaseFirestore _store;
 
   Future<User> getSignedInCredentials() async {
     final acc = await _googleSignIn.signIn();
@@ -23,29 +22,17 @@ class GoogleAuthenticator {
       );
       final credentials =
           await _auth.signInWithCredential(credential); //FirebaseAuthException
-      if (credentials.user == null) throw FirebaseUserLoginException();
+      if (credentials.user == null) throw ValidateException();
       return credentials.user!;
     }
     throw LoginAbortException();
   }
 
-  Future<DocumentSnapshot<Map<String, dynamic>>> getUserDocument(
-    String id,
-  ) async =>
-      _store.collection(kPathUserCollection).doc(id).get();
-
+  @override
   Future<bool> signOut() async {
     await _auth.signOut();
     await _googleSignIn.disconnect();
     await _googleSignIn.signOut();
     return _auth.currentUser == null && _googleSignIn.currentUser == null;
-  }
-
-  Future<bool> signUp(String id, AppUser user) async {
-    await _store
-        .collection(kPathUserCollection)
-        .doc(id)
-        .set(user.copyWith(uuid: id).toJson());
-    return true;
   }
 }
