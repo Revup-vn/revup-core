@@ -17,9 +17,9 @@ class PhoneAuthenticator extends Authenticator {
 
   Future<void> signIn({
     required String phoneNumber,
-    required OTPGetter userInput,
-    required SignInUpCallBack signInUpCallBack,
-    VoidCallback? timeoutCallBack,
+    required OTPGetter getUserInput,
+    required SignInUpCallBack onSignIn,
+    VoidCallback? onTimeout,
   }) async =>
       _auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
@@ -28,12 +28,12 @@ class PhoneAuthenticator extends Authenticator {
             try {
               await _auth.currentUser
                   ?.linkWithCredential(authCredentials)
-                  .then(signInUpCallBack);
+                  .then(onSignIn);
             } on FirebaseAuthException catch (e) {
               if (e.code == 'provider-already-linked') {
                 await _auth
                     .signInWithCredential(authCredentials)
-                    .then(signInUpCallBack);
+                    .then(onSignIn);
               } else {
                 rethrow;
               }
@@ -45,15 +45,15 @@ class PhoneAuthenticator extends Authenticator {
             throw ValidateException();
           }
         },
-        codeSent: (verificationId, _) async {
-          final sms = await userInput();
+        codeSent: (verificationId, resentToken) async {
+          final sms = await getUserInput();
           final credential = PhoneAuthProvider.credential(
             verificationId: verificationId,
             smsCode: sms,
           );
-          await _auth.signInWithCredential(credential).then(signInUpCallBack);
+          await _auth.signInWithCredential(credential).then(onSignIn);
         },
-        codeAutoRetrievalTimeout: (_) => timeoutCallBack?.call(),
+        codeAutoRetrievalTimeout: (_) => onTimeout?.call(),
       );
 
   @override

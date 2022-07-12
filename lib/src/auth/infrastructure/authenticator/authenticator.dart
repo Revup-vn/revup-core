@@ -27,11 +27,11 @@ abstract class Authenticator {
   ) async =>
       _store.collection(kPathUserCollection).doc(id).get();
 
-  Future<bool> signUp(String id, AppUser user) async {
+  Future<bool> signUp(AppUser user) async {
     await _store
         .collection(kPathUserCollection)
-        .doc(id)
-        .set(user.copyWith(uuid: id).toJson());
+        .doc(user.uuid)
+        .set(user.toJson());
     return true;
   }
 

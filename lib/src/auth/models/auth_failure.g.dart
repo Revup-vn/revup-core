@@ -58,24 +58,6 @@ Map<String, dynamic> _$$_cancelledToJson(_$_cancelled instance) =>
       'runtimeType': instance.$type,
     };
 
-_$_unauthorized _$$_unauthorizedFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      r'_$_unauthorized',
-      json,
-      ($checkedConvert) {
-        final val = _$_unauthorized(
-          $type: $checkedConvert('runtimeType', (v) => v as String?),
-        );
-        return val;
-      },
-      fieldKeyMap: const {r'$type': 'runtimeType'},
-    );
-
-Map<String, dynamic> _$$_unauthorizedToJson(_$_unauthorized instance) =>
-    <String, dynamic>{
-      'runtimeType': instance.$type,
-    };
-
 _$_invalidData _$$_invalidDataFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
       r'_$_invalidData',
@@ -93,5 +75,22 @@ _$_invalidData _$$_invalidDataFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_invalidDataToJson(_$_invalidData instance) =>
     <String, dynamic>{
       'message': instance.message,
+      'runtimeType': instance.$type,
+    };
+
+_$_unknown _$$_unknownFromJson(Map<String, dynamic> json) => $checkedCreate(
+      r'_$_unknown',
+      json,
+      ($checkedConvert) {
+        final val = _$_unknown(
+          $type: $checkedConvert('runtimeType', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'runtimeType'},
+    );
+
+Map<String, dynamic> _$$_unknownToJson(_$_unknown instance) =>
+    <String, dynamic>{
       'runtimeType': instance.$type,
     };

@@ -22,10 +22,10 @@ AuthFailure _$AuthFailureFromJson(Map<String, dynamic> json) {
       return _storage.fromJson(json);
     case 'cancelled':
       return _cancelled.fromJson(json);
-    case 'unauthorized':
-      return _unauthorized.fromJson(json);
     case 'invalidData':
       return _invalidData.fromJson(json);
+    case 'unknown':
+      return _unknown.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'runtimeType', 'AuthFailure',
@@ -40,8 +40,8 @@ mixin _$AuthFailure {
     required TResult Function(String? message) server,
     required TResult Function() storage,
     required TResult Function() cancelled,
-    required TResult Function() unauthorized,
     required TResult Function(String? message) invalidData,
+    required TResult Function() unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -49,8 +49,8 @@ mixin _$AuthFailure {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
-    TResult Function()? unauthorized,
     TResult Function(String? message)? invalidData,
+    TResult Function()? unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,8 +58,8 @@ mixin _$AuthFailure {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
-    TResult Function()? unauthorized,
     TResult Function(String? message)? invalidData,
+    TResult Function()? unknown,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -68,8 +68,8 @@ mixin _$AuthFailure {
     required TResult Function(_server value) server,
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
-    required TResult Function(_unauthorized value) unauthorized,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_unknown value) unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,8 +77,8 @@ mixin _$AuthFailure {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
-    TResult Function(_unauthorized value)? unauthorized,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_unknown value)? unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -86,8 +86,8 @@ mixin _$AuthFailure {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
-    TResult Function(_unauthorized value)? unauthorized,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_unknown value)? unknown,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -184,8 +184,8 @@ class _$_server extends _server {
     required TResult Function(String? message) server,
     required TResult Function() storage,
     required TResult Function() cancelled,
-    required TResult Function() unauthorized,
     required TResult Function(String? message) invalidData,
+    required TResult Function() unknown,
   }) {
     return server(message);
   }
@@ -196,8 +196,8 @@ class _$_server extends _server {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
-    TResult Function()? unauthorized,
     TResult Function(String? message)? invalidData,
+    TResult Function()? unknown,
   }) {
     return server?.call(message);
   }
@@ -208,8 +208,8 @@ class _$_server extends _server {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
-    TResult Function()? unauthorized,
     TResult Function(String? message)? invalidData,
+    TResult Function()? unknown,
     required TResult orElse(),
   }) {
     if (server != null) {
@@ -224,8 +224,8 @@ class _$_server extends _server {
     required TResult Function(_server value) server,
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
-    required TResult Function(_unauthorized value) unauthorized,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_unknown value) unknown,
   }) {
     return server(this);
   }
@@ -236,8 +236,8 @@ class _$_server extends _server {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
-    TResult Function(_unauthorized value)? unauthorized,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_unknown value)? unknown,
   }) {
     return server?.call(this);
   }
@@ -248,8 +248,8 @@ class _$_server extends _server {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
-    TResult Function(_unauthorized value)? unauthorized,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_unknown value)? unknown,
     required TResult orElse(),
   }) {
     if (server != null) {
@@ -327,8 +327,8 @@ class _$_storage extends _storage {
     required TResult Function(String? message) server,
     required TResult Function() storage,
     required TResult Function() cancelled,
-    required TResult Function() unauthorized,
     required TResult Function(String? message) invalidData,
+    required TResult Function() unknown,
   }) {
     return storage();
   }
@@ -339,8 +339,8 @@ class _$_storage extends _storage {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
-    TResult Function()? unauthorized,
     TResult Function(String? message)? invalidData,
+    TResult Function()? unknown,
   }) {
     return storage?.call();
   }
@@ -351,8 +351,8 @@ class _$_storage extends _storage {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
-    TResult Function()? unauthorized,
     TResult Function(String? message)? invalidData,
+    TResult Function()? unknown,
     required TResult orElse(),
   }) {
     if (storage != null) {
@@ -367,8 +367,8 @@ class _$_storage extends _storage {
     required TResult Function(_server value) server,
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
-    required TResult Function(_unauthorized value) unauthorized,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_unknown value) unknown,
   }) {
     return storage(this);
   }
@@ -379,8 +379,8 @@ class _$_storage extends _storage {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
-    TResult Function(_unauthorized value)? unauthorized,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_unknown value)? unknown,
   }) {
     return storage?.call(this);
   }
@@ -391,8 +391,8 @@ class _$_storage extends _storage {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
-    TResult Function(_unauthorized value)? unauthorized,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_unknown value)? unknown,
     required TResult orElse(),
   }) {
     if (storage != null) {
@@ -466,8 +466,8 @@ class _$_cancelled extends _cancelled {
     required TResult Function(String? message) server,
     required TResult Function() storage,
     required TResult Function() cancelled,
-    required TResult Function() unauthorized,
     required TResult Function(String? message) invalidData,
+    required TResult Function() unknown,
   }) {
     return cancelled();
   }
@@ -478,8 +478,8 @@ class _$_cancelled extends _cancelled {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
-    TResult Function()? unauthorized,
     TResult Function(String? message)? invalidData,
+    TResult Function()? unknown,
   }) {
     return cancelled?.call();
   }
@@ -490,8 +490,8 @@ class _$_cancelled extends _cancelled {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
-    TResult Function()? unauthorized,
     TResult Function(String? message)? invalidData,
+    TResult Function()? unknown,
     required TResult orElse(),
   }) {
     if (cancelled != null) {
@@ -506,8 +506,8 @@ class _$_cancelled extends _cancelled {
     required TResult Function(_server value) server,
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
-    required TResult Function(_unauthorized value) unauthorized,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_unknown value) unknown,
   }) {
     return cancelled(this);
   }
@@ -518,8 +518,8 @@ class _$_cancelled extends _cancelled {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
-    TResult Function(_unauthorized value)? unauthorized,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_unknown value)? unknown,
   }) {
     return cancelled?.call(this);
   }
@@ -530,8 +530,8 @@ class _$_cancelled extends _cancelled {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
-    TResult Function(_unauthorized value)? unauthorized,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_unknown value)? unknown,
     required TResult orElse(),
   }) {
     if (cancelled != null) {
@@ -552,147 +552,6 @@ abstract class _cancelled extends AuthFailure {
 
   factory _cancelled.fromJson(Map<String, dynamic> json) =
       _$_cancelled.fromJson;
-}
-
-/// @nodoc
-abstract class _$$_unauthorizedCopyWith<$Res> {
-  factory _$$_unauthorizedCopyWith(
-          _$_unauthorized value, $Res Function(_$_unauthorized) then) =
-      __$$_unauthorizedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_unauthorizedCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
-    implements _$$_unauthorizedCopyWith<$Res> {
-  __$$_unauthorizedCopyWithImpl(
-      _$_unauthorized _value, $Res Function(_$_unauthorized) _then)
-      : super(_value, (v) => _then(v as _$_unauthorized));
-
-  @override
-  _$_unauthorized get _value => super._value as _$_unauthorized;
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_unauthorized extends _unauthorized {
-  const _$_unauthorized({final String? $type})
-      : $type = $type ?? 'unauthorized',
-        super._();
-
-  factory _$_unauthorized.fromJson(Map<String, dynamic> json) =>
-      _$$_unauthorizedFromJson(json);
-
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'AuthFailure.unauthorized()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_unauthorized);
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? message) server,
-    required TResult Function() storage,
-    required TResult Function() cancelled,
-    required TResult Function() unauthorized,
-    required TResult Function(String? message) invalidData,
-  }) {
-    return unauthorized();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? message)? server,
-    TResult Function()? storage,
-    TResult Function()? cancelled,
-    TResult Function()? unauthorized,
-    TResult Function(String? message)? invalidData,
-  }) {
-    return unauthorized?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? message)? server,
-    TResult Function()? storage,
-    TResult Function()? cancelled,
-    TResult Function()? unauthorized,
-    TResult Function(String? message)? invalidData,
-    required TResult orElse(),
-  }) {
-    if (unauthorized != null) {
-      return unauthorized();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_server value) server,
-    required TResult Function(_storage value) storage,
-    required TResult Function(_cancelled value) cancelled,
-    required TResult Function(_unauthorized value) unauthorized,
-    required TResult Function(_invalidData value) invalidData,
-  }) {
-    return unauthorized(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_server value)? server,
-    TResult Function(_storage value)? storage,
-    TResult Function(_cancelled value)? cancelled,
-    TResult Function(_unauthorized value)? unauthorized,
-    TResult Function(_invalidData value)? invalidData,
-  }) {
-    return unauthorized?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_server value)? server,
-    TResult Function(_storage value)? storage,
-    TResult Function(_cancelled value)? cancelled,
-    TResult Function(_unauthorized value)? unauthorized,
-    TResult Function(_invalidData value)? invalidData,
-    required TResult orElse(),
-  }) {
-    if (unauthorized != null) {
-      return unauthorized(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_unauthorizedToJson(this);
-  }
-}
-
-abstract class _unauthorized extends AuthFailure {
-  const factory _unauthorized() = _$_unauthorized;
-  const _unauthorized._() : super._();
-
-  factory _unauthorized.fromJson(Map<String, dynamic> json) =
-      _$_unauthorized.fromJson;
 }
 
 /// @nodoc
@@ -771,8 +630,8 @@ class _$_invalidData extends _invalidData {
     required TResult Function(String? message) server,
     required TResult Function() storage,
     required TResult Function() cancelled,
-    required TResult Function() unauthorized,
     required TResult Function(String? message) invalidData,
+    required TResult Function() unknown,
   }) {
     return invalidData(message);
   }
@@ -783,8 +642,8 @@ class _$_invalidData extends _invalidData {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
-    TResult Function()? unauthorized,
     TResult Function(String? message)? invalidData,
+    TResult Function()? unknown,
   }) {
     return invalidData?.call(message);
   }
@@ -795,8 +654,8 @@ class _$_invalidData extends _invalidData {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
-    TResult Function()? unauthorized,
     TResult Function(String? message)? invalidData,
+    TResult Function()? unknown,
     required TResult orElse(),
   }) {
     if (invalidData != null) {
@@ -811,8 +670,8 @@ class _$_invalidData extends _invalidData {
     required TResult Function(_server value) server,
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
-    required TResult Function(_unauthorized value) unauthorized,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_unknown value) unknown,
   }) {
     return invalidData(this);
   }
@@ -823,8 +682,8 @@ class _$_invalidData extends _invalidData {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
-    TResult Function(_unauthorized value)? unauthorized,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_unknown value)? unknown,
   }) {
     return invalidData?.call(this);
   }
@@ -835,8 +694,8 @@ class _$_invalidData extends _invalidData {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
-    TResult Function(_unauthorized value)? unauthorized,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_unknown value)? unknown,
     required TResult orElse(),
   }) {
     if (invalidData != null) {
@@ -862,4 +721,142 @@ abstract class _invalidData extends AuthFailure {
   @JsonKey(ignore: true)
   _$$_invalidDataCopyWith<_$_invalidData> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_unknownCopyWith<$Res> {
+  factory _$$_unknownCopyWith(
+          _$_unknown value, $Res Function(_$_unknown) then) =
+      __$$_unknownCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_unknownCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$$_unknownCopyWith<$Res> {
+  __$$_unknownCopyWithImpl(_$_unknown _value, $Res Function(_$_unknown) _then)
+      : super(_value, (v) => _then(v as _$_unknown));
+
+  @override
+  _$_unknown get _value => super._value as _$_unknown;
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_unknown extends _unknown {
+  const _$_unknown({final String? $type})
+      : $type = $type ?? 'unknown',
+        super._();
+
+  factory _$_unknown.fromJson(Map<String, dynamic> json) =>
+      _$$_unknownFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'AuthFailure.unknown()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_unknown);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? message) server,
+    required TResult Function() storage,
+    required TResult Function() cancelled,
+    required TResult Function(String? message) invalidData,
+    required TResult Function() unknown,
+  }) {
+    return unknown();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? message)? server,
+    TResult Function()? storage,
+    TResult Function()? cancelled,
+    TResult Function(String? message)? invalidData,
+    TResult Function()? unknown,
+  }) {
+    return unknown?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? message)? server,
+    TResult Function()? storage,
+    TResult Function()? cancelled,
+    TResult Function(String? message)? invalidData,
+    TResult Function()? unknown,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_server value) server,
+    required TResult Function(_storage value) storage,
+    required TResult Function(_cancelled value) cancelled,
+    required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_unknown value) unknown,
+  }) {
+    return unknown(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_server value)? server,
+    TResult Function(_storage value)? storage,
+    TResult Function(_cancelled value)? cancelled,
+    TResult Function(_invalidData value)? invalidData,
+    TResult Function(_unknown value)? unknown,
+  }) {
+    return unknown?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_server value)? server,
+    TResult Function(_storage value)? storage,
+    TResult Function(_cancelled value)? cancelled,
+    TResult Function(_invalidData value)? invalidData,
+    TResult Function(_unknown value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_unknownToJson(this);
+  }
+}
+
+abstract class _unknown extends AuthFailure {
+  const factory _unknown() = _$_unknown;
+  const _unknown._() : super._();
+
+  factory _unknown.fromJson(Map<String, dynamic> json) = _$_unknown.fromJson;
 }

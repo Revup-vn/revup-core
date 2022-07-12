@@ -13,9 +13,9 @@ class AuthFailure with _$AuthFailure {
 
   const factory AuthFailure.cancelled() = _cancelled;
 
-  const factory AuthFailure.unauthorized() = _unauthorized;
-
   const factory AuthFailure.invalidData([String? message]) = _invalidData;
+
+  const factory AuthFailure.unknown() = _unknown;
 
   factory AuthFailure.fromJson(Map<String, dynamic> json) =>
       _$AuthFailureFromJson(json);
