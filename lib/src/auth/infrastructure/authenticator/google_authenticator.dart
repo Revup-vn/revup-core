@@ -30,9 +30,13 @@ class GoogleAuthenticator extends Authenticator {
 
   @override
   Future<bool> signOut() async {
-    await _auth.signOut();
-    await _googleSignIn.disconnect();
-    await _googleSignIn.signOut();
+    try {
+      await _auth.signOut();
+      await _googleSignIn.disconnect();
+      await _googleSignIn.signOut();
+    } catch (_) {
+      return false;
+    }
     return _auth.currentUser == null && _googleSignIn.currentUser == null;
   }
 }

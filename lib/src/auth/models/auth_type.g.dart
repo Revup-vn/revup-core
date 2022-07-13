@@ -11,6 +11,8 @@ _$_google _$$_googleFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = _$_google(
+          user: $checkedConvert(
+              'user', (v) => AppUser.fromJson(v as Map<String, dynamic>)),
           $type: $checkedConvert('runtimeType', (v) => v as String?),
         );
         return val;
@@ -19,6 +21,7 @@ _$_google _$$_googleFromJson(Map<String, dynamic> json) => $checkedCreate(
     );
 
 Map<String, dynamic> _$$_googleToJson(_$_google instance) => <String, dynamic>{
+      'user': instance.user.toJson(),
       'runtimeType': instance.$type,
     };
 
@@ -27,6 +30,8 @@ _$_phone _$$_phoneFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = _$_phone(
+          user: $checkedConvert(
+              'user', (v) => AppUser.fromJson(v as Map<String, dynamic>)),
           $type: $checkedConvert('runtimeType', (v) => v as String?),
         );
         return val;
@@ -35,5 +40,6 @@ _$_phone _$$_phoneFromJson(Map<String, dynamic> json) => $checkedCreate(
     );
 
 Map<String, dynamic> _$$_phoneToJson(_$_phone instance) => <String, dynamic>{
+      'user': instance.user.toJson(),
       'runtimeType': instance.$type,
     };

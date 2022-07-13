@@ -29,22 +29,23 @@ AuthType _$AuthTypeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AuthType {
+  AppUser get user => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() google,
-    required TResult Function() phone,
+    required TResult Function(AppUser user) google,
+    required TResult Function(AppUser user) phone,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? google,
-    TResult Function()? phone,
+    TResult Function(AppUser user)? google,
+    TResult Function(AppUser user)? phone,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? google,
-    TResult Function()? phone,
+    TResult Function(AppUser user)? google,
+    TResult Function(AppUser user)? phone,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -68,12 +69,18 @@ mixin _$AuthType {
   }) =>
       throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AuthTypeCopyWith<AuthType> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AuthTypeCopyWith<$Res> {
   factory $AuthTypeCopyWith(AuthType value, $Res Function(AuthType) then) =
       _$AuthTypeCopyWithImpl<$Res>;
+  $Res call({AppUser user});
+
+  $AppUserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -83,12 +90,36 @@ class _$AuthTypeCopyWithImpl<$Res> implements $AuthTypeCopyWith<$Res> {
   final AuthType _value;
   // ignore: unused_field
   final $Res Function(AuthType) _then;
+
+  @override
+  $Res call({
+    Object? user = freezed,
+  }) {
+    return _then(_value.copyWith(
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as AppUser,
+    ));
+  }
+
+  @override
+  $AppUserCopyWith<$Res> get user {
+    return $AppUserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$_googleCopyWith<$Res> {
+abstract class _$$_googleCopyWith<$Res> implements $AuthTypeCopyWith<$Res> {
   factory _$$_googleCopyWith(_$_google value, $Res Function(_$_google) then) =
       __$$_googleCopyWithImpl<$Res>;
+  @override
+  $Res call({AppUser user});
+
+  @override
+  $AppUserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -99,61 +130,85 @@ class __$$_googleCopyWithImpl<$Res> extends _$AuthTypeCopyWithImpl<$Res>
 
   @override
   _$_google get _value => super._value as _$_google;
+
+  @override
+  $Res call({
+    Object? user = freezed,
+  }) {
+    return _then(_$_google(
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as AppUser,
+    ));
+  }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_google implements _google {
-  const _$_google({final String? $type}) : $type = $type ?? 'google';
+  const _$_google({required this.user, final String? $type})
+      : $type = $type ?? 'google';
 
   factory _$_google.fromJson(Map<String, dynamic> json) =>
       _$$_googleFromJson(json);
+
+  @override
+  final AppUser user;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'AuthType.google()';
+    return 'AuthType.google(user: $user)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_google);
+        (other.runtimeType == runtimeType &&
+            other is _$_google &&
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_googleCopyWith<_$_google> get copyWith =>
+      __$$_googleCopyWithImpl<_$_google>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() google,
-    required TResult Function() phone,
+    required TResult Function(AppUser user) google,
+    required TResult Function(AppUser user) phone,
   }) {
-    return google();
+    return google(user);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? google,
-    TResult Function()? phone,
+    TResult Function(AppUser user)? google,
+    TResult Function(AppUser user)? phone,
   }) {
-    return google?.call();
+    return google?.call(user);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? google,
-    TResult Function()? phone,
+    TResult Function(AppUser user)? google,
+    TResult Function(AppUser user)? phone,
     required TResult orElse(),
   }) {
     if (google != null) {
-      return google();
+      return google(user);
     }
     return orElse();
   }
@@ -196,15 +251,27 @@ class _$_google implements _google {
 }
 
 abstract class _google implements AuthType {
-  const factory _google() = _$_google;
+  const factory _google({required final AppUser user}) = _$_google;
 
   factory _google.fromJson(Map<String, dynamic> json) = _$_google.fromJson;
+
+  @override
+  AppUser get user => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_googleCopyWith<_$_google> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_phoneCopyWith<$Res> {
+abstract class _$$_phoneCopyWith<$Res> implements $AuthTypeCopyWith<$Res> {
   factory _$$_phoneCopyWith(_$_phone value, $Res Function(_$_phone) then) =
       __$$_phoneCopyWithImpl<$Res>;
+  @override
+  $Res call({AppUser user});
+
+  @override
+  $AppUserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -215,61 +282,85 @@ class __$$_phoneCopyWithImpl<$Res> extends _$AuthTypeCopyWithImpl<$Res>
 
   @override
   _$_phone get _value => super._value as _$_phone;
+
+  @override
+  $Res call({
+    Object? user = freezed,
+  }) {
+    return _then(_$_phone(
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as AppUser,
+    ));
+  }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_phone implements _phone {
-  const _$_phone({final String? $type}) : $type = $type ?? 'phone';
+  const _$_phone({required this.user, final String? $type})
+      : $type = $type ?? 'phone';
 
   factory _$_phone.fromJson(Map<String, dynamic> json) =>
       _$$_phoneFromJson(json);
+
+  @override
+  final AppUser user;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'AuthType.phone()';
+    return 'AuthType.phone(user: $user)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_phone);
+        (other.runtimeType == runtimeType &&
+            other is _$_phone &&
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_phoneCopyWith<_$_phone> get copyWith =>
+      __$$_phoneCopyWithImpl<_$_phone>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() google,
-    required TResult Function() phone,
+    required TResult Function(AppUser user) google,
+    required TResult Function(AppUser user) phone,
   }) {
-    return phone();
+    return phone(user);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? google,
-    TResult Function()? phone,
+    TResult Function(AppUser user)? google,
+    TResult Function(AppUser user)? phone,
   }) {
-    return phone?.call();
+    return phone?.call(user);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? google,
-    TResult Function()? phone,
+    TResult Function(AppUser user)? google,
+    TResult Function(AppUser user)? phone,
     required TResult orElse(),
   }) {
     if (phone != null) {
-      return phone();
+      return phone(user);
     }
     return orElse();
   }
@@ -312,7 +403,14 @@ class _$_phone implements _phone {
 }
 
 abstract class _phone implements AuthType {
-  const factory _phone() = _$_phone;
+  const factory _phone({required final AppUser user}) = _$_phone;
 
   factory _phone.fromJson(Map<String, dynamic> json) = _$_phone.fromJson;
+
+  @override
+  AppUser get user => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_phoneCopyWith<_$_phone> get copyWith =>
+      throw _privateConstructorUsedError;
 }

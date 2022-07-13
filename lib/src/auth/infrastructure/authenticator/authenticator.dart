@@ -28,13 +28,15 @@ abstract class Authenticator {
       _store.collection(kPathUserCollection).doc(id).get();
 
   Future<bool> signUp(AppUser user) async {
-    var result = true;
-    await _store
-        .collection(kPathUserCollection)
-        .doc(user.uuid)
-        .set(user.toJson())
-        .onError((_, __) => result = false);
-    return result;
+    try {
+      await _store
+          .collection(kPathUserCollection)
+          .doc(user.uuid)
+          .set(user.toJson());
+    } catch (_) {
+      return false;
+    }
+    return true;
   }
 
   Future<bool> signOut();

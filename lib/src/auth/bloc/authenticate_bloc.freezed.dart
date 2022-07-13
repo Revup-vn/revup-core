@@ -18,51 +18,64 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthenticateEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() phoneLoggedIn,
-    required TResult Function() googleLoggedIn,
-    required TResult Function() infoFilledIn,
-    required TResult Function() signedOut,
+    required TResult Function(OnCompleteSignUp onCompleteSignUp)
+        loginWithGoogle,
+    required TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)
+        loginWithPhone,
+    required TResult Function(AuthType authType, String? errorMessage) signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? phoneLoggedIn,
-    TResult Function()? googleLoggedIn,
-    TResult Function()? infoFilledIn,
-    TResult Function()? signedOut,
+    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)?
+        loginWithPhone,
+    TResult Function(AuthType authType, String? errorMessage)? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? phoneLoggedIn,
-    TResult Function()? googleLoggedIn,
-    TResult Function()? infoFilledIn,
-    TResult Function()? signedOut,
+    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)?
+        loginWithPhone,
+    TResult Function(AuthType authType, String? errorMessage)? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_phoneLoggedIn value) phoneLoggedIn,
-    required TResult Function(_googleLoggedIn value) googleLoggedIn,
-    required TResult Function(_infoFilledIn value) infoFilledIn,
-    required TResult Function(_signedOut value) signedOut,
+    required TResult Function(_loginWithGoogle value) loginWithGoogle,
+    required TResult Function(_loginWithPhone value) loginWithPhone,
+    required TResult Function(_signedOut value) signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
-    TResult Function(_googleLoggedIn value)? googleLoggedIn,
-    TResult Function(_infoFilledIn value)? infoFilledIn,
-    TResult Function(_signedOut value)? signedOut,
+    TResult Function(_loginWithGoogle value)? loginWithGoogle,
+    TResult Function(_loginWithPhone value)? loginWithPhone,
+    TResult Function(_signedOut value)? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
-    TResult Function(_googleLoggedIn value)? googleLoggedIn,
-    TResult Function(_infoFilledIn value)? infoFilledIn,
-    TResult Function(_signedOut value)? signedOut,
+    TResult Function(_loginWithGoogle value)? loginWithGoogle,
+    TResult Function(_loginWithPhone value)? loginWithPhone,
+    TResult Function(_signedOut value)? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -86,76 +99,116 @@ class _$AuthenticateEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$_phoneLoggedInCopyWith<$Res> {
-  factory _$$_phoneLoggedInCopyWith(
-          _$_phoneLoggedIn value, $Res Function(_$_phoneLoggedIn) then) =
-      __$$_phoneLoggedInCopyWithImpl<$Res>;
+abstract class _$$_loginWithGoogleCopyWith<$Res> {
+  factory _$$_loginWithGoogleCopyWith(
+          _$_loginWithGoogle value, $Res Function(_$_loginWithGoogle) then) =
+      __$$_loginWithGoogleCopyWithImpl<$Res>;
+  $Res call({OnCompleteSignUp onCompleteSignUp});
 }
 
 /// @nodoc
-class __$$_phoneLoggedInCopyWithImpl<$Res>
+class __$$_loginWithGoogleCopyWithImpl<$Res>
     extends _$AuthenticateEventCopyWithImpl<$Res>
-    implements _$$_phoneLoggedInCopyWith<$Res> {
-  __$$_phoneLoggedInCopyWithImpl(
-      _$_phoneLoggedIn _value, $Res Function(_$_phoneLoggedIn) _then)
-      : super(_value, (v) => _then(v as _$_phoneLoggedIn));
+    implements _$$_loginWithGoogleCopyWith<$Res> {
+  __$$_loginWithGoogleCopyWithImpl(
+      _$_loginWithGoogle _value, $Res Function(_$_loginWithGoogle) _then)
+      : super(_value, (v) => _then(v as _$_loginWithGoogle));
 
   @override
-  _$_phoneLoggedIn get _value => super._value as _$_phoneLoggedIn;
+  _$_loginWithGoogle get _value => super._value as _$_loginWithGoogle;
+
+  @override
+  $Res call({
+    Object? onCompleteSignUp = freezed,
+  }) {
+    return _then(_$_loginWithGoogle(
+      onCompleteSignUp: onCompleteSignUp == freezed
+          ? _value.onCompleteSignUp
+          : onCompleteSignUp // ignore: cast_nullable_to_non_nullable
+              as OnCompleteSignUp,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_phoneLoggedIn implements _phoneLoggedIn {
-  const _$_phoneLoggedIn();
+class _$_loginWithGoogle implements _loginWithGoogle {
+  const _$_loginWithGoogle({required this.onCompleteSignUp});
+
+  @override
+  final OnCompleteSignUp onCompleteSignUp;
 
   @override
   String toString() {
-    return 'AuthenticateEvent.phoneLoggedIn()';
+    return 'AuthenticateEvent.loginWithGoogle(onCompleteSignUp: $onCompleteSignUp)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_phoneLoggedIn);
+        (other.runtimeType == runtimeType &&
+            other is _$_loginWithGoogle &&
+            (identical(other.onCompleteSignUp, onCompleteSignUp) ||
+                other.onCompleteSignUp == onCompleteSignUp));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, onCompleteSignUp);
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_loginWithGoogleCopyWith<_$_loginWithGoogle> get copyWith =>
+      __$$_loginWithGoogleCopyWithImpl<_$_loginWithGoogle>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() phoneLoggedIn,
-    required TResult Function() googleLoggedIn,
-    required TResult Function() infoFilledIn,
-    required TResult Function() signedOut,
+    required TResult Function(OnCompleteSignUp onCompleteSignUp)
+        loginWithGoogle,
+    required TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)
+        loginWithPhone,
+    required TResult Function(AuthType authType, String? errorMessage) signOut,
   }) {
-    return phoneLoggedIn();
+    return loginWithGoogle(onCompleteSignUp);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? phoneLoggedIn,
-    TResult Function()? googleLoggedIn,
-    TResult Function()? infoFilledIn,
-    TResult Function()? signedOut,
+    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)?
+        loginWithPhone,
+    TResult Function(AuthType authType, String? errorMessage)? signOut,
   }) {
-    return phoneLoggedIn?.call();
+    return loginWithGoogle?.call(onCompleteSignUp);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? phoneLoggedIn,
-    TResult Function()? googleLoggedIn,
-    TResult Function()? infoFilledIn,
-    TResult Function()? signedOut,
+    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)?
+        loginWithPhone,
+    TResult Function(AuthType authType, String? errorMessage)? signOut,
     required TResult orElse(),
   }) {
-    if (phoneLoggedIn != null) {
-      return phoneLoggedIn();
+    if (loginWithGoogle != null) {
+      return loginWithGoogle(onCompleteSignUp);
     }
     return orElse();
   }
@@ -163,116 +216,214 @@ class _$_phoneLoggedIn implements _phoneLoggedIn {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_phoneLoggedIn value) phoneLoggedIn,
-    required TResult Function(_googleLoggedIn value) googleLoggedIn,
-    required TResult Function(_infoFilledIn value) infoFilledIn,
-    required TResult Function(_signedOut value) signedOut,
+    required TResult Function(_loginWithGoogle value) loginWithGoogle,
+    required TResult Function(_loginWithPhone value) loginWithPhone,
+    required TResult Function(_signedOut value) signOut,
   }) {
-    return phoneLoggedIn(this);
+    return loginWithGoogle(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
-    TResult Function(_googleLoggedIn value)? googleLoggedIn,
-    TResult Function(_infoFilledIn value)? infoFilledIn,
-    TResult Function(_signedOut value)? signedOut,
+    TResult Function(_loginWithGoogle value)? loginWithGoogle,
+    TResult Function(_loginWithPhone value)? loginWithPhone,
+    TResult Function(_signedOut value)? signOut,
   }) {
-    return phoneLoggedIn?.call(this);
+    return loginWithGoogle?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
-    TResult Function(_googleLoggedIn value)? googleLoggedIn,
-    TResult Function(_infoFilledIn value)? infoFilledIn,
-    TResult Function(_signedOut value)? signedOut,
+    TResult Function(_loginWithGoogle value)? loginWithGoogle,
+    TResult Function(_loginWithPhone value)? loginWithPhone,
+    TResult Function(_signedOut value)? signOut,
     required TResult orElse(),
   }) {
-    if (phoneLoggedIn != null) {
-      return phoneLoggedIn(this);
+    if (loginWithGoogle != null) {
+      return loginWithGoogle(this);
     }
     return orElse();
   }
 }
 
-abstract class _phoneLoggedIn implements AuthenticateEvent {
-  const factory _phoneLoggedIn() = _$_phoneLoggedIn;
+abstract class _loginWithGoogle implements AuthenticateEvent {
+  const factory _loginWithGoogle(
+      {required final OnCompleteSignUp onCompleteSignUp}) = _$_loginWithGoogle;
+
+  OnCompleteSignUp get onCompleteSignUp => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_loginWithGoogleCopyWith<_$_loginWithGoogle> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_googleLoggedInCopyWith<$Res> {
-  factory _$$_googleLoggedInCopyWith(
-          _$_googleLoggedIn value, $Res Function(_$_googleLoggedIn) then) =
-      __$$_googleLoggedInCopyWithImpl<$Res>;
+abstract class _$$_loginWithPhoneCopyWith<$Res> {
+  factory _$$_loginWithPhoneCopyWith(
+          _$_loginWithPhone value, $Res Function(_$_loginWithPhone) then) =
+      __$$_loginWithPhoneCopyWithImpl<$Res>;
+  $Res call(
+      {String phoneNumber,
+      OTPGetter onSubmitOTP,
+      OnCompleteSignUp onSignUpSubmit,
+      Function0<Future<Unit>> onSignUpSuccess,
+      VoidCallback? onTimeOut});
 }
 
 /// @nodoc
-class __$$_googleLoggedInCopyWithImpl<$Res>
+class __$$_loginWithPhoneCopyWithImpl<$Res>
     extends _$AuthenticateEventCopyWithImpl<$Res>
-    implements _$$_googleLoggedInCopyWith<$Res> {
-  __$$_googleLoggedInCopyWithImpl(
-      _$_googleLoggedIn _value, $Res Function(_$_googleLoggedIn) _then)
-      : super(_value, (v) => _then(v as _$_googleLoggedIn));
+    implements _$$_loginWithPhoneCopyWith<$Res> {
+  __$$_loginWithPhoneCopyWithImpl(
+      _$_loginWithPhone _value, $Res Function(_$_loginWithPhone) _then)
+      : super(_value, (v) => _then(v as _$_loginWithPhone));
 
   @override
-  _$_googleLoggedIn get _value => super._value as _$_googleLoggedIn;
+  _$_loginWithPhone get _value => super._value as _$_loginWithPhone;
+
+  @override
+  $Res call({
+    Object? phoneNumber = freezed,
+    Object? onSubmitOTP = freezed,
+    Object? onSignUpSubmit = freezed,
+    Object? onSignUpSuccess = freezed,
+    Object? onTimeOut = freezed,
+  }) {
+    return _then(_$_loginWithPhone(
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      onSubmitOTP: onSubmitOTP == freezed
+          ? _value.onSubmitOTP
+          : onSubmitOTP // ignore: cast_nullable_to_non_nullable
+              as OTPGetter,
+      onSignUpSubmit: onSignUpSubmit == freezed
+          ? _value.onSignUpSubmit
+          : onSignUpSubmit // ignore: cast_nullable_to_non_nullable
+              as OnCompleteSignUp,
+      onSignUpSuccess: onSignUpSuccess == freezed
+          ? _value.onSignUpSuccess
+          : onSignUpSuccess // ignore: cast_nullable_to_non_nullable
+              as Function0<Future<Unit>>,
+      onTimeOut: onTimeOut == freezed
+          ? _value.onTimeOut
+          : onTimeOut // ignore: cast_nullable_to_non_nullable
+              as VoidCallback?,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_googleLoggedIn implements _googleLoggedIn {
-  const _$_googleLoggedIn();
+class _$_loginWithPhone implements _loginWithPhone {
+  const _$_loginWithPhone(
+      {required this.phoneNumber,
+      required this.onSubmitOTP,
+      required this.onSignUpSubmit,
+      required this.onSignUpSuccess,
+      this.onTimeOut});
+
+  @override
+  final String phoneNumber;
+  @override
+  final OTPGetter onSubmitOTP;
+  @override
+  final OnCompleteSignUp onSignUpSubmit;
+  @override
+  final Function0<Future<Unit>> onSignUpSuccess;
+  @override
+  final VoidCallback? onTimeOut;
 
   @override
   String toString() {
-    return 'AuthenticateEvent.googleLoggedIn()';
+    return 'AuthenticateEvent.loginWithPhone(phoneNumber: $phoneNumber, onSubmitOTP: $onSubmitOTP, onSignUpSubmit: $onSignUpSubmit, onSignUpSuccess: $onSignUpSuccess, onTimeOut: $onTimeOut)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_googleLoggedIn);
+        (other.runtimeType == runtimeType &&
+            other is _$_loginWithPhone &&
+            const DeepCollectionEquality()
+                .equals(other.phoneNumber, phoneNumber) &&
+            (identical(other.onSubmitOTP, onSubmitOTP) ||
+                other.onSubmitOTP == onSubmitOTP) &&
+            (identical(other.onSignUpSubmit, onSignUpSubmit) ||
+                other.onSignUpSubmit == onSignUpSubmit) &&
+            (identical(other.onSignUpSuccess, onSignUpSuccess) ||
+                other.onSignUpSuccess == onSignUpSuccess) &&
+            (identical(other.onTimeOut, onTimeOut) ||
+                other.onTimeOut == onTimeOut));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(phoneNumber),
+      onSubmitOTP,
+      onSignUpSubmit,
+      onSignUpSuccess,
+      onTimeOut);
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_loginWithPhoneCopyWith<_$_loginWithPhone> get copyWith =>
+      __$$_loginWithPhoneCopyWithImpl<_$_loginWithPhone>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() phoneLoggedIn,
-    required TResult Function() googleLoggedIn,
-    required TResult Function() infoFilledIn,
-    required TResult Function() signedOut,
+    required TResult Function(OnCompleteSignUp onCompleteSignUp)
+        loginWithGoogle,
+    required TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)
+        loginWithPhone,
+    required TResult Function(AuthType authType, String? errorMessage) signOut,
   }) {
-    return googleLoggedIn();
+    return loginWithPhone(
+        phoneNumber, onSubmitOTP, onSignUpSubmit, onSignUpSuccess, onTimeOut);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? phoneLoggedIn,
-    TResult Function()? googleLoggedIn,
-    TResult Function()? infoFilledIn,
-    TResult Function()? signedOut,
+    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)?
+        loginWithPhone,
+    TResult Function(AuthType authType, String? errorMessage)? signOut,
   }) {
-    return googleLoggedIn?.call();
+    return loginWithPhone?.call(
+        phoneNumber, onSubmitOTP, onSignUpSubmit, onSignUpSuccess, onTimeOut);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? phoneLoggedIn,
-    TResult Function()? googleLoggedIn,
-    TResult Function()? infoFilledIn,
-    TResult Function()? signedOut,
+    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)?
+        loginWithPhone,
+    TResult Function(AuthType authType, String? errorMessage)? signOut,
     required TResult orElse(),
   }) {
-    if (googleLoggedIn != null) {
-      return googleLoggedIn();
+    if (loginWithPhone != null) {
+      return loginWithPhone(
+          phoneNumber, onSubmitOTP, onSignUpSubmit, onSignUpSuccess, onTimeOut);
     }
     return orElse();
   }
@@ -280,160 +431,55 @@ class _$_googleLoggedIn implements _googleLoggedIn {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_phoneLoggedIn value) phoneLoggedIn,
-    required TResult Function(_googleLoggedIn value) googleLoggedIn,
-    required TResult Function(_infoFilledIn value) infoFilledIn,
-    required TResult Function(_signedOut value) signedOut,
+    required TResult Function(_loginWithGoogle value) loginWithGoogle,
+    required TResult Function(_loginWithPhone value) loginWithPhone,
+    required TResult Function(_signedOut value) signOut,
   }) {
-    return googleLoggedIn(this);
+    return loginWithPhone(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
-    TResult Function(_googleLoggedIn value)? googleLoggedIn,
-    TResult Function(_infoFilledIn value)? infoFilledIn,
-    TResult Function(_signedOut value)? signedOut,
+    TResult Function(_loginWithGoogle value)? loginWithGoogle,
+    TResult Function(_loginWithPhone value)? loginWithPhone,
+    TResult Function(_signedOut value)? signOut,
   }) {
-    return googleLoggedIn?.call(this);
+    return loginWithPhone?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
-    TResult Function(_googleLoggedIn value)? googleLoggedIn,
-    TResult Function(_infoFilledIn value)? infoFilledIn,
-    TResult Function(_signedOut value)? signedOut,
+    TResult Function(_loginWithGoogle value)? loginWithGoogle,
+    TResult Function(_loginWithPhone value)? loginWithPhone,
+    TResult Function(_signedOut value)? signOut,
     required TResult orElse(),
   }) {
-    if (googleLoggedIn != null) {
-      return googleLoggedIn(this);
+    if (loginWithPhone != null) {
+      return loginWithPhone(this);
     }
     return orElse();
   }
 }
 
-abstract class _googleLoggedIn implements AuthenticateEvent {
-  const factory _googleLoggedIn() = _$_googleLoggedIn;
-}
+abstract class _loginWithPhone implements AuthenticateEvent {
+  const factory _loginWithPhone(
+      {required final String phoneNumber,
+      required final OTPGetter onSubmitOTP,
+      required final OnCompleteSignUp onSignUpSubmit,
+      required final Function0<Future<Unit>> onSignUpSuccess,
+      final VoidCallback? onTimeOut}) = _$_loginWithPhone;
 
-/// @nodoc
-abstract class _$$_infoFilledInCopyWith<$Res> {
-  factory _$$_infoFilledInCopyWith(
-          _$_infoFilledIn value, $Res Function(_$_infoFilledIn) then) =
-      __$$_infoFilledInCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_infoFilledInCopyWithImpl<$Res>
-    extends _$AuthenticateEventCopyWithImpl<$Res>
-    implements _$$_infoFilledInCopyWith<$Res> {
-  __$$_infoFilledInCopyWithImpl(
-      _$_infoFilledIn _value, $Res Function(_$_infoFilledIn) _then)
-      : super(_value, (v) => _then(v as _$_infoFilledIn));
-
-  @override
-  _$_infoFilledIn get _value => super._value as _$_infoFilledIn;
-}
-
-/// @nodoc
-
-class _$_infoFilledIn implements _infoFilledIn {
-  const _$_infoFilledIn();
-
-  @override
-  String toString() {
-    return 'AuthenticateEvent.infoFilledIn()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_infoFilledIn);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() phoneLoggedIn,
-    required TResult Function() googleLoggedIn,
-    required TResult Function() infoFilledIn,
-    required TResult Function() signedOut,
-  }) {
-    return infoFilledIn();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? phoneLoggedIn,
-    TResult Function()? googleLoggedIn,
-    TResult Function()? infoFilledIn,
-    TResult Function()? signedOut,
-  }) {
-    return infoFilledIn?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? phoneLoggedIn,
-    TResult Function()? googleLoggedIn,
-    TResult Function()? infoFilledIn,
-    TResult Function()? signedOut,
-    required TResult orElse(),
-  }) {
-    if (infoFilledIn != null) {
-      return infoFilledIn();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_phoneLoggedIn value) phoneLoggedIn,
-    required TResult Function(_googleLoggedIn value) googleLoggedIn,
-    required TResult Function(_infoFilledIn value) infoFilledIn,
-    required TResult Function(_signedOut value) signedOut,
-  }) {
-    return infoFilledIn(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
-    TResult Function(_googleLoggedIn value)? googleLoggedIn,
-    TResult Function(_infoFilledIn value)? infoFilledIn,
-    TResult Function(_signedOut value)? signedOut,
-  }) {
-    return infoFilledIn?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
-    TResult Function(_googleLoggedIn value)? googleLoggedIn,
-    TResult Function(_infoFilledIn value)? infoFilledIn,
-    TResult Function(_signedOut value)? signedOut,
-    required TResult orElse(),
-  }) {
-    if (infoFilledIn != null) {
-      return infoFilledIn(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _infoFilledIn implements AuthenticateEvent {
-  const factory _infoFilledIn() = _$_infoFilledIn;
+  String get phoneNumber => throw _privateConstructorUsedError;
+  OTPGetter get onSubmitOTP => throw _privateConstructorUsedError;
+  OnCompleteSignUp get onSignUpSubmit => throw _privateConstructorUsedError;
+  Function0<Future<Unit>> get onSignUpSuccess =>
+      throw _privateConstructorUsedError;
+  VoidCallback? get onTimeOut => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_loginWithPhoneCopyWith<_$_loginWithPhone> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -441,6 +487,9 @@ abstract class _$$_signedOutCopyWith<$Res> {
   factory _$$_signedOutCopyWith(
           _$_signedOut value, $Res Function(_$_signedOut) then) =
       __$$_signedOutCopyWithImpl<$Res>;
+  $Res call({AuthType authType, String? errorMessage});
+
+  $AuthTypeCopyWith<$Res> get authType;
 }
 
 /// @nodoc
@@ -453,60 +502,117 @@ class __$$_signedOutCopyWithImpl<$Res>
 
   @override
   _$_signedOut get _value => super._value as _$_signedOut;
+
+  @override
+  $Res call({
+    Object? authType = freezed,
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_$_signedOut(
+      authType: authType == freezed
+          ? _value.authType
+          : authType // ignore: cast_nullable_to_non_nullable
+              as AuthType,
+      errorMessage: errorMessage == freezed
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  @override
+  $AuthTypeCopyWith<$Res> get authType {
+    return $AuthTypeCopyWith<$Res>(_value.authType, (value) {
+      return _then(_value.copyWith(authType: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$_signedOut implements _signedOut {
-  const _$_signedOut();
+  const _$_signedOut({required this.authType, this.errorMessage});
+
+  @override
+  final AuthType authType;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'AuthenticateEvent.signedOut()';
+    return 'AuthenticateEvent.signOut(authType: $authType, errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_signedOut);
+        (other.runtimeType == runtimeType &&
+            other is _$_signedOut &&
+            const DeepCollectionEquality().equals(other.authType, authType) &&
+            const DeepCollectionEquality()
+                .equals(other.errorMessage, errorMessage));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(authType),
+      const DeepCollectionEquality().hash(errorMessage));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_signedOutCopyWith<_$_signedOut> get copyWith =>
+      __$$_signedOutCopyWithImpl<_$_signedOut>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() phoneLoggedIn,
-    required TResult Function() googleLoggedIn,
-    required TResult Function() infoFilledIn,
-    required TResult Function() signedOut,
+    required TResult Function(OnCompleteSignUp onCompleteSignUp)
+        loginWithGoogle,
+    required TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)
+        loginWithPhone,
+    required TResult Function(AuthType authType, String? errorMessage) signOut,
   }) {
-    return signedOut();
+    return signOut(authType, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? phoneLoggedIn,
-    TResult Function()? googleLoggedIn,
-    TResult Function()? infoFilledIn,
-    TResult Function()? signedOut,
+    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)?
+        loginWithPhone,
+    TResult Function(AuthType authType, String? errorMessage)? signOut,
   }) {
-    return signedOut?.call();
+    return signOut?.call(authType, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? phoneLoggedIn,
-    TResult Function()? googleLoggedIn,
-    TResult Function()? infoFilledIn,
-    TResult Function()? signedOut,
+    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)?
+        loginWithPhone,
+    TResult Function(AuthType authType, String? errorMessage)? signOut,
     required TResult orElse(),
   }) {
-    if (signedOut != null) {
-      return signedOut();
+    if (signOut != null) {
+      return signOut(authType, errorMessage);
     }
     return orElse();
   }
@@ -514,57 +620,58 @@ class _$_signedOut implements _signedOut {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_phoneLoggedIn value) phoneLoggedIn,
-    required TResult Function(_googleLoggedIn value) googleLoggedIn,
-    required TResult Function(_infoFilledIn value) infoFilledIn,
-    required TResult Function(_signedOut value) signedOut,
+    required TResult Function(_loginWithGoogle value) loginWithGoogle,
+    required TResult Function(_loginWithPhone value) loginWithPhone,
+    required TResult Function(_signedOut value) signOut,
   }) {
-    return signedOut(this);
+    return signOut(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
-    TResult Function(_googleLoggedIn value)? googleLoggedIn,
-    TResult Function(_infoFilledIn value)? infoFilledIn,
-    TResult Function(_signedOut value)? signedOut,
+    TResult Function(_loginWithGoogle value)? loginWithGoogle,
+    TResult Function(_loginWithPhone value)? loginWithPhone,
+    TResult Function(_signedOut value)? signOut,
   }) {
-    return signedOut?.call(this);
+    return signOut?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_phoneLoggedIn value)? phoneLoggedIn,
-    TResult Function(_googleLoggedIn value)? googleLoggedIn,
-    TResult Function(_infoFilledIn value)? infoFilledIn,
-    TResult Function(_signedOut value)? signedOut,
+    TResult Function(_loginWithGoogle value)? loginWithGoogle,
+    TResult Function(_loginWithPhone value)? loginWithPhone,
+    TResult Function(_signedOut value)? signOut,
     required TResult orElse(),
   }) {
-    if (signedOut != null) {
-      return signedOut(this);
+    if (signOut != null) {
+      return signOut(this);
     }
     return orElse();
   }
 }
 
 abstract class _signedOut implements AuthenticateEvent {
-  const factory _signedOut() = _$_signedOut;
+  const factory _signedOut(
+      {required final AuthType authType,
+      final String? errorMessage}) = _$_signedOut;
+
+  AuthType get authType => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_signedOutCopyWith<_$_signedOut> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 AuthenticateState _$AuthenticateStateFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
     case 'empty':
       return _empty.fromJson(json);
-    case 'loading':
-      return _loading.fromJson(json);
-    case 'fillForm':
-      return _fillForm.fromJson(json);
     case 'authenticated':
       return _authenticated.fromJson(json);
-    case 'failure':
-      return _failure.fromJson(json);
+    case 'error':
+      return _error.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'runtimeType', 'AuthenticateState',
@@ -577,56 +684,44 @@ mixin _$AuthenticateState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function() loading,
-    required TResult Function() fillForm,
-    required TResult Function() authenticated,
-    required TResult Function(AuthFailure failure) failure,
+    required TResult Function(AuthType authType) authenticated,
+    required TResult Function(String? message, AuthFailure? failure) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function()? fillForm,
-    TResult Function()? authenticated,
-    TResult Function(AuthFailure failure)? failure,
+    TResult Function(AuthType authType)? authenticated,
+    TResult Function(String? message, AuthFailure? failure)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function()? fillForm,
-    TResult Function()? authenticated,
-    TResult Function(AuthFailure failure)? failure,
+    TResult Function(AuthType authType)? authenticated,
+    TResult Function(String? message, AuthFailure? failure)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_empty value) empty,
-    required TResult Function(_loading value) loading,
-    required TResult Function(_fillForm value) fillForm,
     required TResult Function(_authenticated value) authenticated,
-    required TResult Function(_failure value) failure,
+    required TResult Function(_error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_empty value)? empty,
-    TResult Function(_loading value)? loading,
-    TResult Function(_fillForm value)? fillForm,
     TResult Function(_authenticated value)? authenticated,
-    TResult Function(_failure value)? failure,
+    TResult Function(_error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_empty value)? empty,
-    TResult Function(_loading value)? loading,
-    TResult Function(_fillForm value)? fillForm,
     TResult Function(_authenticated value)? authenticated,
-    TResult Function(_failure value)? failure,
+    TResult Function(_error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -696,10 +791,8 @@ class _$_empty implements _empty {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function() loading,
-    required TResult Function() fillForm,
-    required TResult Function() authenticated,
-    required TResult Function(AuthFailure failure) failure,
+    required TResult Function(AuthType authType) authenticated,
+    required TResult Function(String? message, AuthFailure? failure) error,
   }) {
     return empty();
   }
@@ -708,10 +801,8 @@ class _$_empty implements _empty {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function()? fillForm,
-    TResult Function()? authenticated,
-    TResult Function(AuthFailure failure)? failure,
+    TResult Function(AuthType authType)? authenticated,
+    TResult Function(String? message, AuthFailure? failure)? error,
   }) {
     return empty?.call();
   }
@@ -720,10 +811,8 @@ class _$_empty implements _empty {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function()? fillForm,
-    TResult Function()? authenticated,
-    TResult Function(AuthFailure failure)? failure,
+    TResult Function(AuthType authType)? authenticated,
+    TResult Function(String? message, AuthFailure? failure)? error,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -736,10 +825,8 @@ class _$_empty implements _empty {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_empty value) empty,
-    required TResult Function(_loading value) loading,
-    required TResult Function(_fillForm value) fillForm,
     required TResult Function(_authenticated value) authenticated,
-    required TResult Function(_failure value) failure,
+    required TResult Function(_error value) error,
   }) {
     return empty(this);
   }
@@ -748,10 +835,8 @@ class _$_empty implements _empty {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_empty value)? empty,
-    TResult Function(_loading value)? loading,
-    TResult Function(_fillForm value)? fillForm,
     TResult Function(_authenticated value)? authenticated,
-    TResult Function(_failure value)? failure,
+    TResult Function(_error value)? error,
   }) {
     return empty?.call(this);
   }
@@ -760,10 +845,8 @@ class _$_empty implements _empty {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_empty value)? empty,
-    TResult Function(_loading value)? loading,
-    TResult Function(_fillForm value)? fillForm,
     TResult Function(_authenticated value)? authenticated,
-    TResult Function(_failure value)? failure,
+    TResult Function(_error value)? error,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -785,283 +868,13 @@ abstract class _empty implements AuthenticateState {
 }
 
 /// @nodoc
-abstract class _$$_loadingCopyWith<$Res> {
-  factory _$$_loadingCopyWith(
-          _$_loading value, $Res Function(_$_loading) then) =
-      __$$_loadingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_loadingCopyWithImpl<$Res>
-    extends _$AuthenticateStateCopyWithImpl<$Res>
-    implements _$$_loadingCopyWith<$Res> {
-  __$$_loadingCopyWithImpl(_$_loading _value, $Res Function(_$_loading) _then)
-      : super(_value, (v) => _then(v as _$_loading));
-
-  @override
-  _$_loading get _value => super._value as _$_loading;
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_loading implements _loading {
-  const _$_loading({final String? $type}) : $type = $type ?? 'loading';
-
-  factory _$_loading.fromJson(Map<String, dynamic> json) =>
-      _$$_loadingFromJson(json);
-
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'AuthenticateState.loading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_loading);
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() empty,
-    required TResult Function() loading,
-    required TResult Function() fillForm,
-    required TResult Function() authenticated,
-    required TResult Function(AuthFailure failure) failure,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function()? fillForm,
-    TResult Function()? authenticated,
-    TResult Function(AuthFailure failure)? failure,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function()? fillForm,
-    TResult Function()? authenticated,
-    TResult Function(AuthFailure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_empty value) empty,
-    required TResult Function(_loading value) loading,
-    required TResult Function(_fillForm value) fillForm,
-    required TResult Function(_authenticated value) authenticated,
-    required TResult Function(_failure value) failure,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_empty value)? empty,
-    TResult Function(_loading value)? loading,
-    TResult Function(_fillForm value)? fillForm,
-    TResult Function(_authenticated value)? authenticated,
-    TResult Function(_failure value)? failure,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_empty value)? empty,
-    TResult Function(_loading value)? loading,
-    TResult Function(_fillForm value)? fillForm,
-    TResult Function(_authenticated value)? authenticated,
-    TResult Function(_failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_loadingToJson(this);
-  }
-}
-
-abstract class _loading implements AuthenticateState {
-  const factory _loading() = _$_loading;
-
-  factory _loading.fromJson(Map<String, dynamic> json) = _$_loading.fromJson;
-}
-
-/// @nodoc
-abstract class _$$_fillFormCopyWith<$Res> {
-  factory _$$_fillFormCopyWith(
-          _$_fillForm value, $Res Function(_$_fillForm) then) =
-      __$$_fillFormCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_fillFormCopyWithImpl<$Res>
-    extends _$AuthenticateStateCopyWithImpl<$Res>
-    implements _$$_fillFormCopyWith<$Res> {
-  __$$_fillFormCopyWithImpl(
-      _$_fillForm _value, $Res Function(_$_fillForm) _then)
-      : super(_value, (v) => _then(v as _$_fillForm));
-
-  @override
-  _$_fillForm get _value => super._value as _$_fillForm;
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_fillForm implements _fillForm {
-  const _$_fillForm({final String? $type}) : $type = $type ?? 'fillForm';
-
-  factory _$_fillForm.fromJson(Map<String, dynamic> json) =>
-      _$$_fillFormFromJson(json);
-
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'AuthenticateState.fillForm()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_fillForm);
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() empty,
-    required TResult Function() loading,
-    required TResult Function() fillForm,
-    required TResult Function() authenticated,
-    required TResult Function(AuthFailure failure) failure,
-  }) {
-    return fillForm();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function()? fillForm,
-    TResult Function()? authenticated,
-    TResult Function(AuthFailure failure)? failure,
-  }) {
-    return fillForm?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function()? fillForm,
-    TResult Function()? authenticated,
-    TResult Function(AuthFailure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (fillForm != null) {
-      return fillForm();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_empty value) empty,
-    required TResult Function(_loading value) loading,
-    required TResult Function(_fillForm value) fillForm,
-    required TResult Function(_authenticated value) authenticated,
-    required TResult Function(_failure value) failure,
-  }) {
-    return fillForm(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_empty value)? empty,
-    TResult Function(_loading value)? loading,
-    TResult Function(_fillForm value)? fillForm,
-    TResult Function(_authenticated value)? authenticated,
-    TResult Function(_failure value)? failure,
-  }) {
-    return fillForm?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_empty value)? empty,
-    TResult Function(_loading value)? loading,
-    TResult Function(_fillForm value)? fillForm,
-    TResult Function(_authenticated value)? authenticated,
-    TResult Function(_failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (fillForm != null) {
-      return fillForm(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_fillFormToJson(this);
-  }
-}
-
-abstract class _fillForm implements AuthenticateState {
-  const factory _fillForm() = _$_fillForm;
-
-  factory _fillForm.fromJson(Map<String, dynamic> json) = _$_fillForm.fromJson;
-}
-
-/// @nodoc
 abstract class _$$_authenticatedCopyWith<$Res> {
   factory _$$_authenticatedCopyWith(
           _$_authenticated value, $Res Function(_$_authenticated) then) =
       __$$_authenticatedCopyWithImpl<$Res>;
+  $Res call({AuthType authType});
+
+  $AuthTypeCopyWith<$Res> get authType;
 }
 
 /// @nodoc
@@ -1074,71 +887,95 @@ class __$$_authenticatedCopyWithImpl<$Res>
 
   @override
   _$_authenticated get _value => super._value as _$_authenticated;
+
+  @override
+  $Res call({
+    Object? authType = freezed,
+  }) {
+    return _then(_$_authenticated(
+      authType: authType == freezed
+          ? _value.authType
+          : authType // ignore: cast_nullable_to_non_nullable
+              as AuthType,
+    ));
+  }
+
+  @override
+  $AuthTypeCopyWith<$Res> get authType {
+    return $AuthTypeCopyWith<$Res>(_value.authType, (value) {
+      return _then(_value.copyWith(authType: value));
+    });
+  }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_authenticated implements _authenticated {
-  const _$_authenticated({final String? $type})
+  const _$_authenticated({required this.authType, final String? $type})
       : $type = $type ?? 'authenticated';
 
   factory _$_authenticated.fromJson(Map<String, dynamic> json) =>
       _$$_authenticatedFromJson(json);
+
+  @override
+  final AuthType authType;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'AuthenticateState.authenticated()';
+    return 'AuthenticateState.authenticated(authType: $authType)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_authenticated);
+        (other.runtimeType == runtimeType &&
+            other is _$_authenticated &&
+            const DeepCollectionEquality().equals(other.authType, authType));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(authType));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_authenticatedCopyWith<_$_authenticated> get copyWith =>
+      __$$_authenticatedCopyWithImpl<_$_authenticated>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function() loading,
-    required TResult Function() fillForm,
-    required TResult Function() authenticated,
-    required TResult Function(AuthFailure failure) failure,
+    required TResult Function(AuthType authType) authenticated,
+    required TResult Function(String? message, AuthFailure? failure) error,
   }) {
-    return authenticated();
+    return authenticated(authType);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function()? fillForm,
-    TResult Function()? authenticated,
-    TResult Function(AuthFailure failure)? failure,
+    TResult Function(AuthType authType)? authenticated,
+    TResult Function(String? message, AuthFailure? failure)? error,
   }) {
-    return authenticated?.call();
+    return authenticated?.call(authType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function()? fillForm,
-    TResult Function()? authenticated,
-    TResult Function(AuthFailure failure)? failure,
+    TResult Function(AuthType authType)? authenticated,
+    TResult Function(String? message, AuthFailure? failure)? error,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
-      return authenticated();
+      return authenticated(authType);
     }
     return orElse();
   }
@@ -1147,10 +984,8 @@ class _$_authenticated implements _authenticated {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_empty value) empty,
-    required TResult Function(_loading value) loading,
-    required TResult Function(_fillForm value) fillForm,
     required TResult Function(_authenticated value) authenticated,
-    required TResult Function(_failure value) failure,
+    required TResult Function(_error value) error,
   }) {
     return authenticated(this);
   }
@@ -1159,10 +994,8 @@ class _$_authenticated implements _authenticated {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_empty value)? empty,
-    TResult Function(_loading value)? loading,
-    TResult Function(_fillForm value)? fillForm,
     TResult Function(_authenticated value)? authenticated,
-    TResult Function(_failure value)? failure,
+    TResult Function(_error value)? error,
   }) {
     return authenticated?.call(this);
   }
@@ -1171,10 +1004,8 @@ class _$_authenticated implements _authenticated {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_empty value)? empty,
-    TResult Function(_loading value)? loading,
-    TResult Function(_fillForm value)? fillForm,
     TResult Function(_authenticated value)? authenticated,
-    TResult Function(_failure value)? failure,
+    TResult Function(_error value)? error,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -1190,47 +1021,60 @@ class _$_authenticated implements _authenticated {
 }
 
 abstract class _authenticated implements AuthenticateState {
-  const factory _authenticated() = _$_authenticated;
+  const factory _authenticated({required final AuthType authType}) =
+      _$_authenticated;
 
   factory _authenticated.fromJson(Map<String, dynamic> json) =
       _$_authenticated.fromJson;
+
+  AuthType get authType => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_authenticatedCopyWith<_$_authenticated> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_failureCopyWith<$Res> {
-  factory _$$_failureCopyWith(
-          _$_failure value, $Res Function(_$_failure) then) =
-      __$$_failureCopyWithImpl<$Res>;
-  $Res call({AuthFailure failure});
+abstract class _$$_errorCopyWith<$Res> {
+  factory _$$_errorCopyWith(_$_error value, $Res Function(_$_error) then) =
+      __$$_errorCopyWithImpl<$Res>;
+  $Res call({String? message, AuthFailure? failure});
 
-  $AuthFailureCopyWith<$Res> get failure;
+  $AuthFailureCopyWith<$Res>? get failure;
 }
 
 /// @nodoc
-class __$$_failureCopyWithImpl<$Res>
-    extends _$AuthenticateStateCopyWithImpl<$Res>
-    implements _$$_failureCopyWith<$Res> {
-  __$$_failureCopyWithImpl(_$_failure _value, $Res Function(_$_failure) _then)
-      : super(_value, (v) => _then(v as _$_failure));
+class __$$_errorCopyWithImpl<$Res> extends _$AuthenticateStateCopyWithImpl<$Res>
+    implements _$$_errorCopyWith<$Res> {
+  __$$_errorCopyWithImpl(_$_error _value, $Res Function(_$_error) _then)
+      : super(_value, (v) => _then(v as _$_error));
 
   @override
-  _$_failure get _value => super._value as _$_failure;
+  _$_error get _value => super._value as _$_error;
 
   @override
   $Res call({
+    Object? message = freezed,
     Object? failure = freezed,
   }) {
-    return _then(_$_failure(
+    return _then(_$_error(
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
       failure: failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
-              as AuthFailure,
+              as AuthFailure?,
     ));
   }
 
   @override
-  $AuthFailureCopyWith<$Res> get failure {
-    return $AuthFailureCopyWith<$Res>(_value.failure, (value) {
+  $AuthFailureCopyWith<$Res>? get failure {
+    if (_value.failure == null) {
+      return null;
+    }
+
+    return $AuthFailureCopyWith<$Res>(_value.failure!, (value) {
       return _then(_value.copyWith(failure: value));
     });
   }
@@ -1238,78 +1082,77 @@ class __$$_failureCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_failure implements _failure {
-  const _$_failure({required this.failure, final String? $type})
-      : $type = $type ?? 'failure';
+class _$_error implements _error {
+  const _$_error({this.message, this.failure, final String? $type})
+      : $type = $type ?? 'error';
 
-  factory _$_failure.fromJson(Map<String, dynamic> json) =>
-      _$$_failureFromJson(json);
+  factory _$_error.fromJson(Map<String, dynamic> json) =>
+      _$$_errorFromJson(json);
 
   @override
-  final AuthFailure failure;
+  final String? message;
+  @override
+  final AuthFailure? failure;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'AuthenticateState.failure(failure: $failure)';
+    return 'AuthenticateState.error(message: $message, failure: $failure)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_failure &&
+            other is _$_error &&
+            const DeepCollectionEquality().equals(other.message, message) &&
             const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(message),
+      const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
-  _$$_failureCopyWith<_$_failure> get copyWith =>
-      __$$_failureCopyWithImpl<_$_failure>(this, _$identity);
+  _$$_errorCopyWith<_$_error> get copyWith =>
+      __$$_errorCopyWithImpl<_$_error>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function() loading,
-    required TResult Function() fillForm,
-    required TResult Function() authenticated,
-    required TResult Function(AuthFailure failure) failure,
+    required TResult Function(AuthType authType) authenticated,
+    required TResult Function(String? message, AuthFailure? failure) error,
   }) {
-    return failure(this.failure);
+    return error(message, failure);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function()? fillForm,
-    TResult Function()? authenticated,
-    TResult Function(AuthFailure failure)? failure,
+    TResult Function(AuthType authType)? authenticated,
+    TResult Function(String? message, AuthFailure? failure)? error,
   }) {
-    return failure?.call(this.failure);
+    return error?.call(message, failure);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function()? fillForm,
-    TResult Function()? authenticated,
-    TResult Function(AuthFailure failure)? failure,
+    TResult Function(AuthType authType)? authenticated,
+    TResult Function(String? message, AuthFailure? failure)? error,
     required TResult orElse(),
   }) {
-    if (failure != null) {
-      return failure(this.failure);
+    if (error != null) {
+      return error(message, failure);
     }
     return orElse();
   }
@@ -1318,55 +1161,51 @@ class _$_failure implements _failure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_empty value) empty,
-    required TResult Function(_loading value) loading,
-    required TResult Function(_fillForm value) fillForm,
     required TResult Function(_authenticated value) authenticated,
-    required TResult Function(_failure value) failure,
+    required TResult Function(_error value) error,
   }) {
-    return failure(this);
+    return error(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_empty value)? empty,
-    TResult Function(_loading value)? loading,
-    TResult Function(_fillForm value)? fillForm,
     TResult Function(_authenticated value)? authenticated,
-    TResult Function(_failure value)? failure,
+    TResult Function(_error value)? error,
   }) {
-    return failure?.call(this);
+    return error?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_empty value)? empty,
-    TResult Function(_loading value)? loading,
-    TResult Function(_fillForm value)? fillForm,
     TResult Function(_authenticated value)? authenticated,
-    TResult Function(_failure value)? failure,
+    TResult Function(_error value)? error,
     required TResult orElse(),
   }) {
-    if (failure != null) {
-      return failure(this);
+    if (error != null) {
+      return error(this);
     }
     return orElse();
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_failureToJson(this);
+    return _$$_errorToJson(this);
   }
 }
 
-abstract class _failure implements AuthenticateState {
-  const factory _failure({required final AuthFailure failure}) = _$_failure;
+abstract class _error implements AuthenticateState {
+  const factory _error({final String? message, final AuthFailure? failure}) =
+      _$_error;
 
-  factory _failure.fromJson(Map<String, dynamic> json) = _$_failure.fromJson;
+  factory _error.fromJson(Map<String, dynamic> json) = _$_error.fromJson;
 
-  AuthFailure get failure => throw _privateConstructorUsedError;
+  String? get message => throw _privateConstructorUsedError;
+  AuthFailure? get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$$_failureCopyWith<_$_failure> get copyWith =>
+  _$$_errorCopyWith<_$_error> get copyWith =>
       throw _privateConstructorUsedError;
 }

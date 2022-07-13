@@ -59,7 +59,11 @@ class PhoneAuthenticator extends Authenticator {
 
   @override
   Future<bool> signOut() async {
-    await _auth.signOut();
+    try {
+      await _auth.signOut();
+    } catch (_) {
+      return false;
+    }
     return _auth.currentUser == null;
   }
 }
