@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../user.dart';
 
 import '../../utils/constants.dart';
+import '../user.dart';
 
 abstract class Authenticator {
   Authenticator(this._store);
@@ -28,11 +28,13 @@ abstract class Authenticator {
       _store.collection(kPathUserCollection).doc(id).get();
 
   Future<bool> signUp(AppUser user) async {
+    var result = true;
     await _store
         .collection(kPathUserCollection)
         .doc(user.uuid)
-        .set(user.toJson());
-    return true;
+        .set(user.toJson())
+        .onError((_, __) => result = false);
+    return result;
   }
 
   Future<bool> signOut();

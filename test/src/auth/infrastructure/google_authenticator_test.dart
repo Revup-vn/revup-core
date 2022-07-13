@@ -1,10 +1,12 @@
+import 'package:flutter/services.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mocktail/mocktail.dart';
+
 import 'package:revup_core/src/auth/infrastructure/authenticator/google_authenticator.dart';
 import 'package:revup_core/src/auth/utils/utils.dart';
 
@@ -82,7 +84,8 @@ void main() {
 
       when(() => googleSignInAccount.authentication).thenAnswer(
         (_) async => throw PlatformException(
-            code: GoogleSignInAccount.kFailedToRecoverAuthError),
+          code: GoogleSignInAccount.kFailedToRecoverAuthError,
+        ),
       );
 
       when(() => signIn.signIn()).thenAnswer((_) async => googleSignInAccount);

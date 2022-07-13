@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:flutter/services.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
 
 import '../models/auth_failure.dart';
 import '../utils/utils.dart';
@@ -38,7 +39,7 @@ class AuthenticatorRepository {
     } on LoginAbortException {
       return left(const AuthFailure.cancelled());
     } on ValidateException {
-      return left(const AuthFailure.invalidData());
+      return left(const AuthFailure.invalidData('User cannot be null'));
     } catch (_) {
       return left(const AuthFailure.unknown());
     }
@@ -55,6 +56,13 @@ class AuthenticatorRepository {
       );
     } else {
       final appUser = await onSignUpSubmit(user);
+      if (await _googleAuthenticatorService.isPhoneValid(appUser.phone) &&
+          await _phoneAuthenticatorService.isEmailValid(appUser.email)) {
+        return left(
+          const AuthFailure.invalidData('Phone or number is already existed'),
+        );
+      }
+
       if (await _googleAuthenticatorService.signUp(appUser)) {
         return right(appUser);
       } else {

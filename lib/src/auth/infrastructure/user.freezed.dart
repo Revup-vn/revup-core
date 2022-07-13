@@ -38,7 +38,7 @@ mixin _$AppUser {
   DateTime get dob => throw _privateConstructorUsedError;
   String get addr => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
+  bool get active => throw _privateConstructorUsedError;
   String get avatarUrl => throw _privateConstructorUsedError;
   DateTime get createdTime => throw _privateConstructorUsedError;
   DateTime get lastUpdatedTime => throw _privateConstructorUsedError;
@@ -52,7 +52,7 @@ mixin _$AppUser {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)
@@ -65,7 +65,7 @@ mixin _$AppUser {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
@@ -80,7 +80,7 @@ mixin _$AppUser {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)
@@ -97,7 +97,7 @@ mixin _$AppUser {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)?
@@ -110,7 +110,7 @@ mixin _$AppUser {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
@@ -125,7 +125,7 @@ mixin _$AppUser {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)?
@@ -142,7 +142,7 @@ mixin _$AppUser {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)?
@@ -155,7 +155,7 @@ mixin _$AppUser {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
@@ -170,7 +170,7 @@ mixin _$AppUser {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)?
@@ -217,7 +217,7 @@ abstract class $AppUserCopyWith<$Res> {
       DateTime dob,
       String addr,
       String email,
-      String status,
+      bool active,
       String avatarUrl,
       DateTime createdTime,
       DateTime lastUpdatedTime});
@@ -240,7 +240,7 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
     Object? dob = freezed,
     Object? addr = freezed,
     Object? email = freezed,
-    Object? status = freezed,
+    Object? active = freezed,
     Object? avatarUrl = freezed,
     Object? createdTime = freezed,
     Object? lastUpdatedTime = freezed,
@@ -274,10 +274,10 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
+      active: active == freezed
+          ? _value.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as bool,
       avatarUrl: avatarUrl == freezed
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
@@ -308,7 +308,7 @@ abstract class _$$_consumerCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       DateTime dob,
       String addr,
       String email,
-      String status,
+      bool active,
       String avatarUrl,
       DateTime createdTime,
       DateTime lastUpdatedTime});
@@ -333,7 +333,7 @@ class __$$_consumerCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
     Object? dob = freezed,
     Object? addr = freezed,
     Object? email = freezed,
-    Object? status = freezed,
+    Object? active = freezed,
     Object? avatarUrl = freezed,
     Object? createdTime = freezed,
     Object? lastUpdatedTime = freezed,
@@ -367,10 +367,10 @@ class __$$_consumerCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
+      active: active == freezed
+          ? _value.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as bool,
       avatarUrl: avatarUrl == freezed
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
@@ -398,7 +398,7 @@ class _$_consumer implements _consumer {
       required this.dob,
       required this.addr,
       required this.email,
-      required this.status,
+      required this.active,
       required this.avatarUrl,
       required this.createdTime,
       required this.lastUpdatedTime,
@@ -423,7 +423,7 @@ class _$_consumer implements _consumer {
   @override
   final String email;
   @override
-  final String status;
+  final bool active;
   @override
   final String avatarUrl;
   @override
@@ -436,7 +436,7 @@ class _$_consumer implements _consumer {
 
   @override
   String toString() {
-    return 'AppUser.consumer(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, status: $status, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime)';
+    return 'AppUser.consumer(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, active: $active, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime)';
   }
 
   @override
@@ -451,7 +451,7 @@ class _$_consumer implements _consumer {
             const DeepCollectionEquality().equals(other.dob, dob) &&
             const DeepCollectionEquality().equals(other.addr, addr) &&
             const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality().equals(other.active, active) &&
             const DeepCollectionEquality().equals(other.avatarUrl, avatarUrl) &&
             const DeepCollectionEquality()
                 .equals(other.createdTime, createdTime) &&
@@ -470,7 +470,7 @@ class _$_consumer implements _consumer {
       const DeepCollectionEquality().hash(dob),
       const DeepCollectionEquality().hash(addr),
       const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(active),
       const DeepCollectionEquality().hash(avatarUrl),
       const DeepCollectionEquality().hash(createdTime),
       const DeepCollectionEquality().hash(lastUpdatedTime));
@@ -491,7 +491,7 @@ class _$_consumer implements _consumer {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)
@@ -504,7 +504,7 @@ class _$_consumer implements _consumer {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
@@ -519,13 +519,13 @@ class _$_consumer implements _consumer {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)
         admin,
   }) {
-    return consumer(uuid, firstName, lastName, phone, dob, addr, email, status,
+    return consumer(uuid, firstName, lastName, phone, dob, addr, email, active,
         avatarUrl, createdTime, lastUpdatedTime);
   }
 
@@ -540,7 +540,7 @@ class _$_consumer implements _consumer {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)?
@@ -553,7 +553,7 @@ class _$_consumer implements _consumer {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
@@ -568,14 +568,14 @@ class _$_consumer implements _consumer {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)?
         admin,
   }) {
     return consumer?.call(uuid, firstName, lastName, phone, dob, addr, email,
-        status, avatarUrl, createdTime, lastUpdatedTime);
+        active, avatarUrl, createdTime, lastUpdatedTime);
   }
 
   @override
@@ -589,7 +589,7 @@ class _$_consumer implements _consumer {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)?
@@ -602,7 +602,7 @@ class _$_consumer implements _consumer {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
@@ -617,7 +617,7 @@ class _$_consumer implements _consumer {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)?
@@ -626,7 +626,7 @@ class _$_consumer implements _consumer {
   }) {
     if (consumer != null) {
       return consumer(uuid, firstName, lastName, phone, dob, addr, email,
-          status, avatarUrl, createdTime, lastUpdatedTime);
+          active, avatarUrl, createdTime, lastUpdatedTime);
     }
     return orElse();
   }
@@ -680,7 +680,7 @@ abstract class _consumer implements AppUser {
       required final DateTime dob,
       required final String addr,
       required final String email,
-      required final String status,
+      required final bool active,
       required final String avatarUrl,
       required final DateTime createdTime,
       required final DateTime lastUpdatedTime}) = _$_consumer;
@@ -702,7 +702,7 @@ abstract class _consumer implements AppUser {
   @override
   String get email => throw _privateConstructorUsedError;
   @override
-  String get status => throw _privateConstructorUsedError;
+  bool get active => throw _privateConstructorUsedError;
   @override
   String get avatarUrl => throw _privateConstructorUsedError;
   @override
@@ -729,7 +729,7 @@ abstract class _$$_providerCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       DateTime dob,
       String addr,
       String email,
-      String status,
+      bool active,
       String avatarUrl,
       DateTime createdTime,
       DateTime lastUpdatedTime,
@@ -756,7 +756,7 @@ class __$$_providerCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
     Object? dob = freezed,
     Object? addr = freezed,
     Object? email = freezed,
-    Object? status = freezed,
+    Object? active = freezed,
     Object? avatarUrl = freezed,
     Object? createdTime = freezed,
     Object? lastUpdatedTime = freezed,
@@ -792,10 +792,10 @@ class __$$_providerCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
+      active: active == freezed
+          ? _value.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as bool,
       avatarUrl: avatarUrl == freezed
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
@@ -831,7 +831,7 @@ class _$_provider implements _provider {
       required this.dob,
       required this.addr,
       required this.email,
-      required this.status,
+      required this.active,
       required this.avatarUrl,
       required this.createdTime,
       required this.lastUpdatedTime,
@@ -858,7 +858,7 @@ class _$_provider implements _provider {
   @override
   final String email;
   @override
-  final String status;
+  final bool active;
   @override
   final String avatarUrl;
   @override
@@ -875,7 +875,7 @@ class _$_provider implements _provider {
 
   @override
   String toString() {
-    return 'AppUser.provider(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, status: $status, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime, idCardNum: $idCardNum, idCardImage: $idCardImage)';
+    return 'AppUser.provider(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, active: $active, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime, idCardNum: $idCardNum, idCardImage: $idCardImage)';
   }
 
   @override
@@ -890,7 +890,7 @@ class _$_provider implements _provider {
             const DeepCollectionEquality().equals(other.dob, dob) &&
             const DeepCollectionEquality().equals(other.addr, addr) &&
             const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality().equals(other.active, active) &&
             const DeepCollectionEquality().equals(other.avatarUrl, avatarUrl) &&
             const DeepCollectionEquality()
                 .equals(other.createdTime, createdTime) &&
@@ -912,7 +912,7 @@ class _$_provider implements _provider {
       const DeepCollectionEquality().hash(dob),
       const DeepCollectionEquality().hash(addr),
       const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(active),
       const DeepCollectionEquality().hash(avatarUrl),
       const DeepCollectionEquality().hash(createdTime),
       const DeepCollectionEquality().hash(lastUpdatedTime),
@@ -935,7 +935,7 @@ class _$_provider implements _provider {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)
@@ -948,7 +948,7 @@ class _$_provider implements _provider {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
@@ -963,13 +963,13 @@ class _$_provider implements _provider {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)
         admin,
   }) {
-    return provider(uuid, firstName, lastName, phone, dob, addr, email, status,
+    return provider(uuid, firstName, lastName, phone, dob, addr, email, active,
         avatarUrl, createdTime, lastUpdatedTime, idCardNum, idCardImage);
   }
 
@@ -984,7 +984,7 @@ class _$_provider implements _provider {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)?
@@ -997,7 +997,7 @@ class _$_provider implements _provider {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
@@ -1012,7 +1012,7 @@ class _$_provider implements _provider {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)?
@@ -1026,7 +1026,7 @@ class _$_provider implements _provider {
         dob,
         addr,
         email,
-        status,
+        active,
         avatarUrl,
         createdTime,
         lastUpdatedTime,
@@ -1045,7 +1045,7 @@ class _$_provider implements _provider {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)?
@@ -1058,7 +1058,7 @@ class _$_provider implements _provider {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
@@ -1073,7 +1073,7 @@ class _$_provider implements _provider {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)?
@@ -1089,7 +1089,7 @@ class _$_provider implements _provider {
           dob,
           addr,
           email,
-          status,
+          active,
           avatarUrl,
           createdTime,
           lastUpdatedTime,
@@ -1148,7 +1148,7 @@ abstract class _provider implements AppUser {
       required final DateTime dob,
       required final String addr,
       required final String email,
-      required final String status,
+      required final bool active,
       required final String avatarUrl,
       required final DateTime createdTime,
       required final DateTime lastUpdatedTime,
@@ -1172,7 +1172,7 @@ abstract class _provider implements AppUser {
   @override
   String get email => throw _privateConstructorUsedError;
   @override
-  String get status => throw _privateConstructorUsedError;
+  bool get active => throw _privateConstructorUsedError;
   @override
   String get avatarUrl => throw _privateConstructorUsedError;
   @override
@@ -1200,7 +1200,7 @@ abstract class _$$_adminCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       DateTime dob,
       String addr,
       String email,
-      String status,
+      bool active,
       String avatarUrl,
       DateTime createdTime,
       DateTime lastUpdatedTime});
@@ -1224,7 +1224,7 @@ class __$$_adminCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
     Object? dob = freezed,
     Object? addr = freezed,
     Object? email = freezed,
-    Object? status = freezed,
+    Object? active = freezed,
     Object? avatarUrl = freezed,
     Object? createdTime = freezed,
     Object? lastUpdatedTime = freezed,
@@ -1258,10 +1258,10 @@ class __$$_adminCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
+      active: active == freezed
+          ? _value.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as bool,
       avatarUrl: avatarUrl == freezed
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
@@ -1289,7 +1289,7 @@ class _$_admin implements _admin {
       required this.dob,
       required this.addr,
       required this.email,
-      required this.status,
+      required this.active,
       required this.avatarUrl,
       required this.createdTime,
       required this.lastUpdatedTime,
@@ -1314,7 +1314,7 @@ class _$_admin implements _admin {
   @override
   final String email;
   @override
-  final String status;
+  final bool active;
   @override
   final String avatarUrl;
   @override
@@ -1327,7 +1327,7 @@ class _$_admin implements _admin {
 
   @override
   String toString() {
-    return 'AppUser.admin(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, status: $status, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime)';
+    return 'AppUser.admin(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, active: $active, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime)';
   }
 
   @override
@@ -1342,7 +1342,7 @@ class _$_admin implements _admin {
             const DeepCollectionEquality().equals(other.dob, dob) &&
             const DeepCollectionEquality().equals(other.addr, addr) &&
             const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality().equals(other.active, active) &&
             const DeepCollectionEquality().equals(other.avatarUrl, avatarUrl) &&
             const DeepCollectionEquality()
                 .equals(other.createdTime, createdTime) &&
@@ -1361,7 +1361,7 @@ class _$_admin implements _admin {
       const DeepCollectionEquality().hash(dob),
       const DeepCollectionEquality().hash(addr),
       const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(active),
       const DeepCollectionEquality().hash(avatarUrl),
       const DeepCollectionEquality().hash(createdTime),
       const DeepCollectionEquality().hash(lastUpdatedTime));
@@ -1382,7 +1382,7 @@ class _$_admin implements _admin {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)
@@ -1395,7 +1395,7 @@ class _$_admin implements _admin {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
@@ -1410,13 +1410,13 @@ class _$_admin implements _admin {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)
         admin,
   }) {
-    return admin(uuid, firstName, lastName, phone, dob, addr, email, status,
+    return admin(uuid, firstName, lastName, phone, dob, addr, email, active,
         avatarUrl, createdTime, lastUpdatedTime);
   }
 
@@ -1431,7 +1431,7 @@ class _$_admin implements _admin {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)?
@@ -1444,7 +1444,7 @@ class _$_admin implements _admin {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
@@ -1459,14 +1459,14 @@ class _$_admin implements _admin {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)?
         admin,
   }) {
     return admin?.call(uuid, firstName, lastName, phone, dob, addr, email,
-        status, avatarUrl, createdTime, lastUpdatedTime);
+        active, avatarUrl, createdTime, lastUpdatedTime);
   }
 
   @override
@@ -1480,7 +1480,7 @@ class _$_admin implements _admin {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)?
@@ -1493,7 +1493,7 @@ class _$_admin implements _admin {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
@@ -1508,7 +1508,7 @@ class _$_admin implements _admin {
             DateTime dob,
             String addr,
             String email,
-            String status,
+            bool active,
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime)?
@@ -1516,7 +1516,7 @@ class _$_admin implements _admin {
     required TResult orElse(),
   }) {
     if (admin != null) {
-      return admin(uuid, firstName, lastName, phone, dob, addr, email, status,
+      return admin(uuid, firstName, lastName, phone, dob, addr, email, active,
           avatarUrl, createdTime, lastUpdatedTime);
     }
     return orElse();
@@ -1571,7 +1571,7 @@ abstract class _admin implements AppUser {
       required final DateTime dob,
       required final String addr,
       required final String email,
-      required final String status,
+      required final bool active,
       required final String avatarUrl,
       required final DateTime createdTime,
       required final DateTime lastUpdatedTime}) = _$_admin;
@@ -1593,7 +1593,7 @@ abstract class _admin implements AppUser {
   @override
   String get email => throw _privateConstructorUsedError;
   @override
-  String get status => throw _privateConstructorUsedError;
+  bool get active => throw _privateConstructorUsedError;
   @override
   String get avatarUrl => throw _privateConstructorUsedError;
   @override
