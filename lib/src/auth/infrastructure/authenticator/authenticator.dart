@@ -1,7 +1,13 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../utils/constants.dart';
 import '../user.dart';
+
+typedef OTPGetter = FutureOr<String> Function();
+typedef SignInUpCallBack = Future<void> Function(UserCredential);
 
 abstract class Authenticator {
   Authenticator(this._store);

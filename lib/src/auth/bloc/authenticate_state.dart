@@ -4,10 +4,12 @@ part of 'authenticate_bloc.dart';
 class AuthenticateState with _$AuthenticateState {
   const factory AuthenticateState.empty() = _empty;
 
+  const factory AuthenticateState.loading() = _loading;
+
   const factory AuthenticateState.authenticated({required AuthType authType}) =
       _authenticated;
 
-  const factory AuthenticateState.error({
+  const factory AuthenticateState.failure({
     String? message,
     AuthFailure? failure,
   }) = _error;

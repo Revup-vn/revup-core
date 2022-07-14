@@ -22,6 +22,23 @@ Map<String, dynamic> _$$_emptyToJson(_$_empty instance) => <String, dynamic>{
       'runtimeType': instance.$type,
     };
 
+_$_loading _$$_loadingFromJson(Map<String, dynamic> json) => $checkedCreate(
+      r'_$_loading',
+      json,
+      ($checkedConvert) {
+        final val = _$_loading(
+          $type: $checkedConvert('runtimeType', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'runtimeType'},
+    );
+
+Map<String, dynamic> _$$_loadingToJson(_$_loading instance) =>
+    <String, dynamic>{
+      'runtimeType': instance.$type,
+    };
+
 _$_authenticated _$$_authenticatedFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
       r'_$_authenticated',

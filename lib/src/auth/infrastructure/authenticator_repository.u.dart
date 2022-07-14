@@ -9,6 +9,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../models/auth_failure.dart';
 import '../utils/utils.dart';
+import 'authenticator/authenticator.dart';
 import 'authenticator/google_authenticator.dart';
 import 'authenticator/phone_authenticator.u.dart';
 import 'infrastructure.dart';
@@ -77,7 +78,10 @@ class AuthenticatorRepository {
     }
   }
 
-  FutureOr<bool> ggSignOut() => _googleAuthenticatorService.signOut();
+  FutureOr<bool> ggSignOut() => Task(_googleAuthenticatorService.signOut)
+      .attempt()
+      .map((a) => a.fold((l) => false, (r) => r))
+      .run();
 
   FutureOr<Either<AuthFailure, AppUser>> phoneSignUpIn({
     required String phoneNumber,
@@ -128,5 +132,8 @@ class AuthenticatorRepository {
     return res;
   }
 
-  FutureOr<bool> phoneSignOut() => _phoneAuthenticatorService.signOut();
+  FutureOr<bool> phoneSignOut() => Task(_phoneAuthenticatorService.signOut)
+      .attempt()
+      .map((a) => a.fold((l) => false, (r) => r))
+      .run();
 }

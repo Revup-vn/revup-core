@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-import '../infrastructure/authenticator/phone_authenticator.u.dart';
+import '../infrastructure/authenticator/authenticator.dart';
 import '../infrastructure/infrastructure.dart';
 import '../models/auth_failure.dart';
 import '../models/auth_type.dart';
@@ -23,45 +23,57 @@ class AuthenticateBloc
       event.when(
         signOut: (authType, errorMessage) {
           authType.when(
-            google: (_) async => (await _authenticatorRepository.ggSignOut())
-                ? emit(const AuthenticateState.empty())
-                : emit(AuthenticateState.error(message: errorMessage)),
-            phone: (_) async => (await _authenticatorRepository.phoneSignOut())
-                ? emit(const AuthenticateState.empty())
-                : emit(AuthenticateState.error(message: errorMessage)),
+            google: (_) async {
+              emit(const AuthenticateState.loading());
+              (await _authenticatorRepository.ggSignOut())
+                  ? emit(const AuthenticateState.empty())
+                  : emit(AuthenticateState.failure(message: errorMessage));
+            },
+            phone: (_) async {
+              emit(const AuthenticateState.loading());
+              (await _authenticatorRepository.phoneSignOut())
+                  ? emit(const AuthenticateState.empty())
+                  : emit(AuthenticateState.failure(message: errorMessage));
+            },
           );
         },
-        loginWithGoogle: (OnCompleteSignUp onCompleteSignUp) async =>
-            (await _authenticatorRepository.ggSignUpIn(
-          onSignUpSubmit: onCompleteSignUp,
-        ))
-                .fold(
-          (l) => emit(AuthenticateState.error(failure: l)),
-          (r) => emit(
-            AuthenticateState.authenticated(
-              authType: AuthType.google(user: r),
+        loginWithGoogle: (OnCompleteSignUp onCompleteSignUp) async {
+          emit(const AuthenticateState.loading());
+          (await _authenticatorRepository.ggSignUpIn(
+            onSignUpSubmit: onCompleteSignUp,
+          ))
+              .fold(
+            (l) => emit(AuthenticateState.failure(failure: l)),
+            (r) => emit(
+              AuthenticateState.authenticated(
+                authType: AuthType.google(user: r),
+              ),
             ),
-          ),
-        ),
+          );
+        },
         loginWithPhone: (
           String phoneNumber,
           OTPGetter onSubmitOTP,
           OnCompleteSignUp onSignUpSubmit,
           Function0<Future<Unit>> onSignUpSuccess,
           void Function()? onTimeOut,
-        ) async =>
-            (await _authenticatorRepository.phoneSignUpIn(
-          phoneNumber: phoneNumber,
-          onSubmitOTP: onSubmitOTP,
-          onSignUpSubmit: onSignUpSubmit,
-          onSignUpSuccess: onSignUpSuccess,
-        ))
-                .fold(
-          (l) => AuthenticateState.error(failure: l),
-          (r) => AuthenticateState.authenticated(
-            authType: AuthType.phone(user: r),
-          ),
-        ),
+        ) async {
+          emit(const AuthenticateState.loading());
+          (await _authenticatorRepository.phoneSignUpIn(
+            phoneNumber: phoneNumber,
+            onSubmitOTP: onSubmitOTP,
+            onSignUpSubmit: onSignUpSubmit,
+            onSignUpSuccess: onSignUpSuccess,
+          ))
+              .fold(
+            (l) => emit(AuthenticateState.failure(failure: l)),
+            (r) => emit(
+              AuthenticateState.authenticated(
+                authType: AuthType.phone(user: r),
+              ),
+            ),
+          );
+        },
       );
     });
   }

@@ -668,9 +668,11 @@ AuthenticateState _$AuthenticateStateFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
     case 'empty':
       return _empty.fromJson(json);
+    case 'loading':
+      return _loading.fromJson(json);
     case 'authenticated':
       return _authenticated.fromJson(json);
-    case 'error':
+    case 'failure':
       return _error.fromJson(json);
 
     default:
@@ -684,44 +686,50 @@ mixin _$AuthenticateState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
+    required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
-    required TResult Function(String? message, AuthFailure? failure) error,
+    required TResult Function(String? message, AuthFailure? failure) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function(String? message, AuthFailure? failure)? error,
+    TResult Function(String? message, AuthFailure? failure)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function(String? message, AuthFailure? failure)? error,
+    TResult Function(String? message, AuthFailure? failure)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_empty value) empty,
+    required TResult Function(_loading value) loading,
     required TResult Function(_authenticated value) authenticated,
-    required TResult Function(_error value) error,
+    required TResult Function(_error value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_empty value)? empty,
+    TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
-    TResult Function(_error value)? error,
+    TResult Function(_error value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_empty value)? empty,
+    TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
-    TResult Function(_error value)? error,
+    TResult Function(_error value)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -791,8 +799,9 @@ class _$_empty implements _empty {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
+    required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
-    required TResult Function(String? message, AuthFailure? failure) error,
+    required TResult Function(String? message, AuthFailure? failure) failure,
   }) {
     return empty();
   }
@@ -801,8 +810,9 @@ class _$_empty implements _empty {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function(String? message, AuthFailure? failure)? error,
+    TResult Function(String? message, AuthFailure? failure)? failure,
   }) {
     return empty?.call();
   }
@@ -811,8 +821,9 @@ class _$_empty implements _empty {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function(String? message, AuthFailure? failure)? error,
+    TResult Function(String? message, AuthFailure? failure)? failure,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -825,8 +836,9 @@ class _$_empty implements _empty {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_empty value) empty,
+    required TResult Function(_loading value) loading,
     required TResult Function(_authenticated value) authenticated,
-    required TResult Function(_error value) error,
+    required TResult Function(_error value) failure,
   }) {
     return empty(this);
   }
@@ -835,8 +847,9 @@ class _$_empty implements _empty {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_empty value)? empty,
+    TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
-    TResult Function(_error value)? error,
+    TResult Function(_error value)? failure,
   }) {
     return empty?.call(this);
   }
@@ -845,8 +858,9 @@ class _$_empty implements _empty {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_empty value)? empty,
+    TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
-    TResult Function(_error value)? error,
+    TResult Function(_error value)? failure,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -865,6 +879,136 @@ abstract class _empty implements AuthenticateState {
   const factory _empty() = _$_empty;
 
   factory _empty.fromJson(Map<String, dynamic> json) = _$_empty.fromJson;
+}
+
+/// @nodoc
+abstract class _$$_loadingCopyWith<$Res> {
+  factory _$$_loadingCopyWith(
+          _$_loading value, $Res Function(_$_loading) then) =
+      __$$_loadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_loadingCopyWithImpl<$Res>
+    extends _$AuthenticateStateCopyWithImpl<$Res>
+    implements _$$_loadingCopyWith<$Res> {
+  __$$_loadingCopyWithImpl(_$_loading _value, $Res Function(_$_loading) _then)
+      : super(_value, (v) => _then(v as _$_loading));
+
+  @override
+  _$_loading get _value => super._value as _$_loading;
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_loading implements _loading {
+  const _$_loading({final String? $type}) : $type = $type ?? 'loading';
+
+  factory _$_loading.fromJson(Map<String, dynamic> json) =>
+      _$$_loadingFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'AuthenticateState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_loading);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function() loading,
+    required TResult Function(AuthType authType) authenticated,
+    required TResult Function(String? message, AuthFailure? failure) failure,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function()? loading,
+    TResult Function(AuthType authType)? authenticated,
+    TResult Function(String? message, AuthFailure? failure)? failure,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function()? loading,
+    TResult Function(AuthType authType)? authenticated,
+    TResult Function(String? message, AuthFailure? failure)? failure,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_empty value) empty,
+    required TResult Function(_loading value) loading,
+    required TResult Function(_authenticated value) authenticated,
+    required TResult Function(_error value) failure,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_empty value)? empty,
+    TResult Function(_loading value)? loading,
+    TResult Function(_authenticated value)? authenticated,
+    TResult Function(_error value)? failure,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_empty value)? empty,
+    TResult Function(_loading value)? loading,
+    TResult Function(_authenticated value)? authenticated,
+    TResult Function(_error value)? failure,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_loadingToJson(this);
+  }
+}
+
+abstract class _loading implements AuthenticateState {
+  const factory _loading() = _$_loading;
+
+  factory _loading.fromJson(Map<String, dynamic> json) = _$_loading.fromJson;
 }
 
 /// @nodoc
@@ -950,8 +1094,9 @@ class _$_authenticated implements _authenticated {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
+    required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
-    required TResult Function(String? message, AuthFailure? failure) error,
+    required TResult Function(String? message, AuthFailure? failure) failure,
   }) {
     return authenticated(authType);
   }
@@ -960,8 +1105,9 @@ class _$_authenticated implements _authenticated {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function(String? message, AuthFailure? failure)? error,
+    TResult Function(String? message, AuthFailure? failure)? failure,
   }) {
     return authenticated?.call(authType);
   }
@@ -970,8 +1116,9 @@ class _$_authenticated implements _authenticated {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function(String? message, AuthFailure? failure)? error,
+    TResult Function(String? message, AuthFailure? failure)? failure,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -984,8 +1131,9 @@ class _$_authenticated implements _authenticated {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_empty value) empty,
+    required TResult Function(_loading value) loading,
     required TResult Function(_authenticated value) authenticated,
-    required TResult Function(_error value) error,
+    required TResult Function(_error value) failure,
   }) {
     return authenticated(this);
   }
@@ -994,8 +1142,9 @@ class _$_authenticated implements _authenticated {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_empty value)? empty,
+    TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
-    TResult Function(_error value)? error,
+    TResult Function(_error value)? failure,
   }) {
     return authenticated?.call(this);
   }
@@ -1004,8 +1153,9 @@ class _$_authenticated implements _authenticated {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_empty value)? empty,
+    TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
-    TResult Function(_error value)? error,
+    TResult Function(_error value)? failure,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -1084,7 +1234,7 @@ class __$$_errorCopyWithImpl<$Res> extends _$AuthenticateStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_error implements _error {
   const _$_error({this.message, this.failure, final String? $type})
-      : $type = $type ?? 'error';
+      : $type = $type ?? 'failure';
 
   factory _$_error.fromJson(Map<String, dynamic> json) =>
       _$$_errorFromJson(json);
@@ -1099,7 +1249,7 @@ class _$_error implements _error {
 
   @override
   String toString() {
-    return 'AuthenticateState.error(message: $message, failure: $failure)';
+    return 'AuthenticateState.failure(message: $message, failure: $failure)';
   }
 
   @override
@@ -1127,32 +1277,35 @@ class _$_error implements _error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
+    required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
-    required TResult Function(String? message, AuthFailure? failure) error,
+    required TResult Function(String? message, AuthFailure? failure) failure,
   }) {
-    return error(message, failure);
+    return failure(message, this.failure);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function(String? message, AuthFailure? failure)? error,
+    TResult Function(String? message, AuthFailure? failure)? failure,
   }) {
-    return error?.call(message, failure);
+    return failure?.call(message, this.failure);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function(String? message, AuthFailure? failure)? error,
+    TResult Function(String? message, AuthFailure? failure)? failure,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(message, failure);
+    if (failure != null) {
+      return failure(message, this.failure);
     }
     return orElse();
   }
@@ -1161,32 +1314,35 @@ class _$_error implements _error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_empty value) empty,
+    required TResult Function(_loading value) loading,
     required TResult Function(_authenticated value) authenticated,
-    required TResult Function(_error value) error,
+    required TResult Function(_error value) failure,
   }) {
-    return error(this);
+    return failure(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_empty value)? empty,
+    TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
-    TResult Function(_error value)? error,
+    TResult Function(_error value)? failure,
   }) {
-    return error?.call(this);
+    return failure?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_empty value)? empty,
+    TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
-    TResult Function(_error value)? error,
+    TResult Function(_error value)? failure,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(this);
+    if (failure != null) {
+      return failure(this);
     }
     return orElse();
   }

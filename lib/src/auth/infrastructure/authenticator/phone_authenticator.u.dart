@@ -8,9 +8,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../utils/utils.dart';
 import 'authenticator.dart';
 
-typedef OTPGetter = FutureOr<String> Function();
-typedef SignInUpCallBack = Future<void> Function(UserCredential);
-
 class PhoneAuthenticator extends Authenticator {
   PhoneAuthenticator(this._auth, FirebaseFirestore store) : super(store);
 
