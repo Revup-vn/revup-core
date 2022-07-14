@@ -4,7 +4,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:revup_core/src/theme/theme.dart';
-import '../helpers/hydrated_bloc.dart';
+import '../../helpers/hydrated_bloc.dart';
 
 void main() {
   group('Theme Cubic', () {
