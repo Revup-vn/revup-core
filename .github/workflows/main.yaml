@@ -12,4 +12,4 @@ jobs:
     with:
       flutter_channel: stable
       flutter_version: 3.0.1
-      coverage_excludes: "{**/{*.{g,freezed,gen},*_{page,providers,observer}}.dart,lib/l10n/l10n.dart}"
+      coverage_excludes: "{**/{*.{g,freezed,gen,u},*_{page,providers,observer}}.dart,lib/l10n/l10n.dart}"

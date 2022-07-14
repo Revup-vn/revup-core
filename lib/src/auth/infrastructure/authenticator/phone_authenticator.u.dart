@@ -27,8 +27,8 @@ class PhoneAuthenticator extends Authenticator {
         verificationCompleted: (authCredentials) async {
           if (authCredentials.smsCode != null) {
             try {
-              await _auth.currentUser
-                  ?.linkWithCredential(authCredentials)
+              await _auth.currentUser!
+                  .linkWithCredential(authCredentials)
                   .then(onSignIn);
             } on FirebaseAuthException catch (e) {
               if (e.code == 'provider-already-linked') {

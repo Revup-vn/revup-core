@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -9,23 +8,7 @@ import 'package:mocktail/mocktail.dart';
 
 import 'package:revup_core/src/auth/infrastructure/authenticator/google_authenticator.dart';
 import 'package:revup_core/src/auth/utils/utils.dart';
-
-class MockGoogleSignIn extends Mock implements GoogleSignIn {}
-
-class MockFirebaseAuth extends Mock implements FirebaseAuth {}
-
-class MockStore extends Mock implements FirebaseFirestore {}
-
-class MockGoogleSignInAccount extends Mock implements GoogleSignInAccount {}
-
-class MockGoogleSignInAuthenticator extends Mock
-    implements GoogleSignInAuthentication {}
-
-class MockUser extends Mock implements User {}
-
-class MockOAuthCredential extends Mock implements OAuthCredential {}
-
-class MockUserCredential extends Mock implements UserCredential {}
+import '../../../helpers/firebase_mock_class.dart';
 
 void main() {
   late GoogleAuthenticator authenticator;

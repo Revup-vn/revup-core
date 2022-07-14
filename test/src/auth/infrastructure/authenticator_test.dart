@@ -1,22 +1,10 @@
-// ignore_for_file: subtype_of_sealed_class
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:revup_core/src/auth/infrastructure/authenticator/authenticator.dart';
 import 'package:revup_core/src/auth/infrastructure/infrastructure.dart';
-
-class MockStore extends Mock implements FirebaseFirestore {}
-
-class MockCollection extends Mock
-    implements CollectionReference<Map<String, dynamic>> {}
-
-class MockQuery extends Mock implements Query<Map<String, dynamic>> {}
-
-class MockDocRef extends Mock
-    implements DocumentReference<Map<String, dynamic>> {}
+import '../../../helpers/firebase_mock_class.dart';
 
 class TestAuthenticator extends Authenticator {
   TestAuthenticator(super.store);
@@ -26,9 +14,6 @@ class TestAuthenticator extends Authenticator {
     throw UnimplementedError();
   }
 }
-
-class MockQuerySnapShot extends Mock
-    implements QuerySnapshot<Map<String, dynamic>> {}
 
 void main() {
   late MockStore store;
@@ -118,6 +103,18 @@ void main() {
       when(() => mockDoc.set(any())).thenAnswer((_) async => throw Exception());
       final res = await authenticator.signUp(mockUser);
       expect(res, isFalse);
+    });
+  });
+  group('getUserDocument', () {
+    test('successful retrieve the user document', () async {
+      final mockDoc = MockDocRef();
+      final mockDocSnapShot = MockDocumentSnapShot();
+
+      when(() => mockCollection.doc(any())).thenReturn(mockDoc);
+      when(mockDoc.get).thenAnswer((_) async => mockDocSnapShot);
+
+      final res = await authenticator.getUserDocument('111');
+      expect(res, mockDocSnapShot);
     });
   });
 }

@@ -1,7 +1,7 @@
 import 'dart:async';
-import 'dart:ui';
 
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
@@ -10,7 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../models/auth_failure.dart';
 import '../utils/utils.dart';
 import 'authenticator/google_authenticator.dart';
-import 'authenticator/phone_authenticator.dart';
+import 'authenticator/phone_authenticator.u.dart';
 import 'infrastructure.dart';
 
 typedef OnCompleteSignUp = FutureOr<AppUser> Function(User);
@@ -51,13 +51,17 @@ class AuthenticatorRepository {
     User user,
   ) async {
     if (recordData.exists) {
-      return right(
-        AppUser.fromJson(recordData.data() ?? <String, dynamic>{}),
-      );
+      try {
+        return right(
+          AppUser.fromJson(recordData.data()!),
+        );
+      } catch (_) {
+        return left(const AuthFailure.invalidData('Cannot parse data'));
+      }
     } else {
       final appUser = await onSignUpSubmit(user);
-      if (await _googleAuthenticatorService.isPhoneValid(appUser.phone) &&
-          await _phoneAuthenticatorService.isEmailValid(appUser.email)) {
+      if (!(await _googleAuthenticatorService.isPhoneValid(appUser.phone) &&
+          await _phoneAuthenticatorService.isEmailValid(appUser.email))) {
         return left(
           const AuthFailure.invalidData('Phone or number is already existed'),
         );
@@ -81,35 +85,45 @@ class AuthenticatorRepository {
     required OnCompleteSignUp onSignUpSubmit,
     required Function0<Future<Unit>> onSignUpSuccess,
     VoidCallback? onTimeOut,
-  }) {
+    @visibleForTesting AppUser? assignValueEffectsForTesting,
+  }) async {
+    FutureOr<Either<AuthFailure, AppUser>>? tmp;
     late FutureOr<Either<AuthFailure, AppUser>> res;
+
     try {
-      _phoneAuthenticatorService.signIn(
+      await _phoneAuthenticatorService.signIn(
         phoneNumber: phoneNumber,
         getUserInput: onSubmitOTP,
         onSignIn: (credentials) async {
           if (credentials.user == null) {
-            res = left(const AuthFailure.invalidData());
+            tmp = left(const AuthFailure.invalidData());
+            return;
           }
           final user = credentials.user!;
-          res = _signInUp(
+          tmp = _signInUp(
             await _phoneAuthenticatorService.getUserDocument(user.uid),
             onSignUpSubmit,
             user,
           );
-          await (await res).fold<FutureOr<Unit>>(
+          await (await tmp)?.fold<FutureOr<Unit>>(
             (l) async => unit,
             (r) async => onSignUpSuccess(),
           );
         },
         onTimeout: onTimeOut,
       );
+
+      if (assignValueEffectsForTesting != null) {
+        tmp = right(assignValueEffectsForTesting);
+      }
     } on FirebaseAuthException catch (e) {
-      res = left(AuthFailure.invalidData(e.code));
+      tmp = left(AuthFailure.invalidData(e.code));
     } on ValidateException {
-      res = left(const AuthFailure.invalidData('Phone number is not valid'));
+      tmp = left(const AuthFailure.invalidData('Phone number is not valid'));
     } catch (_) {
-      res = left(const AuthFailure.unknown());
+      tmp = left(const AuthFailure.unknown());
+    } finally {
+      res = tmp == null ? left(const AuthFailure.server()) : tmp!;
     }
     return res;
   }

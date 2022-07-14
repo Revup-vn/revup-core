@@ -16,7 +16,7 @@ import 'package:path_provider/path_provider.dart';
 
 import 'auth/bloc/authenticate_bloc.dart';
 import 'auth/infrastructure/authenticator/google_authenticator.dart';
-import 'auth/infrastructure/authenticator/phone_authenticator.dart';
+import 'auth/infrastructure/authenticator/phone_authenticator.u.dart';
 import 'components/dialogs/dialogs.dart';
 import 'observers/observers.dart';
 import 'theme/theme.dart';

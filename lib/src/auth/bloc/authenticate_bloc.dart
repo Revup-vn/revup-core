@@ -2,11 +2,10 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-import '../infrastructure/authenticator/phone_authenticator.dart';
+import '../infrastructure/authenticator/phone_authenticator.u.dart';
 import '../infrastructure/infrastructure.dart';
 import '../models/auth_failure.dart';
 import '../models/auth_type.dart';
