@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../utils/constants.dart';
+import '../../utils/utils.dart';
 import '../user.dart';
 
 typedef OTPGetter = FutureOr<String> Function();
@@ -42,6 +42,7 @@ abstract class Authenticator {
     } catch (_) {
       return false;
     }
+
     return true;
   }
 

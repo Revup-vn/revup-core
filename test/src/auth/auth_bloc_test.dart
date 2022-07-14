@@ -2,11 +2,11 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+
 import 'package:revup_core/src/auth/bloc/authenticate_bloc.dart';
 import 'package:revup_core/src/auth/infrastructure/infrastructure.dart';
 import 'package:revup_core/src/auth/models/auth_failure.dart';
 import 'package:revup_core/src/auth/models/auth_type.dart';
-
 import '../../helpers/hydrated_bloc.dart';
 
 class MockAuthenticatorRepository extends Mock
@@ -160,9 +160,8 @@ void main() {
               onSignUpSubmit: any(named: 'onSignUpSubmit'),
               onSignUpSuccess: any(named: 'onSignUpSuccess'),
               onSubmitOTP: any(named: 'onSubmitOTP'),
-              phoneNumber: any(named: 'phoneNumber'),
             ),
-          ).thenAnswer((_) => left(const AuthFailure.unknown()));
+          ).thenReturn((a, b) => left(const AuthFailure.unknown()));
         },
         act: (b) => b.add(
           AuthenticateEvent.loginWithPhone(
@@ -187,9 +186,8 @@ void main() {
               onSignUpSubmit: any(named: 'onSignUpSubmit'),
               onSignUpSuccess: any(named: 'onSignUpSuccess'),
               onSubmitOTP: any(named: 'onSubmitOTP'),
-              phoneNumber: any(named: 'phoneNumber'),
             ),
-          ).thenAnswer((_) => right(mockUser));
+          ).thenReturn((a, b) => right(mockUser));
         },
         act: (b) => b.add(
           AuthenticateEvent.loginWithPhone(

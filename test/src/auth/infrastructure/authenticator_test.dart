@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:revup_core/src/auth/infrastructure/authenticator/authenticator.dart';
 import 'package:revup_core/src/auth/infrastructure/infrastructure.dart';
 import '../../../helpers/firebase_mock_class.dart';
 

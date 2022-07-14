@@ -23,6 +23,7 @@ class GoogleAuthenticator extends Authenticator {
       final credentials =
           await _auth.signInWithCredential(credential); //FirebaseAuthException
       if (credentials.user == null) throw ValidateException();
+
       return credentials.user!;
     }
     throw LoginAbortException();
@@ -37,6 +38,7 @@ class GoogleAuthenticator extends Authenticator {
     } catch (_) {
       return false;
     }
+
     return _auth.currentUser == null && _googleSignIn.currentUser == null;
   }
 }

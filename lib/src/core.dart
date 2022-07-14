@@ -4,22 +4,26 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'auth/bloc/authenticate_bloc.dart';
-import 'auth/infrastructure/authenticator/google_authenticator.dart';
-import 'auth/infrastructure/authenticator/phone_authenticator.u.dart';
 import 'components/dialogs/dialogs.dart';
 import 'observers/observers.dart';
+import 'shared/providers.dart';
 import 'theme/theme.dart';
+
+FutureOr<R> _buildHydratedStorage<R>(Function0<FutureOr<R>> body) async =>
+    HydratedBlocOverrides.runZoned(
+      body,
+      blocObserver: AppBlocObserver(),
+      storage: await HydratedStorage.build(
+        storageDirectory: await getTemporaryDirectory(),
+      ),
+    );
 
 Future<void> bootstrap({
   required Tuple2<StackRouter, RouteInformationParser<Object>> route,
@@ -34,34 +38,10 @@ Future<void> bootstrap({
     () async {
       WidgetsFlutterBinding.ensureInitialized();
       await Firebase.initializeApp(options: fOptions);
-      await HydratedBlocOverrides.runZoned(
+      await _buildHydratedStorage(
         () async => runApp(
-          MultiRepositoryProvider(
-            providers: [
-              RepositoryProvider(create: (context) => FirebaseAuth.instance),
-              RepositoryProvider(
-                create: (context) => FirebaseFirestore.instance,
-              ),
-              RepositoryProvider(create: (context) => GoogleSignIn()),
-              RepositoryProvider(
-                create: (context) => GoogleAuthenticator(
-                  context.read(),
-                  context.read(),
-                  context.read(),
-                ),
-              ),
-              RepositoryProvider(
-                create: (context) =>
-                    PhoneAuthenticator(context.read(), context.read()),
-              ),
-            ],
-            child: MultiBlocProvider(
-              providers: [
-                BlocProvider(create: (context) => ThemeCubit()),
-                BlocProvider(
-                  create: (context) => AuthenticateBloc(context.read()),
-                ),
-              ],
+          coreRepositoryProviders(
+            providers: coreBlocProviders(
               child: BlocBuilder<IThemeCubit, ThemeMode>(
                 builder: (context, state) {
                   return MaterialApp.router(
@@ -94,10 +74,6 @@ Future<void> bootstrap({
               ),
             ),
           ),
-        ),
-        blocObserver: AppBlocObserver(),
-        storage: await HydratedStorage.build(
-          storageDirectory: await getTemporaryDirectory(),
         ),
       );
     },

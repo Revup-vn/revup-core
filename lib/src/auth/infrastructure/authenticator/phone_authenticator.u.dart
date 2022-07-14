@@ -61,6 +61,7 @@ class PhoneAuthenticator extends Authenticator {
     } catch (_) {
       return false;
     }
+
     return _auth.currentUser == null;
   }
 }

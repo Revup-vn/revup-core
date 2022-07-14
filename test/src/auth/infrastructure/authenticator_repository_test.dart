@@ -5,8 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:revup_core/src/auth/infrastructure/authenticator/google_authenticator.dart';
-import 'package:revup_core/src/auth/infrastructure/authenticator/phone_authenticator.u.dart';
 import 'package:revup_core/src/auth/infrastructure/infrastructure.dart';
 import 'package:revup_core/src/auth/models/auth_failure.dart';
 import 'package:revup_core/src/auth/utils/utils.dart';
@@ -206,11 +204,10 @@ void main() {
       ).thenAnswer((_) async => throw FirebaseAuthException(code: 'blah'));
 
       (await repo.phoneSignUpIn(
-        phoneNumber: mockUser.phone,
         onSubmitOTP: () => '111111',
         onSignUpSubmit: _mockParseCb,
         onSignUpSuccess: () async => unit,
-      ))
+      )(mockUser.phone, () {}))
           .fold(
         (l) => expect(l, const AuthFailure.invalidData('blah')),
         (r) => fail('cannot have data'),
@@ -229,11 +226,10 @@ void main() {
       ).thenAnswer((_) async => throw ValidateException());
 
       (await repo.phoneSignUpIn(
-        phoneNumber: mockUser.phone,
         onSubmitOTP: () => '111111',
         onSignUpSubmit: _mockParseCb,
         onSignUpSuccess: () async => unit,
-      ))
+      )(mockUser.phone, () {}))
           .fold(
         (l) => expect(
           l,
@@ -254,11 +250,10 @@ void main() {
       ).thenAnswer((_) async => throw Exception());
 
       (await repo.phoneSignUpIn(
-        phoneNumber: mockUser.phone,
         onSubmitOTP: () => '111111',
         onSignUpSubmit: _mockParseCb,
         onSignUpSuccess: () async => unit,
-      ))
+      )(mockUser.phone, () {}))
           .fold(
         (l) => expect(l, const AuthFailure.unknown()),
         (r) => fail('cannot have data'),
@@ -277,11 +272,10 @@ void main() {
       ).thenAnswer((_) async => unit);
 
       (await repo.phoneSignUpIn(
-        phoneNumber: mockUser.phone,
         onSubmitOTP: () => '111111',
         onSignUpSubmit: _mockParseCb,
         onSignUpSuccess: () async => unit,
-      ))
+      )(mockUser.phone, () {}))
           .fold(
         (l) => expect(l, const AuthFailure.server()),
         (r) => fail('cannot have data'),
@@ -298,12 +292,11 @@ void main() {
       ).thenAnswer((_) async => unit);
 
       (await repo.phoneSignUpIn(
-        phoneNumber: mockUser.phone,
         onSubmitOTP: () => '111111',
         onSignUpSubmit: _mockParseCb,
         onSignUpSuccess: () async => unit,
         assignValueEffectsForTesting: mockUser,
-      ))
+      )(mockUser.phone, () {}))
           .fold(
         (l) => fail('cannot fail'),
         (r) => expect(r, mockUser),
