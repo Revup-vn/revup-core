@@ -270,7 +270,7 @@ abstract class _server extends AuthFailure {
 
   factory _server.fromJson(Map<String, dynamic> json) = _$_server.fromJson;
 
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @JsonKey(ignore: true)
   _$$_serverCopyWith<_$_server> get copyWith =>
       throw _privateConstructorUsedError;
@@ -717,7 +717,7 @@ abstract class _invalidData extends AuthFailure {
   factory _invalidData.fromJson(Map<String, dynamic> json) =
       _$_invalidData.fromJson;
 
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @JsonKey(ignore: true)
   _$$_invalidDataCopyWith<_$_invalidData> get copyWith =>
       throw _privateConstructorUsedError;

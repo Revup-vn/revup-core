@@ -688,27 +688,27 @@ abstract class _consumer implements AppUser {
   factory _consumer.fromJson(Map<String, dynamic> json) = _$_consumer.fromJson;
 
   @override
-  String get uuid => throw _privateConstructorUsedError;
+  String get uuid;
   @override
-  String get firstName => throw _privateConstructorUsedError;
+  String get firstName;
   @override
-  String get lastName => throw _privateConstructorUsedError;
+  String get lastName;
   @override
-  String get phone => throw _privateConstructorUsedError;
+  String get phone;
   @override
-  DateTime get dob => throw _privateConstructorUsedError;
+  DateTime get dob;
   @override
-  String get addr => throw _privateConstructorUsedError;
+  String get addr;
   @override
-  String get email => throw _privateConstructorUsedError;
+  String get email;
   @override
-  bool get active => throw _privateConstructorUsedError;
+  bool get active;
   @override
-  String get avatarUrl => throw _privateConstructorUsedError;
+  String get avatarUrl;
   @override
-  DateTime get createdTime => throw _privateConstructorUsedError;
+  DateTime get createdTime;
   @override
-  DateTime get lastUpdatedTime => throw _privateConstructorUsedError;
+  DateTime get lastUpdatedTime;
   @override
   @JsonKey(ignore: true)
   _$$_consumerCopyWith<_$_consumer> get copyWith =>
@@ -1158,29 +1158,29 @@ abstract class _provider implements AppUser {
   factory _provider.fromJson(Map<String, dynamic> json) = _$_provider.fromJson;
 
   @override
-  String get uuid => throw _privateConstructorUsedError;
+  String get uuid;
   @override
-  String get firstName => throw _privateConstructorUsedError;
+  String get firstName;
   @override
-  String get lastName => throw _privateConstructorUsedError;
+  String get lastName;
   @override
-  String get phone => throw _privateConstructorUsedError;
+  String get phone;
   @override
-  DateTime get dob => throw _privateConstructorUsedError;
+  DateTime get dob;
   @override
-  String get addr => throw _privateConstructorUsedError;
+  String get addr;
   @override
-  String get email => throw _privateConstructorUsedError;
+  String get email;
   @override
-  bool get active => throw _privateConstructorUsedError;
+  bool get active;
   @override
-  String get avatarUrl => throw _privateConstructorUsedError;
+  String get avatarUrl;
   @override
-  DateTime get createdTime => throw _privateConstructorUsedError;
+  DateTime get createdTime;
   @override
-  DateTime get lastUpdatedTime => throw _privateConstructorUsedError;
-  String get idCardNum => throw _privateConstructorUsedError;
-  String get idCardImage => throw _privateConstructorUsedError;
+  DateTime get lastUpdatedTime;
+  String get idCardNum;
+  String get idCardImage;
   @override
   @JsonKey(ignore: true)
   _$$_providerCopyWith<_$_provider> get copyWith =>
@@ -1579,27 +1579,27 @@ abstract class _admin implements AppUser {
   factory _admin.fromJson(Map<String, dynamic> json) = _$_admin.fromJson;
 
   @override
-  String get uuid => throw _privateConstructorUsedError;
+  String get uuid;
   @override
-  String get firstName => throw _privateConstructorUsedError;
+  String get firstName;
   @override
-  String get lastName => throw _privateConstructorUsedError;
+  String get lastName;
   @override
-  String get phone => throw _privateConstructorUsedError;
+  String get phone;
   @override
-  DateTime get dob => throw _privateConstructorUsedError;
+  DateTime get dob;
   @override
-  String get addr => throw _privateConstructorUsedError;
+  String get addr;
   @override
-  String get email => throw _privateConstructorUsedError;
+  String get email;
   @override
-  bool get active => throw _privateConstructorUsedError;
+  bool get active;
   @override
-  String get avatarUrl => throw _privateConstructorUsedError;
+  String get avatarUrl;
   @override
-  DateTime get createdTime => throw _privateConstructorUsedError;
+  DateTime get createdTime;
   @override
-  DateTime get lastUpdatedTime => throw _privateConstructorUsedError;
+  DateTime get lastUpdatedTime;
   @override
   @JsonKey(ignore: true)
   _$$_adminCopyWith<_$_admin> get copyWith =>

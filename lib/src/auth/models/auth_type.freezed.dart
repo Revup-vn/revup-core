@@ -256,7 +256,7 @@ abstract class _google implements AuthType {
   factory _google.fromJson(Map<String, dynamic> json) = _$_google.fromJson;
 
   @override
-  AppUser get user => throw _privateConstructorUsedError;
+  AppUser get user;
   @override
   @JsonKey(ignore: true)
   _$$_googleCopyWith<_$_google> get copyWith =>
@@ -408,7 +408,7 @@ abstract class _phone implements AuthType {
   factory _phone.fromJson(Map<String, dynamic> json) = _$_phone.fromJson;
 
   @override
-  AppUser get user => throw _privateConstructorUsedError;
+  AppUser get user;
   @override
   @JsonKey(ignore: true)
   _$$_phoneCopyWith<_$_phone> get copyWith =>

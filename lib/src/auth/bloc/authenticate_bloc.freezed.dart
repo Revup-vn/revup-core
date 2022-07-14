@@ -252,7 +252,7 @@ abstract class _loginWithGoogle implements AuthenticateEvent {
   const factory _loginWithGoogle(
       {required final OnCompleteSignUp onCompleteSignUp}) = _$_loginWithGoogle;
 
-  OnCompleteSignUp get onCompleteSignUp => throw _privateConstructorUsedError;
+  OnCompleteSignUp get onCompleteSignUp;
   @JsonKey(ignore: true)
   _$$_loginWithGoogleCopyWith<_$_loginWithGoogle> get copyWith =>
       throw _privateConstructorUsedError;
@@ -471,12 +471,11 @@ abstract class _loginWithPhone implements AuthenticateEvent {
       required final Function0<Future<Unit>> onSignUpSuccess,
       final VoidCallback? onTimeOut}) = _$_loginWithPhone;
 
-  String get phoneNumber => throw _privateConstructorUsedError;
-  OTPGetter get onSubmitOTP => throw _privateConstructorUsedError;
-  OnCompleteSignUp get onSignUpSubmit => throw _privateConstructorUsedError;
-  Function0<Future<Unit>> get onSignUpSuccess =>
-      throw _privateConstructorUsedError;
-  VoidCallback? get onTimeOut => throw _privateConstructorUsedError;
+  String get phoneNumber;
+  OTPGetter get onSubmitOTP;
+  OnCompleteSignUp get onSignUpSubmit;
+  Function0<Future<Unit>> get onSignUpSuccess;
+  VoidCallback? get onTimeOut;
   @JsonKey(ignore: true)
   _$$_loginWithPhoneCopyWith<_$_loginWithPhone> get copyWith =>
       throw _privateConstructorUsedError;
@@ -657,8 +656,8 @@ abstract class _signedOut implements AuthenticateEvent {
       {required final AuthType authType,
       final String? errorMessage}) = _$_signedOut;
 
-  AuthType get authType => throw _privateConstructorUsedError;
-  String? get errorMessage => throw _privateConstructorUsedError;
+  AuthType get authType;
+  String? get errorMessage;
   @JsonKey(ignore: true)
   _$$_signedOutCopyWith<_$_signedOut> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1177,7 +1176,7 @@ abstract class _authenticated implements AuthenticateState {
   factory _authenticated.fromJson(Map<String, dynamic> json) =
       _$_authenticated.fromJson;
 
-  AuthType get authType => throw _privateConstructorUsedError;
+  AuthType get authType;
   @JsonKey(ignore: true)
   _$$_authenticatedCopyWith<_$_authenticated> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1359,8 +1358,8 @@ abstract class _error implements AuthenticateState {
 
   factory _error.fromJson(Map<String, dynamic> json) = _$_error.fromJson;
 
-  String? get message => throw _privateConstructorUsedError;
-  AuthFailure? get failure => throw _privateConstructorUsedError;
+  String? get message;
+  AuthFailure? get failure;
   @JsonKey(ignore: true)
   _$$_errorCopyWith<_$_error> get copyWith =>
       throw _privateConstructorUsedError;

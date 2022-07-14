@@ -102,11 +102,11 @@ void main() {
         when(() => muser.uid).thenReturn(mockUser.uuid);
         when(() => gg.getUserDocument(any()))
             .thenAnswer((_) async => mSnapShot);
-        when(() => mSnapShot.data()).thenReturn(mockUser.toJson());
       });
 
       test('sign in successful if the record existed', () async {
         when(() => mSnapShot.exists).thenReturn(true);
+        when(() => mSnapShot.data()).thenReturn(mockUser.toJson());
         (await repo.ggSignUpIn(onSignUpSubmit: _mockParseCb)).fold(
           (l) => fail('cannot have AuthFailure'),
           (r) => expect(r, mockUser),
