@@ -10,21 +10,25 @@ import '../auth/auth.dart';
 MultiRepositoryProvider coreRepositoryProviders({required Widget providers}) =>
     MultiRepositoryProvider(
       providers: [
-        RepositoryProvider(create: (context) => FirebaseAuth.instance),
-        RepositoryProvider(
-          create: (context) => FirebaseFirestore.instance,
+        RepositoryProvider<FirebaseAuth>(create: (_) => FirebaseAuth.instance),
+        RepositoryProvider<FirebaseFirestore>(
+          create: (_) => FirebaseFirestore.instance,
         ),
-        RepositoryProvider(create: (context) => GoogleSignIn()),
-        RepositoryProvider(
+        RepositoryProvider<GoogleSignIn>(create: (_) => GoogleSignIn()),
+        RepositoryProvider<GoogleAuthenticator>(
           create: (context) => GoogleAuthenticator(
             context.read(),
             context.read(),
             context.read(),
           ),
         ),
-        RepositoryProvider(
+        RepositoryProvider<PhoneAuthenticator>(
           create: (context) =>
               PhoneAuthenticator(context.read(), context.read()),
+        ),
+        RepositoryProvider<AuthenticatorRepository>(
+          create: (context) =>
+              AuthenticatorRepository(context.read(), context.read()),
         ),
       ],
       child: providers,
