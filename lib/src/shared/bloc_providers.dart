@@ -8,8 +8,8 @@ import '../theme/theme.dart';
 MultiBlocProvider coreBlocProviders({required Widget child}) =>
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => ThemeCubit()),
-        BlocProvider(
+        BlocProvider<IThemeCubit>(create: (context) => ThemeCubit()),
+        BlocProvider<AuthenticateBloc>(
           create: (context) => AuthenticateBloc(context.read()),
         ),
       ],
