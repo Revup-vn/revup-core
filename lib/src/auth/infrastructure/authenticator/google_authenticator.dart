@@ -17,7 +17,7 @@ class GoogleAuthenticator extends Authenticator {
     if (acc != null) {
       final auth = await acc.authentication; //  PlatformException
       final credential = GoogleAuthProvider.credential(
-        idToken: auth.accessToken,
+        idToken: auth.idToken,
         accessToken: auth.accessToken,
       );
       final credentials =

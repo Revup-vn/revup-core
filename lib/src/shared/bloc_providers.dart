@@ -10,6 +10,7 @@ MultiBlocProvider coreBlocProviders({required Widget child}) =>
       providers: [
         BlocProvider<IThemeCubit>(create: (context) => ThemeCubit()),
         BlocProvider<AuthenticateBloc>(
+          lazy: false,
           create: (context) => AuthenticateBloc(context.read()),
         ),
       ],

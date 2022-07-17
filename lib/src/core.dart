@@ -20,9 +20,12 @@ FutureOr<R> _buildHydratedStorage<R>(Function0<FutureOr<R>> body) async =>
     HydratedBlocOverrides.runZoned(
       body,
       blocObserver: AppBlocObserver(),
-      storage: await HydratedStorage.build(
-        storageDirectory: await getTemporaryDirectory(),
-      ),
+      createStorage: () async {
+        WidgetsFlutterBinding.ensureInitialized();
+        return HydratedStorage.build(
+          storageDirectory: await getTemporaryDirectory(),
+        );
+      },
     );
 
 Future<void> bootstrap({
