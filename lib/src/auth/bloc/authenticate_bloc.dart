@@ -22,55 +22,53 @@ class AuthenticateBloc
   FutureOr<void> _onEvent(
     AuthenticateEvent event,
     Emitter<AuthenticateState> emit,
-  ) {
-    event.when(
-      signOut: (authType, errorMessage) =>
-          _onSignOut(authType, errorMessage, emit),
-      loginWithGoogle: (OnCompleteSignUp onCompleteSignUp) async {
-        emit(const AuthenticateState.loading());
-        (await _authRepos.ggSignUpIn(
-          onSignUpSubmit: onCompleteSignUp,
-        ))
-            .fold(
-          (l) => emit(AuthenticateState.failure(failure: l)),
-          (r) => emit(
-            AuthenticateState.authenticated(
-              authType: AuthType.google(user: r),
+  ) async =>
+      event.when(
+        signOut: (authType, errorMessage) async =>
+            _onSignOut(authType, errorMessage, emit),
+        loginWithGoogle: (OnCompleteSignUp onCompleteSignUp) async {
+          emit(const AuthenticateState.loading());
+          (await _authRepos.ggSignUpIn(
+            onSignUpSubmit: onCompleteSignUp,
+          ))
+              .fold(
+            (l) => emit(AuthenticateState.failure(failure: l)),
+            (r) => emit(
+              AuthenticateState.authenticated(
+                authType: AuthType.google(user: r),
+              ),
             ),
-          ),
-        );
-
-        return unit;
-      },
-      loginWithPhone: (
-        String phoneNumber,
-        OTPGetter onSubmitOTP,
-        OnCompleteSignUp onSignUpSubmit,
-        Function0<Future<Unit>> onSignUpSuccess,
-        void Function()? onTimeOut,
-      ) async {
-        emit(const AuthenticateState.loading());
-        (await _authRepos.phoneSignUpIn(
-          onSubmitOTP: onSubmitOTP,
-          onSignUpSubmit: onSignUpSubmit,
-          onSignUpSuccess: onSignUpSuccess,
-        )(
-          phoneNumber,
-          onTimeOut,
-        ))
-            .fold(
-          (l) => emit(AuthenticateState.failure(failure: l)),
-          (r) => emit(
-            AuthenticateState.authenticated(
-              authType: AuthType.phone(user: r),
+          );
+          return unit;
+        },
+        loginWithPhone: (
+          String phoneNumber,
+          OTPGetter onSubmitOTP,
+          OnCompleteSignUp onSignUpSubmit,
+          Function0<Future<Unit>> onSignUpSuccess,
+          void Function()? onTimeOut,
+        ) async {
+          emit(const AuthenticateState.loading());
+          (await _authRepos.phoneSignUpIn(
+            onSubmitOTP: onSubmitOTP,
+            onSignUpSubmit: onSignUpSubmit,
+            onSignUpSuccess: onSignUpSuccess,
+          )(
+            phoneNumber,
+            onTimeOut,
+          ))
+              .fold(
+            (l) => emit(AuthenticateState.failure(failure: l)),
+            (r) => emit(
+              AuthenticateState.authenticated(
+                authType: AuthType.phone(user: r),
+              ),
             ),
-          ),
-        );
+          );
 
-        return unit;
-      },
-    );
-  }
+          return unit;
+        },
+      );
 
   Future<Unit> _onSignOut(
     AuthType authType,
