@@ -39,6 +39,7 @@ class AuthenticateBloc
               ),
             ),
           );
+
           return unit;
         },
         loginWithPhone: (

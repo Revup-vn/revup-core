@@ -22,6 +22,7 @@ FutureOr<R> _buildHydratedStorage<R>(Function0<FutureOr<R>> body) async =>
       blocObserver: AppBlocObserver(),
       createStorage: () async {
         WidgetsFlutterBinding.ensureInitialized();
+
         return HydratedStorage.build(
           storageDirectory: await getTemporaryDirectory(),
         );

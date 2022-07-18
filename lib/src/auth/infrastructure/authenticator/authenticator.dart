@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../utils/utils.dart';
-import '../user.dart';
+import '../../models/user.dart';
 
 typedef OTPGetter = FutureOr<String> Function();
 typedef SignInUpCallBack = Future<void> Function(UserCredential);
