@@ -8,6 +8,7 @@ import 'package:mocktail/mocktail.dart';
 
 import 'package:revup_core/src/auth/infrastructure/authenticator/google_authenticator.dart';
 import 'package:revup_core/src/auth/utils/utils.dart';
+import 'package:revup_core/src/stores/users/infrastructure/infrastructure.dart';
 import '../../../helpers/firebase_mock_class.dart';
 
 void main() {
@@ -34,7 +35,7 @@ void main() {
     authenticator = GoogleAuthenticator(
       signIn,
       auth,
-      MockStore(),
+      UserRepository(MockStore()),
     );
   });
 

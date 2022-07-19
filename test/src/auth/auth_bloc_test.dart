@@ -7,6 +7,7 @@ import 'package:revup_core/src/auth/bloc/authenticate_bloc.dart';
 import 'package:revup_core/src/auth/infrastructure/infrastructure.dart';
 import 'package:revup_core/src/auth/models/auth_failure.dart';
 import 'package:revup_core/src/auth/models/auth_type.dart';
+import 'package:revup_core/src/stores/stores.dart';
 import '../../helpers/hydrated_bloc.dart';
 
 class MockAuthenticatorRepository extends Mock

@@ -1,12 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../../stores/users/infrastructure/infrastructure.dart';
 import '../../utils/utils.dart';
 import 'authenticator.dart';
 
 class GoogleAuthenticator extends Authenticator {
-  GoogleAuthenticator(this._googleSignIn, this._auth, FirebaseFirestore store)
+  GoogleAuthenticator(this._googleSignIn, this._auth, UserRepository store)
       : super(store);
 
   final GoogleSignIn _googleSignIn;

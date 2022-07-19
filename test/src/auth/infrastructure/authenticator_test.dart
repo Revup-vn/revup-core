@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:revup_core/src/auth/infrastructure/infrastructure.dart';
+import 'package:revup_core/src/stores/stores.dart';
 import '../../../helpers/firebase_mock_class.dart';
 
 class TestAuthenticator extends Authenticator {
@@ -44,7 +45,7 @@ void main() {
     when(
       () => query.get(),
     ).thenAnswer((_) async => snapShot);
-    authenticator = TestAuthenticator(store);
+    authenticator = TestAuthenticator(UserRepository(store));
   });
 
   group('isPhoneValid', () {
