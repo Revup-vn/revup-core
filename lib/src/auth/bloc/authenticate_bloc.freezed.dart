@@ -18,7 +18,12 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthenticateEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(OnCompleteSignUp onCompleteSignUp)
+    required TResult Function(
+            OnCompleteSignUp onCompleteSignUp,
+            PhoneGetter onSubmitPhoneNumber,
+            OTPGetter onSubmitOTP,
+            Function0<Future<Unit>> onSignUpSuccess,
+            void Function()? onTimeOut)
         loginWithGoogle,
     required TResult Function(
             String phoneNumber,
@@ -32,7 +37,13 @@ mixin _$AuthenticateEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            OnCompleteSignUp onCompleteSignUp,
+            PhoneGetter onSubmitPhoneNumber,
+            OTPGetter onSubmitOTP,
+            Function0<Future<Unit>> onSignUpSuccess,
+            void Function()? onTimeOut)?
+        loginWithGoogle,
     TResult Function(
             String phoneNumber,
             OTPGetter onSubmitOTP,
@@ -45,7 +56,13 @@ mixin _$AuthenticateEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            OnCompleteSignUp onCompleteSignUp,
+            PhoneGetter onSubmitPhoneNumber,
+            OTPGetter onSubmitOTP,
+            Function0<Future<Unit>> onSignUpSuccess,
+            void Function()? onTimeOut)?
+        loginWithGoogle,
     TResult Function(
             String phoneNumber,
             OTPGetter onSubmitOTP,
@@ -103,7 +120,12 @@ abstract class _$$_loginWithGoogleCopyWith<$Res> {
   factory _$$_loginWithGoogleCopyWith(
           _$_loginWithGoogle value, $Res Function(_$_loginWithGoogle) then) =
       __$$_loginWithGoogleCopyWithImpl<$Res>;
-  $Res call({OnCompleteSignUp onCompleteSignUp});
+  $Res call(
+      {OnCompleteSignUp onCompleteSignUp,
+      PhoneGetter onSubmitPhoneNumber,
+      OTPGetter onSubmitOTP,
+      Function0<Future<Unit>> onSignUpSuccess,
+      void Function()? onTimeOut});
 }
 
 /// @nodoc
@@ -120,12 +142,32 @@ class __$$_loginWithGoogleCopyWithImpl<$Res>
   @override
   $Res call({
     Object? onCompleteSignUp = freezed,
+    Object? onSubmitPhoneNumber = freezed,
+    Object? onSubmitOTP = freezed,
+    Object? onSignUpSuccess = freezed,
+    Object? onTimeOut = freezed,
   }) {
     return _then(_$_loginWithGoogle(
       onCompleteSignUp: onCompleteSignUp == freezed
           ? _value.onCompleteSignUp
           : onCompleteSignUp // ignore: cast_nullable_to_non_nullable
               as OnCompleteSignUp,
+      onSubmitPhoneNumber: onSubmitPhoneNumber == freezed
+          ? _value.onSubmitPhoneNumber
+          : onSubmitPhoneNumber // ignore: cast_nullable_to_non_nullable
+              as PhoneGetter,
+      onSubmitOTP: onSubmitOTP == freezed
+          ? _value.onSubmitOTP
+          : onSubmitOTP // ignore: cast_nullable_to_non_nullable
+              as OTPGetter,
+      onSignUpSuccess: onSignUpSuccess == freezed
+          ? _value.onSignUpSuccess
+          : onSignUpSuccess // ignore: cast_nullable_to_non_nullable
+              as Function0<Future<Unit>>,
+      onTimeOut: onTimeOut == freezed
+          ? _value.onTimeOut
+          : onTimeOut // ignore: cast_nullable_to_non_nullable
+              as void Function()?,
     ));
   }
 }
@@ -133,14 +175,27 @@ class __$$_loginWithGoogleCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_loginWithGoogle implements _loginWithGoogle {
-  const _$_loginWithGoogle({required this.onCompleteSignUp});
+  const _$_loginWithGoogle(
+      {required this.onCompleteSignUp,
+      required this.onSubmitPhoneNumber,
+      required this.onSubmitOTP,
+      required this.onSignUpSuccess,
+      required this.onTimeOut});
 
   @override
   final OnCompleteSignUp onCompleteSignUp;
+  @override
+  final PhoneGetter onSubmitPhoneNumber;
+  @override
+  final OTPGetter onSubmitOTP;
+  @override
+  final Function0<Future<Unit>> onSignUpSuccess;
+  @override
+  final void Function()? onTimeOut;
 
   @override
   String toString() {
-    return 'AuthenticateEvent.loginWithGoogle(onCompleteSignUp: $onCompleteSignUp)';
+    return 'AuthenticateEvent.loginWithGoogle(onCompleteSignUp: $onCompleteSignUp, onSubmitPhoneNumber: $onSubmitPhoneNumber, onSubmitOTP: $onSubmitOTP, onSignUpSuccess: $onSignUpSuccess, onTimeOut: $onTimeOut)';
   }
 
   @override
@@ -149,11 +204,20 @@ class _$_loginWithGoogle implements _loginWithGoogle {
         (other.runtimeType == runtimeType &&
             other is _$_loginWithGoogle &&
             (identical(other.onCompleteSignUp, onCompleteSignUp) ||
-                other.onCompleteSignUp == onCompleteSignUp));
+                other.onCompleteSignUp == onCompleteSignUp) &&
+            (identical(other.onSubmitPhoneNumber, onSubmitPhoneNumber) ||
+                other.onSubmitPhoneNumber == onSubmitPhoneNumber) &&
+            (identical(other.onSubmitOTP, onSubmitOTP) ||
+                other.onSubmitOTP == onSubmitOTP) &&
+            (identical(other.onSignUpSuccess, onSignUpSuccess) ||
+                other.onSignUpSuccess == onSignUpSuccess) &&
+            (identical(other.onTimeOut, onTimeOut) ||
+                other.onTimeOut == onTimeOut));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, onCompleteSignUp);
+  int get hashCode => Object.hash(runtimeType, onCompleteSignUp,
+      onSubmitPhoneNumber, onSubmitOTP, onSignUpSuccess, onTimeOut);
 
   @JsonKey(ignore: true)
   @override
@@ -163,7 +227,12 @@ class _$_loginWithGoogle implements _loginWithGoogle {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(OnCompleteSignUp onCompleteSignUp)
+    required TResult Function(
+            OnCompleteSignUp onCompleteSignUp,
+            PhoneGetter onSubmitPhoneNumber,
+            OTPGetter onSubmitOTP,
+            Function0<Future<Unit>> onSignUpSuccess,
+            void Function()? onTimeOut)
         loginWithGoogle,
     required TResult Function(
             String phoneNumber,
@@ -174,13 +243,20 @@ class _$_loginWithGoogle implements _loginWithGoogle {
         loginWithPhone,
     required TResult Function(AuthType authType, String? errorMessage) signOut,
   }) {
-    return loginWithGoogle(onCompleteSignUp);
+    return loginWithGoogle(onCompleteSignUp, onSubmitPhoneNumber, onSubmitOTP,
+        onSignUpSuccess, onTimeOut);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            OnCompleteSignUp onCompleteSignUp,
+            PhoneGetter onSubmitPhoneNumber,
+            OTPGetter onSubmitOTP,
+            Function0<Future<Unit>> onSignUpSuccess,
+            void Function()? onTimeOut)?
+        loginWithGoogle,
     TResult Function(
             String phoneNumber,
             OTPGetter onSubmitOTP,
@@ -190,13 +266,20 @@ class _$_loginWithGoogle implements _loginWithGoogle {
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
   }) {
-    return loginWithGoogle?.call(onCompleteSignUp);
+    return loginWithGoogle?.call(onCompleteSignUp, onSubmitPhoneNumber,
+        onSubmitOTP, onSignUpSuccess, onTimeOut);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            OnCompleteSignUp onCompleteSignUp,
+            PhoneGetter onSubmitPhoneNumber,
+            OTPGetter onSubmitOTP,
+            Function0<Future<Unit>> onSignUpSuccess,
+            void Function()? onTimeOut)?
+        loginWithGoogle,
     TResult Function(
             String phoneNumber,
             OTPGetter onSubmitOTP,
@@ -208,7 +291,8 @@ class _$_loginWithGoogle implements _loginWithGoogle {
     required TResult orElse(),
   }) {
     if (loginWithGoogle != null) {
-      return loginWithGoogle(onCompleteSignUp);
+      return loginWithGoogle(onCompleteSignUp, onSubmitPhoneNumber, onSubmitOTP,
+          onSignUpSuccess, onTimeOut);
     }
     return orElse();
   }
@@ -250,9 +334,17 @@ class _$_loginWithGoogle implements _loginWithGoogle {
 
 abstract class _loginWithGoogle implements AuthenticateEvent {
   const factory _loginWithGoogle(
-      {required final OnCompleteSignUp onCompleteSignUp}) = _$_loginWithGoogle;
+      {required final OnCompleteSignUp onCompleteSignUp,
+      required final PhoneGetter onSubmitPhoneNumber,
+      required final OTPGetter onSubmitOTP,
+      required final Function0<Future<Unit>> onSignUpSuccess,
+      required final void Function()? onTimeOut}) = _$_loginWithGoogle;
 
   OnCompleteSignUp get onCompleteSignUp;
+  PhoneGetter get onSubmitPhoneNumber;
+  OTPGetter get onSubmitOTP;
+  Function0<Future<Unit>> get onSignUpSuccess;
+  void Function()? get onTimeOut;
   @JsonKey(ignore: true)
   _$$_loginWithGoogleCopyWith<_$_loginWithGoogle> get copyWith =>
       throw _privateConstructorUsedError;
@@ -375,7 +467,12 @@ class _$_loginWithPhone implements _loginWithPhone {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(OnCompleteSignUp onCompleteSignUp)
+    required TResult Function(
+            OnCompleteSignUp onCompleteSignUp,
+            PhoneGetter onSubmitPhoneNumber,
+            OTPGetter onSubmitOTP,
+            Function0<Future<Unit>> onSignUpSuccess,
+            void Function()? onTimeOut)
         loginWithGoogle,
     required TResult Function(
             String phoneNumber,
@@ -393,7 +490,13 @@ class _$_loginWithPhone implements _loginWithPhone {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            OnCompleteSignUp onCompleteSignUp,
+            PhoneGetter onSubmitPhoneNumber,
+            OTPGetter onSubmitOTP,
+            Function0<Future<Unit>> onSignUpSuccess,
+            void Function()? onTimeOut)?
+        loginWithGoogle,
     TResult Function(
             String phoneNumber,
             OTPGetter onSubmitOTP,
@@ -410,7 +513,13 @@ class _$_loginWithPhone implements _loginWithPhone {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            OnCompleteSignUp onCompleteSignUp,
+            PhoneGetter onSubmitPhoneNumber,
+            OTPGetter onSubmitOTP,
+            Function0<Future<Unit>> onSignUpSuccess,
+            void Function()? onTimeOut)?
+        loginWithGoogle,
     TResult Function(
             String phoneNumber,
             OTPGetter onSubmitOTP,
@@ -566,7 +675,12 @@ class _$_signedOut implements _signedOut {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(OnCompleteSignUp onCompleteSignUp)
+    required TResult Function(
+            OnCompleteSignUp onCompleteSignUp,
+            PhoneGetter onSubmitPhoneNumber,
+            OTPGetter onSubmitOTP,
+            Function0<Future<Unit>> onSignUpSuccess,
+            void Function()? onTimeOut)
         loginWithGoogle,
     required TResult Function(
             String phoneNumber,
@@ -583,7 +697,13 @@ class _$_signedOut implements _signedOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            OnCompleteSignUp onCompleteSignUp,
+            PhoneGetter onSubmitPhoneNumber,
+            OTPGetter onSubmitOTP,
+            Function0<Future<Unit>> onSignUpSuccess,
+            void Function()? onTimeOut)?
+        loginWithGoogle,
     TResult Function(
             String phoneNumber,
             OTPGetter onSubmitOTP,
@@ -599,7 +719,13 @@ class _$_signedOut implements _signedOut {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            OnCompleteSignUp onCompleteSignUp,
+            PhoneGetter onSubmitPhoneNumber,
+            OTPGetter onSubmitOTP,
+            Function0<Future<Unit>> onSignUpSuccess,
+            void Function()? onTimeOut)?
+        loginWithGoogle,
     TResult Function(
             String phoneNumber,
             OTPGetter onSubmitOTP,

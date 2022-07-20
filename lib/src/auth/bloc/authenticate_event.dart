@@ -4,6 +4,10 @@ part of 'authenticate_bloc.dart';
 class AuthenticateEvent with _$AuthenticateEvent {
   const factory AuthenticateEvent.loginWithGoogle({
     required OnCompleteSignUp onCompleteSignUp,
+    required PhoneGetter onSubmitPhoneNumber,
+    required OTPGetter onSubmitOTP,
+    required Function0<Future<Unit>> onSignUpSuccess,
+    required void Function()? onTimeOut,
   }) = _loginWithGoogle;
   const factory AuthenticateEvent.loginWithPhone({
     required String phoneNumber,

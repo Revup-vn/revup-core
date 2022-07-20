@@ -17,10 +17,10 @@ abstract class Authenticator {
       (await _store.users.where(field, isEqualTo: val).get()).size == 0;
 
   Future<bool> isPhoneValid(String phone) async =>
-      _isFieldValid('phone', phone);
+      phone.isNotEmpty && await _isFieldValid('phone', phone);
 
   Future<bool> isEmailValid(String email) async =>
-      _isFieldValid('email', email);
+      email.isNotEmpty && await _isFieldValid('email', email);
 
   Future<DocumentSnapshot<Map<String, dynamic>>> getUserDocument(
     String id,

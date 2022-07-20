@@ -56,4 +56,18 @@ class AppUser with _$AppUser {
 
   factory AppUser.fromJson(Map<String, dynamic> json) =>
       _$AppUserFromJson(json);
+
+  static AppUser empty = AppUser.consumer(
+    uuid: '',
+    firstName: '',
+    lastName: '',
+    phone: '',
+    dob: DateTime.now(),
+    addr: '',
+    email: '',
+    active: false,
+    avatarUrl: '',
+    createdTime: DateTime.now(),
+    lastUpdatedTime: DateTime.now(),
+  );
 }

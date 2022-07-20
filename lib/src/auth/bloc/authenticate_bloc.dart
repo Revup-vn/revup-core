@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
+import '../../stores/users/models/models.dart';
 import '../infrastructure/infrastructure.dart';
 import '../models/models.dart';
 
@@ -12,6 +13,8 @@ part 'authenticate_event.dart';
 part 'authenticate_state.dart';
 part 'authenticate_bloc.freezed.dart';
 part 'authenticate_bloc.g.dart';
+
+typedef PhoneGetter = Function0<FutureOr<String>>;
 
 class AuthenticateBloc
     extends HydratedBloc<AuthenticateEvent, AuthenticateState> {
@@ -26,10 +29,27 @@ class AuthenticateBloc
       event.when(
         signOut: (authType, errorMessage) async =>
             _onSignOut(authType, errorMessage, emit),
-        loginWithGoogle: (OnCompleteSignUp onCompleteSignUp) async {
+        loginWithGoogle: (
+          OnCompleteSignUp onCompleteSignUp,
+          PhoneGetter onSubmitPhoneNumber,
+          OTPGetter onSubmitOTP,
+          Function0<Future<Unit>> onSignUpSuccess,
+          void Function()? onTimeOut,
+        ) async {
           emit(const AuthenticateState.loading());
+
           (await _authRepos.ggSignUpIn(
-            onSignUpSubmit: onCompleteSignUp,
+            onSignUpSubmit: (user) async => user.phoneNumber?.isEmpty ?? false
+                ? (await _authRepos.phoneSignUpIn(
+                    onSubmitOTP: onSubmitOTP,
+                    onSignUpSubmit: onCompleteSignUp,
+                    onSignUpSuccess: onSignUpSuccess,
+                  )(
+                    await onSubmitPhoneNumber(),
+                    onTimeOut,
+                  ))
+                    .fold<AppUser>((_) => AppUser.empty, (r) => r)
+                : onCompleteSignUp(user),
           ))
               .fold(
             (l) => emit(AuthenticateState.failure(failure: l)),
