@@ -1,12 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../models/serializable.dart';
+
 part 'app_user.freezed.dart';
 part 'app_user.g.dart';
 
 @Freezed(
   unionKey: 'type',
 )
-class AppUser with _$AppUser {
+class AppUser extends Serializable<AppUser> with _$AppUser {
   @FreezedUnionValue('1')
   const factory AppUser.consumer({
     required String uuid,

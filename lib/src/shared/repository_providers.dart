@@ -16,7 +16,7 @@ MultiRepositoryProvider coreRepositoryProviders({required Widget providers}) =>
           create: (_) => FirebaseFirestore.instance,
         ),
         RepositoryProvider<GoogleSignIn>(create: (_) => GoogleSignIn()),
-        RepositoryProvider<Store<AppUser>>(
+        RepositoryProvider<IStore<AppUser>>(
           create: (context) => UserRepository(context.read()),
         ),
         RepositoryProvider<GoogleAuthenticator>(
