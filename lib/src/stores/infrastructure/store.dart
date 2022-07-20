@@ -39,31 +39,30 @@ abstract class Store<T> {
     List<Object?>? whereIn,
     List<Object?>? whereNotIn,
     bool? isNull,
-  }) {
-    return (factory) => collection()
-        .where(
-          field,
-          isEqualTo: isEqualTo,
-          isNotEqualTo: isNotEqualTo,
-          isLessThan: isLessThan,
-          isLessThanOrEqualTo: isLessThanOrEqualTo,
-          isGreaterThan: isGreaterThan,
-          isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-          arrayContains: arrayContains,
-          arrayContainsAny: arrayContainsAny,
-          whereIn: whereIn,
-          whereNotIn: whereNotIn,
-          isNull: isNull,
-        )
-        .snapshots()
-        .expand(
-          (snapshot) => snapshot.docs.map((e) => fromDocument(e, factory)),
-        )
-        .fold<IList<T>>(
-          ilist([]),
-          (pre, ele) => ele.fold((l) => pre, (r) => cons(r, pre)),
-        );
-  }
+  }) =>
+      (factory) => collection()
+          .where(
+            field,
+            isEqualTo: isEqualTo,
+            isNotEqualTo: isNotEqualTo,
+            isLessThan: isLessThan,
+            isLessThanOrEqualTo: isLessThanOrEqualTo,
+            isGreaterThan: isGreaterThan,
+            isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+            arrayContains: arrayContains,
+            arrayContainsAny: arrayContainsAny,
+            whereIn: whereIn,
+            whereNotIn: whereNotIn,
+            isNull: isNull,
+          )
+          .snapshots()
+          .expand(
+            (snapshot) => snapshot.docs.map((e) => fromDocument(e, factory)),
+          )
+          .fold<IList<T>>(
+            ilist([]),
+            (pre, ele) => ele.fold((l) => pre, (r) => cons(r, pre)),
+          );
 }
 
 extension FieldX on String {

@@ -150,6 +150,26 @@ void main() {
           AuthenticateState.authenticated(authType: mockGGAuthType),
         ],
       );
+
+      blocTest<AuthenticateBloc, AuthenticateState>(
+        'emit [loading, partial] when user did not confirm his/her phone number',
+        build: () => bloc,
+        setUp: () {
+          when(
+            () => repository.ggSignUpIn(
+              onSignUpSubmit: any(named: 'onSignUpSubmit'),
+            ),
+          ).thenAnswer(
+              (_) => left(const AuthFailure.needToVerifyPhoneNumber()));
+        },
+        act: (b) => b.add(
+          AuthenticateEvent.loginWithGoogle(onCompleteSignUp: (_) => mockUser),
+        ),
+        expect: () => [
+          const AuthenticateState.loading(),
+          const AuthenticateState.partial(),
+        ],
+      );
     });
     group('loginWithPhone', () {
       blocTest<AuthenticateBloc, AuthenticateState>(
