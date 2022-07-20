@@ -5,9 +5,43 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../models/models.dart';
+import '../models/serializable.dart';
 
-abstract class Store<T> {
+abstract class IStore<T extends Serializable<T>> {
+  Future<Either<StoreFailure, Unit>> delete(String id);
+  Future<Either<StoreFailure, Unit>> create(T data);
+  FutureOr<Either<StoreFailure, Unit>> update(
+    T newData,
+    IList<String> fields,
+  );
+  Function1<Function1<Map<String, dynamic>, T>,
+      Future<Either<StoreFailure, IList<T>>>> all();
+
+  Function1<Function1<Map<String, dynamic>, T>,
+      Future<Either<StoreFailure, IList<T>>>> where(
+    String field, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+  Future<Either<StoreFailure, T>> get(String id);
+}
+
+abstract class Store<T extends Serializable<T>> implements IStore<T> {
+  Store(this.store);
+
+  final FirebaseFirestore store;
+
   @protected
+  @internal
   Either<StoreFailure, T> fromDocument(
     DocumentSnapshot<Map<String, dynamic>> r,
     Function1<Map<String, dynamic>, T> factory,
@@ -18,13 +52,98 @@ abstract class Store<T> {
       );
 
   @protected
+  @internal
   CollectionReference<Map<String, dynamic>> collection();
 
-  Future<Either<StoreFailure, T>> get(String id);
-  Future<Either<StoreFailure, Unit>> delete(String id);
-  Future<Either<StoreFailure, Unit>> create(T data);
-  Future<Either<StoreFailure, Unit>> update(T newData, IList<String> fields);
+  @protected
+  @internal
+  String getId(T data);
 
+  @protected
+  @internal
+  DocumentReference<Map<String, dynamic>> doc(String id);
+  @override
+  Future<Either<StoreFailure, T>> get(String id);
+
+  @protected
+  @internal
+  Future<Either<StoreFailure, T>> auxGet(
+    String id,
+    Function1<Map<String, dynamic>, T> factory,
+  ) =>
+      Task(() => doc(id).get())
+          .attempt()
+          .map<Either<StoreFailure, T>>(
+            (a) => a.fold(
+              (_) => left(const StoreFailure.query()),
+              (r) => fromDocument(
+                r,
+                factory,
+              ),
+            ),
+          )
+          .run();
+
+  @override
+  Future<Either<StoreFailure, Unit>> delete(String id) =>
+      Task(() => doc(id).delete())
+          .attempt()
+          .map<Either<StoreFailure, Unit>>(
+            (a) => a.fold(
+              (l) => left(const StoreFailure.delete()),
+              (r) => right(unit),
+            ),
+          )
+          .run();
+
+  @override
+  Future<Either<StoreFailure, Unit>> create(T data) =>
+      Task(() => doc(getId(data)).set(data.toJson()))
+          .attempt()
+          .map<Either<StoreFailure, Unit>>(
+            (fs) => fs.fold(
+              (_) => left(const StoreFailure.create()),
+              (_) => right(unit),
+            ),
+          )
+          .run();
+
+  @protected
+  @internal
+  FutureOr<Either<StoreFailure, Unit>> auxUpdate(
+    T newData,
+    IList<String> fields,
+    IList<String> cannotChangeFields,
+  ) {
+    if (cannotChangeFields.any((a) => fields.any((b) => a == b))) {
+      return left(
+        const StoreFailure.update(message: 'Cannot update id-related fields'),
+      );
+    }
+    final validFields = IList.from(
+      newData.toJson().keys.map((s) => s.camelCaseToSnakeCase).toList(),
+    );
+    if (fields.all((a) => validFields.any((f) => a == f))) {
+      return left(const StoreFailure.update(message: 'Invalid Fields'));
+    }
+
+    return Task(
+      () => doc(getId(newData)).set(
+        newData.toJson(),
+        SetOptions(merge: true, mergeFields: fields.toList()),
+      ),
+    )
+        .attempt()
+        .map<Either<StoreFailure, Unit>>(
+          (a) => a.fold(
+            (l) => left(const StoreFailure.update(message: 'Cannot update')),
+            (_) => right(unit),
+          ),
+        )
+        .run();
+  }
+
+  @override
   Function1<Function1<Map<String, dynamic>, T>,
           Future<Either<StoreFailure, IList<T>>>>
       all() => (factory) => Task(() => collection().get())
@@ -42,6 +161,7 @@ abstract class Store<T> {
           )
           .run();
 
+  @override
   Function1<Function1<Map<String, dynamic>, T>,
       Future<Either<StoreFailure, IList<T>>>> where(
     String field, {
