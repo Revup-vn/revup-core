@@ -78,6 +78,25 @@ Map<String, dynamic> _$$_invalidDataToJson(_$_invalidData instance) =>
       'runtimeType': instance.$type,
     };
 
+_$_verifyPhoneNumber _$$_verifyPhoneNumberFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_verifyPhoneNumber',
+      json,
+      ($checkedConvert) {
+        final val = _$_verifyPhoneNumber(
+          $type: $checkedConvert('runtimeType', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'runtimeType'},
+    );
+
+Map<String, dynamic> _$$_verifyPhoneNumberToJson(
+        _$_verifyPhoneNumber instance) =>
+    <String, dynamic>{
+      'runtimeType': instance.$type,
+    };
+
 _$_unknown _$$_unknownFromJson(Map<String, dynamic> json) => $checkedCreate(
       r'_$_unknown',
       json,

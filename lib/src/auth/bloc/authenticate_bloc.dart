@@ -31,28 +31,21 @@ class AuthenticateBloc
             _onSignOut(authType, errorMessage, emit),
         loginWithGoogle: (
           OnCompleteSignUp onCompleteSignUp,
-          PhoneGetter onSubmitPhoneNumber,
-          OTPGetter onSubmitOTP,
-          Function0<Future<Unit>> onSignUpSuccess,
-          void Function()? onTimeOut,
         ) async {
           emit(const AuthenticateState.loading());
 
           (await _authRepos.ggSignUpIn(
-            onSignUpSubmit: (user) async => user.phoneNumber?.isEmpty ?? false
-                ? (await _authRepos.phoneSignUpIn(
-                    onSubmitOTP: onSubmitOTP,
-                    onSignUpSubmit: onCompleteSignUp,
-                    onSignUpSuccess: onSignUpSuccess,
-                  )(
-                    await onSubmitPhoneNumber(),
-                    onTimeOut,
-                  ))
-                    .fold<AppUser>((_) => AppUser.empty, (r) => r)
-                : onCompleteSignUp(user),
+            onSignUpSubmit: (user) async =>
+                user.phoneNumber?.isNotEmpty ?? false
+                    ? onCompleteSignUp(user)
+                    : AppUser.empty,
           ))
               .fold(
-            (l) => emit(AuthenticateState.failure(failure: l)),
+            (l) => l.maybeMap(
+              needToVerifyPhoneNumber: (_) =>
+                  emit(const AuthenticateState.partial()),
+              orElse: () => emit(AuthenticateState.failure(failure: l)),
+            ),
             (r) => emit(
               AuthenticateState.authenticated(
                 authType: AuthType.google(user: r),

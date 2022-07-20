@@ -60,6 +60,9 @@ class AuthenticatorRepository {
       }
     } else {
       final appUser = await onSignUpSubmit(user);
+      if (appUser == AppUser.empty) {
+        return left(const AuthFailure.needToVerifyPhoneNumber());
+      }
       if (!(await _googleAuthenticatorService.isPhoneValid(appUser.phone) &&
           await _phoneAuthenticatorService.isEmailValid(appUser.email))) {
         return left(
