@@ -25,7 +25,6 @@ abstract class Store<T> {
   Future<Either<StoreFailure, Unit>> create(T data);
   Future<Either<StoreFailure, Unit>> update(T newData, IList<String> fields);
 
-  @protected
   Function1<Function1<Map<String, dynamic>, T>, Future<IList<T>>> find(
     String field, {
     Object? isEqualTo,

@@ -9,6 +9,7 @@ import 'package:revup_core/src/auth/infrastructure/infrastructure.dart';
 import 'package:revup_core/src/auth/models/auth_failure.dart';
 import 'package:revup_core/src/auth/utils/utils.dart';
 import 'package:revup_core/src/stores/stores.dart';
+import '../../../helpers/app_user_mock.dart';
 import '../../../helpers/firebase_mock_class.dart';
 
 class MockGG extends Mock implements GoogleAuthenticator {}
@@ -19,19 +20,8 @@ void main() {
   late MockGG gg;
   late MockPhone phone;
   late AuthenticatorRepository repo;
-  final mockUser = AppUser.consumer(
-    uuid: 'uuid',
-    firstName: 'firstName',
-    lastName: 'lastName',
-    phone: 'phone',
-    dob: DateTime.now(),
-    addr: 'addr',
-    email: 'email',
-    active: true,
-    avatarUrl: 'avatarUrl',
-    createdTime: DateTime.now(),
-    lastUpdatedTime: DateTime.now(),
-  );
+  final mockUser = mockUserIns();
+  final mu = MockUser();
 
   AppUser _mockParseCb(User _) => mockUser;
 
@@ -130,6 +120,9 @@ void main() {
         when(() => mSnapShot.exists).thenReturn(false);
         when(() => gg.isPhoneValid(any())).thenAnswer((_) async => false);
         when(() => phone.isEmailValid(any())).thenAnswer((_) async => true);
+        when(() => gg.getSignedInCredentials()).thenAnswer((_) async => mu);
+        when(() => mu.phoneNumber).thenAnswer((_) => '123');
+        when(() => mu.uid).thenAnswer((_) => '');
 
         (await repo.ggSignUpIn(onSignUpSubmit: _mockParseCb)).fold(
           (l) => expect(
@@ -145,6 +138,9 @@ void main() {
         when(() => mSnapShot.exists).thenReturn(false);
         when(() => gg.isPhoneValid(any())).thenAnswer((_) async => true);
         when(() => phone.isEmailValid(any())).thenAnswer((_) async => false);
+        when(() => gg.getSignedInCredentials()).thenAnswer((_) async => mu);
+        when(() => mu.phoneNumber).thenAnswer((_) => '123');
+        when(() => mu.uid).thenAnswer((_) => '');
 
         (await repo.ggSignUpIn(onSignUpSubmit: _mockParseCb)).fold(
           (l) => expect(
@@ -161,6 +157,9 @@ void main() {
         when(() => gg.isPhoneValid(any())).thenAnswer((_) async => true);
         when(() => phone.isEmailValid(any())).thenAnswer((_) async => true);
         when(() => gg.signUp(any())).thenAnswer((_) async => false);
+        when(() => gg.getSignedInCredentials()).thenAnswer((_) async => mu);
+        when(() => mu.phoneNumber).thenAnswer((_) => '123');
+        when(() => mu.uid).thenAnswer((_) => '');
 
         (await repo.ggSignUpIn(onSignUpSubmit: _mockParseCb)).fold(
           (l) => expect(
@@ -176,6 +175,9 @@ void main() {
         when(() => gg.isPhoneValid(any())).thenAnswer((_) async => true);
         when(() => phone.isEmailValid(any())).thenAnswer((_) async => true);
         when(() => gg.signUp(any())).thenAnswer((_) async => true);
+        when(() => gg.getSignedInCredentials()).thenAnswer((_) async => mu);
+        when(() => mu.phoneNumber).thenAnswer((_) => '123');
+        when(() => mu.uid).thenAnswer((_) => '');
 
         (await repo.ggSignUpIn(onSignUpSubmit: _mockParseCb)).fold(
           (l) => fail('cannot fail'),

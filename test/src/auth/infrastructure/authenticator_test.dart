@@ -4,6 +4,7 @@ import 'package:mocktail/mocktail.dart';
 
 import 'package:revup_core/src/auth/infrastructure/infrastructure.dart';
 import 'package:revup_core/src/stores/stores.dart';
+import '../../../helpers/app_user_mock.dart';
 import '../../../helpers/firebase_mock_class.dart';
 
 class TestAuthenticator extends Authenticator {
@@ -22,19 +23,7 @@ void main() {
   late MockCollection mockCollection;
   late MockQuery query;
 
-  final mockUser = AppUser.consumer(
-    uuid: 'uui12312123qeddd',
-    firstName: 'Huy',
-    lastName: 'Giang',
-    phone: '0121212121',
-    dob: DateTime.now(),
-    addr: '123',
-    email: 'email@asd.com',
-    active: true,
-    avatarUrl: '',
-    createdTime: DateTime.now(),
-    lastUpdatedTime: DateTime.now(),
-  );
+  final mockUser = mockUserIns();
 
   setUpAll(() {
     store = MockStore();

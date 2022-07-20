@@ -102,12 +102,15 @@ linter:
 dart_code_metrics:
   anti-patterns:
     - long-method
-    - long-parameter-list
+    - long-parameter-list:
+        exclude:
+          - lib/src/stores/infrastructure/store.dart
   metrics:
     cyclomatic-complexity: 20
     maximum-nesting-level: 5
     number-of-parameters: 4
     source-lines-of-code: 50
+  metrics-exclude:
   rules:
     - newline-before-return
     - no-boolean-literal-compare

@@ -35,3 +35,6 @@ class MockQuerySnapShot extends Mock
 
 class MockDocumentSnapShot extends Mock
     implements DocumentSnapshot<Map<String, dynamic>> {}
+
+class MockQueryDocumentSnapShot<T> extends Mock
+    implements QueryDocumentSnapshot<T> {}

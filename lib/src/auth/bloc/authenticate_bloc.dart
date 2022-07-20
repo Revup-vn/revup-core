@@ -5,7 +5,6 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-import '../../stores/users/models/models.dart';
 import '../infrastructure/infrastructure.dart';
 import '../models/models.dart';
 
@@ -31,30 +30,8 @@ class AuthenticateBloc
             _onSignOut(authType, errorMessage, emit),
         loginWithGoogle: (
           OnCompleteSignUp onCompleteSignUp,
-        ) async {
-          emit(const AuthenticateState.loading());
-
-          (await _authRepos.ggSignUpIn(
-            onSignUpSubmit: (user) async =>
-                user.phoneNumber?.isNotEmpty ?? false
-                    ? onCompleteSignUp(user)
-                    : AppUser.empty,
-          ))
-              .fold(
-            (l) => l.maybeMap(
-              needToVerifyPhoneNumber: (_) =>
-                  emit(const AuthenticateState.partial()),
-              orElse: () => emit(AuthenticateState.failure(failure: l)),
-            ),
-            (r) => emit(
-              AuthenticateState.authenticated(
-                authType: AuthType.google(user: r),
-              ),
-            ),
-          );
-
-          return unit;
-        },
+        ) =>
+            _onLoginWithGoogle(onCompleteSignUp, emit),
         loginWithPhone: (
           String phoneNumber,
           OTPGetter onSubmitOTP,
@@ -107,6 +84,30 @@ class AuthenticateBloc
           return unit;
         },
       );
+
+  Future<Unit> _onLoginWithGoogle(
+    OnCompleteSignUp onCompleteSignUp,
+    Emitter<AuthenticateState> emit,
+  ) async {
+    emit(const AuthenticateState.loading());
+
+    (await _authRepos.ggSignUpIn(
+      onSignUpSubmit: onCompleteSignUp,
+    ))
+        .fold(
+      (l) => l.maybeMap(
+        needToVerifyPhoneNumber: (_) => emit(const AuthenticateState.partial()),
+        orElse: () => emit(AuthenticateState.failure(failure: l)),
+      ),
+      (r) => emit(
+        AuthenticateState.authenticated(
+          authType: AuthType.google(user: r),
+        ),
+      ),
+    );
+
+    return unit;
+  }
 
   final AuthenticatorRepository _authRepos;
 

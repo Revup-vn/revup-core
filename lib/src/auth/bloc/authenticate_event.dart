@@ -1,7 +1,5 @@
 part of 'authenticate_bloc.dart';
 
-typedef AuthenticateEventPhoneLogin = _loginWithPhone;
-
 @freezed
 class AuthenticateEvent with _$AuthenticateEvent {
   const factory AuthenticateEvent.loginWithGoogle({
