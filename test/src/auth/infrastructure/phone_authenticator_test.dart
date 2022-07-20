@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:revup_core/src/auth/infrastructure/authenticator/phone_authenticator.u.dart';
+import 'package:revup_core/src/stores/users/users.dart';
 import '../../../helpers/firebase_mock_class.dart';
 
 void main() {
@@ -26,7 +27,7 @@ void main() {
     ).thenAnswer((_) async => unit);
   });
   setUp(() {
-    authenticator = PhoneAuthenticator(auth, store);
+    authenticator = PhoneAuthenticator(auth, UserRepository(store));
   });
 
   group('signIn', () {

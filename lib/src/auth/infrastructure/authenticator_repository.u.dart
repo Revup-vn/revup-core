@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../stores/stores.dart';
 import '../models/models.dart';
 import '../utils/utils.dart';
 import 'infrastructure.dart';
@@ -58,7 +59,12 @@ class AuthenticatorRepository {
         return left(const AuthFailure.invalidData('Cannot parse data'));
       }
     } else {
+      if (user.phoneNumber?.isEmpty ?? true) {
+        return left(const AuthFailure.needToVerifyPhoneNumber());
+      }
+
       final appUser = await onSignUpSubmit(user);
+
       if (!(await _googleAuthenticatorService.isPhoneValid(appUser.phone) &&
           await _phoneAuthenticatorService.isEmailValid(appUser.email))) {
         return left(

@@ -60,6 +60,23 @@ Map<String, dynamic> _$$_authenticatedToJson(_$_authenticated instance) =>
       'runtimeType': instance.$type,
     };
 
+_$_partial _$$_partialFromJson(Map<String, dynamic> json) => $checkedCreate(
+      r'_$_partial',
+      json,
+      ($checkedConvert) {
+        final val = _$_partial(
+          $type: $checkedConvert('runtimeType', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'runtimeType'},
+    );
+
+Map<String, dynamic> _$$_partialToJson(_$_partial instance) =>
+    <String, dynamic>{
+      'runtimeType': instance.$type,
+    };
+
 _$_error _$$_errorFromJson(Map<String, dynamic> json) => $checkedCreate(
       r'_$_error',
       json,

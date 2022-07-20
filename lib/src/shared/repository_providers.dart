@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../auth/auth.dart';
+import '../stores/stores.dart';
 
 MultiRepositoryProvider coreRepositoryProviders({required Widget providers}) =>
     MultiRepositoryProvider(
@@ -15,6 +16,9 @@ MultiRepositoryProvider coreRepositoryProviders({required Widget providers}) =>
           create: (_) => FirebaseFirestore.instance,
         ),
         RepositoryProvider<GoogleSignIn>(create: (_) => GoogleSignIn()),
+        RepositoryProvider<Store<AppUser>>(
+          create: (context) => UserRepository(context.read()),
+        ),
         RepositoryProvider<GoogleAuthenticator>(
           create: (context) => GoogleAuthenticator(
             context.read(),

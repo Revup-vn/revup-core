@@ -15,6 +15,8 @@ class AuthFailure with _$AuthFailure {
 
   const factory AuthFailure.invalidData([String? message]) = _invalidData;
 
+  const factory AuthFailure.needToVerifyPhoneNumber() = _verifyPhoneNumber;
+
   const factory AuthFailure.unknown() = _unknown;
 
   factory AuthFailure.fromJson(Map<String, dynamic> json) =>

@@ -13,6 +13,8 @@ part 'authenticate_state.dart';
 part 'authenticate_bloc.freezed.dart';
 part 'authenticate_bloc.g.dart';
 
+typedef PhoneGetter = Function0<FutureOr<String>>;
+
 class AuthenticateBloc
     extends HydratedBloc<AuthenticateEvent, AuthenticateState> {
   AuthenticateBloc(this._authRepos) : super(const AuthenticateState.empty()) {
@@ -26,21 +28,10 @@ class AuthenticateBloc
       event.when(
         signOut: (authType, errorMessage) async =>
             _onSignOut(authType, errorMessage, emit),
-        loginWithGoogle: (OnCompleteSignUp onCompleteSignUp) async {
-          emit(const AuthenticateState.loading());
-          (await _authRepos.ggSignUpIn(
-            onSignUpSubmit: onCompleteSignUp,
-          ))
-              .fold(
-            (l) => emit(AuthenticateState.failure(failure: l)),
-            (r) => emit(
-              AuthenticateState.authenticated(
-                authType: AuthType.google(user: r),
-              ),
-            ),
-          );
-          return unit;
-        },
+        loginWithGoogle: (
+          OnCompleteSignUp onCompleteSignUp,
+        ) =>
+            _onLoginWithGoogle(onCompleteSignUp, emit),
         loginWithPhone: (
           String phoneNumber,
           OTPGetter onSubmitOTP,
@@ -93,6 +84,30 @@ class AuthenticateBloc
           return unit;
         },
       );
+
+  Future<Unit> _onLoginWithGoogle(
+    OnCompleteSignUp onCompleteSignUp,
+    Emitter<AuthenticateState> emit,
+  ) async {
+    emit(const AuthenticateState.loading());
+
+    (await _authRepos.ggSignUpIn(
+      onSignUpSubmit: onCompleteSignUp,
+    ))
+        .fold(
+      (l) => l.maybeMap(
+        needToVerifyPhoneNumber: (_) => emit(const AuthenticateState.partial()),
+        orElse: () => emit(AuthenticateState.failure(failure: l)),
+      ),
+      (r) => emit(
+        AuthenticateState.authenticated(
+          authType: AuthType.google(user: r),
+        ),
+      ),
+    );
+
+    return unit;
+  }
 
   final AuthenticatorRepository _authRepos;
 

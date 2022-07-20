@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'user.freezed.dart';
-part 'user.g.dart';
+part 'app_user.freezed.dart';
+part 'app_user.g.dart';
 
 @Freezed(
   unionKey: 'type',

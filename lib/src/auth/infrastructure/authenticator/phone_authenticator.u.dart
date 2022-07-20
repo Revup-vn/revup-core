@@ -2,14 +2,14 @@ import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../../stores/users/users.dart';
 import '../../utils/utils.dart';
 import 'authenticator.dart';
 
 class PhoneAuthenticator extends Authenticator {
-  PhoneAuthenticator(this._auth, FirebaseFirestore store) : super(store);
+  PhoneAuthenticator(this._auth, UserRepository store) : super(store);
 
   final FirebaseAuth _auth;
 

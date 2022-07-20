@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../utils/utils.dart';
-import '../user.dart';
+import '../../../stores/stores.dart';
 
 typedef OTPGetter = FutureOr<String> Function();
 typedef SignInUpCallBack = Future<void> Function(UserCredential);
@@ -12,39 +11,26 @@ typedef SignInUpCallBack = Future<void> Function(UserCredential);
 abstract class Authenticator {
   Authenticator(this._store);
 
-  final FirebaseFirestore _store;
+  final UserRepository _store;
 
   Future<bool> _isFieldValid(String field, String val) async =>
-      (await _store
-              .collection(kPathUserCollection)
-              .where(field, isEqualTo: val)
-              .get())
-          .size ==
-      0;
+      (await _store.users.where(field, isEqualTo: val).get()).size == 0;
 
   Future<bool> isPhoneValid(String phone) async =>
-      _isFieldValid('phone', phone);
+      phone.isNotEmpty && await _isFieldValid('phone', phone);
 
   Future<bool> isEmailValid(String email) async =>
-      _isFieldValid('email', email);
+      email.isNotEmpty && await _isFieldValid('email', email);
 
   Future<DocumentSnapshot<Map<String, dynamic>>> getUserDocument(
     String id,
   ) async =>
-      _store.collection(kPathUserCollection).doc(id).get();
+      _store.user(id).get();
 
-  Future<bool> signUp(AppUser user) async {
-    try {
-      await _store
-          .collection(kPathUserCollection)
-          .doc(user.uuid)
-          .set(user.toJson());
-    } catch (_) {
-      return false;
-    }
-
-    return true;
-  }
+  Future<bool> signUp(AppUser user) async => (await _store.create(user)).fold(
+        (_) => false,
+        (_) => true,
+      );
 
   Future<bool> signOut();
 }

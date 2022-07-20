@@ -7,6 +7,7 @@ import 'package:revup_core/src/auth/bloc/authenticate_bloc.dart';
 import 'package:revup_core/src/auth/infrastructure/infrastructure.dart';
 import 'package:revup_core/src/auth/models/auth_failure.dart';
 import 'package:revup_core/src/auth/models/auth_type.dart';
+import '../../helpers/app_user_mock.dart';
 import '../../helpers/hydrated_bloc.dart';
 
 class MockAuthenticatorRepository extends Mock
@@ -16,19 +17,7 @@ void main() {
   group('AuthBloc', () {
     late MockAuthenticatorRepository repository;
     late AuthenticateBloc bloc;
-    final mockUser = AppUser.consumer(
-      uuid: 'uuid',
-      firstName: 'firstName',
-      lastName: 'lastName',
-      phone: 'phone',
-      dob: DateTime.now(),
-      addr: 'addr',
-      email: 'email',
-      active: true,
-      avatarUrl: 'avatarUrl',
-      createdTime: DateTime.now(),
-      lastUpdatedTime: DateTime.now(),
-    );
+    final mockUser = mockUserIns();
 
     final mockGGAuthType = AuthType.google(user: mockUser);
     final mockPhoneAuthType = AuthType.phone(user: mockUser);
@@ -147,6 +136,27 @@ void main() {
         expect: () => [
           const AuthenticateState.loading(),
           AuthenticateState.authenticated(authType: mockGGAuthType),
+        ],
+      );
+
+      blocTest<AuthenticateBloc, AuthenticateState>(
+        'emit [loading, partial] when user did not confirm his/her phone number',
+        build: () => bloc,
+        setUp: () {
+          when(
+            () => repository.ggSignUpIn(
+              onSignUpSubmit: any(named: 'onSignUpSubmit'),
+            ),
+          ).thenAnswer(
+            (_) => left(const AuthFailure.needToVerifyPhoneNumber()),
+          );
+        },
+        act: (b) => b.add(
+          AuthenticateEvent.loginWithGoogle(onCompleteSignUp: (_) => mockUser),
+        ),
+        expect: () => [
+          const AuthenticateState.loading(),
+          const AuthenticateState.partial(),
         ],
       );
     });

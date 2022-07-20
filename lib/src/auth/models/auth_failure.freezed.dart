@@ -24,6 +24,8 @@ AuthFailure _$AuthFailureFromJson(Map<String, dynamic> json) {
       return _cancelled.fromJson(json);
     case 'invalidData':
       return _invalidData.fromJson(json);
+    case 'needToVerifyPhoneNumber':
+      return _verifyPhoneNumber.fromJson(json);
     case 'unknown':
       return _unknown.fromJson(json);
 
@@ -41,6 +43,7 @@ mixin _$AuthFailure {
     required TResult Function() storage,
     required TResult Function() cancelled,
     required TResult Function(String? message) invalidData,
+    required TResult Function() needToVerifyPhoneNumber,
     required TResult Function() unknown,
   }) =>
       throw _privateConstructorUsedError;
@@ -50,6 +53,7 @@ mixin _$AuthFailure {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function()? needToVerifyPhoneNumber,
     TResult Function()? unknown,
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +63,7 @@ mixin _$AuthFailure {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function()? needToVerifyPhoneNumber,
     TResult Function()? unknown,
     required TResult orElse(),
   }) =>
@@ -69,6 +74,7 @@ mixin _$AuthFailure {
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
     required TResult Function(_unknown value) unknown,
   }) =>
       throw _privateConstructorUsedError;
@@ -78,6 +84,7 @@ mixin _$AuthFailure {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
   }) =>
       throw _privateConstructorUsedError;
@@ -87,6 +94,7 @@ mixin _$AuthFailure {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
     required TResult orElse(),
   }) =>
@@ -185,6 +193,7 @@ class _$_server extends _server {
     required TResult Function() storage,
     required TResult Function() cancelled,
     required TResult Function(String? message) invalidData,
+    required TResult Function() needToVerifyPhoneNumber,
     required TResult Function() unknown,
   }) {
     return server(message);
@@ -197,6 +206,7 @@ class _$_server extends _server {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function()? needToVerifyPhoneNumber,
     TResult Function()? unknown,
   }) {
     return server?.call(message);
@@ -209,6 +219,7 @@ class _$_server extends _server {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function()? needToVerifyPhoneNumber,
     TResult Function()? unknown,
     required TResult orElse(),
   }) {
@@ -225,6 +236,7 @@ class _$_server extends _server {
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
     required TResult Function(_unknown value) unknown,
   }) {
     return server(this);
@@ -237,6 +249,7 @@ class _$_server extends _server {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
   }) {
     return server?.call(this);
@@ -249,6 +262,7 @@ class _$_server extends _server {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
     required TResult orElse(),
   }) {
@@ -328,6 +342,7 @@ class _$_storage extends _storage {
     required TResult Function() storage,
     required TResult Function() cancelled,
     required TResult Function(String? message) invalidData,
+    required TResult Function() needToVerifyPhoneNumber,
     required TResult Function() unknown,
   }) {
     return storage();
@@ -340,6 +355,7 @@ class _$_storage extends _storage {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function()? needToVerifyPhoneNumber,
     TResult Function()? unknown,
   }) {
     return storage?.call();
@@ -352,6 +368,7 @@ class _$_storage extends _storage {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function()? needToVerifyPhoneNumber,
     TResult Function()? unknown,
     required TResult orElse(),
   }) {
@@ -368,6 +385,7 @@ class _$_storage extends _storage {
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
     required TResult Function(_unknown value) unknown,
   }) {
     return storage(this);
@@ -380,6 +398,7 @@ class _$_storage extends _storage {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
   }) {
     return storage?.call(this);
@@ -392,6 +411,7 @@ class _$_storage extends _storage {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
     required TResult orElse(),
   }) {
@@ -467,6 +487,7 @@ class _$_cancelled extends _cancelled {
     required TResult Function() storage,
     required TResult Function() cancelled,
     required TResult Function(String? message) invalidData,
+    required TResult Function() needToVerifyPhoneNumber,
     required TResult Function() unknown,
   }) {
     return cancelled();
@@ -479,6 +500,7 @@ class _$_cancelled extends _cancelled {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function()? needToVerifyPhoneNumber,
     TResult Function()? unknown,
   }) {
     return cancelled?.call();
@@ -491,6 +513,7 @@ class _$_cancelled extends _cancelled {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function()? needToVerifyPhoneNumber,
     TResult Function()? unknown,
     required TResult orElse(),
   }) {
@@ -507,6 +530,7 @@ class _$_cancelled extends _cancelled {
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
     required TResult Function(_unknown value) unknown,
   }) {
     return cancelled(this);
@@ -519,6 +543,7 @@ class _$_cancelled extends _cancelled {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
   }) {
     return cancelled?.call(this);
@@ -531,6 +556,7 @@ class _$_cancelled extends _cancelled {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
     required TResult orElse(),
   }) {
@@ -631,6 +657,7 @@ class _$_invalidData extends _invalidData {
     required TResult Function() storage,
     required TResult Function() cancelled,
     required TResult Function(String? message) invalidData,
+    required TResult Function() needToVerifyPhoneNumber,
     required TResult Function() unknown,
   }) {
     return invalidData(message);
@@ -643,6 +670,7 @@ class _$_invalidData extends _invalidData {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function()? needToVerifyPhoneNumber,
     TResult Function()? unknown,
   }) {
     return invalidData?.call(message);
@@ -655,6 +683,7 @@ class _$_invalidData extends _invalidData {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function()? needToVerifyPhoneNumber,
     TResult Function()? unknown,
     required TResult orElse(),
   }) {
@@ -671,6 +700,7 @@ class _$_invalidData extends _invalidData {
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
     required TResult Function(_unknown value) unknown,
   }) {
     return invalidData(this);
@@ -683,6 +713,7 @@ class _$_invalidData extends _invalidData {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
   }) {
     return invalidData?.call(this);
@@ -695,6 +726,7 @@ class _$_invalidData extends _invalidData {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
     required TResult orElse(),
   }) {
@@ -721,6 +753,153 @@ abstract class _invalidData extends AuthFailure {
   @JsonKey(ignore: true)
   _$$_invalidDataCopyWith<_$_invalidData> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_verifyPhoneNumberCopyWith<$Res> {
+  factory _$$_verifyPhoneNumberCopyWith(_$_verifyPhoneNumber value,
+          $Res Function(_$_verifyPhoneNumber) then) =
+      __$$_verifyPhoneNumberCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_verifyPhoneNumberCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$$_verifyPhoneNumberCopyWith<$Res> {
+  __$$_verifyPhoneNumberCopyWithImpl(
+      _$_verifyPhoneNumber _value, $Res Function(_$_verifyPhoneNumber) _then)
+      : super(_value, (v) => _then(v as _$_verifyPhoneNumber));
+
+  @override
+  _$_verifyPhoneNumber get _value => super._value as _$_verifyPhoneNumber;
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_verifyPhoneNumber extends _verifyPhoneNumber {
+  const _$_verifyPhoneNumber({final String? $type})
+      : $type = $type ?? 'needToVerifyPhoneNumber',
+        super._();
+
+  factory _$_verifyPhoneNumber.fromJson(Map<String, dynamic> json) =>
+      _$$_verifyPhoneNumberFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'AuthFailure.needToVerifyPhoneNumber()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_verifyPhoneNumber);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? message) server,
+    required TResult Function() storage,
+    required TResult Function() cancelled,
+    required TResult Function(String? message) invalidData,
+    required TResult Function() needToVerifyPhoneNumber,
+    required TResult Function() unknown,
+  }) {
+    return needToVerifyPhoneNumber();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? message)? server,
+    TResult Function()? storage,
+    TResult Function()? cancelled,
+    TResult Function(String? message)? invalidData,
+    TResult Function()? needToVerifyPhoneNumber,
+    TResult Function()? unknown,
+  }) {
+    return needToVerifyPhoneNumber?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? message)? server,
+    TResult Function()? storage,
+    TResult Function()? cancelled,
+    TResult Function(String? message)? invalidData,
+    TResult Function()? needToVerifyPhoneNumber,
+    TResult Function()? unknown,
+    required TResult orElse(),
+  }) {
+    if (needToVerifyPhoneNumber != null) {
+      return needToVerifyPhoneNumber();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_server value) server,
+    required TResult Function(_storage value) storage,
+    required TResult Function(_cancelled value) cancelled,
+    required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
+    required TResult Function(_unknown value) unknown,
+  }) {
+    return needToVerifyPhoneNumber(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_server value)? server,
+    TResult Function(_storage value)? storage,
+    TResult Function(_cancelled value)? cancelled,
+    TResult Function(_invalidData value)? invalidData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
+    TResult Function(_unknown value)? unknown,
+  }) {
+    return needToVerifyPhoneNumber?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_server value)? server,
+    TResult Function(_storage value)? storage,
+    TResult Function(_cancelled value)? cancelled,
+    TResult Function(_invalidData value)? invalidData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
+    TResult Function(_unknown value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (needToVerifyPhoneNumber != null) {
+      return needToVerifyPhoneNumber(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_verifyPhoneNumberToJson(this);
+  }
+}
+
+abstract class _verifyPhoneNumber extends AuthFailure {
+  const factory _verifyPhoneNumber() = _$_verifyPhoneNumber;
+  const _verifyPhoneNumber._() : super._();
+
+  factory _verifyPhoneNumber.fromJson(Map<String, dynamic> json) =
+      _$_verifyPhoneNumber.fromJson;
 }
 
 /// @nodoc
@@ -775,6 +954,7 @@ class _$_unknown extends _unknown {
     required TResult Function() storage,
     required TResult Function() cancelled,
     required TResult Function(String? message) invalidData,
+    required TResult Function() needToVerifyPhoneNumber,
     required TResult Function() unknown,
   }) {
     return unknown();
@@ -787,6 +967,7 @@ class _$_unknown extends _unknown {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function()? needToVerifyPhoneNumber,
     TResult Function()? unknown,
   }) {
     return unknown?.call();
@@ -799,6 +980,7 @@ class _$_unknown extends _unknown {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function()? needToVerifyPhoneNumber,
     TResult Function()? unknown,
     required TResult orElse(),
   }) {
@@ -815,6 +997,7 @@ class _$_unknown extends _unknown {
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
     required TResult Function(_unknown value) unknown,
   }) {
     return unknown(this);
@@ -827,6 +1010,7 @@ class _$_unknown extends _unknown {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
   }) {
     return unknown?.call(this);
@@ -839,6 +1023,7 @@ class _$_unknown extends _unknown {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
     required TResult orElse(),
   }) {
