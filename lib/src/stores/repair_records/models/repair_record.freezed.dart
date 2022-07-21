@@ -40,73 +40,78 @@ mixin _$RepairRecord {
   String get id => throw _privateConstructorUsedError;
   String get cid => throw _privateConstructorUsedError;
   String get pid => throw _privateConstructorUsedError;
-  String get serviceId => throw _privateConstructorUsedError;
   DateTime get created => throw _privateConstructorUsedError;
   String get desc => throw _privateConstructorUsedError;
   String get vehicle => throw _privateConstructorUsedError;
   int get money => throw _privateConstructorUsedError;
+  Location get from => throw _privateConstructorUsedError;
+  Location get to => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
-            int money)
+            int money,
+            Location from,
+            Location to)
         pending,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)
+            DateTime moving,
+            Location from,
+            Location to)
         accepted,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
-            int money)
+            int money,
+            Location from,
+            Location to)
         aborted,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)
+            DateTime arrived,
+            Location from,
+            Location to)
         arrived,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)
+            DateTime started,
+            Location from,
+            Location to)
         started,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -114,58 +119,63 @@ mixin _$RepairRecord {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)
         finished,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         pending,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)?
+            DateTime moving,
+            Location from,
+            Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         aborted,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)?
+            DateTime arrived,
+            Location from,
+            Location to)?
         arrived,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)?
+            DateTime started,
+            Location from,
+            Location to)?
         started,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -173,58 +183,63 @@ mixin _$RepairRecord {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)?
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)?
         finished,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         pending,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)?
+            DateTime moving,
+            Location from,
+            Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         aborted,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)?
+            DateTime arrived,
+            Location from,
+            Location to)?
         arrived,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)?
+            DateTime started,
+            Location from,
+            Location to)?
         started,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -232,7 +247,10 @@ mixin _$RepairRecord {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)?
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)?
         finished,
     required TResult orElse(),
   }) =>
@@ -283,11 +301,15 @@ abstract class $RepairRecordCopyWith<$Res> {
       {String id,
       String cid,
       String pid,
-      String serviceId,
       DateTime created,
       String desc,
       String vehicle,
-      int money});
+      int money,
+      Location from,
+      Location to});
+
+  $LocationCopyWith<$Res> get from;
+  $LocationCopyWith<$Res> get to;
 }
 
 /// @nodoc
@@ -303,11 +325,12 @@ class _$RepairRecordCopyWithImpl<$Res> implements $RepairRecordCopyWith<$Res> {
     Object? id = freezed,
     Object? cid = freezed,
     Object? pid = freezed,
-    Object? serviceId = freezed,
     Object? created = freezed,
     Object? desc = freezed,
     Object? vehicle = freezed,
     Object? money = freezed,
+    Object? from = freezed,
+    Object? to = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -321,10 +344,6 @@ class _$RepairRecordCopyWithImpl<$Res> implements $RepairRecordCopyWith<$Res> {
       pid: pid == freezed
           ? _value.pid
           : pid // ignore: cast_nullable_to_non_nullable
-              as String,
-      serviceId: serviceId == freezed
-          ? _value.serviceId
-          : serviceId // ignore: cast_nullable_to_non_nullable
               as String,
       created: created == freezed
           ? _value.created
@@ -342,7 +361,29 @@ class _$RepairRecordCopyWithImpl<$Res> implements $RepairRecordCopyWith<$Res> {
           ? _value.money
           : money // ignore: cast_nullable_to_non_nullable
               as int,
+      from: from == freezed
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
+              as Location,
+      to: to == freezed
+          ? _value.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as Location,
     ));
+  }
+
+  @override
+  $LocationCopyWith<$Res> get from {
+    return $LocationCopyWith<$Res>(_value.from, (value) {
+      return _then(_value.copyWith(from: value));
+    });
+  }
+
+  @override
+  $LocationCopyWith<$Res> get to {
+    return $LocationCopyWith<$Res>(_value.to, (value) {
+      return _then(_value.copyWith(to: value));
+    });
   }
 }
 
@@ -357,11 +398,17 @@ abstract class _$$_pendingCopyWith<$Res>
       {String id,
       String cid,
       String pid,
-      String serviceId,
       DateTime created,
       String desc,
       String vehicle,
-      int money});
+      int money,
+      Location from,
+      Location to});
+
+  @override
+  $LocationCopyWith<$Res> get from;
+  @override
+  $LocationCopyWith<$Res> get to;
 }
 
 /// @nodoc
@@ -378,11 +425,12 @@ class __$$_pendingCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
     Object? id = freezed,
     Object? cid = freezed,
     Object? pid = freezed,
-    Object? serviceId = freezed,
     Object? created = freezed,
     Object? desc = freezed,
     Object? vehicle = freezed,
     Object? money = freezed,
+    Object? from = freezed,
+    Object? to = freezed,
   }) {
     return _then(_$_pending(
       id: id == freezed
@@ -396,10 +444,6 @@ class __$$_pendingCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
       pid: pid == freezed
           ? _value.pid
           : pid // ignore: cast_nullable_to_non_nullable
-              as String,
-      serviceId: serviceId == freezed
-          ? _value.serviceId
-          : serviceId // ignore: cast_nullable_to_non_nullable
               as String,
       created: created == freezed
           ? _value.created
@@ -417,6 +461,14 @@ class __$$_pendingCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           ? _value.money
           : money // ignore: cast_nullable_to_non_nullable
               as int,
+      from: from == freezed
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
+              as Location,
+      to: to == freezed
+          ? _value.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as Location,
     ));
   }
 }
@@ -428,11 +480,12 @@ class _$_pending implements _pending {
       {required this.id,
       required this.cid,
       required this.pid,
-      required this.serviceId,
       required this.created,
       required this.desc,
       required this.vehicle,
       required this.money,
+      required this.from,
+      required this.to,
       final String? $type})
       : $type = $type ?? '1';
 
@@ -446,8 +499,6 @@ class _$_pending implements _pending {
   @override
   final String pid;
   @override
-  final String serviceId;
-  @override
   final DateTime created;
   @override
   final String desc;
@@ -455,13 +506,17 @@ class _$_pending implements _pending {
   final String vehicle;
   @override
   final int money;
+  @override
+  final Location from;
+  @override
+  final Location to;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'RepairRecord.pending(id: $id, cid: $cid, pid: $pid, serviceId: $serviceId, created: $created, desc: $desc, vehicle: $vehicle, money: $money)';
+    return 'RepairRecord.pending(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, from: $from, to: $to)';
   }
 
   @override
@@ -472,11 +527,12 @@ class _$_pending implements _pending {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.cid, cid) &&
             const DeepCollectionEquality().equals(other.pid, pid) &&
-            const DeepCollectionEquality().equals(other.serviceId, serviceId) &&
             const DeepCollectionEquality().equals(other.created, created) &&
             const DeepCollectionEquality().equals(other.desc, desc) &&
             const DeepCollectionEquality().equals(other.vehicle, vehicle) &&
-            const DeepCollectionEquality().equals(other.money, money));
+            const DeepCollectionEquality().equals(other.money, money) &&
+            const DeepCollectionEquality().equals(other.from, from) &&
+            const DeepCollectionEquality().equals(other.to, to));
   }
 
   @JsonKey(ignore: true)
@@ -486,11 +542,12 @@ class _$_pending implements _pending {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(cid),
       const DeepCollectionEquality().hash(pid),
-      const DeepCollectionEquality().hash(serviceId),
       const DeepCollectionEquality().hash(created),
       const DeepCollectionEquality().hash(desc),
       const DeepCollectionEquality().hash(vehicle),
-      const DeepCollectionEquality().hash(money));
+      const DeepCollectionEquality().hash(money),
+      const DeepCollectionEquality().hash(from),
+      const DeepCollectionEquality().hash(to));
 
   @JsonKey(ignore: true)
   @override
@@ -504,62 +561,66 @@ class _$_pending implements _pending {
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
-            int money)
+            int money,
+            Location from,
+            Location to)
         pending,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)
+            DateTime moving,
+            Location from,
+            Location to)
         accepted,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
-            int money)
+            int money,
+            Location from,
+            Location to)
         aborted,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)
+            DateTime arrived,
+            Location from,
+            Location to)
         arrived,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)
+            DateTime started,
+            Location from,
+            Location to)
         started,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -567,61 +628,66 @@ class _$_pending implements _pending {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)
         finished,
   }) {
-    return pending(id, cid, pid, serviceId, created, desc, vehicle, money);
+    return pending(id, cid, pid, created, desc, vehicle, money, from, to);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         pending,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)?
+            DateTime moving,
+            Location from,
+            Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         aborted,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)?
+            DateTime arrived,
+            Location from,
+            Location to)?
         arrived,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)?
+            DateTime started,
+            Location from,
+            Location to)?
         started,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -629,62 +695,66 @@ class _$_pending implements _pending {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)?
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)?
         finished,
   }) {
-    return pending?.call(
-        id, cid, pid, serviceId, created, desc, vehicle, money);
+    return pending?.call(id, cid, pid, created, desc, vehicle, money, from, to);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         pending,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)?
+            DateTime moving,
+            Location from,
+            Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         aborted,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)?
+            DateTime arrived,
+            Location from,
+            Location to)?
         arrived,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)?
+            DateTime started,
+            Location from,
+            Location to)?
         started,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -692,12 +762,15 @@ class _$_pending implements _pending {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)?
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)?
         finished,
     required TResult orElse(),
   }) {
     if (pending != null) {
-      return pending(id, cid, pid, serviceId, created, desc, vehicle, money);
+      return pending(id, cid, pid, created, desc, vehicle, money, from, to);
     }
     return orElse();
   }
@@ -756,11 +829,12 @@ abstract class _pending implements RepairRecord {
       {required final String id,
       required final String cid,
       required final String pid,
-      required final String serviceId,
       required final DateTime created,
       required final String desc,
       required final String vehicle,
-      required final int money}) = _$_pending;
+      required final int money,
+      required final Location from,
+      required final Location to}) = _$_pending;
 
   factory _pending.fromJson(Map<String, dynamic> json) = _$_pending.fromJson;
 
@@ -771,8 +845,6 @@ abstract class _pending implements RepairRecord {
   @override
   String get pid;
   @override
-  String get serviceId;
-  @override
   DateTime get created;
   @override
   String get desc;
@@ -780,6 +852,10 @@ abstract class _pending implements RepairRecord {
   String get vehicle;
   @override
   int get money;
+  @override
+  Location get from;
+  @override
+  Location get to;
   @override
   @JsonKey(ignore: true)
   _$$_pendingCopyWith<_$_pending> get copyWith =>
@@ -795,12 +871,18 @@ abstract class _$$_acceptCopyWith<$Res> implements $RepairRecordCopyWith<$Res> {
       {String id,
       String cid,
       String pid,
-      String serviceId,
       DateTime created,
       String desc,
       String vehicle,
       int money,
-      DateTime moving});
+      DateTime moving,
+      Location from,
+      Location to});
+
+  @override
+  $LocationCopyWith<$Res> get from;
+  @override
+  $LocationCopyWith<$Res> get to;
 }
 
 /// @nodoc
@@ -817,12 +899,13 @@ class __$$_acceptCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
     Object? id = freezed,
     Object? cid = freezed,
     Object? pid = freezed,
-    Object? serviceId = freezed,
     Object? created = freezed,
     Object? desc = freezed,
     Object? vehicle = freezed,
     Object? money = freezed,
     Object? moving = freezed,
+    Object? from = freezed,
+    Object? to = freezed,
   }) {
     return _then(_$_accept(
       id: id == freezed
@@ -836,10 +919,6 @@ class __$$_acceptCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
       pid: pid == freezed
           ? _value.pid
           : pid // ignore: cast_nullable_to_non_nullable
-              as String,
-      serviceId: serviceId == freezed
-          ? _value.serviceId
-          : serviceId // ignore: cast_nullable_to_non_nullable
               as String,
       created: created == freezed
           ? _value.created
@@ -861,6 +940,14 @@ class __$$_acceptCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           ? _value.moving
           : moving // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      from: from == freezed
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
+              as Location,
+      to: to == freezed
+          ? _value.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as Location,
     ));
   }
 }
@@ -872,12 +959,13 @@ class _$_accept implements _accept {
       {required this.id,
       required this.cid,
       required this.pid,
-      required this.serviceId,
       required this.created,
       required this.desc,
       required this.vehicle,
       required this.money,
       required this.moving,
+      required this.from,
+      required this.to,
       final String? $type})
       : $type = $type ?? '2';
 
@@ -891,8 +979,6 @@ class _$_accept implements _accept {
   @override
   final String pid;
   @override
-  final String serviceId;
-  @override
   final DateTime created;
   @override
   final String desc;
@@ -902,13 +988,17 @@ class _$_accept implements _accept {
   final int money;
   @override
   final DateTime moving;
+  @override
+  final Location from;
+  @override
+  final Location to;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'RepairRecord.accepted(id: $id, cid: $cid, pid: $pid, serviceId: $serviceId, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving)';
+    return 'RepairRecord.accepted(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, from: $from, to: $to)';
   }
 
   @override
@@ -919,12 +1009,13 @@ class _$_accept implements _accept {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.cid, cid) &&
             const DeepCollectionEquality().equals(other.pid, pid) &&
-            const DeepCollectionEquality().equals(other.serviceId, serviceId) &&
             const DeepCollectionEquality().equals(other.created, created) &&
             const DeepCollectionEquality().equals(other.desc, desc) &&
             const DeepCollectionEquality().equals(other.vehicle, vehicle) &&
             const DeepCollectionEquality().equals(other.money, money) &&
-            const DeepCollectionEquality().equals(other.moving, moving));
+            const DeepCollectionEquality().equals(other.moving, moving) &&
+            const DeepCollectionEquality().equals(other.from, from) &&
+            const DeepCollectionEquality().equals(other.to, to));
   }
 
   @JsonKey(ignore: true)
@@ -934,12 +1025,13 @@ class _$_accept implements _accept {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(cid),
       const DeepCollectionEquality().hash(pid),
-      const DeepCollectionEquality().hash(serviceId),
       const DeepCollectionEquality().hash(created),
       const DeepCollectionEquality().hash(desc),
       const DeepCollectionEquality().hash(vehicle),
       const DeepCollectionEquality().hash(money),
-      const DeepCollectionEquality().hash(moving));
+      const DeepCollectionEquality().hash(moving),
+      const DeepCollectionEquality().hash(from),
+      const DeepCollectionEquality().hash(to));
 
   @JsonKey(ignore: true)
   @override
@@ -953,62 +1045,66 @@ class _$_accept implements _accept {
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
-            int money)
+            int money,
+            Location from,
+            Location to)
         pending,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)
+            DateTime moving,
+            Location from,
+            Location to)
         accepted,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
-            int money)
+            int money,
+            Location from,
+            Location to)
         aborted,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)
+            DateTime arrived,
+            Location from,
+            Location to)
         arrived,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)
+            DateTime started,
+            Location from,
+            Location to)
         started,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -1016,62 +1112,67 @@ class _$_accept implements _accept {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)
         finished,
   }) {
     return accepted(
-        id, cid, pid, serviceId, created, desc, vehicle, money, moving);
+        id, cid, pid, created, desc, vehicle, money, moving, from, to);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         pending,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)?
+            DateTime moving,
+            Location from,
+            Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         aborted,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)?
+            DateTime arrived,
+            Location from,
+            Location to)?
         arrived,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)?
+            DateTime started,
+            Location from,
+            Location to)?
         started,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -1079,62 +1180,67 @@ class _$_accept implements _accept {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)?
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)?
         finished,
   }) {
     return accepted?.call(
-        id, cid, pid, serviceId, created, desc, vehicle, money, moving);
+        id, cid, pid, created, desc, vehicle, money, moving, from, to);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         pending,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)?
+            DateTime moving,
+            Location from,
+            Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         aborted,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)?
+            DateTime arrived,
+            Location from,
+            Location to)?
         arrived,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)?
+            DateTime started,
+            Location from,
+            Location to)?
         started,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -1142,13 +1248,16 @@ class _$_accept implements _accept {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)?
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)?
         finished,
     required TResult orElse(),
   }) {
     if (accepted != null) {
       return accepted(
-          id, cid, pid, serviceId, created, desc, vehicle, money, moving);
+          id, cid, pid, created, desc, vehicle, money, moving, from, to);
     }
     return orElse();
   }
@@ -1207,12 +1316,13 @@ abstract class _accept implements RepairRecord {
       {required final String id,
       required final String cid,
       required final String pid,
-      required final String serviceId,
       required final DateTime created,
       required final String desc,
       required final String vehicle,
       required final int money,
-      required final DateTime moving}) = _$_accept;
+      required final DateTime moving,
+      required final Location from,
+      required final Location to}) = _$_accept;
 
   factory _accept.fromJson(Map<String, dynamic> json) = _$_accept.fromJson;
 
@@ -1223,8 +1333,6 @@ abstract class _accept implements RepairRecord {
   @override
   String get pid;
   @override
-  String get serviceId;
-  @override
   DateTime get created;
   @override
   String get desc;
@@ -1233,6 +1341,10 @@ abstract class _accept implements RepairRecord {
   @override
   int get money;
   DateTime get moving;
+  @override
+  Location get from;
+  @override
+  Location get to;
   @override
   @JsonKey(ignore: true)
   _$$_acceptCopyWith<_$_accept> get copyWith =>
@@ -1250,11 +1362,17 @@ abstract class _$$_abortedCopyWith<$Res>
       {String id,
       String cid,
       String pid,
-      String serviceId,
       DateTime created,
       String desc,
       String vehicle,
-      int money});
+      int money,
+      Location from,
+      Location to});
+
+  @override
+  $LocationCopyWith<$Res> get from;
+  @override
+  $LocationCopyWith<$Res> get to;
 }
 
 /// @nodoc
@@ -1271,11 +1389,12 @@ class __$$_abortedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
     Object? id = freezed,
     Object? cid = freezed,
     Object? pid = freezed,
-    Object? serviceId = freezed,
     Object? created = freezed,
     Object? desc = freezed,
     Object? vehicle = freezed,
     Object? money = freezed,
+    Object? from = freezed,
+    Object? to = freezed,
   }) {
     return _then(_$_aborted(
       id: id == freezed
@@ -1289,10 +1408,6 @@ class __$$_abortedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
       pid: pid == freezed
           ? _value.pid
           : pid // ignore: cast_nullable_to_non_nullable
-              as String,
-      serviceId: serviceId == freezed
-          ? _value.serviceId
-          : serviceId // ignore: cast_nullable_to_non_nullable
               as String,
       created: created == freezed
           ? _value.created
@@ -1310,6 +1425,14 @@ class __$$_abortedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           ? _value.money
           : money // ignore: cast_nullable_to_non_nullable
               as int,
+      from: from == freezed
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
+              as Location,
+      to: to == freezed
+          ? _value.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as Location,
     ));
   }
 }
@@ -1321,11 +1444,12 @@ class _$_aborted implements _aborted {
       {required this.id,
       required this.cid,
       required this.pid,
-      required this.serviceId,
       required this.created,
       required this.desc,
       required this.vehicle,
       required this.money,
+      required this.from,
+      required this.to,
       final String? $type})
       : $type = $type ?? '3';
 
@@ -1339,8 +1463,6 @@ class _$_aborted implements _aborted {
   @override
   final String pid;
   @override
-  final String serviceId;
-  @override
   final DateTime created;
   @override
   final String desc;
@@ -1348,13 +1470,17 @@ class _$_aborted implements _aborted {
   final String vehicle;
   @override
   final int money;
+  @override
+  final Location from;
+  @override
+  final Location to;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'RepairRecord.aborted(id: $id, cid: $cid, pid: $pid, serviceId: $serviceId, created: $created, desc: $desc, vehicle: $vehicle, money: $money)';
+    return 'RepairRecord.aborted(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, from: $from, to: $to)';
   }
 
   @override
@@ -1365,11 +1491,12 @@ class _$_aborted implements _aborted {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.cid, cid) &&
             const DeepCollectionEquality().equals(other.pid, pid) &&
-            const DeepCollectionEquality().equals(other.serviceId, serviceId) &&
             const DeepCollectionEquality().equals(other.created, created) &&
             const DeepCollectionEquality().equals(other.desc, desc) &&
             const DeepCollectionEquality().equals(other.vehicle, vehicle) &&
-            const DeepCollectionEquality().equals(other.money, money));
+            const DeepCollectionEquality().equals(other.money, money) &&
+            const DeepCollectionEquality().equals(other.from, from) &&
+            const DeepCollectionEquality().equals(other.to, to));
   }
 
   @JsonKey(ignore: true)
@@ -1379,11 +1506,12 @@ class _$_aborted implements _aborted {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(cid),
       const DeepCollectionEquality().hash(pid),
-      const DeepCollectionEquality().hash(serviceId),
       const DeepCollectionEquality().hash(created),
       const DeepCollectionEquality().hash(desc),
       const DeepCollectionEquality().hash(vehicle),
-      const DeepCollectionEquality().hash(money));
+      const DeepCollectionEquality().hash(money),
+      const DeepCollectionEquality().hash(from),
+      const DeepCollectionEquality().hash(to));
 
   @JsonKey(ignore: true)
   @override
@@ -1397,62 +1525,66 @@ class _$_aborted implements _aborted {
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
-            int money)
+            int money,
+            Location from,
+            Location to)
         pending,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)
+            DateTime moving,
+            Location from,
+            Location to)
         accepted,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
-            int money)
+            int money,
+            Location from,
+            Location to)
         aborted,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)
+            DateTime arrived,
+            Location from,
+            Location to)
         arrived,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)
+            DateTime started,
+            Location from,
+            Location to)
         started,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -1460,61 +1592,66 @@ class _$_aborted implements _aborted {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)
         finished,
   }) {
-    return aborted(id, cid, pid, serviceId, created, desc, vehicle, money);
+    return aborted(id, cid, pid, created, desc, vehicle, money, from, to);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         pending,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)?
+            DateTime moving,
+            Location from,
+            Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         aborted,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)?
+            DateTime arrived,
+            Location from,
+            Location to)?
         arrived,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)?
+            DateTime started,
+            Location from,
+            Location to)?
         started,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -1522,62 +1659,66 @@ class _$_aborted implements _aborted {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)?
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)?
         finished,
   }) {
-    return aborted?.call(
-        id, cid, pid, serviceId, created, desc, vehicle, money);
+    return aborted?.call(id, cid, pid, created, desc, vehicle, money, from, to);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         pending,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)?
+            DateTime moving,
+            Location from,
+            Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         aborted,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)?
+            DateTime arrived,
+            Location from,
+            Location to)?
         arrived,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)?
+            DateTime started,
+            Location from,
+            Location to)?
         started,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -1585,12 +1726,15 @@ class _$_aborted implements _aborted {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)?
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)?
         finished,
     required TResult orElse(),
   }) {
     if (aborted != null) {
-      return aborted(id, cid, pid, serviceId, created, desc, vehicle, money);
+      return aborted(id, cid, pid, created, desc, vehicle, money, from, to);
     }
     return orElse();
   }
@@ -1649,11 +1793,12 @@ abstract class _aborted implements RepairRecord {
       {required final String id,
       required final String cid,
       required final String pid,
-      required final String serviceId,
       required final DateTime created,
       required final String desc,
       required final String vehicle,
-      required final int money}) = _$_aborted;
+      required final int money,
+      required final Location from,
+      required final Location to}) = _$_aborted;
 
   factory _aborted.fromJson(Map<String, dynamic> json) = _$_aborted.fromJson;
 
@@ -1664,8 +1809,6 @@ abstract class _aborted implements RepairRecord {
   @override
   String get pid;
   @override
-  String get serviceId;
-  @override
   DateTime get created;
   @override
   String get desc;
@@ -1673,6 +1816,10 @@ abstract class _aborted implements RepairRecord {
   String get vehicle;
   @override
   int get money;
+  @override
+  Location get from;
+  @override
+  Location get to;
   @override
   @JsonKey(ignore: true)
   _$$_abortedCopyWith<_$_aborted> get copyWith =>
@@ -1690,13 +1837,19 @@ abstract class _$$_arrivedCopyWith<$Res>
       {String id,
       String cid,
       String pid,
-      String serviceId,
       DateTime created,
       String desc,
       String vehicle,
       int money,
       DateTime moving,
-      DateTime arrived});
+      DateTime arrived,
+      Location from,
+      Location to});
+
+  @override
+  $LocationCopyWith<$Res> get from;
+  @override
+  $LocationCopyWith<$Res> get to;
 }
 
 /// @nodoc
@@ -1713,13 +1866,14 @@ class __$$_arrivedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
     Object? id = freezed,
     Object? cid = freezed,
     Object? pid = freezed,
-    Object? serviceId = freezed,
     Object? created = freezed,
     Object? desc = freezed,
     Object? vehicle = freezed,
     Object? money = freezed,
     Object? moving = freezed,
     Object? arrived = freezed,
+    Object? from = freezed,
+    Object? to = freezed,
   }) {
     return _then(_$_arrived(
       id: id == freezed
@@ -1733,10 +1887,6 @@ class __$$_arrivedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
       pid: pid == freezed
           ? _value.pid
           : pid // ignore: cast_nullable_to_non_nullable
-              as String,
-      serviceId: serviceId == freezed
-          ? _value.serviceId
-          : serviceId // ignore: cast_nullable_to_non_nullable
               as String,
       created: created == freezed
           ? _value.created
@@ -1762,6 +1912,14 @@ class __$$_arrivedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           ? _value.arrived
           : arrived // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      from: from == freezed
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
+              as Location,
+      to: to == freezed
+          ? _value.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as Location,
     ));
   }
 }
@@ -1773,13 +1931,14 @@ class _$_arrived implements _arrived {
       {required this.id,
       required this.cid,
       required this.pid,
-      required this.serviceId,
       required this.created,
       required this.desc,
       required this.vehicle,
       required this.money,
       required this.moving,
       required this.arrived,
+      required this.from,
+      required this.to,
       final String? $type})
       : $type = $type ?? '4';
 
@@ -1793,8 +1952,6 @@ class _$_arrived implements _arrived {
   @override
   final String pid;
   @override
-  final String serviceId;
-  @override
   final DateTime created;
   @override
   final String desc;
@@ -1806,13 +1963,17 @@ class _$_arrived implements _arrived {
   final DateTime moving;
   @override
   final DateTime arrived;
+  @override
+  final Location from;
+  @override
+  final Location to;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'RepairRecord.arrived(id: $id, cid: $cid, pid: $pid, serviceId: $serviceId, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, arrived: $arrived)';
+    return 'RepairRecord.arrived(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, arrived: $arrived, from: $from, to: $to)';
   }
 
   @override
@@ -1823,13 +1984,14 @@ class _$_arrived implements _arrived {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.cid, cid) &&
             const DeepCollectionEquality().equals(other.pid, pid) &&
-            const DeepCollectionEquality().equals(other.serviceId, serviceId) &&
             const DeepCollectionEquality().equals(other.created, created) &&
             const DeepCollectionEquality().equals(other.desc, desc) &&
             const DeepCollectionEquality().equals(other.vehicle, vehicle) &&
             const DeepCollectionEquality().equals(other.money, money) &&
             const DeepCollectionEquality().equals(other.moving, moving) &&
-            const DeepCollectionEquality().equals(other.arrived, arrived));
+            const DeepCollectionEquality().equals(other.arrived, arrived) &&
+            const DeepCollectionEquality().equals(other.from, from) &&
+            const DeepCollectionEquality().equals(other.to, to));
   }
 
   @JsonKey(ignore: true)
@@ -1839,13 +2001,14 @@ class _$_arrived implements _arrived {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(cid),
       const DeepCollectionEquality().hash(pid),
-      const DeepCollectionEquality().hash(serviceId),
       const DeepCollectionEquality().hash(created),
       const DeepCollectionEquality().hash(desc),
       const DeepCollectionEquality().hash(vehicle),
       const DeepCollectionEquality().hash(money),
       const DeepCollectionEquality().hash(moving),
-      const DeepCollectionEquality().hash(arrived));
+      const DeepCollectionEquality().hash(arrived),
+      const DeepCollectionEquality().hash(from),
+      const DeepCollectionEquality().hash(to));
 
   @JsonKey(ignore: true)
   @override
@@ -1859,62 +2022,66 @@ class _$_arrived implements _arrived {
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
-            int money)
+            int money,
+            Location from,
+            Location to)
         pending,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)
+            DateTime moving,
+            Location from,
+            Location to)
         accepted,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
-            int money)
+            int money,
+            Location from,
+            Location to)
         aborted,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)
+            DateTime arrived,
+            Location from,
+            Location to)
         arrived,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)
+            DateTime started,
+            Location from,
+            Location to)
         started,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -1922,62 +2089,67 @@ class _$_arrived implements _arrived {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)
         finished,
   }) {
-    return arrived(id, cid, pid, serviceId, created, desc, vehicle, money,
-        moving, this.arrived);
+    return arrived(id, cid, pid, created, desc, vehicle, money, moving,
+        this.arrived, from, to);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         pending,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)?
+            DateTime moving,
+            Location from,
+            Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         aborted,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)?
+            DateTime arrived,
+            Location from,
+            Location to)?
         arrived,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)?
+            DateTime started,
+            Location from,
+            Location to)?
         started,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -1985,62 +2157,67 @@ class _$_arrived implements _arrived {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)?
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)?
         finished,
   }) {
-    return arrived?.call(id, cid, pid, serviceId, created, desc, vehicle, money,
-        moving, this.arrived);
+    return arrived?.call(id, cid, pid, created, desc, vehicle, money, moving,
+        this.arrived, from, to);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         pending,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)?
+            DateTime moving,
+            Location from,
+            Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         aborted,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)?
+            DateTime arrived,
+            Location from,
+            Location to)?
         arrived,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)?
+            DateTime started,
+            Location from,
+            Location to)?
         started,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -2048,13 +2225,16 @@ class _$_arrived implements _arrived {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)?
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)?
         finished,
     required TResult orElse(),
   }) {
     if (arrived != null) {
-      return arrived(id, cid, pid, serviceId, created, desc, vehicle, money,
-          moving, this.arrived);
+      return arrived(id, cid, pid, created, desc, vehicle, money, moving,
+          this.arrived, from, to);
     }
     return orElse();
   }
@@ -2113,13 +2293,14 @@ abstract class _arrived implements RepairRecord {
       {required final String id,
       required final String cid,
       required final String pid,
-      required final String serviceId,
       required final DateTime created,
       required final String desc,
       required final String vehicle,
       required final int money,
       required final DateTime moving,
-      required final DateTime arrived}) = _$_arrived;
+      required final DateTime arrived,
+      required final Location from,
+      required final Location to}) = _$_arrived;
 
   factory _arrived.fromJson(Map<String, dynamic> json) = _$_arrived.fromJson;
 
@@ -2130,8 +2311,6 @@ abstract class _arrived implements RepairRecord {
   @override
   String get pid;
   @override
-  String get serviceId;
-  @override
   DateTime get created;
   @override
   String get desc;
@@ -2141,6 +2320,10 @@ abstract class _arrived implements RepairRecord {
   int get money;
   DateTime get moving;
   DateTime get arrived;
+  @override
+  Location get from;
+  @override
+  Location get to;
   @override
   @JsonKey(ignore: true)
   _$$_arrivedCopyWith<_$_arrived> get copyWith =>
@@ -2158,13 +2341,19 @@ abstract class _$$_startedCopyWith<$Res>
       {String id,
       String cid,
       String pid,
-      String serviceId,
       DateTime created,
       String desc,
       String vehicle,
       int money,
       DateTime moving,
-      DateTime started});
+      DateTime started,
+      Location from,
+      Location to});
+
+  @override
+  $LocationCopyWith<$Res> get from;
+  @override
+  $LocationCopyWith<$Res> get to;
 }
 
 /// @nodoc
@@ -2181,13 +2370,14 @@ class __$$_startedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
     Object? id = freezed,
     Object? cid = freezed,
     Object? pid = freezed,
-    Object? serviceId = freezed,
     Object? created = freezed,
     Object? desc = freezed,
     Object? vehicle = freezed,
     Object? money = freezed,
     Object? moving = freezed,
     Object? started = freezed,
+    Object? from = freezed,
+    Object? to = freezed,
   }) {
     return _then(_$_started(
       id: id == freezed
@@ -2201,10 +2391,6 @@ class __$$_startedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
       pid: pid == freezed
           ? _value.pid
           : pid // ignore: cast_nullable_to_non_nullable
-              as String,
-      serviceId: serviceId == freezed
-          ? _value.serviceId
-          : serviceId // ignore: cast_nullable_to_non_nullable
               as String,
       created: created == freezed
           ? _value.created
@@ -2230,6 +2416,14 @@ class __$$_startedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           ? _value.started
           : started // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      from: from == freezed
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
+              as Location,
+      to: to == freezed
+          ? _value.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as Location,
     ));
   }
 }
@@ -2241,13 +2435,14 @@ class _$_started implements _started {
       {required this.id,
       required this.cid,
       required this.pid,
-      required this.serviceId,
       required this.created,
       required this.desc,
       required this.vehicle,
       required this.money,
       required this.moving,
       required this.started,
+      required this.from,
+      required this.to,
       final String? $type})
       : $type = $type ?? '5';
 
@@ -2261,8 +2456,6 @@ class _$_started implements _started {
   @override
   final String pid;
   @override
-  final String serviceId;
-  @override
   final DateTime created;
   @override
   final String desc;
@@ -2274,13 +2467,17 @@ class _$_started implements _started {
   final DateTime moving;
   @override
   final DateTime started;
+  @override
+  final Location from;
+  @override
+  final Location to;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'RepairRecord.started(id: $id, cid: $cid, pid: $pid, serviceId: $serviceId, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, started: $started)';
+    return 'RepairRecord.started(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, started: $started, from: $from, to: $to)';
   }
 
   @override
@@ -2291,13 +2488,14 @@ class _$_started implements _started {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.cid, cid) &&
             const DeepCollectionEquality().equals(other.pid, pid) &&
-            const DeepCollectionEquality().equals(other.serviceId, serviceId) &&
             const DeepCollectionEquality().equals(other.created, created) &&
             const DeepCollectionEquality().equals(other.desc, desc) &&
             const DeepCollectionEquality().equals(other.vehicle, vehicle) &&
             const DeepCollectionEquality().equals(other.money, money) &&
             const DeepCollectionEquality().equals(other.moving, moving) &&
-            const DeepCollectionEquality().equals(other.started, started));
+            const DeepCollectionEquality().equals(other.started, started) &&
+            const DeepCollectionEquality().equals(other.from, from) &&
+            const DeepCollectionEquality().equals(other.to, to));
   }
 
   @JsonKey(ignore: true)
@@ -2307,13 +2505,14 @@ class _$_started implements _started {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(cid),
       const DeepCollectionEquality().hash(pid),
-      const DeepCollectionEquality().hash(serviceId),
       const DeepCollectionEquality().hash(created),
       const DeepCollectionEquality().hash(desc),
       const DeepCollectionEquality().hash(vehicle),
       const DeepCollectionEquality().hash(money),
       const DeepCollectionEquality().hash(moving),
-      const DeepCollectionEquality().hash(started));
+      const DeepCollectionEquality().hash(started),
+      const DeepCollectionEquality().hash(from),
+      const DeepCollectionEquality().hash(to));
 
   @JsonKey(ignore: true)
   @override
@@ -2327,62 +2526,66 @@ class _$_started implements _started {
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
-            int money)
+            int money,
+            Location from,
+            Location to)
         pending,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)
+            DateTime moving,
+            Location from,
+            Location to)
         accepted,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
-            int money)
+            int money,
+            Location from,
+            Location to)
         aborted,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)
+            DateTime arrived,
+            Location from,
+            Location to)
         arrived,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)
+            DateTime started,
+            Location from,
+            Location to)
         started,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -2390,62 +2593,67 @@ class _$_started implements _started {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)
         finished,
   }) {
-    return started(id, cid, pid, serviceId, created, desc, vehicle, money,
-        moving, this.started);
+    return started(id, cid, pid, created, desc, vehicle, money, moving,
+        this.started, from, to);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         pending,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)?
+            DateTime moving,
+            Location from,
+            Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         aborted,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)?
+            DateTime arrived,
+            Location from,
+            Location to)?
         arrived,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)?
+            DateTime started,
+            Location from,
+            Location to)?
         started,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -2453,62 +2661,67 @@ class _$_started implements _started {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)?
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)?
         finished,
   }) {
-    return started?.call(id, cid, pid, serviceId, created, desc, vehicle, money,
-        moving, this.started);
+    return started?.call(id, cid, pid, created, desc, vehicle, money, moving,
+        this.started, from, to);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         pending,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)?
+            DateTime moving,
+            Location from,
+            Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         aborted,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)?
+            DateTime arrived,
+            Location from,
+            Location to)?
         arrived,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)?
+            DateTime started,
+            Location from,
+            Location to)?
         started,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -2516,13 +2729,16 @@ class _$_started implements _started {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)?
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)?
         finished,
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started(id, cid, pid, serviceId, created, desc, vehicle, money,
-          moving, this.started);
+      return started(id, cid, pid, created, desc, vehicle, money, moving,
+          this.started, from, to);
     }
     return orElse();
   }
@@ -2581,13 +2797,14 @@ abstract class _started implements RepairRecord {
       {required final String id,
       required final String cid,
       required final String pid,
-      required final String serviceId,
       required final DateTime created,
       required final String desc,
       required final String vehicle,
       required final int money,
       required final DateTime moving,
-      required final DateTime started}) = _$_started;
+      required final DateTime started,
+      required final Location from,
+      required final Location to}) = _$_started;
 
   factory _started.fromJson(Map<String, dynamic> json) = _$_started.fromJson;
 
@@ -2598,8 +2815,6 @@ abstract class _started implements RepairRecord {
   @override
   String get pid;
   @override
-  String get serviceId;
-  @override
   DateTime get created;
   @override
   String get desc;
@@ -2609,6 +2824,10 @@ abstract class _started implements RepairRecord {
   int get money;
   DateTime get moving;
   DateTime get started;
+  @override
+  Location get from;
+  @override
+  Location get to;
   @override
   @JsonKey(ignore: true)
   _$$_startedCopyWith<_$_started> get copyWith =>
@@ -2626,7 +2845,6 @@ abstract class _$$_finishedCopyWith<$Res>
       {String id,
       String cid,
       String pid,
-      String serviceId,
       DateTime created,
       String desc,
       String vehicle,
@@ -2634,7 +2852,16 @@ abstract class _$$_finishedCopyWith<$Res>
       DateTime moving,
       DateTime started,
       DateTime completed,
-      List<String> imgs});
+      List<String> imgs,
+      Feedback? feedback,
+      Location from,
+      Location to});
+
+  $FeedbackCopyWith<$Res>? get feedback;
+  @override
+  $LocationCopyWith<$Res> get from;
+  @override
+  $LocationCopyWith<$Res> get to;
 }
 
 /// @nodoc
@@ -2652,7 +2879,6 @@ class __$$_finishedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
     Object? id = freezed,
     Object? cid = freezed,
     Object? pid = freezed,
-    Object? serviceId = freezed,
     Object? created = freezed,
     Object? desc = freezed,
     Object? vehicle = freezed,
@@ -2661,6 +2887,9 @@ class __$$_finishedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
     Object? started = freezed,
     Object? completed = freezed,
     Object? imgs = freezed,
+    Object? feedback = freezed,
+    Object? from = freezed,
+    Object? to = freezed,
   }) {
     return _then(_$_finished(
       id: id == freezed
@@ -2674,10 +2903,6 @@ class __$$_finishedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
       pid: pid == freezed
           ? _value.pid
           : pid // ignore: cast_nullable_to_non_nullable
-              as String,
-      serviceId: serviceId == freezed
-          ? _value.serviceId
-          : serviceId // ignore: cast_nullable_to_non_nullable
               as String,
       created: created == freezed
           ? _value.created
@@ -2711,7 +2936,30 @@ class __$$_finishedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           ? _value._imgs
           : imgs // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      feedback: feedback == freezed
+          ? _value.feedback
+          : feedback // ignore: cast_nullable_to_non_nullable
+              as Feedback?,
+      from: from == freezed
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
+              as Location,
+      to: to == freezed
+          ? _value.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as Location,
     ));
+  }
+
+  @override
+  $FeedbackCopyWith<$Res>? get feedback {
+    if (_value.feedback == null) {
+      return null;
+    }
+
+    return $FeedbackCopyWith<$Res>(_value.feedback!, (value) {
+      return _then(_value.copyWith(feedback: value));
+    });
   }
 }
 
@@ -2722,7 +2970,6 @@ class _$_finished implements _finished {
       {required this.id,
       required this.cid,
       required this.pid,
-      required this.serviceId,
       required this.created,
       required this.desc,
       required this.vehicle,
@@ -2731,6 +2978,9 @@ class _$_finished implements _finished {
       required this.started,
       required this.completed,
       required final List<String> imgs,
+      this.feedback,
+      required this.from,
+      required this.to,
       final String? $type})
       : _imgs = imgs,
         $type = $type ?? '6';
@@ -2744,8 +2994,6 @@ class _$_finished implements _finished {
   final String cid;
   @override
   final String pid;
-  @override
-  final String serviceId;
   @override
   final DateTime created;
   @override
@@ -2767,12 +3015,19 @@ class _$_finished implements _finished {
     return EqualUnmodifiableListView(_imgs);
   }
 
+  @override
+  final Feedback? feedback;
+  @override
+  final Location from;
+  @override
+  final Location to;
+
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'RepairRecord.finished(id: $id, cid: $cid, pid: $pid, serviceId: $serviceId, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, started: $started, completed: $completed, imgs: $imgs)';
+    return 'RepairRecord.finished(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, started: $started, completed: $completed, imgs: $imgs, feedback: $feedback, from: $from, to: $to)';
   }
 
   @override
@@ -2783,7 +3038,6 @@ class _$_finished implements _finished {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.cid, cid) &&
             const DeepCollectionEquality().equals(other.pid, pid) &&
-            const DeepCollectionEquality().equals(other.serviceId, serviceId) &&
             const DeepCollectionEquality().equals(other.created, created) &&
             const DeepCollectionEquality().equals(other.desc, desc) &&
             const DeepCollectionEquality().equals(other.vehicle, vehicle) &&
@@ -2791,7 +3045,10 @@ class _$_finished implements _finished {
             const DeepCollectionEquality().equals(other.moving, moving) &&
             const DeepCollectionEquality().equals(other.started, started) &&
             const DeepCollectionEquality().equals(other.completed, completed) &&
-            const DeepCollectionEquality().equals(other._imgs, _imgs));
+            const DeepCollectionEquality().equals(other._imgs, _imgs) &&
+            const DeepCollectionEquality().equals(other.feedback, feedback) &&
+            const DeepCollectionEquality().equals(other.from, from) &&
+            const DeepCollectionEquality().equals(other.to, to));
   }
 
   @JsonKey(ignore: true)
@@ -2801,7 +3058,6 @@ class _$_finished implements _finished {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(cid),
       const DeepCollectionEquality().hash(pid),
-      const DeepCollectionEquality().hash(serviceId),
       const DeepCollectionEquality().hash(created),
       const DeepCollectionEquality().hash(desc),
       const DeepCollectionEquality().hash(vehicle),
@@ -2809,7 +3065,10 @@ class _$_finished implements _finished {
       const DeepCollectionEquality().hash(moving),
       const DeepCollectionEquality().hash(started),
       const DeepCollectionEquality().hash(completed),
-      const DeepCollectionEquality().hash(_imgs));
+      const DeepCollectionEquality().hash(_imgs),
+      const DeepCollectionEquality().hash(feedback),
+      const DeepCollectionEquality().hash(from),
+      const DeepCollectionEquality().hash(to));
 
   @JsonKey(ignore: true)
   @override
@@ -2823,62 +3082,66 @@ class _$_finished implements _finished {
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
-            int money)
+            int money,
+            Location from,
+            Location to)
         pending,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)
+            DateTime moving,
+            Location from,
+            Location to)
         accepted,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
-            int money)
+            int money,
+            Location from,
+            Location to)
         aborted,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)
+            DateTime arrived,
+            Location from,
+            Location to)
         arrived,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)
+            DateTime started,
+            Location from,
+            Location to)
         started,
     required TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -2886,62 +3149,67 @@ class _$_finished implements _finished {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)
         finished,
   }) {
-    return finished(id, cid, pid, serviceId, created, desc, vehicle, money,
-        moving, this.started, completed, imgs);
+    return finished(id, cid, pid, created, desc, vehicle, money, moving,
+        this.started, completed, imgs, feedback, from, to);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         pending,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)?
+            DateTime moving,
+            Location from,
+            Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         aborted,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)?
+            DateTime arrived,
+            Location from,
+            Location to)?
         arrived,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)?
+            DateTime started,
+            Location from,
+            Location to)?
         started,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -2949,62 +3217,67 @@ class _$_finished implements _finished {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)?
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)?
         finished,
   }) {
-    return finished?.call(id, cid, pid, serviceId, created, desc, vehicle,
-        money, moving, this.started, completed, imgs);
+    return finished?.call(id, cid, pid, created, desc, vehicle, money, moving,
+        this.started, completed, imgs, feedback, from, to);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         pending,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
-            DateTime moving)?
+            DateTime moving,
+            Location from,
+            Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, String serviceId,
-            DateTime created, String desc, String vehicle, int money)?
+    TResult Function(String id, String cid, String pid, DateTime created,
+            String desc, String vehicle, int money, Location from, Location to)?
         aborted,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime arrived)?
+            DateTime arrived,
+            Location from,
+            Location to)?
         arrived,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
             int money,
             DateTime moving,
-            DateTime started)?
+            DateTime started,
+            Location from,
+            Location to)?
         started,
     TResult Function(
             String id,
             String cid,
             String pid,
-            String serviceId,
             DateTime created,
             String desc,
             String vehicle,
@@ -3012,13 +3285,16 @@ class _$_finished implements _finished {
             DateTime moving,
             DateTime started,
             DateTime completed,
-            List<String> imgs)?
+            List<String> imgs,
+            Feedback? feedback,
+            Location from,
+            Location to)?
         finished,
     required TResult orElse(),
   }) {
     if (finished != null) {
-      return finished(id, cid, pid, serviceId, created, desc, vehicle, money,
-          moving, this.started, completed, imgs);
+      return finished(id, cid, pid, created, desc, vehicle, money, moving,
+          this.started, completed, imgs, feedback, from, to);
     }
     return orElse();
   }
@@ -3077,7 +3353,6 @@ abstract class _finished implements RepairRecord {
       {required final String id,
       required final String cid,
       required final String pid,
-      required final String serviceId,
       required final DateTime created,
       required final String desc,
       required final String vehicle,
@@ -3085,7 +3360,10 @@ abstract class _finished implements RepairRecord {
       required final DateTime moving,
       required final DateTime started,
       required final DateTime completed,
-      required final List<String> imgs}) = _$_finished;
+      required final List<String> imgs,
+      final Feedback? feedback,
+      required final Location from,
+      required final Location to}) = _$_finished;
 
   factory _finished.fromJson(Map<String, dynamic> json) = _$_finished.fromJson;
 
@@ -3095,8 +3373,6 @@ abstract class _finished implements RepairRecord {
   String get cid;
   @override
   String get pid;
-  @override
-  String get serviceId;
   @override
   DateTime get created;
   @override
@@ -3109,6 +3385,11 @@ abstract class _finished implements RepairRecord {
   DateTime get started;
   DateTime get completed;
   List<String> get imgs;
+  Feedback? get feedback;
+  @override
+  Location get from;
+  @override
+  Location get to;
   @override
   @JsonKey(ignore: true)
   _$$_finishedCopyWith<_$_finished> get copyWith =>
