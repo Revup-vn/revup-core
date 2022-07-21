@@ -9,8 +9,8 @@ import '../../../models/store_failure.dart';
 import '../../models/app_user.dart';
 import '../models/repair_category.dart';
 
-class CategoryRepository extends Store<RepairCategory> {
-  CategoryRepository(super.store, AppUser provider)
+class RepairCategoryRepository extends Store<RepairCategory> {
+  RepairCategoryRepository(super.store, AppUser provider)
       : id = provider.maybeMap(
           provider: (p) => p.uuid,
           orElse: () => throw const FormatException(),

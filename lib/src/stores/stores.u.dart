@@ -4,7 +4,7 @@ import 'infrastructure/infrastructure.dart';
 import 'users/users.dart';
 
 export 'users/users.dart'
-    hide UserRepository, PaymentAccountRepository, CategoryRepository
+    hide UserRepository, PaymentAccountRepository, RepairCategoryRepository
     hide RepairServiceRepository, RepairProductRepository;
 export 'repair_records/repair_records.dart' hide RepairRecordRepository;
 export 'models/models.dart';
@@ -20,7 +20,7 @@ IStore<RepairCategory> initRepairCategoryRepo(
   FirebaseFirestore store,
   AppUser provider,
 ) =>
-    CategoryRepository(store, provider);
+    RepairCategoryRepository(store, provider);
 
 IStore<RepairService> initRepairServiceRepo(
   FirebaseFirestore store,
