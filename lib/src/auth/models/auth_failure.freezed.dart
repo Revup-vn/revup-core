@@ -781,7 +781,7 @@ class __$$_verifyPhoneNumberCopyWithImpl<$Res>
     Object? appUser = freezed,
   }) {
     return _then(_$_verifyPhoneNumber(
-      appUser: appUser == freezed
+      appUser == freezed
           ? _value.appUser
           : appUser // ignore: cast_nullable_to_non_nullable
               as AppUser,
@@ -799,7 +799,7 @@ class __$$_verifyPhoneNumberCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_verifyPhoneNumber extends _verifyPhoneNumber {
-  const _$_verifyPhoneNumber({required this.appUser, final String? $type})
+  const _$_verifyPhoneNumber(this.appUser, {final String? $type})
       : $type = $type ?? 'needToVerifyPhoneNumber',
         super._();
 
@@ -929,7 +929,7 @@ class _$_verifyPhoneNumber extends _verifyPhoneNumber {
 }
 
 abstract class _verifyPhoneNumber extends AuthFailure {
-  const factory _verifyPhoneNumber({required final AppUser appUser}) =
+  const factory _verifyPhoneNumber(final AppUser appUser) =
       _$_verifyPhoneNumber;
   const _verifyPhoneNumber._() : super._();
 

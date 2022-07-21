@@ -61,7 +61,7 @@ class AuthenticatorRepository {
     } else {
       final appUser = await onSignUpSubmit(user);
       if (user.phoneNumber?.isEmpty ?? true) {
-        return left(AuthFailure.needToVerifyPhoneNumber(appUser: appUser));
+        return left(AuthFailure.needToVerifyPhoneNumber(appUser));
       }
       if (!(await _googleAuthenticatorService.isPhoneValid(appUser.phone) &&
           await _phoneAuthenticatorService.isEmailValid(appUser.email))) {

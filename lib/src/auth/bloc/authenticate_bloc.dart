@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-import '../../../core.dart';
+import '../../stores/users/users.dart';
 import '../infrastructure/infrastructure.dart';
 import '../models/models.dart';
 

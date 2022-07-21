@@ -84,7 +84,7 @@ _$_verifyPhoneNumber _$$_verifyPhoneNumberFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = _$_verifyPhoneNumber(
-          appUser: $checkedConvert(
+          $checkedConvert(
               'app_user', (v) => AppUser.fromJson(v as Map<String, dynamic>)),
           $type: $checkedConvert('runtimeType', (v) => v as String?),
         );
