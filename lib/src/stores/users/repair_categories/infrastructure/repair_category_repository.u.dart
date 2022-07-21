@@ -7,10 +7,10 @@ import '../../../../shared/const.dart';
 import '../../../infrastructure/infrastructure.dart';
 import '../../../models/store_failure.dart';
 import '../../models/app_user.dart';
-import '../models/category.dart';
+import '../models/repair_category.dart';
 
-class CategoryRepository extends Store<Category> {
-  CategoryRepository(super.store, AppUser provider)
+class RepairCategoryRepository extends Store<RepairCategory> {
+  RepairCategoryRepository(super.store, AppUser provider)
       : id = provider.maybeMap(
           provider: (p) => p.uuid,
           orElse: () => throw const FormatException(),
@@ -33,15 +33,15 @@ class CategoryRepository extends Store<Category> {
   DocumentReference<Map<String, dynamic>> doc(String id) => category(id);
 
   @override
-  Future<Either<StoreFailure, Category>> get(String id) =>
-      auxGet(id, Category.fromJson);
+  Future<Either<StoreFailure, RepairCategory>> get(String id) =>
+      auxGet(id, RepairCategory.fromJson);
 
   @override
-  String getId(Category data) => data.name;
+  String getId(RepairCategory data) => data.name;
 
   @override
   FutureOr<Either<StoreFailure, Unit>> update(
-    Category newData,
+    RepairCategory newData,
     IList<String> fields,
   ) =>
       auxUpdate(newData, fields, nil());

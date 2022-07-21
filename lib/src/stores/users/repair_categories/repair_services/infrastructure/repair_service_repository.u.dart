@@ -11,7 +11,7 @@ import '../../../users.dart';
 class RepairServiceRepository extends Store<RepairService> {
   RepairServiceRepository(
     super.store,
-    Category category,
+    RepairCategory category,
     AppUser user,
   )   : categoryName = category.name,
         uid = user.maybeMap(

@@ -4,13 +4,9 @@ import 'package:revup_core/src/stores/stores.u.dart';
 void main() {
   group('fromJson', () {
     test('parse successfully', () {
-      final type = RepairCategory(
-        created: DateTime.now().subtract(const Duration(days: 1)),
-        name: '',
-        updated: DateTime.now(),
-      );
+      const type = RepairProduct(desc: '', img: '', name: '', price: 123);
 
-      final res = RepairCategory.fromJson(type.toJson());
+      final res = RepairProduct.fromJson(type.toJson());
       expect(res.toJson(), type.toJson());
       expect(res, type);
     });

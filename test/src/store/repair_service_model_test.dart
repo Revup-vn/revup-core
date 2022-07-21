@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:revup_core/src/stores/users/categories/categories.dart';
+import 'package:revup_core/src/stores/stores.u.dart';
 
 void main() {
   group('fromJson', () {
