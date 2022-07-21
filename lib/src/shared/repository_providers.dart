@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../auth/auth.dart';
+import '../stores/repair_records/repair_records.dart';
 import '../stores/stores.dart';
 
 MultiRepositoryProvider coreRepositoryProviders({required Widget providers}) =>
@@ -18,6 +19,9 @@ MultiRepositoryProvider coreRepositoryProviders({required Widget providers}) =>
         RepositoryProvider<GoogleSignIn>(create: (_) => GoogleSignIn()),
         RepositoryProvider<IStore<AppUser>>(
           create: (context) => UserRepository(context.read()),
+        ),
+        RepositoryProvider<IStore<RepairRecord>>(
+          create: (context) => RepairRecordRepository(context.read()),
         ),
         RepositoryProvider<GoogleAuthenticator>(
           create: (context) => GoogleAuthenticator(
