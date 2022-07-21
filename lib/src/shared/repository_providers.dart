@@ -28,12 +28,14 @@ MultiRepositoryProvider coreRepositoryProviders({required Widget providers}) =>
           create: (context) => GoogleAuthenticator(
             context.read(),
             context.read(),
-            context.read(),
+            context.read<IStore<AppUser>>() as UserRepository,
           ),
         ),
         RepositoryProvider<PhoneAuthenticator>(
-          create: (context) =>
-              PhoneAuthenticator(context.read(), context.read()),
+          create: (context) => PhoneAuthenticator(
+            context.read(),
+            context.read<IStore<AppUser>>() as UserRepository,
+          ),
         ),
         RepositoryProvider<AuthenticatorRepository>(
           create: (context) =>
