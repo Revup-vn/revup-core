@@ -3,18 +3,22 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../../shared/const.dart';
-import '../../infrastructure/infrastructure.dart';
-import '../../stores.dart';
+import '../../../../shared/const.dart';
+import '../../../infrastructure/infrastructure.dart';
+import '../../../stores.u.dart';
 
 class PaymentAccountRepository extends Store<PaymentAccount> {
-  PaymentAccountRepository(super.store, this.uid);
+  PaymentAccountRepository(super.store, AppUser user)
+      : _uid = user.maybeMap(
+          consumer: (cons) => cons.uuid,
+          orElse: () => throw Exception(),
+        );
 
-  final String uid;
+  final String _uid;
 
   CollectionReference<Map<String, dynamic>> get accounts => store
       .collection(kPathUserCollection)
-      .doc(uid)
+      .doc(_uid)
       .collection(kPathPayAccountsDocument);
 
   DocumentReference<Map<String, dynamic>> account(String id) =>

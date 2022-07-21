@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:revup_core/src/stores/repair_records/models/location.dart';
 import 'package:revup_core/src/stores/repair_records/models/models.dart';
 
 void main() {
@@ -12,8 +13,9 @@ void main() {
         id: '',
         money: 12312312,
         pid: '',
-        serviceId: '',
         vehicle: '',
+        from: const Location(lat: 1, long: 1),
+        to: const Location(lat: 1, long: 1),
       );
 
       final res = RepairRecord.fromJson(type.toJson());

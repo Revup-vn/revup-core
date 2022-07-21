@@ -8,7 +8,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:revup_core/src/auth/infrastructure/infrastructure.dart';
 import 'package:revup_core/src/auth/models/auth_failure.dart';
 import 'package:revup_core/src/auth/utils/utils.dart';
-import 'package:revup_core/src/stores/stores.dart';
+import 'package:revup_core/src/stores/stores.u.dart';
 import '../../../helpers/app_user_mock.dart';
 import '../../../helpers/firebase_mock_class.dart';
 

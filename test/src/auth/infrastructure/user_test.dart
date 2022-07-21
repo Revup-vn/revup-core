@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:revup_core/src/stores/stores.dart';
+import 'package:revup_core/src/stores/stores.u.dart';
 import '../../../helpers/app_user_mock.dart';
 
 void main() {
