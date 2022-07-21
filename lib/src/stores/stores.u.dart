@@ -16,12 +16,13 @@ IStore<PaymentAccount> initPaymentAccountRepo(
 ) =>
     PaymentAccountRepository(store, uid);
 
-IStore<Category> initCategoryRepo(FirebaseFirestore store, AppUser provider) =>
+IStore<RepairCategory> initRepairCategoryRepo(
+        FirebaseFirestore store, AppUser provider) =>
     CategoryRepository(store, provider);
 
 IStore<RepairService> initRepairServiceRepo(
   FirebaseFirestore store,
   AppUser provider,
-  Category category,
+  RepairCategory category,
 ) =>
     RepairServiceRepository(store, category, provider);
