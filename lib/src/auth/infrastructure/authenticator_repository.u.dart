@@ -59,12 +59,10 @@ class AuthenticatorRepository {
         return left(const AuthFailure.invalidData('Cannot parse data'));
       }
     } else {
-      if (user.phoneNumber?.isEmpty ?? true) {
-        return left(const AuthFailure.needToVerifyPhoneNumber());
-      }
-
       final appUser = await onSignUpSubmit(user);
-
+      if (user.phoneNumber?.isEmpty ?? true) {
+        return left(AuthFailure.needToVerifyPhoneNumber(appUser: appUser));
+      }
       if (!(await _googleAuthenticatorService.isPhoneValid(appUser.phone) &&
           await _phoneAuthenticatorService.isEmailValid(appUser.email))) {
         return left(

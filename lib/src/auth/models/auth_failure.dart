@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../core.dart';
+
 part 'auth_failure.freezed.dart';
 part 'auth_failure.g.dart';
 
@@ -15,7 +17,9 @@ class AuthFailure with _$AuthFailure {
 
   const factory AuthFailure.invalidData([String? message]) = _invalidData;
 
-  const factory AuthFailure.needToVerifyPhoneNumber() = _verifyPhoneNumber;
+  const factory AuthFailure.needToVerifyPhoneNumber({
+    required AppUser appUser,
+  }) = _verifyPhoneNumber;
 
   const factory AuthFailure.unknown() = _unknown;
 
