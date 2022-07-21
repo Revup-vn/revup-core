@@ -1,8 +1,7 @@
-import 'package:dartz/dartz.dart';
+import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import 'dart:async';
+import 'package:dartz/dartz.dart';
 
 import '../../../shared/const.dart';
 import '../../infrastructure/infrastructure.dart';
