@@ -11,7 +11,7 @@ class PaymentAccountRepository extends Store<PaymentAccount> {
   PaymentAccountRepository(super.store, AppUser user)
       : _uid = user.maybeMap(
           consumer: (cons) => cons.uuid,
-          orElse: () => throw Exception(),
+          orElse: () => throw const FormatException(),
         );
 
   final String _uid;
