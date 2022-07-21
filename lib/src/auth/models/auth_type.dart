@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../stores/stores.dart';
+import '../../stores/stores.u.dart';
 
 part 'auth_type.freezed.dart';
 part 'auth_type.g.dart';

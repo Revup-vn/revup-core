@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:revup_core/src/auth/infrastructure/infrastructure.dart';
-import 'package:revup_core/src/stores/stores.dart';
+import 'package:revup_core/src/stores/users/users.dart';
 import '../../../helpers/app_user_mock.dart';
 import '../../../helpers/firebase_mock_class.dart';
 

@@ -7,7 +7,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../auth/auth.dart';
 import '../stores/repair_records/repair_records.dart';
-import '../stores/stores.dart';
+import '../stores/stores.u.dart';
+import '../stores/users/users.dart';
 
 MultiRepositoryProvider coreRepositoryProviders({required Widget providers}) =>
     MultiRepositoryProvider(

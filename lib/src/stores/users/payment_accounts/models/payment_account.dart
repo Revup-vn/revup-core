@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../models/serializable.dart';
+import '../../../models/serializable.dart';
 
 part 'payment_account.freezed.dart';
 part 'payment_account.g.dart';
