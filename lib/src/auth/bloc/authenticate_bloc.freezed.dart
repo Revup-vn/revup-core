@@ -689,7 +689,7 @@ mixin _$AuthenticateState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
-    required TResult Function() partial,
+    required TResult Function(AppUser appUser) partial,
     required TResult Function(String? message, AuthFailure? failure) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -698,7 +698,7 @@ mixin _$AuthenticateState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function()? partial,
+    TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -707,7 +707,7 @@ mixin _$AuthenticateState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function()? partial,
+    TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
     required TResult orElse(),
   }) =>
@@ -808,7 +808,7 @@ class _$_empty implements _empty {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
-    required TResult Function() partial,
+    required TResult Function(AppUser appUser) partial,
     required TResult Function(String? message, AuthFailure? failure) failure,
   }) {
     return empty();
@@ -820,7 +820,7 @@ class _$_empty implements _empty {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function()? partial,
+    TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
   }) {
     return empty?.call();
@@ -832,7 +832,7 @@ class _$_empty implements _empty {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function()? partial,
+    TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
     required TResult orElse(),
   }) {
@@ -944,7 +944,7 @@ class _$_loading implements _loading {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
-    required TResult Function() partial,
+    required TResult Function(AppUser appUser) partial,
     required TResult Function(String? message, AuthFailure? failure) failure,
   }) {
     return loading();
@@ -956,7 +956,7 @@ class _$_loading implements _loading {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function()? partial,
+    TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
   }) {
     return loading?.call();
@@ -968,7 +968,7 @@ class _$_loading implements _loading {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function()? partial,
+    TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
     required TResult orElse(),
   }) {
@@ -1115,7 +1115,7 @@ class _$_authenticated implements _authenticated {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
-    required TResult Function() partial,
+    required TResult Function(AppUser appUser) partial,
     required TResult Function(String? message, AuthFailure? failure) failure,
   }) {
     return authenticated(authType);
@@ -1127,7 +1127,7 @@ class _$_authenticated implements _authenticated {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function()? partial,
+    TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
   }) {
     return authenticated?.call(authType);
@@ -1139,7 +1139,7 @@ class _$_authenticated implements _authenticated {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function()? partial,
+    TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
     required TResult orElse(),
   }) {
@@ -1213,6 +1213,9 @@ abstract class _$$_partialCopyWith<$Res> {
   factory _$$_partialCopyWith(
           _$_partial value, $Res Function(_$_partial) then) =
       __$$_partialCopyWithImpl<$Res>;
+  $Res call({AppUser appUser});
+
+  $AppUserCopyWith<$Res> get appUser;
 }
 
 /// @nodoc
@@ -1224,33 +1227,64 @@ class __$$_partialCopyWithImpl<$Res>
 
   @override
   _$_partial get _value => super._value as _$_partial;
+
+  @override
+  $Res call({
+    Object? appUser = freezed,
+  }) {
+    return _then(_$_partial(
+      appUser: appUser == freezed
+          ? _value.appUser
+          : appUser // ignore: cast_nullable_to_non_nullable
+              as AppUser,
+    ));
+  }
+
+  @override
+  $AppUserCopyWith<$Res> get appUser {
+    return $AppUserCopyWith<$Res>(_value.appUser, (value) {
+      return _then(_value.copyWith(appUser: value));
+    });
+  }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_partial implements _partial {
-  const _$_partial({final String? $type}) : $type = $type ?? 'partial';
+  const _$_partial({required this.appUser, final String? $type})
+      : $type = $type ?? 'partial';
 
   factory _$_partial.fromJson(Map<String, dynamic> json) =>
       _$$_partialFromJson(json);
+
+  @override
+  final AppUser appUser;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'AuthenticateState.partial()';
+    return 'AuthenticateState.partial(appUser: $appUser)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_partial);
+        (other.runtimeType == runtimeType &&
+            other is _$_partial &&
+            const DeepCollectionEquality().equals(other.appUser, appUser));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(appUser));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_partialCopyWith<_$_partial> get copyWith =>
+      __$$_partialCopyWithImpl<_$_partial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1258,10 +1292,10 @@ class _$_partial implements _partial {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
-    required TResult Function() partial,
+    required TResult Function(AppUser appUser) partial,
     required TResult Function(String? message, AuthFailure? failure) failure,
   }) {
-    return partial();
+    return partial(appUser);
   }
 
   @override
@@ -1270,10 +1304,10 @@ class _$_partial implements _partial {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function()? partial,
+    TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
   }) {
-    return partial?.call();
+    return partial?.call(appUser);
   }
 
   @override
@@ -1282,12 +1316,12 @@ class _$_partial implements _partial {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function()? partial,
+    TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
     required TResult orElse(),
   }) {
     if (partial != null) {
-      return partial();
+      return partial(appUser);
     }
     return orElse();
   }
@@ -1339,9 +1373,14 @@ class _$_partial implements _partial {
 }
 
 abstract class _partial implements AuthenticateState {
-  const factory _partial() = _$_partial;
+  const factory _partial({required final AppUser appUser}) = _$_partial;
 
   factory _partial.fromJson(Map<String, dynamic> json) = _$_partial.fromJson;
+
+  AppUser get appUser;
+  @JsonKey(ignore: true)
+  _$$_partialCopyWith<_$_partial> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1440,7 +1479,7 @@ class _$_error implements _error {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
-    required TResult Function() partial,
+    required TResult Function(AppUser appUser) partial,
     required TResult Function(String? message, AuthFailure? failure) failure,
   }) {
     return failure(message, this.failure);
@@ -1452,7 +1491,7 @@ class _$_error implements _error {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function()? partial,
+    TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
   }) {
     return failure?.call(message, this.failure);
@@ -1464,7 +1503,7 @@ class _$_error implements _error {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
-    TResult Function()? partial,
+    TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
     required TResult orElse(),
   }) {

@@ -9,7 +9,9 @@ class AuthenticateState with _$AuthenticateState {
   const factory AuthenticateState.authenticated({required AuthType authType}) =
       _authenticated;
 
-  const factory AuthenticateState.partial() = _partial;
+  const factory AuthenticateState.partial({
+    required AppUser appUser,
+  }) = _partial;
 
   const factory AuthenticateState.failure({
     String? message,
