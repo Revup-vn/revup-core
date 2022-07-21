@@ -84,16 +84,19 @@ _$_verifyPhoneNumber _$$_verifyPhoneNumberFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = _$_verifyPhoneNumber(
+          $checkedConvert(
+              'app_user', (v) => AppUser.fromJson(v as Map<String, dynamic>)),
           $type: $checkedConvert('runtimeType', (v) => v as String?),
         );
         return val;
       },
-      fieldKeyMap: const {r'$type': 'runtimeType'},
+      fieldKeyMap: const {'appUser': 'app_user', r'$type': 'runtimeType'},
     );
 
 Map<String, dynamic> _$$_verifyPhoneNumberToJson(
         _$_verifyPhoneNumber instance) =>
     <String, dynamic>{
+      'app_user': instance.appUser.toJson(),
       'runtimeType': instance.$type,
     };
 

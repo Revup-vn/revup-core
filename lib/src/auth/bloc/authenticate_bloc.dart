@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
+import '../../stores/users/users.dart';
 import '../infrastructure/infrastructure.dart';
 import '../models/models.dart';
 
@@ -95,8 +96,12 @@ class AuthenticateBloc
       onSignUpSubmit: onCompleteSignUp,
     ))
         .fold(
-      (l) => l.maybeMap(
-        needToVerifyPhoneNumber: (_) => emit(const AuthenticateState.partial()),
+      (l) => l.maybeWhen(
+        needToVerifyPhoneNumber: (appUser) => emit(
+          AuthenticateState.partial(
+            appUser: appUser,
+          ),
+        ),
         orElse: () => emit(AuthenticateState.failure(failure: l)),
       ),
       (r) => emit(

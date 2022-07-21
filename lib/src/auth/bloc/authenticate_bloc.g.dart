@@ -65,15 +65,18 @@ _$_partial _$$_partialFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = _$_partial(
+          appUser: $checkedConvert(
+              'app_user', (v) => AppUser.fromJson(v as Map<String, dynamic>)),
           $type: $checkedConvert('runtimeType', (v) => v as String?),
         );
         return val;
       },
-      fieldKeyMap: const {r'$type': 'runtimeType'},
+      fieldKeyMap: const {'appUser': 'app_user', r'$type': 'runtimeType'},
     );
 
 Map<String, dynamic> _$$_partialToJson(_$_partial instance) =>
     <String, dynamic>{
+      'app_user': instance.appUser.toJson(),
       'runtimeType': instance.$type,
     };
 

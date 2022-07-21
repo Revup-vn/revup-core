@@ -148,7 +148,7 @@ void main() {
               onSignUpSubmit: any(named: 'onSignUpSubmit'),
             ),
           ).thenAnswer(
-            (_) => left(const AuthFailure.needToVerifyPhoneNumber()),
+            (_) => left(AuthFailure.needToVerifyPhoneNumber(mockUser)),
           );
         },
         act: (b) => b.add(
@@ -156,7 +156,7 @@ void main() {
         ),
         expect: () => [
           const AuthenticateState.loading(),
-          const AuthenticateState.partial(),
+          AuthenticateState.partial(appUser: mockUser),
         ],
       );
     });
