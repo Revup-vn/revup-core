@@ -114,10 +114,7 @@ class __$$_CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Category implements _Category {
   const _$_Category(
-      {required this.name, required this.created, required this.updated})
-      : assert(created.compareTo(updated) < 1, 'create must before updated'),
-        assert(updated.compareTo(DateTime.now()) <= 1,
-            'Cannot set date to future');
+      {required this.name, required this.created, required this.updated});
 
   factory _$_Category.fromJson(Map<String, dynamic> json) =>
       _$$_CategoryFromJson(json);

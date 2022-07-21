@@ -7,11 +7,6 @@ part 'category.g.dart';
 
 @freezed
 class Category extends Serializable<Category> with _$Category {
-  @Assert('created.compareTo(updated) < 1', 'create must before updated')
-  @Assert(
-    'updated.compareTo(DateTime.now()) <= 1 ',
-    'Cannot set date to future',
-  )
   const factory Category({
     required String name,
     required DateTime created,
