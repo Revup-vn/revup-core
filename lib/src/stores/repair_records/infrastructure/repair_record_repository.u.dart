@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../../shared/const.dart';
+import '../../utils/utils.dart';
 import '../../infrastructure/infrastructure.dart';
 import '../../models/store_failure.dart';
 import '../models/models.dart';
@@ -12,7 +12,7 @@ class RepairRecordRepository extends Store<RepairRecord> {
   RepairRecordRepository(super.store);
 
   CollectionReference<Map<String, dynamic>> get records =>
-      store.collection(kPathRecordCollection);
+      store.collection(kStorePathRecordCollection);
 
   DocumentReference<Map<String, dynamic>> record(String id) => records.doc(id);
 

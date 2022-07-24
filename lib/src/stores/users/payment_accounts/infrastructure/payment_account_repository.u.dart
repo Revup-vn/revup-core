@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../../../shared/const.dart';
+import '../../../utils/utils.dart';
 import '../../../infrastructure/infrastructure.dart';
 import '../../../stores.u.dart';
 
@@ -17,9 +17,9 @@ class PaymentAccountRepository extends Store<PaymentAccount> {
   final String _uid;
 
   CollectionReference<Map<String, dynamic>> get accounts => store
-      .collection(kPathUserCollection)
+      .collection(kStorePathUserCollection)
       .doc(_uid)
-      .collection(kPathPayAccountsDocument);
+      .collection(kStorePathPayAccountsDocument);
 
   DocumentReference<Map<String, dynamic>> account(String id) =>
       accounts.doc(id);

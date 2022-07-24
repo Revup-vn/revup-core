@@ -168,7 +168,6 @@ void main() {
           when(
             () => repository.phoneSignUpIn(
               onSignUpSubmit: any(named: 'onSignUpSubmit'),
-              onSignUpSuccess: any(named: 'onSignUpSuccess'),
               onSubmitOTP: any(named: 'onSubmitOTP'),
             ),
           ).thenReturn((a, b) => left(const AuthFailure.unknown()));
@@ -194,7 +193,6 @@ void main() {
           when(
             () => repository.phoneSignUpIn(
               onSignUpSubmit: any(named: 'onSignUpSubmit'),
-              onSignUpSuccess: any(named: 'onSignUpSuccess'),
               onSubmitOTP: any(named: 'onSubmitOTP'),
             ),
           ).thenReturn((a, b) => right(mockUser));

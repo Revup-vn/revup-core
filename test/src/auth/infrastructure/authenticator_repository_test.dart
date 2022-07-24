@@ -209,7 +209,6 @@ void main() {
       (await repo.phoneSignUpIn(
         onSubmitOTP: () => '111111',
         onSignUpSubmit: _mockParseCb,
-        onSignUpSuccess: () async => unit,
       )(mockUser.phone, () {}))
           .fold(
         (l) => expect(l, const AuthFailure.invalidData('blah')),
@@ -231,7 +230,6 @@ void main() {
       (await repo.phoneSignUpIn(
         onSubmitOTP: () => '111111',
         onSignUpSubmit: _mockParseCb,
-        onSignUpSuccess: () async => unit,
       )(mockUser.phone, () {}))
           .fold(
         (l) => expect(
@@ -255,7 +253,6 @@ void main() {
       (await repo.phoneSignUpIn(
         onSubmitOTP: () => '111111',
         onSignUpSubmit: _mockParseCb,
-        onSignUpSuccess: () async => unit,
       )(mockUser.phone, () {}))
           .fold(
         (l) => expect(l, const AuthFailure.unknown()),
@@ -277,7 +274,6 @@ void main() {
       (await repo.phoneSignUpIn(
         onSubmitOTP: () => '111111',
         onSignUpSubmit: _mockParseCb,
-        onSignUpSuccess: () async => unit,
       )(mockUser.phone, () {}))
           .fold(
         (l) => expect(l, const AuthFailure.server()),
@@ -297,7 +293,6 @@ void main() {
       (await repo.phoneSignUpIn(
         onSubmitOTP: () => '111111',
         onSignUpSubmit: _mockParseCb,
-        onSignUpSuccess: () async => unit,
         assignValueEffectsForTesting: mockUser,
       )(mockUser.phone, () {}))
           .fold(

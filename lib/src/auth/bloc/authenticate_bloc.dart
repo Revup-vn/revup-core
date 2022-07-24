@@ -44,7 +44,6 @@ class AuthenticateBloc
           (await _authRepos.phoneSignUpIn(
             onSubmitOTP: onSubmitOTP,
             onSignUpSubmit: onSignUpSubmit,
-            onSignUpSuccess: onSignUpSuccess,
           )(
             phoneNumber,
             onTimeOut,

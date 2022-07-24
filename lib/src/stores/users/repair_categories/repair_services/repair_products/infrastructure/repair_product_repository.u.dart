@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../../../../../shared/const.dart';
+import '../../../../../utils/utils.dart';
 import '../../../../../infrastructure/infrastructure.dart';
 import '../../../../../stores.u.dart';
 
@@ -25,13 +25,13 @@ class RepairProductRepository extends Store<RepairProduct> {
   final String uid;
 
   CollectionReference<Map<String, dynamic>> get products => store
-      .collection(kPathUserCollection)
+      .collection(kStorePathUserCollection)
       .doc(uid)
-      .collection(kPathProviderCategoryDocument)
+      .collection(kStorePathProviderCategoryDocument)
       .doc(categoryName)
-      .collection(kPathProviderCategoryServiceDocument)
+      .collection(kStorePathProviderCategoryServiceDocument)
       .doc(serviceName)
-      .collection(kPathPkPathProviderCategoryServiceProductDocument);
+      .collection(kStorePathProviderCategoryServiceProductDocument);
 
   DocumentReference<Map<String, dynamic>> product(String id) =>
       products.doc(id);

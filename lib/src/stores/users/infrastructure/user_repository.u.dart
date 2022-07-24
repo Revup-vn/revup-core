@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../../shared/const.dart';
+import '../../utils/utils.dart';
 import '../../infrastructure/infrastructure.dart';
 import '../../models/store_failure.dart';
 import '../models/app_user.dart';
@@ -12,7 +12,7 @@ class UserRepository extends Store<AppUser> {
   UserRepository(super.store);
 
   CollectionReference<Map<String, dynamic>> get users =>
-      store.collection(kPathUserCollection);
+      store.collection(kStorePathUserCollection);
 
   DocumentReference<Map<String, dynamic>> user(String id) => users.doc(id);
 

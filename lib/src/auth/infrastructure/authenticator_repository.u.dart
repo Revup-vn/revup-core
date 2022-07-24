@@ -87,7 +87,6 @@ class AuthenticatorRepository {
       phoneSignUpIn({
     required OTPGetter onSubmitOTP,
     required OnCompleteSignUp onSignUpSubmit,
-    required Function0<Future<Unit>> onSignUpSuccess,
     @visibleForTesting AppUser? assignValueEffectsForTesting,
   }) =>
           (phoneNumber, onTimeOut) async {
@@ -109,10 +108,6 @@ class AuthenticatorRepository {
                     await _phoneAuthenticatorService.getUserDocument(user.uid),
                     onSignUpSubmit,
                     user,
-                  );
-                  await (await tmp)?.fold<FutureOr<Unit>>(
-                    (l) async => unit,
-                    (r) async => onSignUpSuccess(),
                   );
                 },
                 onTimeout: onTimeOut,
