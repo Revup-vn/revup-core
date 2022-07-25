@@ -843,7 +843,7 @@ AuthenticateState _$AuthenticateStateFromJson(Map<String, dynamic> json) {
 mixin _$AuthenticateState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() empty,
+    required TResult Function(bool isFirstTime) empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function(AppUser appUser) partial,
@@ -852,7 +852,7 @@ mixin _$AuthenticateState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -861,7 +861,7 @@ mixin _$AuthenticateState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -921,6 +921,7 @@ class _$AuthenticateStateCopyWithImpl<$Res>
 abstract class _$$_emptyCopyWith<$Res> {
   factory _$$_emptyCopyWith(_$_empty value, $Res Function(_$_empty) then) =
       __$$_emptyCopyWithImpl<$Res>;
+  $Res call({bool isFirstTime});
 }
 
 /// @nodoc
@@ -931,62 +932,87 @@ class __$$_emptyCopyWithImpl<$Res> extends _$AuthenticateStateCopyWithImpl<$Res>
 
   @override
   _$_empty get _value => super._value as _$_empty;
+
+  @override
+  $Res call({
+    Object? isFirstTime = freezed,
+  }) {
+    return _then(_$_empty(
+      isFirstTime: isFirstTime == freezed
+          ? _value.isFirstTime
+          : isFirstTime // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_empty implements _empty {
-  const _$_empty({final String? $type}) : $type = $type ?? 'empty';
+  const _$_empty({required this.isFirstTime, final String? $type})
+      : $type = $type ?? 'empty';
 
   factory _$_empty.fromJson(Map<String, dynamic> json) =>
       _$$_emptyFromJson(json);
+
+  @override
+  final bool isFirstTime;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'AuthenticateState.empty()';
+    return 'AuthenticateState.empty(isFirstTime: $isFirstTime)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_empty);
+        (other.runtimeType == runtimeType &&
+            other is _$_empty &&
+            const DeepCollectionEquality()
+                .equals(other.isFirstTime, isFirstTime));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(isFirstTime));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_emptyCopyWith<_$_empty> get copyWith =>
+      __$$_emptyCopyWithImpl<_$_empty>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() empty,
+    required TResult Function(bool isFirstTime) empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function(AppUser appUser) partial,
     required TResult Function(String? message, AuthFailure? failure) failure,
   }) {
-    return empty();
+    return empty(isFirstTime);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
   }) {
-    return empty?.call();
+    return empty?.call(isFirstTime);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -994,7 +1020,7 @@ class _$_empty implements _empty {
     required TResult orElse(),
   }) {
     if (empty != null) {
-      return empty();
+      return empty(isFirstTime);
     }
     return orElse();
   }
@@ -1046,9 +1072,14 @@ class _$_empty implements _empty {
 }
 
 abstract class _empty implements AuthenticateState {
-  const factory _empty() = _$_empty;
+  const factory _empty({required final bool isFirstTime}) = _$_empty;
 
   factory _empty.fromJson(Map<String, dynamic> json) = _$_empty.fromJson;
+
+  bool get isFirstTime;
+  @JsonKey(ignore: true)
+  _$$_emptyCopyWith<_$_empty> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1098,7 +1129,7 @@ class _$_loading implements _loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() empty,
+    required TResult Function(bool isFirstTime) empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function(AppUser appUser) partial,
@@ -1110,7 +1141,7 @@ class _$_loading implements _loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -1122,7 +1153,7 @@ class _$_loading implements _loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -1269,7 +1300,7 @@ class _$_authenticated implements _authenticated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() empty,
+    required TResult Function(bool isFirstTime) empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function(AppUser appUser) partial,
@@ -1281,7 +1312,7 @@ class _$_authenticated implements _authenticated {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -1293,7 +1324,7 @@ class _$_authenticated implements _authenticated {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -1446,7 +1477,7 @@ class _$_partial implements _partial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() empty,
+    required TResult Function(bool isFirstTime) empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function(AppUser appUser) partial,
@@ -1458,7 +1489,7 @@ class _$_partial implements _partial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -1470,7 +1501,7 @@ class _$_partial implements _partial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -1633,7 +1664,7 @@ class _$_error implements _error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() empty,
+    required TResult Function(bool isFirstTime) empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function(AppUser appUser) partial,
@@ -1645,7 +1676,7 @@ class _$_error implements _error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -1657,7 +1688,7 @@ class _$_error implements _error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
