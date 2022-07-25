@@ -13,14 +13,15 @@ part 'storage_bloc.u.freezed.dart';
 
 class StorageBloc extends Bloc<StorageEvent, StorageState> {
   StorageBloc(this._sr) : super(const StorageState.initial()) {
-    on<StorageEvent>((event, emit) {
-      event.when(
-        upload: (stgFile) => _auxUpload(stgFile).fold(
+    on<StorageEvent>((event, emit) async {
+      await event.when(
+        upload: (stgFile) async => _auxUpload(stgFile).fold(
           (l) => emit(StorageState.error(failure: l)),
           (r) => _mapStreamToState(emit, r),
         ),
-        uploadMany: (files) => files.forEach(
-          (file) => _auxUpload(file).fold(
+        uploadMany: (files) async => Future.forEach<StorageFile>(
+          files.toIterable(),
+          (file) async => _auxUpload(file).fold(
             (l) => emit(StorageState.error(failure: l)),
             (r) => _mapStreamToState(emit, r),
           ),
@@ -56,7 +57,16 @@ class StorageBloc extends Bloc<StorageEvent, StorageState> {
           emit(const StorageState.error(failure: StorageFailure.cloud()));
           break;
         case TaskState.success:
-          emit(const StorageState.success());
+          snapshot.ref
+              .getDownloadURL()
+              .then((value) => emit(StorageState.success(value)))
+              .onError(
+                (_, __) => emit(
+                  const StorageState.error(
+                    failure: StorageFailure.upload(),
+                  ),
+                ),
+              );
           break;
       }
     });
