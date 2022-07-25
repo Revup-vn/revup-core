@@ -18,41 +18,44 @@ class PhoneAuthenticator extends Authenticator {
     required OTPGetter getUserInput,
     required SignInUpCallBack onSignIn,
     VoidCallback? onTimeout,
-  }) async =>
-      _auth.verifyPhoneNumber(
-        phoneNumber: phoneNumber,
-        verificationCompleted: (authCredentials) async {
-          if (authCredentials.smsCode != null) {
-            try {
-              await _auth.currentUser!
-                  .linkWithCredential(authCredentials)
-                  .then(onSignIn);
-            } on FirebaseAuthException catch (e) {
-              if (e.code == 'provider-already-linked') {
-                await _auth
-                    .signInWithCredential(authCredentials)
-                    .then(onSignIn);
-              } else {
-                rethrow;
-              }
+  }) async {
+    final loginSuccess = Completer<UserCredential>();
+    await _auth.verifyPhoneNumber(
+      phoneNumber: phoneNumber,
+      verificationCompleted: (authCredentials) async {
+        if (authCredentials.smsCode != null) {
+          try {
+            loginSuccess.complete(
+              await _auth.currentUser!.linkWithCredential(authCredentials),
+            );
+          } on FirebaseAuthException catch (e) {
+            if (e.code == 'provider-already-linked') {
+              loginSuccess
+                  .complete(await _auth.signInWithCredential(authCredentials));
+            } else {
+              rethrow;
             }
           }
-        },
-        verificationFailed: (e) {
-          if (e.code == 'invalid-phone-number') {
-            throw ValidateException();
-          }
-        },
-        codeSent: (verificationId, resentToken) async {
-          final sms = await getUserInput();
-          final credential = PhoneAuthProvider.credential(
-            verificationId: verificationId,
-            smsCode: sms,
-          );
-          await _auth.signInWithCredential(credential).then(onSignIn);
-        },
-        codeAutoRetrievalTimeout: (_) => onTimeout?.call(),
-      );
+        }
+      },
+      verificationFailed: (e) {
+        if (e.code == 'invalid-phone-number') {
+          throw ValidateException();
+        }
+      },
+      codeSent: (verificationId, resentToken) async {
+        final sms = await getUserInput();
+        final credential = PhoneAuthProvider.credential(
+          verificationId: verificationId,
+          smsCode: sms,
+        );
+        await _auth.signInWithCredential(credential).then(onSignIn);
+      },
+      codeAutoRetrievalTimeout: (_) => onTimeout?.call(),
+    );
+    await onSignIn(await loginSuccess.future);
+    return;
+  }
 
   @override
   Future<bool> signOut() async {
