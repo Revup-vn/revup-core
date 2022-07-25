@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../../utils/utils.dart';
 import '../../../infrastructure/infrastructure.dart';
 import '../../../models/store_failure.dart';
+import '../../../utils/utils.dart';
 import '../../models/app_user.dart';
 import '../models/repair_category.dart';
 

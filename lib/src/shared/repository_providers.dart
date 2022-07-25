@@ -2,10 +2,12 @@ import 'package:flutter/widgets.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../auth/auth.dart';
+import '../storages/storages.dart';
 import '../stores/repair_records/repair_records.dart';
 import '../stores/stores.u.dart';
 import '../stores/users/users.dart';
@@ -16,6 +18,9 @@ MultiRepositoryProvider coreRepositoryProviders({required Widget providers}) =>
         RepositoryProvider<FirebaseAuth>(create: (_) => FirebaseAuth.instance),
         RepositoryProvider<FirebaseFirestore>(
           create: (_) => FirebaseFirestore.instance,
+        ),
+        RepositoryProvider<FirebaseStorage>(
+          create: (_) => FirebaseStorage.instance,
         ),
         RepositoryProvider<GoogleSignIn>(create: (_) => GoogleSignIn()),
         RepositoryProvider<IStore<AppUser>>(
@@ -40,6 +45,12 @@ MultiRepositoryProvider coreRepositoryProviders({required Widget providers}) =>
         RepositoryProvider<AuthenticatorRepository>(
           create: (context) =>
               AuthenticatorRepository(context.read(), context.read()),
+        ),
+        RepositoryProvider<StorageService<TaskSnapshot>>(
+          create: (context) => CloudStorage(context.read()),
+        ),
+        RepositoryProvider<StorageRepository>(
+          create: (context) => StorageRepository(context.read()),
         ),
       ],
       child: providers,

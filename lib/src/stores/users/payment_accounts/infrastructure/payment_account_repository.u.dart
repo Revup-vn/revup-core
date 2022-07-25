@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../../utils/utils.dart';
 import '../../../infrastructure/infrastructure.dart';
 import '../../../stores.u.dart';
+import '../../../utils/utils.dart';
 
 class PaymentAccountRepository extends Store<PaymentAccount> {
   PaymentAccountRepository(super.store, AppUser user)
