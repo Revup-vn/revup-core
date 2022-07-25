@@ -66,7 +66,9 @@ class AuthenticatorRepository {
       if (!(await _googleAuthenticatorService.isPhoneValid(appUser.phone) &&
           await _phoneAuthenticatorService.isEmailValid(appUser.email))) {
         return left(
-          const AuthFailure.invalidData('Phone or number is already existed'),
+          const AuthFailure.invalidData(
+            'Phone number or email is already existed',
+          ),
         );
       }
 
@@ -87,10 +89,17 @@ class AuthenticatorRepository {
       phoneSignUpIn({
     required OTPGetter onSubmitOTP,
     required OnCompleteSignUp onSignUpSubmit,
-    required Function0<Future<Unit>> onSignUpSuccess,
     @visibleForTesting AppUser? assignValueEffectsForTesting,
   }) =>
           (phoneNumber, onTimeOut) async {
+            if (await _phoneAuthenticatorService.isPhoneValid(phoneNumber)) {
+              return left(
+                const AuthFailure.invalidData(
+                  'Phone number or email is already existed',
+                ),
+              );
+            }
+
             FutureOr<Either<AuthFailure, AppUser>>? tmp;
             late FutureOr<Either<AuthFailure, AppUser>> res;
 
@@ -109,10 +118,6 @@ class AuthenticatorRepository {
                     await _phoneAuthenticatorService.getUserDocument(user.uid),
                     onSignUpSubmit,
                     user,
-                  );
-                  await (await tmp)?.fold<FutureOr<Unit>>(
-                    (l) async => unit,
-                    (r) async => onSignUpSuccess(),
                   );
                 },
                 onTimeout: onTimeOut,

@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../../../shared/const.dart';
 import '../../../infrastructure/infrastructure.dart';
 import '../../../models/store_failure.dart';
+import '../../../utils/utils.dart';
 import '../../models/app_user.dart';
 import '../models/repair_category.dart';
 
@@ -19,9 +19,9 @@ class RepairCategoryRepository extends Store<RepairCategory> {
   final String id;
 
   CollectionReference<Map<String, dynamic>> get categories => store
-      .collection(kPathUserCollection)
+      .collection(kStorePathUserCollection)
       .doc(id)
-      .collection(kPathProviderCategoryDocument);
+      .collection(kStorePathProviderCategoryDocument);
 
   DocumentReference<Map<String, dynamic>> category(String id) =>
       categories.doc(id);
