@@ -283,6 +283,7 @@ void main() {
           onTimeout: any(named: 'onTimeout'),
         ),
       ).thenAnswer((_) async => throw Exception());
+      when(() => phone.isPhoneValid(any())).thenAnswer((_) async => true);
 
       (await repo.phoneSignUpIn(
         onSubmitOTP: () => '111111',
@@ -304,6 +305,7 @@ void main() {
           onTimeout: any(named: 'onTimeout'),
         ),
       ).thenAnswer((_) async => unit);
+      when(() => phone.isPhoneValid(any())).thenAnswer((_) async => true);
 
       (await repo.phoneSignUpIn(
         onSubmitOTP: () => '111111',
@@ -323,6 +325,7 @@ void main() {
           onTimeout: any(named: 'onTimeout'),
         ),
       ).thenAnswer((_) async => unit);
+      when(() => phone.isPhoneValid(any())).thenAnswer((_) async => true);
 
       (await repo.phoneSignUpIn(
         onSubmitOTP: () => '111111',

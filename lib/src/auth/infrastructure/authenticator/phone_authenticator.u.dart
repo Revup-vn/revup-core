@@ -49,7 +49,7 @@ class PhoneAuthenticator extends Authenticator {
           verificationId: verificationId,
           smsCode: sms,
         );
-        await _auth.signInWithCredential(credential).then(onSignIn);
+        loginSuccess.complete(await _auth.signInWithCredential(credential));
       },
       codeAutoRetrievalTimeout: (_) => onTimeout?.call(),
     );

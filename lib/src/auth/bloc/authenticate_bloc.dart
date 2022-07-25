@@ -19,7 +19,9 @@ typedef PhoneGetter = Function0<FutureOr<String>>;
 class AuthenticateBloc
     extends HydratedBloc<AuthenticateEvent, AuthenticateState> {
   AuthenticateBloc(this._authRepos)
-      : super(const AuthenticateState.empty(isFirstTime: true)) {
+      : super(
+          const AuthenticateState.empty(isFirstTime: true),
+        ) {
     on<AuthenticateEvent>(_onEvent);
   }
 

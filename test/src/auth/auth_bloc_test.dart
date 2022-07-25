@@ -30,7 +30,7 @@ void main() {
       mockHydratedStorage(() {
         expect(
           AuthenticateBloc(repository).state,
-          const AuthenticateState.empty(),
+          const AuthenticateState.empty(isFirstTime: true),
         );
       });
     });
@@ -84,7 +84,7 @@ void main() {
             b.add(AuthenticateEvent.signOut(authType: mockPhoneAuthType)),
         expect: () => [
           const AuthenticateState.loading(),
-          const AuthenticateState.empty(),
+          const AuthenticateState.empty(isFirstTime: true),
         ],
       );
       blocTest<AuthenticateBloc, AuthenticateState>(
@@ -96,7 +96,20 @@ void main() {
         act: (b) => b.add(AuthenticateEvent.signOut(authType: mockGGAuthType)),
         expect: () => [
           const AuthenticateState.loading(),
-          const AuthenticateState.empty(),
+          const AuthenticateState.empty(isFirstTime: true),
+        ],
+      );
+    });
+
+    group('reset', () {
+      blocTest<AuthenticateBloc, AuthenticateState>(
+        'emit [empty] when event reset is added',
+        build: () => bloc,
+        act: (b) => b.add(
+          const AuthenticateEvent.reset(),
+        ),
+        expect: () => [
+          const AuthenticateState.empty(isFirstTime: false),
         ],
       );
     });
