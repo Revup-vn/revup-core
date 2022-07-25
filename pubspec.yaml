@@ -1,6 +1,6 @@
 name: revup_core
 description: Core package for revup app
-version: 1.8.1+1
+version: 1.9.0-dev
 publish_to: none
 
 environment:
@@ -12,6 +12,7 @@ dependencies:
   dartz: ^0.10.1
   firebase_auth: ^3.4.1
   firebase_core: ^1.18.0
+  firebase_storage: ^10.3.3
   flash: ^2.0.3+2
   flutter:
     sdk: flutter
