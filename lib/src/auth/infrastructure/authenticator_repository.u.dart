@@ -92,7 +92,7 @@ class AuthenticatorRepository {
     @visibleForTesting AppUser? assignValueEffectsForTesting,
   }) =>
           (phoneNumber, onTimeOut) async {
-            if (await _phoneAuthenticatorService.isPhoneValid(phoneNumber)) {
+            if (!(await _phoneAuthenticatorService.isPhoneValid(phoneNumber))) {
               return left(
                 const AuthFailure.invalidData(
                   'Phone number or email is already existed',

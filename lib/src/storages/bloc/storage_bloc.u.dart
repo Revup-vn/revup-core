@@ -27,6 +27,7 @@ class StorageBloc extends Bloc<StorageEvent, StorageState> {
           ),
         ),
         delete: _sr.delete,
+        reset: () async => emit(const StorageState.initial()),
       );
     });
   }

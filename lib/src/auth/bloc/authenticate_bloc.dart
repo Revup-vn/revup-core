@@ -33,6 +33,7 @@ class AuthenticateBloc
           OnCompleteSignUp onCompleteSignUp,
         ) =>
             _onLoginWithGoogle(onCompleteSignUp, emit),
+        reset: () => emit(const AuthenticateState.empty()),
         loginWithPhone: (
           String phoneNumber,
           OTPGetter onSubmitOTP,

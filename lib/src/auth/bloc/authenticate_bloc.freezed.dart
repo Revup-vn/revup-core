@@ -28,6 +28,7 @@ mixin _$AuthenticateEvent {
             VoidCallback? onTimeOut)
         loginWithPhone,
     required TResult Function(AuthType authType, String? errorMessage) signOut,
+    required TResult Function() reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +42,7 @@ mixin _$AuthenticateEvent {
             VoidCallback? onTimeOut)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +56,7 @@ mixin _$AuthenticateEvent {
             VoidCallback? onTimeOut)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +65,7 @@ mixin _$AuthenticateEvent {
     required TResult Function(_loginWithGoogle value) loginWithGoogle,
     required TResult Function(_loginWithPhone value) loginWithPhone,
     required TResult Function(_signedOut value) signOut,
+    required TResult Function(_reset value) reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +73,7 @@ mixin _$AuthenticateEvent {
     TResult Function(_loginWithGoogle value)? loginWithGoogle,
     TResult Function(_loginWithPhone value)? loginWithPhone,
     TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -76,6 +81,7 @@ mixin _$AuthenticateEvent {
     TResult Function(_loginWithGoogle value)? loginWithGoogle,
     TResult Function(_loginWithPhone value)? loginWithPhone,
     TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -173,6 +179,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
             VoidCallback? onTimeOut)
         loginWithPhone,
     required TResult Function(AuthType authType, String? errorMessage) signOut,
+    required TResult Function() reset,
   }) {
     return loginWithGoogle(onCompleteSignUp);
   }
@@ -189,6 +196,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
             VoidCallback? onTimeOut)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
   }) {
     return loginWithGoogle?.call(onCompleteSignUp);
   }
@@ -205,6 +213,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
             VoidCallback? onTimeOut)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (loginWithGoogle != null) {
@@ -219,6 +228,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
     required TResult Function(_loginWithGoogle value) loginWithGoogle,
     required TResult Function(_loginWithPhone value) loginWithPhone,
     required TResult Function(_signedOut value) signOut,
+    required TResult Function(_reset value) reset,
   }) {
     return loginWithGoogle(this);
   }
@@ -229,6 +239,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
     TResult Function(_loginWithGoogle value)? loginWithGoogle,
     TResult Function(_loginWithPhone value)? loginWithPhone,
     TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
   }) {
     return loginWithGoogle?.call(this);
   }
@@ -239,6 +250,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
     TResult Function(_loginWithGoogle value)? loginWithGoogle,
     TResult Function(_loginWithPhone value)? loginWithPhone,
     TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
     required TResult orElse(),
   }) {
     if (loginWithGoogle != null) {
@@ -385,6 +397,7 @@ class _$_loginWithPhone implements _loginWithPhone {
             VoidCallback? onTimeOut)
         loginWithPhone,
     required TResult Function(AuthType authType, String? errorMessage) signOut,
+    required TResult Function() reset,
   }) {
     return loginWithPhone(
         phoneNumber, onSubmitOTP, onSignUpSubmit, onSignUpSuccess, onTimeOut);
@@ -402,6 +415,7 @@ class _$_loginWithPhone implements _loginWithPhone {
             VoidCallback? onTimeOut)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
   }) {
     return loginWithPhone?.call(
         phoneNumber, onSubmitOTP, onSignUpSubmit, onSignUpSuccess, onTimeOut);
@@ -419,6 +433,7 @@ class _$_loginWithPhone implements _loginWithPhone {
             VoidCallback? onTimeOut)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (loginWithPhone != null) {
@@ -434,6 +449,7 @@ class _$_loginWithPhone implements _loginWithPhone {
     required TResult Function(_loginWithGoogle value) loginWithGoogle,
     required TResult Function(_loginWithPhone value) loginWithPhone,
     required TResult Function(_signedOut value) signOut,
+    required TResult Function(_reset value) reset,
   }) {
     return loginWithPhone(this);
   }
@@ -444,6 +460,7 @@ class _$_loginWithPhone implements _loginWithPhone {
     TResult Function(_loginWithGoogle value)? loginWithGoogle,
     TResult Function(_loginWithPhone value)? loginWithPhone,
     TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
   }) {
     return loginWithPhone?.call(this);
   }
@@ -454,6 +471,7 @@ class _$_loginWithPhone implements _loginWithPhone {
     TResult Function(_loginWithGoogle value)? loginWithGoogle,
     TResult Function(_loginWithPhone value)? loginWithPhone,
     TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
     required TResult orElse(),
   }) {
     if (loginWithPhone != null) {
@@ -576,6 +594,7 @@ class _$_signedOut implements _signedOut {
             VoidCallback? onTimeOut)
         loginWithPhone,
     required TResult Function(AuthType authType, String? errorMessage) signOut,
+    required TResult Function() reset,
   }) {
     return signOut(authType, errorMessage);
   }
@@ -592,6 +611,7 @@ class _$_signedOut implements _signedOut {
             VoidCallback? onTimeOut)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
   }) {
     return signOut?.call(authType, errorMessage);
   }
@@ -608,6 +628,7 @@ class _$_signedOut implements _signedOut {
             VoidCallback? onTimeOut)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -622,6 +643,7 @@ class _$_signedOut implements _signedOut {
     required TResult Function(_loginWithGoogle value) loginWithGoogle,
     required TResult Function(_loginWithPhone value) loginWithPhone,
     required TResult Function(_signedOut value) signOut,
+    required TResult Function(_reset value) reset,
   }) {
     return signOut(this);
   }
@@ -632,6 +654,7 @@ class _$_signedOut implements _signedOut {
     TResult Function(_loginWithGoogle value)? loginWithGoogle,
     TResult Function(_loginWithPhone value)? loginWithPhone,
     TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
   }) {
     return signOut?.call(this);
   }
@@ -642,6 +665,7 @@ class _$_signedOut implements _signedOut {
     TResult Function(_loginWithGoogle value)? loginWithGoogle,
     TResult Function(_loginWithPhone value)? loginWithPhone,
     TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -661,6 +685,139 @@ abstract class _signedOut implements AuthenticateEvent {
   @JsonKey(ignore: true)
   _$$_signedOutCopyWith<_$_signedOut> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_resetCopyWith<$Res> {
+  factory _$$_resetCopyWith(_$_reset value, $Res Function(_$_reset) then) =
+      __$$_resetCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_resetCopyWithImpl<$Res> extends _$AuthenticateEventCopyWithImpl<$Res>
+    implements _$$_resetCopyWith<$Res> {
+  __$$_resetCopyWithImpl(_$_reset _value, $Res Function(_$_reset) _then)
+      : super(_value, (v) => _then(v as _$_reset));
+
+  @override
+  _$_reset get _value => super._value as _$_reset;
+}
+
+/// @nodoc
+
+class _$_reset implements _reset {
+  const _$_reset();
+
+  @override
+  String toString() {
+    return 'AuthenticateEvent.reset()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_reset);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(OnCompleteSignUp onCompleteSignUp)
+        loginWithGoogle,
+    required TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)
+        loginWithPhone,
+    required TResult Function(AuthType authType, String? errorMessage) signOut,
+    required TResult Function() reset,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)?
+        loginWithPhone,
+    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)?
+        loginWithPhone,
+    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_loginWithGoogle value) loginWithGoogle,
+    required TResult Function(_loginWithPhone value) loginWithPhone,
+    required TResult Function(_signedOut value) signOut,
+    required TResult Function(_reset value) reset,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_loginWithGoogle value)? loginWithGoogle,
+    TResult Function(_loginWithPhone value)? loginWithPhone,
+    TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_loginWithGoogle value)? loginWithGoogle,
+    TResult Function(_loginWithPhone value)? loginWithPhone,
+    TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _reset implements AuthenticateEvent {
+  const factory _reset() = _$_reset;
 }
 
 AuthenticateState _$AuthenticateStateFromJson(Map<String, dynamic> json) {

@@ -21,6 +21,7 @@ mixin _$StorageEvent {
     required TResult Function(StorageFile file) upload,
     required TResult Function(IList<StorageFile> files) uploadMany,
     required TResult Function(String uri) delete,
+    required TResult Function() reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$StorageEvent {
     TResult Function(StorageFile file)? upload,
     TResult Function(IList<StorageFile> files)? uploadMany,
     TResult Function(String uri)? delete,
+    TResult Function()? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$StorageEvent {
     TResult Function(StorageFile file)? upload,
     TResult Function(IList<StorageFile> files)? uploadMany,
     TResult Function(String uri)? delete,
+    TResult Function()? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$StorageEvent {
     required TResult Function(_upload value) upload,
     required TResult Function(_uploadMany value) uploadMany,
     required TResult Function(_delete value) delete,
+    required TResult Function(_reset value) reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$StorageEvent {
     TResult Function(_upload value)? upload,
     TResult Function(_uploadMany value)? uploadMany,
     TResult Function(_delete value)? delete,
+    TResult Function(_reset value)? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$StorageEvent {
     TResult Function(_upload value)? upload,
     TResult Function(_uploadMany value)? uploadMany,
     TResult Function(_delete value)? delete,
+    TResult Function(_reset value)? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -152,6 +158,7 @@ class _$_upload implements _upload {
     required TResult Function(StorageFile file) upload,
     required TResult Function(IList<StorageFile> files) uploadMany,
     required TResult Function(String uri) delete,
+    required TResult Function() reset,
   }) {
     return upload(file);
   }
@@ -162,6 +169,7 @@ class _$_upload implements _upload {
     TResult Function(StorageFile file)? upload,
     TResult Function(IList<StorageFile> files)? uploadMany,
     TResult Function(String uri)? delete,
+    TResult Function()? reset,
   }) {
     return upload?.call(file);
   }
@@ -172,6 +180,7 @@ class _$_upload implements _upload {
     TResult Function(StorageFile file)? upload,
     TResult Function(IList<StorageFile> files)? uploadMany,
     TResult Function(String uri)? delete,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (upload != null) {
@@ -186,6 +195,7 @@ class _$_upload implements _upload {
     required TResult Function(_upload value) upload,
     required TResult Function(_uploadMany value) uploadMany,
     required TResult Function(_delete value) delete,
+    required TResult Function(_reset value) reset,
   }) {
     return upload(this);
   }
@@ -196,6 +206,7 @@ class _$_upload implements _upload {
     TResult Function(_upload value)? upload,
     TResult Function(_uploadMany value)? uploadMany,
     TResult Function(_delete value)? delete,
+    TResult Function(_reset value)? reset,
   }) {
     return upload?.call(this);
   }
@@ -206,6 +217,7 @@ class _$_upload implements _upload {
     TResult Function(_upload value)? upload,
     TResult Function(_uploadMany value)? uploadMany,
     TResult Function(_delete value)? delete,
+    TResult Function(_reset value)? reset,
     required TResult orElse(),
   }) {
     if (upload != null) {
@@ -291,6 +303,7 @@ class _$_uploadMany implements _uploadMany {
     required TResult Function(StorageFile file) upload,
     required TResult Function(IList<StorageFile> files) uploadMany,
     required TResult Function(String uri) delete,
+    required TResult Function() reset,
   }) {
     return uploadMany(files);
   }
@@ -301,6 +314,7 @@ class _$_uploadMany implements _uploadMany {
     TResult Function(StorageFile file)? upload,
     TResult Function(IList<StorageFile> files)? uploadMany,
     TResult Function(String uri)? delete,
+    TResult Function()? reset,
   }) {
     return uploadMany?.call(files);
   }
@@ -311,6 +325,7 @@ class _$_uploadMany implements _uploadMany {
     TResult Function(StorageFile file)? upload,
     TResult Function(IList<StorageFile> files)? uploadMany,
     TResult Function(String uri)? delete,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (uploadMany != null) {
@@ -325,6 +340,7 @@ class _$_uploadMany implements _uploadMany {
     required TResult Function(_upload value) upload,
     required TResult Function(_uploadMany value) uploadMany,
     required TResult Function(_delete value) delete,
+    required TResult Function(_reset value) reset,
   }) {
     return uploadMany(this);
   }
@@ -335,6 +351,7 @@ class _$_uploadMany implements _uploadMany {
     TResult Function(_upload value)? upload,
     TResult Function(_uploadMany value)? uploadMany,
     TResult Function(_delete value)? delete,
+    TResult Function(_reset value)? reset,
   }) {
     return uploadMany?.call(this);
   }
@@ -345,6 +362,7 @@ class _$_uploadMany implements _uploadMany {
     TResult Function(_upload value)? upload,
     TResult Function(_uploadMany value)? uploadMany,
     TResult Function(_delete value)? delete,
+    TResult Function(_reset value)? reset,
     required TResult orElse(),
   }) {
     if (uploadMany != null) {
@@ -429,6 +447,7 @@ class _$_delete implements _delete {
     required TResult Function(StorageFile file) upload,
     required TResult Function(IList<StorageFile> files) uploadMany,
     required TResult Function(String uri) delete,
+    required TResult Function() reset,
   }) {
     return delete(uri);
   }
@@ -439,6 +458,7 @@ class _$_delete implements _delete {
     TResult Function(StorageFile file)? upload,
     TResult Function(IList<StorageFile> files)? uploadMany,
     TResult Function(String uri)? delete,
+    TResult Function()? reset,
   }) {
     return delete?.call(uri);
   }
@@ -449,6 +469,7 @@ class _$_delete implements _delete {
     TResult Function(StorageFile file)? upload,
     TResult Function(IList<StorageFile> files)? uploadMany,
     TResult Function(String uri)? delete,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -463,6 +484,7 @@ class _$_delete implements _delete {
     required TResult Function(_upload value) upload,
     required TResult Function(_uploadMany value) uploadMany,
     required TResult Function(_delete value) delete,
+    required TResult Function(_reset value) reset,
   }) {
     return delete(this);
   }
@@ -473,6 +495,7 @@ class _$_delete implements _delete {
     TResult Function(_upload value)? upload,
     TResult Function(_uploadMany value)? uploadMany,
     TResult Function(_delete value)? delete,
+    TResult Function(_reset value)? reset,
   }) {
     return delete?.call(this);
   }
@@ -483,6 +506,7 @@ class _$_delete implements _delete {
     TResult Function(_upload value)? upload,
     TResult Function(_uploadMany value)? uploadMany,
     TResult Function(_delete value)? delete,
+    TResult Function(_reset value)? reset,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -499,6 +523,120 @@ abstract class _delete implements StorageEvent {
   @JsonKey(ignore: true)
   _$$_deleteCopyWith<_$_delete> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_resetCopyWith<$Res> {
+  factory _$$_resetCopyWith(_$_reset value, $Res Function(_$_reset) then) =
+      __$$_resetCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_resetCopyWithImpl<$Res> extends _$StorageEventCopyWithImpl<$Res>
+    implements _$$_resetCopyWith<$Res> {
+  __$$_resetCopyWithImpl(_$_reset _value, $Res Function(_$_reset) _then)
+      : super(_value, (v) => _then(v as _$_reset));
+
+  @override
+  _$_reset get _value => super._value as _$_reset;
+}
+
+/// @nodoc
+
+class _$_reset implements _reset {
+  const _$_reset();
+
+  @override
+  String toString() {
+    return 'StorageEvent.reset()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_reset);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(StorageFile file) upload,
+    required TResult Function(IList<StorageFile> files) uploadMany,
+    required TResult Function(String uri) delete,
+    required TResult Function() reset,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(StorageFile file)? upload,
+    TResult Function(IList<StorageFile> files)? uploadMany,
+    TResult Function(String uri)? delete,
+    TResult Function()? reset,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(StorageFile file)? upload,
+    TResult Function(IList<StorageFile> files)? uploadMany,
+    TResult Function(String uri)? delete,
+    TResult Function()? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_upload value) upload,
+    required TResult Function(_uploadMany value) uploadMany,
+    required TResult Function(_delete value) delete,
+    required TResult Function(_reset value) reset,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_upload value)? upload,
+    TResult Function(_uploadMany value)? uploadMany,
+    TResult Function(_delete value)? delete,
+    TResult Function(_reset value)? reset,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_upload value)? upload,
+    TResult Function(_uploadMany value)? uploadMany,
+    TResult Function(_delete value)? delete,
+    TResult Function(_reset value)? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _reset implements StorageEvent {
+  const factory _reset() = _$_reset;
 }
 
 /// @nodoc
