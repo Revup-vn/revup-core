@@ -127,7 +127,14 @@ void main() {
         (await repo.ggSignUpIn(onSignUpSubmit: _mockParseCb)).fold(
           (l) => expect(
             l,
-            const AuthFailure.invalidData('Phone or number is already existed'),
+            isA<AuthFailure>().having(
+              (p0) => p0.maybeMap(
+                invalidData: (_) => unit,
+                orElse: () => fail('incorrect type'),
+              ),
+              'correctType',
+              anything,
+            ),
           ),
           (r) => fail('cannot have data'),
         );
@@ -145,7 +152,14 @@ void main() {
         (await repo.ggSignUpIn(onSignUpSubmit: _mockParseCb)).fold(
           (l) => expect(
             l,
-            const AuthFailure.invalidData('Phone or number is already existed'),
+            isA<AuthFailure>().having(
+              (p0) => p0.maybeMap(
+                invalidData: (_) => unit,
+                orElse: () => fail('incorrect type'),
+              ),
+              'correctType',
+              anything,
+            ),
           ),
           (r) => fail('cannot have data'),
         );
@@ -195,6 +209,9 @@ void main() {
   });
 
   group('phoneSignUpIn', () {
+    setUpAll(() {
+      when(() => phone.isPhoneValid(any())).thenAnswer((_) async => false);
+    });
     test('Return AuthFailure.invalidData if the entered sms code is wrong',
         () async {
       when(
@@ -211,7 +228,17 @@ void main() {
         onSignUpSubmit: _mockParseCb,
       )(mockUser.phone, () {}))
           .fold(
-        (l) => expect(l, const AuthFailure.invalidData('blah')),
+        (l) => expect(
+          l,
+          isA<AuthFailure>().having(
+            (p0) => p0.maybeMap(
+              invalidData: (_) => unit,
+              orElse: () => fail('incorrect type'),
+            ),
+            'correctType',
+            anything,
+          ),
+        ),
         (r) => fail('cannot have data'),
       );
     });
@@ -234,7 +261,14 @@ void main() {
           .fold(
         (l) => expect(
           l,
-          const AuthFailure.invalidData('Phone number is not valid'),
+          isA<AuthFailure>().having(
+            (p0) => p0.maybeMap(
+              invalidData: (_) => unit,
+              orElse: () => fail('incorrect type'),
+            ),
+            'correctType',
+            anything,
+          ),
         ),
         (r) => fail('cannot have data'),
       );

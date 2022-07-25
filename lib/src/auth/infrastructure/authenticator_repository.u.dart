@@ -66,7 +66,9 @@ class AuthenticatorRepository {
       if (!(await _googleAuthenticatorService.isPhoneValid(appUser.phone) &&
           await _phoneAuthenticatorService.isEmailValid(appUser.email))) {
         return left(
-          const AuthFailure.invalidData('Phone or number is already existed'),
+          const AuthFailure.invalidData(
+            'Phone number or email is already existed',
+          ),
         );
       }
 
@@ -90,6 +92,14 @@ class AuthenticatorRepository {
     @visibleForTesting AppUser? assignValueEffectsForTesting,
   }) =>
           (phoneNumber, onTimeOut) async {
+            if (await _phoneAuthenticatorService.isPhoneValid(phoneNumber)) {
+              return left(
+                const AuthFailure.invalidData(
+                  'Phone number or email is already existed',
+                ),
+              );
+            }
+
             FutureOr<Either<AuthFailure, AppUser>>? tmp;
             late FutureOr<Either<AuthFailure, AppUser>> res;
 
