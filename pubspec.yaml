@@ -10,7 +10,7 @@ dependencies:
   auto_route: ^4.2.1
   cloud_firestore: ^3.2.1
   dartz: ^0.10.1
-  firebase_auth: ^3.4.1
+  firebase_auth: ^3.5.0
   firebase_core: ^1.18.0
   flash: ^2.0.3+2
   flutter:
