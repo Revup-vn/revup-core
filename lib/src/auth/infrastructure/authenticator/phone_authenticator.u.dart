@@ -24,18 +24,7 @@ class PhoneAuthenticator extends Authenticator {
       phoneNumber: phoneNumber,
       verificationCompleted: (authCredentials) async {
         if (authCredentials.smsCode != null) {
-          try {
-            loginSuccess.complete(
-              await _auth.currentUser!.linkWithCredential(authCredentials),
-            );
-          } on FirebaseAuthException catch (e) {
-            if (e.code == 'provider-already-linked') {
-              loginSuccess
-                  .complete(await _auth.signInWithCredential(authCredentials));
-            } else {
-              rethrow;
-            }
-          }
+          await _authLogin(loginSuccess, authCredentials);
         }
       },
       verificationFailed: (e) {
@@ -49,12 +38,30 @@ class PhoneAuthenticator extends Authenticator {
           verificationId: verificationId,
           smsCode: sms,
         );
-        loginSuccess.complete(await _auth.signInWithCredential(credential));
+        await _authLogin(loginSuccess, credential);
       },
       codeAutoRetrievalTimeout: (_) => onTimeout?.call(),
     );
     await onSignIn(await loginSuccess.future);
     return;
+  }
+
+  Future<void> _authLogin(
+    Completer<UserCredential> loginSuccess,
+    PhoneAuthCredential authCredentials,
+  ) async {
+    try {
+      loginSuccess.complete(
+        await _auth.currentUser!.linkWithCredential(authCredentials),
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'provider-already-linked') {
+        loginSuccess
+            .complete(await _auth.signInWithCredential(authCredentials));
+      } else {
+        rethrow;
+      }
+    }
   }
 
   @override

@@ -100,7 +100,7 @@ class AuthenticatorRepository {
               );
             }
 
-            FutureOr<Either<AuthFailure, AppUser>>? tmp;
+            Either<AuthFailure, AppUser>? tmp;
             late FutureOr<Either<AuthFailure, AppUser>> res;
 
             try {
@@ -114,7 +114,7 @@ class AuthenticatorRepository {
                     return;
                   }
                   final user = credentials.user!;
-                  tmp = _signInUp(
+                  tmp = await _signInUp(
                     await _phoneAuthenticatorService.getUserDocument(user.uid),
                     onSignUpSubmit,
                     user,
