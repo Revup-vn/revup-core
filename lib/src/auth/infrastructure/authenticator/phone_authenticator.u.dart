@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/widgets.dart';
 
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../stores/users/users.dart';
@@ -22,7 +22,7 @@ class PhoneAuthenticator extends Authenticator {
   Future<bool> isPhoneValid(String phone) async =>
       phone.isNotEmpty &&
       await isFieldValid('phone', phone) &&
-      (await _func
+      !(await _func
               .httpsCallable('checkIfPhoneExists')
               .call<bool>({phone: phone}))
           .data;
