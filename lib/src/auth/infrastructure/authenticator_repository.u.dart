@@ -104,24 +104,23 @@ class AuthenticatorRepository {
             late FutureOr<Either<AuthFailure, AppUser>> res;
 
             try {
-              await _phoneAuthenticatorService.signIn(
+              final credentials = await _phoneAuthenticatorService.signIn(
                 phoneNumber: phoneNumber,
                 getUserInput: onSubmitOTP,
-                onSignIn: (credentials) async {
-                  if (credentials.user == null) {
-                    tmp = left(const AuthFailure.invalidData());
-
-                    return;
-                  }
-                  final user = credentials.user!;
-                  tmp = await _signInUp(
-                    await _phoneAuthenticatorService.getUserDocument(user.uid),
-                    onSignUpSubmit,
-                    user,
-                  );
-                },
                 onTimeout: onTimeOut,
               );
+
+              if (credentials.user == null) {
+                tmp = left(const AuthFailure.invalidData());
+              }
+
+              final user = credentials.user!;
+              tmp = await _signInUp(
+                await _phoneAuthenticatorService.getUserDocument(user.uid),
+                onSignUpSubmit,
+                user,
+              );
+
               if (assignValueEffectsForTesting != null) {
                 tmp = right(assignValueEffectsForTesting);
               }
@@ -134,7 +133,7 @@ class AuthenticatorRepository {
             } catch (_) {
               tmp = left(const AuthFailure.unknown());
             } finally {
-              res = tmp == null ? left(const AuthFailure.server()) : tmp!;
+              res = tmp ?? left(const AuthFailure.server());
             }
 
             return res;

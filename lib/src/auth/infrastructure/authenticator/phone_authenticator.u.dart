@@ -13,10 +13,9 @@ class PhoneAuthenticator extends Authenticator {
 
   final FirebaseAuth _auth;
 
-  Future<void> signIn({
+  Future<UserCredential> signIn({
     required String phoneNumber,
     required OTPGetter getUserInput,
-    required SignInUpCallBack onSignIn,
     VoidCallback? onTimeout,
   }) async {
     final loginSuccess = Completer<UserCredential>();
@@ -42,8 +41,8 @@ class PhoneAuthenticator extends Authenticator {
       },
       codeAutoRetrievalTimeout: (_) => onTimeout?.call(),
     );
-    await onSignIn(await loginSuccess.future);
-    return;
+
+    return loginSuccess.future;
   }
 
   Future<void> _authLogin(
