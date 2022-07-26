@@ -51,7 +51,9 @@ class PhoneAuthenticator extends Authenticator {
   ) async {
     try {
       loginSuccess.complete(
-        await _auth.currentUser!.linkWithCredential(authCredentials),
+        await (_auth.currentUser == null
+            ? _auth.signInWithCredential(authCredentials)
+            : _auth.currentUser?.linkWithCredential(authCredentials)),
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'provider-already-linked') {
