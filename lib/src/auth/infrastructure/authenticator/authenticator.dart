@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../stores/users/users.dart';
 
@@ -13,14 +14,9 @@ abstract class Authenticator {
 
   final UserRepository _store;
 
-  Future<bool> _isFieldValid(String field, String val) async =>
+  @internal
+  Future<bool> isFieldValid(String field, String val) async =>
       (await _store.users.where(field, isEqualTo: val).get()).size == 0;
-
-  Future<bool> isPhoneValid(String phone) async =>
-      phone.isNotEmpty && await _isFieldValid('phone', phone);
-
-  Future<bool> isEmailValid(String email) async =>
-      email.isNotEmpty && await _isFieldValid('email', email);
 
   Future<DocumentSnapshot<Map<String, dynamic>>> getUserDocument(
     String id,

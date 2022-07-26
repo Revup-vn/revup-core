@@ -63,8 +63,8 @@ class AuthenticatorRepository {
       if (user.phoneNumber?.isEmpty ?? true) {
         return left(AuthFailure.needToVerifyPhoneNumber(appUser));
       }
-      if (!(await _googleAuthenticatorService.isPhoneValid(appUser.phone) &&
-          await _phoneAuthenticatorService.isEmailValid(appUser.email))) {
+      if (!(await _phoneAuthenticatorService.isPhoneValid(appUser.phone) &&
+          await _googleAuthenticatorService.isEmailValid(appUser.email))) {
         return left(
           const AuthFailure.invalidData(
             'Phone number or email is already existed',

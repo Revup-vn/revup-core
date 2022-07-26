@@ -119,8 +119,8 @@ void main() {
       test('return AuthFailure.invalidData if phone is existed in the database',
           () async {
         when(() => mSnapShot.exists).thenReturn(false);
-        when(() => gg.isPhoneValid(any())).thenAnswer((_) async => false);
-        when(() => phone.isEmailValid(any())).thenAnswer((_) async => true);
+        when(() => phone.isPhoneValid(any())).thenAnswer((_) async => false);
+        when(() => gg.isEmailValid(any())).thenAnswer((_) async => true);
         when(() => gg.getSignedInCredentials()).thenAnswer((_) async => mu);
         when(() => mu.phoneNumber).thenAnswer((_) => '123');
         when(() => mu.uid).thenAnswer((_) => '');
@@ -144,8 +144,8 @@ void main() {
       test('return AuthFailure.invalidData if email is existed in the database',
           () async {
         when(() => mSnapShot.exists).thenReturn(false);
-        when(() => gg.isPhoneValid(any())).thenAnswer((_) async => true);
-        when(() => phone.isEmailValid(any())).thenAnswer((_) async => false);
+        when(() => phone.isPhoneValid(any())).thenAnswer((_) async => true);
+        when(() => gg.isEmailValid(any())).thenAnswer((_) async => false);
         when(() => gg.getSignedInCredentials()).thenAnswer((_) async => mu);
         when(() => mu.phoneNumber).thenAnswer((_) => '123');
         when(() => mu.uid).thenAnswer((_) => '');
@@ -169,8 +169,8 @@ void main() {
       test('return AuthFailure.server if error occurs in signUp process',
           () async {
         when(() => mSnapShot.exists).thenReturn(false);
-        when(() => gg.isPhoneValid(any())).thenAnswer((_) async => true);
-        when(() => phone.isEmailValid(any())).thenAnswer((_) async => true);
+        when(() => phone.isPhoneValid(any())).thenAnswer((_) async => true);
+        when(() => gg.isEmailValid(any())).thenAnswer((_) async => true);
         when(() => gg.signUp(any())).thenAnswer((_) async => false);
         when(() => gg.getSignedInCredentials()).thenAnswer((_) async => mu);
         when(() => mu.phoneNumber).thenAnswer((_) => '123');
@@ -187,8 +187,8 @@ void main() {
 
       test('return AppUser instance if signed up', () async {
         when(() => mSnapShot.exists).thenReturn(false);
-        when(() => gg.isPhoneValid(any())).thenAnswer((_) async => true);
-        when(() => phone.isEmailValid(any())).thenAnswer((_) async => true);
+        when(() => phone.isPhoneValid(any())).thenAnswer((_) async => true);
+        when(() => gg.isEmailValid(any())).thenAnswer((_) async => true);
         when(() => gg.signUp(any())).thenAnswer((_) async => true);
         when(() => gg.getSignedInCredentials()).thenAnswer((_) async => mu);
         when(() => mu.phoneNumber).thenAnswer((_) => '123');

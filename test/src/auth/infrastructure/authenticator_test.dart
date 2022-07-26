@@ -37,33 +37,13 @@ void main() {
     authenticator = TestAuthenticator(UserRepository(store));
   });
 
-  group('isPhoneValid', () {
-    test('return true if no phone found', () async {
-      when(() => mockCollection.where(any(), isEqualTo: mockUser.phone))
-          .thenReturn(query);
-
-      when(() => snapShot.size).thenReturn(0);
-      final res = await authenticator.isPhoneValid(mockUser.phone);
-      expect(res, isTrue);
-    });
-
-    test('return false if no phone found', () async {
-      when(() => mockCollection.where(any(), isEqualTo: mockUser.phone))
-          .thenReturn(query);
-
-      when(() => snapShot.size).thenReturn(1);
-      final res = await authenticator.isPhoneValid(mockUser.phone);
-      expect(res, isFalse);
-    });
-  });
-
   group('isEmailValid', () {
     test('return true if no phone found', () async {
       when(() => mockCollection.where(any(), isEqualTo: mockUser.email))
           .thenReturn(query);
 
       when(() => snapShot.size).thenReturn(0);
-      final res = await authenticator.isEmailValid(mockUser.email);
+      final res = await authenticator.isFieldValid('email', mockUser.email);
       expect(res, isTrue);
     });
 
@@ -72,7 +52,7 @@ void main() {
           .thenReturn(query);
 
       when(() => snapShot.size).thenReturn(1);
-      final res = await authenticator.isEmailValid(mockUser.email);
+      final res = await authenticator.isFieldValid('email', mockUser.email);
       expect(res, isFalse);
     });
   });

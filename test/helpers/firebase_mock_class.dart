@@ -1,9 +1,12 @@
 // ignore_for_file: subtype_of_sealed_class
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mocktail/mocktail.dart';
+
+class MockFireFunctions extends Mock implements FirebaseFunctions {}
 
 class MockGoogleSignIn extends Mock implements GoogleSignIn {}
 

@@ -1,3 +1,4 @@
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -22,6 +23,9 @@ MultiRepositoryProvider coreRepositoryProviders({required Widget providers}) =>
         RepositoryProvider<FirebaseStorage>(
           create: (_) => FirebaseStorage.instance,
         ),
+        RepositoryProvider<FirebaseFunctions>(
+          create: (_) => FirebaseFunctions.instance,
+        ),
         RepositoryProvider<GoogleSignIn>(create: (_) => GoogleSignIn()),
         RepositoryProvider<IStore<AppUser>>(
           create: (context) => UserRepository(context.read()),
@@ -38,6 +42,7 @@ MultiRepositoryProvider coreRepositoryProviders({required Widget providers}) =>
         ),
         RepositoryProvider<PhoneAuthenticator>(
           create: (context) => PhoneAuthenticator(
+            context.read(),
             context.read(),
             context.read<IStore<AppUser>>() as UserRepository,
           ),
