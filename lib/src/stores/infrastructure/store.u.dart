@@ -6,8 +6,36 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../models/models.dart';
 import '../models/serializable.dart';
+import '../users/users.dart';
 
 abstract class IStore<T extends Serializable<T>> {
+  static IStore<PaymentAccount> paymentAccount(
+    FirebaseFirestore store,
+    AppUser uid,
+  ) =>
+      PaymentAccountRepository(store, uid);
+
+  static IStore<RepairCategory> repairCategoryRepo(
+    FirebaseFirestore store,
+    AppUser provider,
+  ) =>
+      RepairCategoryRepository(store, provider);
+
+  static IStore<RepairService> repairServiceRepo(
+    FirebaseFirestore store,
+    AppUser provider,
+    RepairCategory category,
+  ) =>
+      RepairServiceRepository(store, category, provider);
+
+  static IStore<RepairProduct> repairProductRepo(
+    FirebaseFirestore store,
+    AppUser user,
+    RepairCategory category,
+    RepairService service,
+  ) =>
+      RepairProductRepository(store, user, category, service);
+
   Future<Either<StoreFailure, Unit>> delete(String id);
   Future<Either<StoreFailure, Unit>> create(T data);
   FutureOr<Either<StoreFailure, Unit>> update(
@@ -230,7 +258,7 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
                       snapshot.docs.map((e) => fromDocument(e, factory)),
                 )
                 .fold<IList<T>>(
-                  ilist([]),
+                  nil(),
                   (pre, ele) => ele.fold((l) => pre, (r) => cons(r, pre)),
                 ),
           )
