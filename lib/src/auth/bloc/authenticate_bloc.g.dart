@@ -11,14 +11,19 @@ _$_empty _$$_emptyFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = _$_empty(
+          isFirstTime: $checkedConvert('is_first_time', (v) => v as bool),
           $type: $checkedConvert('runtimeType', (v) => v as String?),
         );
         return val;
       },
-      fieldKeyMap: const {r'$type': 'runtimeType'},
+      fieldKeyMap: const {
+        'isFirstTime': 'is_first_time',
+        r'$type': 'runtimeType'
+      },
     );
 
 Map<String, dynamic> _$$_emptyToJson(_$_empty instance) => <String, dynamic>{
+      'is_first_time': instance.isFirstTime,
       'runtimeType': instance.$type,
     };
 

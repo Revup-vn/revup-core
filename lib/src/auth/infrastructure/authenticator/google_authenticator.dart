@@ -12,6 +12,9 @@ class GoogleAuthenticator extends Authenticator {
   final GoogleSignIn _googleSignIn;
   final FirebaseAuth _auth;
 
+  Future<bool> isEmailValid(String email) async =>
+      email.isNotEmpty && await isFieldValid('email', email);
+
   Future<User> getSignedInCredentials() async {
     final acc = await _googleSignIn.signIn();
     if (acc != null) {

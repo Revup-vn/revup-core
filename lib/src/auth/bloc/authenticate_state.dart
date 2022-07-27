@@ -2,7 +2,7 @@ part of 'authenticate_bloc.dart';
 
 @freezed
 class AuthenticateState with _$AuthenticateState {
-  const factory AuthenticateState.empty() = _empty;
+  const factory AuthenticateState.empty({required bool isFirstTime}) = _empty;
 
   const factory AuthenticateState.loading() = _loading;
 

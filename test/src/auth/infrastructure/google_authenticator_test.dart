@@ -9,15 +9,27 @@ import 'package:mocktail/mocktail.dart';
 import 'package:revup_core/src/auth/infrastructure/authenticator/google_authenticator.dart';
 import 'package:revup_core/src/auth/utils/utils.dart';
 import 'package:revup_core/src/stores/users/infrastructure/infrastructure.dart';
+import '../../../helpers/app_user_mock.dart';
 import '../../../helpers/firebase_mock_class.dart';
 
 void main() {
   late GoogleAuthenticator authenticator;
   late MockGoogleSignIn signIn;
   late MockFirebaseAuth auth;
+  final mockUser = mockUserIns();
+  late MockCollection mockCollection;
+  late MockQuery query;
+  late MockQuerySnapShot snapShot;
+  late UserRepository userRepository;
+  late MockStore store;
 
   setUpAll(() {
     registerFallbackValue(MockOAuthCredential());
+    mockCollection = MockCollection();
+    snapShot = MockQuerySnapShot();
+    query = MockQuery();
+    store = MockStore();
+    userRepository = UserRepository(store);
   });
 
   setUp(() {
@@ -35,8 +47,34 @@ void main() {
     authenticator = GoogleAuthenticator(
       signIn,
       auth,
-      UserRepository(MockStore()),
+      userRepository,
     );
+    when(() => userRepository.users).thenReturn(mockCollection);
+    when(() => store.collection(any())).thenReturn(mockCollection);
+    when(
+      () => query.get(),
+    ).thenAnswer((_) async => snapShot);
+  });
+  group('isEmailValid', () {
+    test('return true if no email found', () async {
+      when(() => mockCollection.where(any(), isEqualTo: mockUser.email))
+          .thenReturn(query);
+
+      when(() => snapShot.size).thenReturn(0);
+
+      final res = await authenticator.isEmailValid(mockUser.email);
+      expect(res, isTrue);
+    });
+
+    test('return false if no email found', () async {
+      when(() => mockCollection.where(any(), isEqualTo: mockUser.email))
+          .thenReturn(query);
+
+      when(() => snapShot.size).thenReturn(1);
+
+      final res = await authenticator.isEmailValid(mockUser.email);
+      expect(res, isFalse);
+    });
   });
 
   group('getSignedInCredentials', () {

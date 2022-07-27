@@ -28,6 +28,7 @@ mixin _$AuthenticateEvent {
             VoidCallback? onTimeOut)
         loginWithPhone,
     required TResult Function(AuthType authType, String? errorMessage) signOut,
+    required TResult Function() reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +42,7 @@ mixin _$AuthenticateEvent {
             VoidCallback? onTimeOut)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +56,7 @@ mixin _$AuthenticateEvent {
             VoidCallback? onTimeOut)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +65,7 @@ mixin _$AuthenticateEvent {
     required TResult Function(_loginWithGoogle value) loginWithGoogle,
     required TResult Function(_loginWithPhone value) loginWithPhone,
     required TResult Function(_signedOut value) signOut,
+    required TResult Function(_reset value) reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +73,7 @@ mixin _$AuthenticateEvent {
     TResult Function(_loginWithGoogle value)? loginWithGoogle,
     TResult Function(_loginWithPhone value)? loginWithPhone,
     TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -76,6 +81,7 @@ mixin _$AuthenticateEvent {
     TResult Function(_loginWithGoogle value)? loginWithGoogle,
     TResult Function(_loginWithPhone value)? loginWithPhone,
     TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -173,6 +179,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
             VoidCallback? onTimeOut)
         loginWithPhone,
     required TResult Function(AuthType authType, String? errorMessage) signOut,
+    required TResult Function() reset,
   }) {
     return loginWithGoogle(onCompleteSignUp);
   }
@@ -189,6 +196,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
             VoidCallback? onTimeOut)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
   }) {
     return loginWithGoogle?.call(onCompleteSignUp);
   }
@@ -205,6 +213,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
             VoidCallback? onTimeOut)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (loginWithGoogle != null) {
@@ -219,6 +228,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
     required TResult Function(_loginWithGoogle value) loginWithGoogle,
     required TResult Function(_loginWithPhone value) loginWithPhone,
     required TResult Function(_signedOut value) signOut,
+    required TResult Function(_reset value) reset,
   }) {
     return loginWithGoogle(this);
   }
@@ -229,6 +239,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
     TResult Function(_loginWithGoogle value)? loginWithGoogle,
     TResult Function(_loginWithPhone value)? loginWithPhone,
     TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
   }) {
     return loginWithGoogle?.call(this);
   }
@@ -239,6 +250,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
     TResult Function(_loginWithGoogle value)? loginWithGoogle,
     TResult Function(_loginWithPhone value)? loginWithPhone,
     TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
     required TResult orElse(),
   }) {
     if (loginWithGoogle != null) {
@@ -385,6 +397,7 @@ class _$_loginWithPhone implements _loginWithPhone {
             VoidCallback? onTimeOut)
         loginWithPhone,
     required TResult Function(AuthType authType, String? errorMessage) signOut,
+    required TResult Function() reset,
   }) {
     return loginWithPhone(
         phoneNumber, onSubmitOTP, onSignUpSubmit, onSignUpSuccess, onTimeOut);
@@ -402,6 +415,7 @@ class _$_loginWithPhone implements _loginWithPhone {
             VoidCallback? onTimeOut)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
   }) {
     return loginWithPhone?.call(
         phoneNumber, onSubmitOTP, onSignUpSubmit, onSignUpSuccess, onTimeOut);
@@ -419,6 +433,7 @@ class _$_loginWithPhone implements _loginWithPhone {
             VoidCallback? onTimeOut)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (loginWithPhone != null) {
@@ -434,6 +449,7 @@ class _$_loginWithPhone implements _loginWithPhone {
     required TResult Function(_loginWithGoogle value) loginWithGoogle,
     required TResult Function(_loginWithPhone value) loginWithPhone,
     required TResult Function(_signedOut value) signOut,
+    required TResult Function(_reset value) reset,
   }) {
     return loginWithPhone(this);
   }
@@ -444,6 +460,7 @@ class _$_loginWithPhone implements _loginWithPhone {
     TResult Function(_loginWithGoogle value)? loginWithGoogle,
     TResult Function(_loginWithPhone value)? loginWithPhone,
     TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
   }) {
     return loginWithPhone?.call(this);
   }
@@ -454,6 +471,7 @@ class _$_loginWithPhone implements _loginWithPhone {
     TResult Function(_loginWithGoogle value)? loginWithGoogle,
     TResult Function(_loginWithPhone value)? loginWithPhone,
     TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
     required TResult orElse(),
   }) {
     if (loginWithPhone != null) {
@@ -576,6 +594,7 @@ class _$_signedOut implements _signedOut {
             VoidCallback? onTimeOut)
         loginWithPhone,
     required TResult Function(AuthType authType, String? errorMessage) signOut,
+    required TResult Function() reset,
   }) {
     return signOut(authType, errorMessage);
   }
@@ -592,6 +611,7 @@ class _$_signedOut implements _signedOut {
             VoidCallback? onTimeOut)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
   }) {
     return signOut?.call(authType, errorMessage);
   }
@@ -608,6 +628,7 @@ class _$_signedOut implements _signedOut {
             VoidCallback? onTimeOut)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -622,6 +643,7 @@ class _$_signedOut implements _signedOut {
     required TResult Function(_loginWithGoogle value) loginWithGoogle,
     required TResult Function(_loginWithPhone value) loginWithPhone,
     required TResult Function(_signedOut value) signOut,
+    required TResult Function(_reset value) reset,
   }) {
     return signOut(this);
   }
@@ -632,6 +654,7 @@ class _$_signedOut implements _signedOut {
     TResult Function(_loginWithGoogle value)? loginWithGoogle,
     TResult Function(_loginWithPhone value)? loginWithPhone,
     TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
   }) {
     return signOut?.call(this);
   }
@@ -642,6 +665,7 @@ class _$_signedOut implements _signedOut {
     TResult Function(_loginWithGoogle value)? loginWithGoogle,
     TResult Function(_loginWithPhone value)? loginWithPhone,
     TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -661,6 +685,139 @@ abstract class _signedOut implements AuthenticateEvent {
   @JsonKey(ignore: true)
   _$$_signedOutCopyWith<_$_signedOut> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_resetCopyWith<$Res> {
+  factory _$$_resetCopyWith(_$_reset value, $Res Function(_$_reset) then) =
+      __$$_resetCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_resetCopyWithImpl<$Res> extends _$AuthenticateEventCopyWithImpl<$Res>
+    implements _$$_resetCopyWith<$Res> {
+  __$$_resetCopyWithImpl(_$_reset _value, $Res Function(_$_reset) _then)
+      : super(_value, (v) => _then(v as _$_reset));
+
+  @override
+  _$_reset get _value => super._value as _$_reset;
+}
+
+/// @nodoc
+
+class _$_reset implements _reset {
+  const _$_reset();
+
+  @override
+  String toString() {
+    return 'AuthenticateEvent.reset()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_reset);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(OnCompleteSignUp onCompleteSignUp)
+        loginWithGoogle,
+    required TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)
+        loginWithPhone,
+    required TResult Function(AuthType authType, String? errorMessage) signOut,
+    required TResult Function() reset,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)?
+        loginWithPhone,
+    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(OnCompleteSignUp onCompleteSignUp)? loginWithGoogle,
+    TResult Function(
+            String phoneNumber,
+            OTPGetter onSubmitOTP,
+            OnCompleteSignUp onSignUpSubmit,
+            Function0<Future<Unit>> onSignUpSuccess,
+            VoidCallback? onTimeOut)?
+        loginWithPhone,
+    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function()? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_loginWithGoogle value) loginWithGoogle,
+    required TResult Function(_loginWithPhone value) loginWithPhone,
+    required TResult Function(_signedOut value) signOut,
+    required TResult Function(_reset value) reset,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_loginWithGoogle value)? loginWithGoogle,
+    TResult Function(_loginWithPhone value)? loginWithPhone,
+    TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_loginWithGoogle value)? loginWithGoogle,
+    TResult Function(_loginWithPhone value)? loginWithPhone,
+    TResult Function(_signedOut value)? signOut,
+    TResult Function(_reset value)? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _reset implements AuthenticateEvent {
+  const factory _reset() = _$_reset;
 }
 
 AuthenticateState _$AuthenticateStateFromJson(Map<String, dynamic> json) {
@@ -686,7 +843,7 @@ AuthenticateState _$AuthenticateStateFromJson(Map<String, dynamic> json) {
 mixin _$AuthenticateState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() empty,
+    required TResult Function(bool isFirstTime) empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function(AppUser appUser) partial,
@@ -695,7 +852,7 @@ mixin _$AuthenticateState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -704,7 +861,7 @@ mixin _$AuthenticateState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -764,6 +921,7 @@ class _$AuthenticateStateCopyWithImpl<$Res>
 abstract class _$$_emptyCopyWith<$Res> {
   factory _$$_emptyCopyWith(_$_empty value, $Res Function(_$_empty) then) =
       __$$_emptyCopyWithImpl<$Res>;
+  $Res call({bool isFirstTime});
 }
 
 /// @nodoc
@@ -774,62 +932,87 @@ class __$$_emptyCopyWithImpl<$Res> extends _$AuthenticateStateCopyWithImpl<$Res>
 
   @override
   _$_empty get _value => super._value as _$_empty;
+
+  @override
+  $Res call({
+    Object? isFirstTime = freezed,
+  }) {
+    return _then(_$_empty(
+      isFirstTime: isFirstTime == freezed
+          ? _value.isFirstTime
+          : isFirstTime // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_empty implements _empty {
-  const _$_empty({final String? $type}) : $type = $type ?? 'empty';
+  const _$_empty({required this.isFirstTime, final String? $type})
+      : $type = $type ?? 'empty';
 
   factory _$_empty.fromJson(Map<String, dynamic> json) =>
       _$$_emptyFromJson(json);
+
+  @override
+  final bool isFirstTime;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'AuthenticateState.empty()';
+    return 'AuthenticateState.empty(isFirstTime: $isFirstTime)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_empty);
+        (other.runtimeType == runtimeType &&
+            other is _$_empty &&
+            const DeepCollectionEquality()
+                .equals(other.isFirstTime, isFirstTime));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(isFirstTime));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_emptyCopyWith<_$_empty> get copyWith =>
+      __$$_emptyCopyWithImpl<_$_empty>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() empty,
+    required TResult Function(bool isFirstTime) empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function(AppUser appUser) partial,
     required TResult Function(String? message, AuthFailure? failure) failure,
   }) {
-    return empty();
+    return empty(isFirstTime);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
   }) {
-    return empty?.call();
+    return empty?.call(isFirstTime);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -837,7 +1020,7 @@ class _$_empty implements _empty {
     required TResult orElse(),
   }) {
     if (empty != null) {
-      return empty();
+      return empty(isFirstTime);
     }
     return orElse();
   }
@@ -889,9 +1072,14 @@ class _$_empty implements _empty {
 }
 
 abstract class _empty implements AuthenticateState {
-  const factory _empty() = _$_empty;
+  const factory _empty({required final bool isFirstTime}) = _$_empty;
 
   factory _empty.fromJson(Map<String, dynamic> json) = _$_empty.fromJson;
+
+  bool get isFirstTime;
+  @JsonKey(ignore: true)
+  _$$_emptyCopyWith<_$_empty> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -941,7 +1129,7 @@ class _$_loading implements _loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() empty,
+    required TResult Function(bool isFirstTime) empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function(AppUser appUser) partial,
@@ -953,7 +1141,7 @@ class _$_loading implements _loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -965,7 +1153,7 @@ class _$_loading implements _loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -1112,7 +1300,7 @@ class _$_authenticated implements _authenticated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() empty,
+    required TResult Function(bool isFirstTime) empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function(AppUser appUser) partial,
@@ -1124,7 +1312,7 @@ class _$_authenticated implements _authenticated {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -1136,7 +1324,7 @@ class _$_authenticated implements _authenticated {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -1289,7 +1477,7 @@ class _$_partial implements _partial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() empty,
+    required TResult Function(bool isFirstTime) empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function(AppUser appUser) partial,
@@ -1301,7 +1489,7 @@ class _$_partial implements _partial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -1313,7 +1501,7 @@ class _$_partial implements _partial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -1476,7 +1664,7 @@ class _$_error implements _error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() empty,
+    required TResult Function(bool isFirstTime) empty,
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function(AppUser appUser) partial,
@@ -1488,7 +1676,7 @@ class _$_error implements _error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,
@@ -1500,7 +1688,7 @@ class _$_error implements _error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
+    TResult Function(bool isFirstTime)? empty,
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function(AppUser appUser)? partial,

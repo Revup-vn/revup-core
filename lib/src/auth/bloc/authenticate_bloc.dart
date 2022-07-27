@@ -18,7 +18,10 @@ typedef PhoneGetter = Function0<FutureOr<String>>;
 
 class AuthenticateBloc
     extends HydratedBloc<AuthenticateEvent, AuthenticateState> {
-  AuthenticateBloc(this._authRepos) : super(const AuthenticateState.empty()) {
+  AuthenticateBloc(this._authRepos)
+      : super(
+          const AuthenticateState.empty(isFirstTime: true),
+        ) {
     on<AuthenticateEvent>(_onEvent);
   }
 
@@ -33,6 +36,7 @@ class AuthenticateBloc
           OnCompleteSignUp onCompleteSignUp,
         ) =>
             _onLoginWithGoogle(onCompleteSignUp, emit),
+        reset: () => emit(const AuthenticateState.empty(isFirstTime: false)),
         loginWithPhone: (
           String phoneNumber,
           OTPGetter onSubmitOTP,
@@ -70,7 +74,7 @@ class AuthenticateBloc
         google: (_) async {
           emit(const AuthenticateState.loading());
           (await _authRepos.ggSignOut())
-              ? emit(const AuthenticateState.empty())
+              ? emit(const AuthenticateState.empty(isFirstTime: true))
               : emit(AuthenticateState.failure(message: errorMessage));
 
           return unit;
@@ -78,7 +82,7 @@ class AuthenticateBloc
         phone: (_) async {
           emit(const AuthenticateState.loading());
           (await _authRepos.phoneSignOut())
-              ? emit(const AuthenticateState.empty())
+              ? emit(const AuthenticateState.empty(isFirstTime: true))
               : emit(AuthenticateState.failure(message: errorMessage));
 
           return unit;

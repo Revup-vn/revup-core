@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../stores/users/users.dart';
@@ -9,50 +10,74 @@ import '../../utils/utils.dart';
 import 'authenticator.dart';
 
 class PhoneAuthenticator extends Authenticator {
-  PhoneAuthenticator(this._auth, UserRepository store) : super(store);
+  PhoneAuthenticator(
+    this._auth,
+    this._func,
+    UserRepository store,
+  ) : super(store);
 
   final FirebaseAuth _auth;
+  final FirebaseFunctions _func;
 
-  Future<void> signIn({
+  Future<bool> isPhoneValid(String phone) async =>
+      phone.isNotEmpty &&
+      await isFieldValid('phone', phone) &&
+      !(await _func
+              .httpsCallable('checkIfPhoneExists')
+              .call<bool>({phone: phone}))
+          .data;
+
+  Future<UserCredential> signIn({
     required String phoneNumber,
     required OTPGetter getUserInput,
-    required SignInUpCallBack onSignIn,
     VoidCallback? onTimeout,
-  }) async =>
-      _auth.verifyPhoneNumber(
-        phoneNumber: phoneNumber,
-        verificationCompleted: (authCredentials) async {
-          if (authCredentials.smsCode != null) {
-            try {
-              await _auth.currentUser!
-                  .linkWithCredential(authCredentials)
-                  .then(onSignIn);
-            } on FirebaseAuthException catch (e) {
-              if (e.code == 'provider-already-linked') {
-                await _auth
-                    .signInWithCredential(authCredentials)
-                    .then(onSignIn);
-              } else {
-                rethrow;
-              }
-            }
-          }
-        },
-        verificationFailed: (e) {
-          if (e.code == 'invalid-phone-number') {
-            throw ValidateException();
-          }
-        },
-        codeSent: (verificationId, resentToken) async {
-          final sms = await getUserInput();
-          final credential = PhoneAuthProvider.credential(
-            verificationId: verificationId,
-            smsCode: sms,
-          );
-          await _auth.signInWithCredential(credential).then(onSignIn);
-        },
-        codeAutoRetrievalTimeout: (_) => onTimeout?.call(),
+  }) async {
+    final loginSuccess = Completer<UserCredential>();
+    await _auth.verifyPhoneNumber(
+      phoneNumber: phoneNumber,
+      verificationCompleted: (authCredentials) async {
+        if (authCredentials.smsCode != null) {
+          await _authLogin(loginSuccess, authCredentials);
+        }
+      },
+      verificationFailed: (e) {
+        if (e.code == 'invalid-phone-number') {
+          throw ValidateException();
+        }
+      },
+      codeSent: (verificationId, resentToken) async {
+        final sms = await getUserInput();
+        final credential = PhoneAuthProvider.credential(
+          verificationId: verificationId,
+          smsCode: sms,
+        );
+        await _authLogin(loginSuccess, credential);
+      },
+      codeAutoRetrievalTimeout: (_) => onTimeout?.call(),
+    );
+
+    return loginSuccess.future;
+  }
+
+  Future<void> _authLogin(
+    Completer<UserCredential> loginSuccess,
+    PhoneAuthCredential authCredentials,
+  ) async {
+    try {
+      loginSuccess.complete(
+        await (_auth.currentUser == null
+            ? _auth.signInWithCredential(authCredentials)
+            : _auth.currentUser?.linkWithCredential(authCredentials)),
       );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'provider-already-linked') {
+        loginSuccess
+            .complete(await _auth.signInWithCredential(authCredentials));
+      } else {
+        rethrow;
+      }
+    }
+  }
 
   @override
   Future<bool> signOut() async {

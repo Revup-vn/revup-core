@@ -6,4 +6,5 @@ class StorageEvent with _$StorageEvent {
   const factory StorageEvent.uploadMany({required IList<StorageFile> files}) =
       _uploadMany;
   const factory StorageEvent.delete({required String uri}) = _delete;
+  const factory StorageEvent.reset() = _reset;
 }

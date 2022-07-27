@@ -5,6 +5,7 @@ class AuthenticateEvent with _$AuthenticateEvent {
   const factory AuthenticateEvent.loginWithGoogle({
     required OnCompleteSignUp onCompleteSignUp,
   }) = _loginWithGoogle;
+
   const factory AuthenticateEvent.loginWithPhone({
     required String phoneNumber,
     required OTPGetter onSubmitOTP,
@@ -17,4 +18,6 @@ class AuthenticateEvent with _$AuthenticateEvent {
     required AuthType authType,
     String? errorMessage,
   }) = _signedOut;
+
+  const factory AuthenticateEvent.reset() = _reset;
 }
