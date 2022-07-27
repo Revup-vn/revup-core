@@ -14,11 +14,9 @@ abstract class IStore<T extends Serializable<T>> {
     T newData,
     IList<String> fields,
   );
-  Function1<Function1<Map<String, dynamic>, T>,
-      Future<Either<StoreFailure, IList<T>>>> all();
+  Future<Either<StoreFailure, IList<T>>> all();
 
-  Function1<Function1<Map<String, dynamic>, T>,
-      Future<Either<StoreFailure, IList<T>>>> where(
+  Future<Either<StoreFailure, IList<T>>> where(
     String field, {
     Object? isEqualTo,
     Object? isNotEqualTo,
@@ -33,6 +31,9 @@ abstract class IStore<T extends Serializable<T>> {
     bool? isNull,
   });
   Future<Either<StoreFailure, T>> get(String id);
+
+  @internal
+  Function1<Map<String, dynamic>, T> dtoFactory();
 }
 
 abstract class Store<T extends Serializable<T>> implements IStore<T> {
@@ -69,7 +70,6 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
   @internal
   Future<Either<StoreFailure, T>> auxGet(
     String id,
-    Function1<Map<String, dynamic>, T> factory,
   ) =>
       Task(() => doc(id).get())
           .attempt()
@@ -78,7 +78,7 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
               (_) => left(const StoreFailure.query()),
               (r) => fromDocument(
                 r,
-                factory,
+                dtoFactory(),
               ),
             ),
           )
@@ -144,9 +144,11 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
   }
 
   @override
+  Future<Either<StoreFailure, IList<T>>> all() async => allAux()(dtoFactory());
+
   Function1<Function1<Map<String, dynamic>, T>,
           Future<Either<StoreFailure, IList<T>>>>
-      all() => (factory) => Task(() => collection().get())
+      allAux() => (factory) => Task(() => collection().get())
           .attempt()
           .map(
             (a) => a.fold<Either<StoreFailure, IList<T>>>(
@@ -162,8 +164,37 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
           .run();
 
   @override
+  Future<Either<StoreFailure, IList<T>>> where(
+    String field, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) async =>
+      whereAux(
+        field,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull,
+      )(dtoFactory());
+
   Function1<Function1<Map<String, dynamic>, T>,
-      Future<Either<StoreFailure, IList<T>>>> where(
+      Future<Either<StoreFailure, IList<T>>>> whereAux(
     String field, {
     Object? isEqualTo,
     Object? isNotEqualTo,

@@ -23,8 +23,7 @@ class UserRepository extends Store<AppUser> {
   DocumentReference<Map<String, dynamic>> doc(String id) => user(id);
 
   @override
-  Future<Either<StoreFailure, AppUser>> get(String id) =>
-      auxGet(id, AppUser.fromJson);
+  Future<Either<StoreFailure, AppUser>> get(String id) => auxGet(id);
 
   @override
   String getId(AppUser data) => data.uuid;
@@ -35,4 +34,7 @@ class UserRepository extends Store<AppUser> {
     IList<String> fields,
   ) =>
       auxUpdate(newData, fields, cons('uuid', nil()));
+
+  @override
+  Function1<Map<String, dynamic>, AppUser> dtoFactory() => AppUser.fromJson;
 }

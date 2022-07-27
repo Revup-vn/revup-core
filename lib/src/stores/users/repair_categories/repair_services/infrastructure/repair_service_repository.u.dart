@@ -37,8 +37,7 @@ class RepairServiceRepository extends Store<RepairService> {
   DocumentReference<Map<String, dynamic>> doc(String id) => service(id);
 
   @override
-  Future<Either<StoreFailure, RepairService>> get(String id) =>
-      auxGet(id, RepairService.fromJson);
+  Future<Either<StoreFailure, RepairService>> get(String id) => auxGet(id);
 
   @override
   String getId(RepairService data) => data.name;
@@ -49,4 +48,8 @@ class RepairServiceRepository extends Store<RepairService> {
     IList<String> fields,
   ) =>
       auxUpdate(newData, fields, nil());
+
+  @override
+  Function1<Map<String, dynamic>, RepairService> dtoFactory() =>
+      RepairService.fromJson;
 }
