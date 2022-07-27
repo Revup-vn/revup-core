@@ -51,13 +51,10 @@ class AuthenticatorRepository {
     User user,
   ) async {
     if (recordData.exists) {
-      try {
-        return right(
-          AppUser.fromJson(recordData.data()!),
-        );
-      } catch (_) {
-        return left(const AuthFailure.invalidData('Cannot parse data'));
-      }
+      return catching(() => AppUser.fromJson(recordData.data()!))
+          .leftMap<AuthFailure>(
+        (dynamic _) => const AuthFailure.invalidData('Cannot parse data'),
+      );
     } else {
       final appUser = await onSignUpSubmit(user);
       if (user.phoneNumber?.isEmpty ?? true) {
@@ -92,33 +89,15 @@ class AuthenticatorRepository {
     @visibleForTesting AppUser? assignValueEffectsForTesting,
   }) =>
           (phoneNumber, onTimeOut) async {
-            if (!(await _phoneAuthenticatorService.isPhoneValid(phoneNumber))) {
-              return left(
-                const AuthFailure.invalidData(
-                  'Phone number or email is already existed',
-                ),
-              );
-            }
-
             Either<AuthFailure, AppUser>? tmp;
             late FutureOr<Either<AuthFailure, AppUser>> res;
 
             try {
-              final credentials = await _phoneAuthenticatorService.signIn(
-                phoneNumber: phoneNumber,
-                getUserInput: onSubmitOTP,
-                onTimeout: onTimeOut,
-              );
-
-              if (credentials.user == null) {
-                tmp = left(const AuthFailure.invalidData());
-              }
-
-              final user = credentials.user!;
-              tmp = await _signInUp(
-                await _phoneAuthenticatorService.getUserDocument(user.uid),
+              tmp = await _phoneAux(
+                phoneNumber,
+                onSubmitOTP,
+                onTimeOut,
                 onSignUpSubmit,
-                user,
               );
 
               if (assignValueEffectsForTesting != null) {
@@ -138,6 +117,46 @@ class AuthenticatorRepository {
 
             return res;
           };
+
+  FutureOr<Either<AuthFailure, AppUser>> _phoneAux(
+    String phoneNumber,
+    OTPGetter onSubmitOTP,
+    VoidCallback? onTimeOut,
+    OnCompleteSignUp onSignUpSubmit,
+  ) async =>
+      (await _phoneAuthenticatorService.signIn(
+        phoneNumber: phoneNumber,
+        getUserInput: onSubmitOTP,
+        onTimeout: onTimeOut,
+      ))
+          .fold<FutureOr<Either<AuthFailure, AppUser>>>(
+        (l) async {
+          if (l is ValidateException) {
+            return left(
+              const AuthFailure.invalidData(
+                'Phone number is not valid',
+              ),
+            );
+          } else {
+            l as FirebaseException;
+
+            return left(AuthFailure.server(l.code));
+          }
+        },
+        (uc) async {
+          if (uc.user == null) {
+            return left(const AuthFailure.invalidData());
+          }
+
+          final user = uc.user!;
+
+          return _signInUp(
+            await _phoneAuthenticatorService.getUserDocument(user.uid),
+            onSignUpSubmit,
+            user,
+          );
+        },
+      );
 
   FutureOr<bool> phoneSignOut() => Task(_phoneAuthenticatorService.signOut)
       .attempt()

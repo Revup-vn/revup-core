@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/widgets.dart';
 
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../stores/users/users.dart';
@@ -27,12 +28,12 @@ class PhoneAuthenticator extends Authenticator {
               .call<bool>({phone: phone}))
           .data;
 
-  Future<UserCredential> signIn({
+  Future<Either<Exception, UserCredential>> signIn({
     required String phoneNumber,
     required OTPGetter getUserInput,
     VoidCallback? onTimeout,
   }) async {
-    final loginSuccess = Completer<UserCredential>();
+    final loginSuccess = Completer<Either<Exception, UserCredential>>();
     await _auth.verifyPhoneNumber(
       phoneNumber: phoneNumber,
       verificationCompleted: (authCredentials) async {
@@ -42,7 +43,9 @@ class PhoneAuthenticator extends Authenticator {
       },
       verificationFailed: (e) {
         if (e.code == 'invalid-phone-number') {
-          throw ValidateException();
+          loginSuccess.complete(left(ValidateException()));
+        } else {
+          loginSuccess.complete(left(e));
         }
       },
       codeSent: (verificationId, resentToken) async {
@@ -60,19 +63,21 @@ class PhoneAuthenticator extends Authenticator {
   }
 
   Future<void> _authLogin(
-    Completer<UserCredential> loginSuccess,
+    Completer<Either<Exception, UserCredential>> loginSuccess,
     PhoneAuthCredential authCredentials,
   ) async {
     try {
       loginSuccess.complete(
-        await (_auth.currentUser == null
-            ? _auth.signInWithCredential(authCredentials)
-            : _auth.currentUser?.linkWithCredential(authCredentials)),
+        right(
+          await (_auth.currentUser == null
+              ? _auth.signInWithCredential(authCredentials)
+              : _auth.currentUser!.linkWithCredential(authCredentials)),
+        ),
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'provider-already-linked') {
         loginSuccess
-            .complete(await _auth.signInWithCredential(authCredentials));
+            .complete(right(await _auth.signInWithCredential(authCredentials)));
       } else {
         rethrow;
       }

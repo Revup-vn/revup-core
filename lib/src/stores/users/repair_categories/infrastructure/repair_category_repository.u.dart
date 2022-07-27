@@ -33,8 +33,7 @@ class RepairCategoryRepository extends Store<RepairCategory> {
   DocumentReference<Map<String, dynamic>> doc(String id) => category(id);
 
   @override
-  Future<Either<StoreFailure, RepairCategory>> get(String id) =>
-      auxGet(id, RepairCategory.fromJson);
+  Future<Either<StoreFailure, RepairCategory>> get(String id) => auxGet(id);
 
   @override
   String getId(RepairCategory data) => data.name;
@@ -45,4 +44,8 @@ class RepairCategoryRepository extends Store<RepairCategory> {
     IList<String> fields,
   ) =>
       auxUpdate(newData, fields, nil());
+
+  @override
+  Function1<Map<String, dynamic>, RepairCategory> dtoFactory() =>
+      RepairCategory.fromJson;
 }

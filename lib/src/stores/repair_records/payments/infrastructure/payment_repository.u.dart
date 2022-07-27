@@ -29,8 +29,7 @@ class PaymentRepository extends Store<Payment> {
   DocumentReference<Map<String, dynamic>> doc(String id) => payment(id);
 
   @override
-  Future<Either<StoreFailure, Payment>> get(String id) =>
-      auxGet(id, Payment.fromJson);
+  Future<Either<StoreFailure, Payment>> get(String id) => auxGet(id);
 
   @override
   String getId(Payment data) => data.id;
@@ -41,4 +40,7 @@ class PaymentRepository extends Store<Payment> {
     IList<String> fields,
   ) =>
       auxUpdate(newData, fields, cons('id', nil()));
+
+  @override
+  Function1<Map<String, dynamic>, Payment> dtoFactory() => Payment.fromJson;
 }
