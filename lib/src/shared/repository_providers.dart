@@ -20,7 +20,12 @@ MultiRepositoryProvider coreRepositoryProviders({required Widget providers}) =>
     MultiRepositoryProvider(
       providers: [
         ..._firebaseProvider,
-        ..._iStoreProviders,
+        RepositoryProvider<IStore<AppUser>>(
+          create: (context) => UserRepository(context.read()),
+        ),
+        RepositoryProvider<IStore<RepairRecord>>(
+          create: (context) => RepairRecordRepository(context.read()),
+        ),
         ..._authenticatorProviders,
         ..._storageProvider,
         RepositoryProvider<Connectivity>(create: (_) => Connectivity()),
@@ -43,15 +48,6 @@ final _firebaseProvider = [
   ),
   RepositoryProvider<GoogleSignIn>(
     create: (_) => GoogleSignIn(),
-  ),
-];
-
-final _iStoreProviders = [
-  RepositoryProvider<IStore<AppUser>>(
-    create: (context) => UserRepository(context.read()),
-  ),
-  RepositoryProvider<IStore<RepairRecord>>(
-    create: (context) => RepairRecordRepository(context.read()),
   ),
 ];
 
