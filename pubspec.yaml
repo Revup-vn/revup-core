@@ -10,6 +10,7 @@ dependencies:
   auto_route: ^4.2.1
   cloud_firestore: ^3.4.0
   cloud_functions: ^3.3.3
+  connectivity_plus: ^2.3.6
   dartz: ^0.10.1
   firebase_auth: ^3.5.0
   firebase_core: ^1.20.0
