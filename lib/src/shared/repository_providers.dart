@@ -57,6 +57,9 @@ MultiRepositoryProvider coreRepositoryProviders({required Widget providers}) =>
         RepositoryProvider<StorageRepository>(
           create: (context) => StorageRepository(context.read()),
         ),
+        RepositoryProvider<StoreRepository>(
+          create: (context) => StoreRepository(context.read()),
+        ),
       ],
       child: providers,
     );

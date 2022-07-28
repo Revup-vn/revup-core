@@ -4,3 +4,4 @@ export 'users/users.dart'
 export 'repair_records/repair_records.dart' hide RepairRecordRepository;
 export 'models/models.dart';
 export 'infrastructure/infrastructure.dart' hide Store;
+export 'shared/repository_providers.u.dart';
