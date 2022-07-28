@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../core.dart';
 import 'components/dialogs/dialogs.dart';
 import 'observers/observers.dart';
 import 'shared/providers.dart';
@@ -47,21 +48,25 @@ Future<void> bootstrap({
           coreRepositoryProviders(
             providers: coreBlocProviders(
               child: BlocBuilder<IThemeCubit, ThemeMode>(
-                builder: (context, state) {
-                  return MaterialApp.router(
-                    routeInformationParser: route.tail,
-                    routerDelegate: AutoRouterDelegate(
-                      route.head,
-                      navigatorObservers: () => [AppRouteObserver()],
-                    ),
-                    themeMode: state,
-                    theme: lightTheme,
-                    darkTheme: darkTheme,
-                    supportedLocales: locales,
-                    localizationsDelegates: localizationsDelegates,
-                    builder: _flashTheme,
-                  );
-                },
+                builder: (context, state) => MaterialApp.router(
+                  routeInformationParser: route.tail,
+                  routerDelegate: AutoRouterDelegate(
+                    route.head,
+                    navigatorObservers: () => [AppRouteObserver()],
+                  ),
+                  themeMode: state,
+                  theme: lightTheme,
+                  locale: context.watch<LanguageCubit>().state.when(
+                        system: Locale.new,
+                        vietnamese: () => const Locale('vi'),
+                        english: () => const Locale('en'),
+                      ),
+                  darkTheme: darkTheme,
+                  supportedLocales: locales,
+                  localizationsDelegates: localizationsDelegates,
+                  localeListResolutionCallback: _resolveLocal,
+                  builder: _flashTheme,
+                ),
               ),
             ),
           ),
@@ -71,6 +76,16 @@ Future<void> bootstrap({
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }
+
+Locale? _resolveLocal(
+  List<Locale>? locales,
+  Iterable<Locale> supportedLocales,
+) =>
+    supportedLocales.firstWhere(
+      (l) =>
+          locales?.any((n) => n.languageCode.contains(l.languageCode)) ?? false,
+      orElse: () => LanguageCubit.fallbackLocale,
+    );
 
 Widget _flashTheme(BuildContext ctx, Widget? w) {
   final isDark = MediaQuery.of(ctx).platformBrightness == Brightness.dark;
