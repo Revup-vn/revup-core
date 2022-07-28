@@ -31,9 +31,6 @@ abstract class IStore<T extends Serializable<T>> {
     bool? isNull,
   });
   Future<Either<StoreFailure, T>> get(String id);
-
-  @internal
-  Function1<Map<String, dynamic>, T> dtoFactory();
 }
 
 abstract class Store<T extends Serializable<T>> implements IStore<T> {
@@ -55,6 +52,10 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
   @protected
   @internal
   CollectionReference<Map<String, dynamic>> collection();
+
+  @internal
+  @protected
+  Function1<Map<String, dynamic>, T> dtoFactory();
 
   @protected
   @internal

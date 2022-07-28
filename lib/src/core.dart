@@ -59,20 +59,7 @@ Future<void> bootstrap({
                     darkTheme: darkTheme,
                     supportedLocales: locales,
                     localizationsDelegates: localizationsDelegates,
-                    builder: (ctx, w) {
-                      final isDark = MediaQuery.of(ctx).platformBrightness ==
-                          Brightness.dark;
-
-                      return FlashTheme(
-                        flashBarTheme: isDark
-                            ? kDarkDialogueBarScheme
-                            : kLightDialogueBarScheme,
-                        flashDialogTheme: isDark
-                            ? kDarkDialogColorScheme
-                            : kLightDialogColorScheme,
-                        child: w ?? Container(),
-                      );
-                    },
+                    builder: _flashTheme,
                   );
                 },
               ),
@@ -82,5 +69,15 @@ Future<void> bootstrap({
       );
     },
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
+  );
+}
+
+Widget _flashTheme(BuildContext ctx, Widget? w) {
+  final isDark = MediaQuery.of(ctx).platformBrightness == Brightness.dark;
+
+  return FlashTheme(
+    flashBarTheme: isDark ? kDarkDialogueBarScheme : kLightDialogueBarScheme,
+    flashDialogTheme: isDark ? kDarkDialogColorScheme : kLightDialogColorScheme,
+    child: w ?? Container(),
   );
 }
