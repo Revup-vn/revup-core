@@ -1,9 +1,11 @@
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 import '../auth/auth.dart';
 import '../connectivity/bloc/connectivity_bloc.u.dart';
+import '../languages/languages.dart';
 import '../storages/storages.dart';
 import '../theme/theme.dart';
 
@@ -20,6 +22,11 @@ MultiBlocProvider coreBlocProviders({required Widget child}) =>
         ),
         BlocProvider<ConnectivityBloc>(
           create: (context) => ConnectivityBloc(context.read()),
+        ),
+        BlocProvider<LanguageCubit>(
+          create: (context) => LanguageCubit(
+            Intl.getCurrentLocale().split('_').take(1).join(),
+          ),
         ),
       ],
       child: child,
