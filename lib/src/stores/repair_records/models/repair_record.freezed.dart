@@ -120,7 +120,7 @@ mixin _$RepairRecord {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)
         finished,
@@ -184,7 +184,7 @@ mixin _$RepairRecord {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)?
         finished,
@@ -248,7 +248,7 @@ mixin _$RepairRecord {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)?
         finished,
@@ -629,7 +629,7 @@ class _$_pending implements _pending {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)
         finished,
@@ -696,7 +696,7 @@ class _$_pending implements _pending {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)?
         finished,
@@ -763,7 +763,7 @@ class _$_pending implements _pending {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)?
         finished,
@@ -1113,7 +1113,7 @@ class _$_accept implements _accept {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)
         finished,
@@ -1181,7 +1181,7 @@ class _$_accept implements _accept {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)?
         finished,
@@ -1249,7 +1249,7 @@ class _$_accept implements _accept {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)?
         finished,
@@ -1593,7 +1593,7 @@ class _$_aborted implements _aborted {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)
         finished,
@@ -1660,7 +1660,7 @@ class _$_aborted implements _aborted {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)?
         finished,
@@ -1727,7 +1727,7 @@ class _$_aborted implements _aborted {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)?
         finished,
@@ -2090,7 +2090,7 @@ class _$_arrived implements _arrived {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)
         finished,
@@ -2158,7 +2158,7 @@ class _$_arrived implements _arrived {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)?
         finished,
@@ -2226,7 +2226,7 @@ class _$_arrived implements _arrived {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)?
         finished,
@@ -2594,7 +2594,7 @@ class _$_started implements _started {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)
         finished,
@@ -2662,7 +2662,7 @@ class _$_started implements _started {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)?
         finished,
@@ -2730,7 +2730,7 @@ class _$_started implements _started {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)?
         finished,
@@ -2853,11 +2853,11 @@ abstract class _$$_finishedCopyWith<$Res>
       DateTime started,
       DateTime completed,
       List<String> imgs,
-      Feedback? feedback,
+      Feedback feedback,
       Location from,
       Location to});
 
-  $FeedbackCopyWith<$Res>? get feedback;
+  $FeedbackCopyWith<$Res> get feedback;
   @override
   $LocationCopyWith<$Res> get from;
   @override
@@ -2939,7 +2939,7 @@ class __$$_finishedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
       feedback: feedback == freezed
           ? _value.feedback
           : feedback // ignore: cast_nullable_to_non_nullable
-              as Feedback?,
+              as Feedback,
       from: from == freezed
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
@@ -2952,12 +2952,8 @@ class __$$_finishedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
   }
 
   @override
-  $FeedbackCopyWith<$Res>? get feedback {
-    if (_value.feedback == null) {
-      return null;
-    }
-
-    return $FeedbackCopyWith<$Res>(_value.feedback!, (value) {
+  $FeedbackCopyWith<$Res> get feedback {
+    return $FeedbackCopyWith<$Res>(_value.feedback, (value) {
       return _then(_value.copyWith(feedback: value));
     });
   }
@@ -2978,7 +2974,7 @@ class _$_finished implements _finished {
       required this.started,
       required this.completed,
       required final List<String> imgs,
-      this.feedback,
+      required this.feedback,
       required this.from,
       required this.to,
       final String? $type})
@@ -3016,7 +3012,7 @@ class _$_finished implements _finished {
   }
 
   @override
-  final Feedback? feedback;
+  final Feedback feedback;
   @override
   final Location from;
   @override
@@ -3150,7 +3146,7 @@ class _$_finished implements _finished {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)
         finished,
@@ -3218,7 +3214,7 @@ class _$_finished implements _finished {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)?
         finished,
@@ -3286,7 +3282,7 @@ class _$_finished implements _finished {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback? feedback,
+            Feedback feedback,
             Location from,
             Location to)?
         finished,
@@ -3361,7 +3357,7 @@ abstract class _finished implements RepairRecord {
       required final DateTime started,
       required final DateTime completed,
       required final List<String> imgs,
-      final Feedback? feedback,
+      required final Feedback feedback,
       required final Location from,
       required final Location to}) = _$_finished;
 
@@ -3385,7 +3381,7 @@ abstract class _finished implements RepairRecord {
   DateTime get started;
   DateTime get completed;
   List<String> get imgs;
-  Feedback? get feedback;
+  Feedback get feedback;
   @override
   Location get from;
   @override

@@ -92,7 +92,7 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required DateTime started,
     required DateTime completed,
     required List<String> imgs,
-    Feedback? feedback,
+    required Feedback feedback,
     required Location from,
     required Location to,
   }) = _finished;
