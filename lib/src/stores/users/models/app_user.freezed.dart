@@ -70,7 +70,9 @@ mixin _$AppUser {
             DateTime createdTime,
             DateTime lastUpdatedTime,
             String idCardNum,
-            String idCardImage)
+            String idCardImage,
+            String backgroundUrl,
+            String bio)
         provider,
     required TResult Function(
             String uuid,
@@ -115,7 +117,9 @@ mixin _$AppUser {
             DateTime createdTime,
             DateTime lastUpdatedTime,
             String idCardNum,
-            String idCardImage)?
+            String idCardImage,
+            String backgroundUrl,
+            String bio)?
         provider,
     TResult Function(
             String uuid,
@@ -160,7 +164,9 @@ mixin _$AppUser {
             DateTime createdTime,
             DateTime lastUpdatedTime,
             String idCardNum,
-            String idCardImage)?
+            String idCardImage,
+            String backgroundUrl,
+            String bio)?
         provider,
     TResult Function(
             String uuid,
@@ -509,7 +515,9 @@ class _$_consumer implements _consumer {
             DateTime createdTime,
             DateTime lastUpdatedTime,
             String idCardNum,
-            String idCardImage)
+            String idCardImage,
+            String backgroundUrl,
+            String bio)
         provider,
     required TResult Function(
             String uuid,
@@ -558,7 +566,9 @@ class _$_consumer implements _consumer {
             DateTime createdTime,
             DateTime lastUpdatedTime,
             String idCardNum,
-            String idCardImage)?
+            String idCardImage,
+            String backgroundUrl,
+            String bio)?
         provider,
     TResult Function(
             String uuid,
@@ -607,7 +617,9 @@ class _$_consumer implements _consumer {
             DateTime createdTime,
             DateTime lastUpdatedTime,
             String idCardNum,
-            String idCardImage)?
+            String idCardImage,
+            String backgroundUrl,
+            String bio)?
         provider,
     TResult Function(
             String uuid,
@@ -734,7 +746,9 @@ abstract class _$$_providerCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       DateTime createdTime,
       DateTime lastUpdatedTime,
       String idCardNum,
-      String idCardImage});
+      String idCardImage,
+      String backgroundUrl,
+      String bio});
 }
 
 /// @nodoc
@@ -762,6 +776,8 @@ class __$$_providerCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
     Object? lastUpdatedTime = freezed,
     Object? idCardNum = freezed,
     Object? idCardImage = freezed,
+    Object? backgroundUrl = freezed,
+    Object? bio = freezed,
   }) {
     return _then(_$_provider(
       uuid: uuid == freezed
@@ -816,6 +832,14 @@ class __$$_providerCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
           ? _value.idCardImage
           : idCardImage // ignore: cast_nullable_to_non_nullable
               as String,
+      backgroundUrl: backgroundUrl == freezed
+          ? _value.backgroundUrl
+          : backgroundUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      bio: bio == freezed
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -837,6 +861,8 @@ class _$_provider implements _provider {
       required this.lastUpdatedTime,
       required this.idCardNum,
       required this.idCardImage,
+      required this.backgroundUrl,
+      required this.bio,
       final String? $type})
       : $type = $type ?? '2';
 
@@ -869,13 +895,17 @@ class _$_provider implements _provider {
   final String idCardNum;
   @override
   final String idCardImage;
+  @override
+  final String backgroundUrl;
+  @override
+  final String bio;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'AppUser.provider(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, active: $active, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime, idCardNum: $idCardNum, idCardImage: $idCardImage)';
+    return 'AppUser.provider(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, active: $active, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime, idCardNum: $idCardNum, idCardImage: $idCardImage, backgroundUrl: $backgroundUrl, bio: $bio)';
   }
 
   @override
@@ -898,7 +928,10 @@ class _$_provider implements _provider {
                 .equals(other.lastUpdatedTime, lastUpdatedTime) &&
             const DeepCollectionEquality().equals(other.idCardNum, idCardNum) &&
             const DeepCollectionEquality()
-                .equals(other.idCardImage, idCardImage));
+                .equals(other.idCardImage, idCardImage) &&
+            const DeepCollectionEquality()
+                .equals(other.backgroundUrl, backgroundUrl) &&
+            const DeepCollectionEquality().equals(other.bio, bio));
   }
 
   @JsonKey(ignore: true)
@@ -917,7 +950,9 @@ class _$_provider implements _provider {
       const DeepCollectionEquality().hash(createdTime),
       const DeepCollectionEquality().hash(lastUpdatedTime),
       const DeepCollectionEquality().hash(idCardNum),
-      const DeepCollectionEquality().hash(idCardImage));
+      const DeepCollectionEquality().hash(idCardImage),
+      const DeepCollectionEquality().hash(backgroundUrl),
+      const DeepCollectionEquality().hash(bio));
 
   @JsonKey(ignore: true)
   @override
@@ -953,7 +988,9 @@ class _$_provider implements _provider {
             DateTime createdTime,
             DateTime lastUpdatedTime,
             String idCardNum,
-            String idCardImage)
+            String idCardImage,
+            String backgroundUrl,
+            String bio)
         provider,
     required TResult Function(
             String uuid,
@@ -969,8 +1006,22 @@ class _$_provider implements _provider {
             DateTime lastUpdatedTime)
         admin,
   }) {
-    return provider(uuid, firstName, lastName, phone, dob, addr, email, active,
-        avatarUrl, createdTime, lastUpdatedTime, idCardNum, idCardImage);
+    return provider(
+        uuid,
+        firstName,
+        lastName,
+        phone,
+        dob,
+        addr,
+        email,
+        active,
+        avatarUrl,
+        createdTime,
+        lastUpdatedTime,
+        idCardNum,
+        idCardImage,
+        backgroundUrl,
+        bio);
   }
 
   @override
@@ -1002,7 +1053,9 @@ class _$_provider implements _provider {
             DateTime createdTime,
             DateTime lastUpdatedTime,
             String idCardNum,
-            String idCardImage)?
+            String idCardImage,
+            String backgroundUrl,
+            String bio)?
         provider,
     TResult Function(
             String uuid,
@@ -1031,7 +1084,9 @@ class _$_provider implements _provider {
         createdTime,
         lastUpdatedTime,
         idCardNum,
-        idCardImage);
+        idCardImage,
+        backgroundUrl,
+        bio);
   }
 
   @override
@@ -1063,7 +1118,9 @@ class _$_provider implements _provider {
             DateTime createdTime,
             DateTime lastUpdatedTime,
             String idCardNum,
-            String idCardImage)?
+            String idCardImage,
+            String backgroundUrl,
+            String bio)?
         provider,
     TResult Function(
             String uuid,
@@ -1094,7 +1151,9 @@ class _$_provider implements _provider {
           createdTime,
           lastUpdatedTime,
           idCardNum,
-          idCardImage);
+          idCardImage,
+          backgroundUrl,
+          bio);
     }
     return orElse();
   }
@@ -1153,7 +1212,9 @@ abstract class _provider implements AppUser {
       required final DateTime createdTime,
       required final DateTime lastUpdatedTime,
       required final String idCardNum,
-      required final String idCardImage}) = _$_provider;
+      required final String idCardImage,
+      required final String backgroundUrl,
+      required final String bio}) = _$_provider;
 
   factory _provider.fromJson(Map<String, dynamic> json) = _$_provider.fromJson;
 
@@ -1181,6 +1242,8 @@ abstract class _provider implements AppUser {
   DateTime get lastUpdatedTime;
   String get idCardNum;
   String get idCardImage;
+  String get backgroundUrl;
+  String get bio;
   @override
   @JsonKey(ignore: true)
   _$$_providerCopyWith<_$_provider> get copyWith =>
@@ -1400,7 +1463,9 @@ class _$_admin implements _admin {
             DateTime createdTime,
             DateTime lastUpdatedTime,
             String idCardNum,
-            String idCardImage)
+            String idCardImage,
+            String backgroundUrl,
+            String bio)
         provider,
     required TResult Function(
             String uuid,
@@ -1449,7 +1514,9 @@ class _$_admin implements _admin {
             DateTime createdTime,
             DateTime lastUpdatedTime,
             String idCardNum,
-            String idCardImage)?
+            String idCardImage,
+            String backgroundUrl,
+            String bio)?
         provider,
     TResult Function(
             String uuid,
@@ -1498,7 +1565,9 @@ class _$_admin implements _admin {
             DateTime createdTime,
             DateTime lastUpdatedTime,
             String idCardNum,
-            String idCardImage)?
+            String idCardImage,
+            String backgroundUrl,
+            String bio)?
         provider,
     TResult Function(
             String uuid,

@@ -39,6 +39,8 @@ class AppUser extends Serializable<AppUser> with _$AppUser {
     required DateTime lastUpdatedTime,
     required String idCardNum,
     required String idCardImage,
+    required String backgroundUrl,
+    required String bio,
   }) = _provider;
 
   @FreezedUnionValue('3')

@@ -74,6 +74,8 @@ _$_provider _$$_providerFromJson(Map<String, dynamic> json) => $checkedCreate(
               'last_updated_time', (v) => DateTime.parse(v as String)),
           idCardNum: $checkedConvert('id_card_num', (v) => v as String),
           idCardImage: $checkedConvert('id_card_image', (v) => v as String),
+          backgroundUrl: $checkedConvert('background_url', (v) => v as String),
+          bio: $checkedConvert('bio', (v) => v as String),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -86,6 +88,7 @@ _$_provider _$$_providerFromJson(Map<String, dynamic> json) => $checkedCreate(
         'lastUpdatedTime': 'last_updated_time',
         'idCardNum': 'id_card_num',
         'idCardImage': 'id_card_image',
+        'backgroundUrl': 'background_url',
         r'$type': 'type'
       },
     );
@@ -105,6 +108,8 @@ Map<String, dynamic> _$$_providerToJson(_$_provider instance) =>
       'last_updated_time': instance.lastUpdatedTime.toIso8601String(),
       'id_card_num': instance.idCardNum,
       'id_card_image': instance.idCardImage,
+      'background_url': instance.backgroundUrl,
+      'bio': instance.bio,
       'type': instance.$type,
     };
 
