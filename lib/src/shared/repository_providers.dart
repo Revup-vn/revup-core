@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -48,6 +49,9 @@ final _firebaseProvider = [
   ),
   RepositoryProvider<GoogleSignIn>(
     create: (_) => GoogleSignIn(),
+  ),
+  RepositoryProvider<FirebaseMessaging>(
+    create: (_) => FirebaseMessaging.instance,
   ),
 ];
 
