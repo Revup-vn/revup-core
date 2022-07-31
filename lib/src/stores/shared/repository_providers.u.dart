@@ -30,4 +30,7 @@ class StoreRepository {
     RepairService service,
   ) =>
       RepairProductRepository(_store, user, category, service);
+
+  IStore<Token> userNotificationTokenRepo(AppUser user) =>
+      TokenRepository(_store, user);
 }

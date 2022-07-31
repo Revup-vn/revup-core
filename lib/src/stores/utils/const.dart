@@ -5,3 +5,4 @@ const kStorePathPaymentDocument = 'payment';
 const kStorePathProviderCategoryDocument = 'category';
 const kStorePathProviderCategoryServiceDocument = 'service';
 const kStorePathProviderCategoryServiceProductDocument = 'product';
+const KStorePathUserTokenCollection = 'tokens';

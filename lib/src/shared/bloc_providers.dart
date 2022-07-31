@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import '../auth/auth.dart';
 import '../connectivity/bloc/connectivity_bloc.u.dart';
 import '../languages/languages.dart';
+import '../notification/cubit/notification_cubit.u.dart';
 import '../storages/storages.dart';
 import '../theme/theme.dart';
 
@@ -27,6 +28,9 @@ MultiBlocProvider coreBlocProviders({required Widget child}) =>
           create: (context) => LanguageCubit(
             Intl.getCurrentLocale().split('_').take(1).join(),
           ),
+        ),
+        BlocProvider<NotificationCubit>(
+          create: (context) => NotificationCubit(context.read()),
         ),
       ],
       child: child,
