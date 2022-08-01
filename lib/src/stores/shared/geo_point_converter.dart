@@ -13,6 +13,7 @@ class GeoPointConverter
   @override
   GeoFirePoint fromJson(Map<String, dynamic> json) {
     final point = json['geopoint'] as GeoPoint;
+
     return GeoFirePoint(
       point.latitude,
       point.longitude,

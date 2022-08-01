@@ -4,6 +4,7 @@ import 'package:geoflutterfire2/geoflutterfire2.dart';
 import '../../models/serializable.dart';
 import '../../shared/geo_point_converter.dart';
 import 'feedback.dart';
+import 'location.u.dart';
 import 'optional_service.u.dart';
 
 part 'repair_record.freezed.dart';
@@ -35,8 +36,8 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required String vehicle,
     required int money,
     required DateTime moving,
-    @GeoPointConverter() required GeoFirePoint from,
-    @GeoPointConverter() required GeoFirePoint to,
+    required Location from,
+    required Location to,
   }) = _accept;
 
   @FreezedUnionValue('3')
@@ -48,8 +49,8 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required String desc,
     required String vehicle,
     required int money,
-    @GeoPointConverter() required GeoFirePoint from,
-    @GeoPointConverter() required GeoFirePoint to,
+    required Location from,
+    required Location to,
   }) = _aborted;
 
   @FreezedUnionValue('4')
@@ -63,8 +64,8 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required int money,
     required DateTime moving,
     required DateTime arrived,
-    @GeoPointConverter() required GeoFirePoint from,
-    @GeoPointConverter() required GeoFirePoint to,
+    required Location from,
+    required Location to,
   }) = _arrived;
 
   @FreezedUnionValue('5')
@@ -78,8 +79,8 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required int money,
     required DateTime moving,
     required DateTime started,
-    @GeoPointConverter() required GeoFirePoint from,
-    @GeoPointConverter() required GeoFirePoint to,
+    required Location from,
+    required Location to,
   }) = _started;
 
   @FreezedUnionValue('6')
@@ -96,8 +97,8 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required DateTime completed,
     required List<String> imgs,
     required Feedback feedback,
-    @GeoPointConverter() required GeoFirePoint from,
-    @GeoPointConverter() required GeoFirePoint to,
+    required Location from,
+    required Location to,
   }) = _finished;
 
   factory RepairRecord.fromJson(Map<String, dynamic> json) =>
