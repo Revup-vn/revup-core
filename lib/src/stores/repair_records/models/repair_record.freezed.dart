@@ -121,7 +121,8 @@ mixin _$RepairRecord {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)
+            Location to,
+            RepairRecord? record)
         finished,
   }) =>
       throw _privateConstructorUsedError;
@@ -194,7 +195,8 @@ mixin _$RepairRecord {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)?
+            Location to,
+            RepairRecord? record)?
         finished,
   }) =>
       throw _privateConstructorUsedError;
@@ -267,7 +269,8 @@ mixin _$RepairRecord {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)?
+            Location to,
+            RepairRecord? record)?
         finished,
     required TResult orElse(),
   }) =>
@@ -633,7 +636,8 @@ class _$_pending implements _pending {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)
+            Location to,
+            RepairRecord? record)
         finished,
   }) {
     return pending(
@@ -710,7 +714,8 @@ class _$_pending implements _pending {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)?
+            Location to,
+            RepairRecord? record)?
         finished,
   }) {
     return pending?.call(
@@ -787,7 +792,8 @@ class _$_pending implements _pending {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)?
+            Location to,
+            RepairRecord? record)?
         finished,
     required TResult orElse(),
   }) {
@@ -1155,7 +1161,8 @@ class _$_accept implements _accept {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)
+            Location to,
+            RepairRecord? record)
         finished,
   }) {
     return accepted(
@@ -1232,7 +1239,8 @@ class _$_accept implements _accept {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)?
+            Location to,
+            RepairRecord? record)?
         finished,
   }) {
     return accepted?.call(
@@ -1309,7 +1317,8 @@ class _$_accept implements _accept {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)?
+            Location to,
+            RepairRecord? record)?
         finished,
     required TResult orElse(),
   }) {
@@ -1666,7 +1675,8 @@ class _$_aborted implements _aborted {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)
+            Location to,
+            RepairRecord? record)
         finished,
   }) {
     return aborted(id, cid, pid, created, desc, vehicle, money, from, to);
@@ -1742,7 +1752,8 @@ class _$_aborted implements _aborted {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)?
+            Location to,
+            RepairRecord? record)?
         finished,
   }) {
     return aborted?.call(id, cid, pid, created, desc, vehicle, money, from, to);
@@ -1818,7 +1829,8 @@ class _$_aborted implements _aborted {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)?
+            Location to,
+            RepairRecord? record)?
         finished,
     required TResult orElse(),
   }) {
@@ -2194,7 +2206,8 @@ class _$_arrived implements _arrived {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)
+            Location to,
+            RepairRecord? record)
         finished,
   }) {
     return arrived(id, cid, pid, created, desc, vehicle, money, moving,
@@ -2271,7 +2284,8 @@ class _$_arrived implements _arrived {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)?
+            Location to,
+            RepairRecord? record)?
         finished,
   }) {
     return arrived?.call(id, cid, pid, created, desc, vehicle, money, moving,
@@ -2348,7 +2362,8 @@ class _$_arrived implements _arrived {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)?
+            Location to,
+            RepairRecord? record)?
         finished,
     required TResult orElse(),
   }) {
@@ -2729,7 +2744,8 @@ class _$_started implements _started {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)
+            Location to,
+            RepairRecord? record)
         finished,
   }) {
     return started(id, cid, pid, created, desc, vehicle, money, moving,
@@ -2806,7 +2822,8 @@ class _$_started implements _started {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)?
+            Location to,
+            RepairRecord? record)?
         finished,
   }) {
     return started?.call(id, cid, pid, created, desc, vehicle, money, moving,
@@ -2883,7 +2900,8 @@ class _$_started implements _started {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)?
+            Location to,
+            RepairRecord? record)?
         finished,
     required TResult orElse(),
   }) {
@@ -3006,11 +3024,13 @@ abstract class _$$_finishedCopyWith<$Res>
       List<String> imgs,
       Feedback feedback,
       Location from,
-      Location to});
+      Location to,
+      RepairRecord? record});
 
   $FeedbackCopyWith<$Res> get feedback;
   $LocationCopyWith<$Res> get from;
   $LocationCopyWith<$Res> get to;
+  $RepairRecordCopyWith<$Res>? get record;
 }
 
 /// @nodoc
@@ -3039,6 +3059,7 @@ class __$$_finishedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
     Object? feedback = freezed,
     Object? from = freezed,
     Object? to = freezed,
+    Object? record = freezed,
   }) {
     return _then(_$_finished(
       id: id == freezed
@@ -3097,6 +3118,10 @@ class __$$_finishedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
               as Location,
+      record: record == freezed
+          ? _value.record
+          : record // ignore: cast_nullable_to_non_nullable
+              as RepairRecord?,
     ));
   }
 
@@ -3120,6 +3145,17 @@ class __$$_finishedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
       return _then(_value.copyWith(to: value));
     });
   }
+
+  @override
+  $RepairRecordCopyWith<$Res>? get record {
+    if (_value.record == null) {
+      return null;
+    }
+
+    return $RepairRecordCopyWith<$Res>(_value.record!, (value) {
+      return _then(_value.copyWith(record: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -3140,6 +3176,7 @@ class _$_finished implements _finished {
       required this.feedback,
       required this.from,
       required this.to,
+      this.record,
       final String? $type})
       : _imgs = imgs,
         $type = $type ?? '6';
@@ -3180,13 +3217,15 @@ class _$_finished implements _finished {
   final Location from;
   @override
   final Location to;
+  @override
+  final RepairRecord? record;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'RepairRecord.finished(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, started: $started, completed: $completed, imgs: $imgs, feedback: $feedback, from: $from, to: $to)';
+    return 'RepairRecord.finished(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, started: $started, completed: $completed, imgs: $imgs, feedback: $feedback, from: $from, to: $to, record: $record)';
   }
 
   @override
@@ -3207,7 +3246,8 @@ class _$_finished implements _finished {
             const DeepCollectionEquality().equals(other._imgs, _imgs) &&
             const DeepCollectionEquality().equals(other.feedback, feedback) &&
             const DeepCollectionEquality().equals(other.from, from) &&
-            const DeepCollectionEquality().equals(other.to, to));
+            const DeepCollectionEquality().equals(other.to, to) &&
+            const DeepCollectionEquality().equals(other.record, record));
   }
 
   @JsonKey(ignore: true)
@@ -3227,7 +3267,8 @@ class _$_finished implements _finished {
       const DeepCollectionEquality().hash(_imgs),
       const DeepCollectionEquality().hash(feedback),
       const DeepCollectionEquality().hash(from),
-      const DeepCollectionEquality().hash(to));
+      const DeepCollectionEquality().hash(to),
+      const DeepCollectionEquality().hash(record));
 
   @JsonKey(ignore: true)
   @override
@@ -3312,11 +3353,12 @@ class _$_finished implements _finished {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)
+            Location to,
+            RepairRecord? record)
         finished,
   }) {
     return finished(id, cid, pid, created, desc, vehicle, money, moving,
-        this.started, completed, imgs, feedback, from, to);
+        this.started, completed, imgs, feedback, from, to, record);
   }
 
   @override
@@ -3389,11 +3431,12 @@ class _$_finished implements _finished {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)?
+            Location to,
+            RepairRecord? record)?
         finished,
   }) {
     return finished?.call(id, cid, pid, created, desc, vehicle, money, moving,
-        this.started, completed, imgs, feedback, from, to);
+        this.started, completed, imgs, feedback, from, to, record);
   }
 
   @override
@@ -3466,13 +3509,14 @@ class _$_finished implements _finished {
             List<String> imgs,
             Feedback feedback,
             Location from,
-            Location to)?
+            Location to,
+            RepairRecord? record)?
         finished,
     required TResult orElse(),
   }) {
     if (finished != null) {
       return finished(id, cid, pid, created, desc, vehicle, money, moving,
-          this.started, completed, imgs, feedback, from, to);
+          this.started, completed, imgs, feedback, from, to, record);
     }
     return orElse();
   }
@@ -3543,7 +3587,8 @@ abstract class _finished implements RepairRecord {
       required final List<String> imgs,
       required final Feedback feedback,
       required final Location from,
-      required final Location to}) = _$_finished;
+      required final Location to,
+      final RepairRecord? record}) = _$_finished;
 
   factory _finished.fromJson(Map<String, dynamic> json) = _$_finished.fromJson;
 
@@ -3568,6 +3613,7 @@ abstract class _finished implements RepairRecord {
   Feedback get feedback;
   Location get from;
   Location get to;
+  RepairRecord? get record;
   @override
   @JsonKey(ignore: true)
   _$$_finishedCopyWith<_$_finished> get copyWith =>
