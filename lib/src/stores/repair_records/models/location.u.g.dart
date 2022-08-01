@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'location.dart';
+part of 'location.u.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -11,9 +11,11 @@ _$_Location _$$_LocationFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = _$_Location(
-          long: $checkedConvert('long', (v) => v as int),
-          lat: $checkedConvert('lat', (v) => v as int),
-          addr: $checkedConvert('addr', (v) => v as String?),
+          name: $checkedConvert('name', (v) => v as String),
+          point: $checkedConvert(
+              'point',
+              (v) => const GeoPointConverter()
+                  .fromJson(v as Map<String, dynamic>)),
         );
         return val;
       },
@@ -21,7 +23,6 @@ _$_Location _$$_LocationFromJson(Map<String, dynamic> json) => $checkedCreate(
 
 Map<String, dynamic> _$$_LocationToJson(_$_Location instance) =>
     <String, dynamic>{
-      'long': instance.long,
-      'lat': instance.lat,
-      'addr': instance.addr,
+      'name': instance.name,
+      'point': const GeoPointConverter().toJson(instance.point),
     };

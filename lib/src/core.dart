@@ -8,6 +8,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -42,6 +43,7 @@ Future<void> bootstrap({
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
+      await Hive.initFlutter();
       await Firebase.initializeApp(options: fOptions);
       await _buildHydratedStorage(
         () async => runApp(

@@ -1067,7 +1067,9 @@ class _$_empty implements _empty {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_emptyToJson(this);
+    return _$$_emptyToJson(
+      this,
+    );
   }
 }
 
@@ -1208,7 +1210,9 @@ class _$_loading implements _loading {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_loadingToJson(this);
+    return _$$_loadingToJson(
+      this,
+    );
   }
 }
 
@@ -1379,7 +1383,9 @@ class _$_authenticated implements _authenticated {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_authenticatedToJson(this);
+    return _$$_authenticatedToJson(
+      this,
+    );
   }
 }
 
@@ -1556,7 +1562,9 @@ class _$_partial implements _partial {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_partialToJson(this);
+    return _$$_partialToJson(
+      this,
+    );
   }
 }
 
@@ -1743,7 +1751,9 @@ class _$_error implements _error {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_errorToJson(this);
+    return _$$_errorToJson(
+      this,
+    );
   }
 }
 

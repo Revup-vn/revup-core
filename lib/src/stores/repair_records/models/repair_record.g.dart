@@ -20,9 +20,19 @@ _$_pending _$$_pendingFromJson(Map<String, dynamic> json) => $checkedCreate(
           vehicle: $checkedConvert('vehicle', (v) => v as String),
           money: $checkedConvert('money', (v) => v as int),
           from: $checkedConvert(
-              'from', (v) => Location.fromJson(v as Map<String, dynamic>)),
+              'from',
+              (v) => const GeoPointConverter()
+                  .fromJson(v as Map<String, dynamic>)),
           to: $checkedConvert(
-              'to', (v) => Location.fromJson(v as Map<String, dynamic>)),
+              'to',
+              (v) => const GeoPointConverter()
+                  .fromJson(v as Map<String, dynamic>)),
+          services: $checkedConvert(
+              'services',
+              (v) => (v as List<dynamic>)
+                  .map((e) =>
+                      OptionalService.fromJson(e as Map<String, dynamic>))
+                  .toList()),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -39,8 +49,9 @@ Map<String, dynamic> _$$_pendingToJson(_$_pending instance) =>
       'desc': instance.desc,
       'vehicle': instance.vehicle,
       'money': instance.money,
-      'from': instance.from.toJson(),
-      'to': instance.to.toJson(),
+      'from': const GeoPointConverter().toJson(instance.from),
+      'to': const GeoPointConverter().toJson(instance.to),
+      'services': instance.services.map((e) => e.toJson()).toList(),
       'type': instance.$type,
     };
 

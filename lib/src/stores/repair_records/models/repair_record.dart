@@ -1,8 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:geoflutterfire2/geoflutterfire2.dart';
 
 import '../../models/serializable.dart';
+import '../../shared/geo_point_converter.dart';
 import 'feedback.dart';
-import 'location.dart';
+import 'location.u.dart';
+import 'optional_service.u.dart';
 
 part 'repair_record.freezed.dart';
 part 'repair_record.g.dart';
@@ -18,8 +21,9 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required String desc,
     required String vehicle,
     required int money,
-    required Location from,
-    required Location to,
+    @GeoPointConverter() required GeoFirePoint from,
+    @GeoPointConverter() required GeoFirePoint to,
+    required List<OptionalService> services,
   }) = _pending;
 
   @FreezedUnionValue('2')

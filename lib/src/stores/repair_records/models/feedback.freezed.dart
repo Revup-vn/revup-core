@@ -187,7 +187,9 @@ class _$_Feedback implements _Feedback {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FeedbackToJson(this);
+    return _$$_FeedbackToJson(
+      this,
+    );
   }
 }
 

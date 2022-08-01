@@ -246,7 +246,9 @@ class _$_google implements _google {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_googleToJson(this);
+    return _$$_googleToJson(
+      this,
+    );
   }
 }
 
@@ -398,7 +400,9 @@ class _$_phone implements _phone {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_phoneToJson(this);
+    return _$$_phoneToJson(
+      this,
+    );
   }
 }
 

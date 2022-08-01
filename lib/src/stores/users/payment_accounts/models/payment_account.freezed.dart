@@ -226,7 +226,9 @@ class _$_momo implements _momo {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_momoToJson(this);
+    return _$$_momoToJson(
+      this,
+    );
   }
 }
 
