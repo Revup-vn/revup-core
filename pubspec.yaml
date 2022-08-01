@@ -1,6 +1,6 @@
 name: revup_core
 description: Core package for revup app
-version: 2.4.0-dev
+version: 3.0.0-dev
 publish_to: none
 
 environment:
@@ -21,7 +21,9 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^8.0.1
   freezed_annotation: ^2.0.3
+  geoflutterfire2: ^2.3.12
   google_sign_in: ^5.3.3
+  hive_flutter: ^1.1.0
   hydrated_bloc: ^9.0.0-dev.2
   intl: ^0.17.0
   json_annotation: ^4.6.0
