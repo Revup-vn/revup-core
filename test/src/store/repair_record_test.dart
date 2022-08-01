@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:geoflutterfire2/geoflutterfire2.dart';
 
-import 'package:revup_core/src/stores/repair_records/models/location.u.dart';
 import 'package:revup_core/src/stores/repair_records/models/models.dart';
 
 void main() {

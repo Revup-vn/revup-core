@@ -1,5 +1,4 @@
 import 'package:revup_core/src/stores/stores.u.dart';
-import 'package:revup_core/src/stores/users/models/video_call_account.dart';
 
 AppUser mockUserIns() => AppUser.consumer(
       uuid: 'uuid',

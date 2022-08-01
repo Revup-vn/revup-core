@@ -99,6 +99,7 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required Feedback feedback,
     required Location from,
     required Location to,
+    RepairRecord? record,
   }) = _finished;
 
   factory RepairRecord.fromJson(Map<String, dynamic> json) =>
