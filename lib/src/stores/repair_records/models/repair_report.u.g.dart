@@ -13,7 +13,7 @@ _$_unresolved _$$_unresolvedFromJson(Map<String, dynamic> json) =>
       ($checkedConvert) {
         final val = _$_unresolved(
           category: $checkedConvert(
-              'category', (v) => $enumDecode(_$RepairCategoryEnumMap, v)),
+              'category', (v) => $enumDecode(_$ReportCategoryEnumMap, v)),
           desc: $checkedConvert('desc', (v) => v as String),
           imgs: $checkedConvert('imgs',
               (v) => (v as List<dynamic>).map((e) => e as String).toList()),
@@ -28,17 +28,17 @@ _$_unresolved _$$_unresolvedFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_unresolvedToJson(_$_unresolved instance) =>
     <String, dynamic>{
-      'category': _$RepairCategoryEnumMap[instance.category]!,
+      'category': _$ReportCategoryEnumMap[instance.category]!,
       'desc': instance.desc,
       'imgs': instance.imgs,
       'created': instance.created.toIso8601String(),
       'type': instance.$type,
     };
 
-const _$RepairCategoryEnumMap = {
-  RepairCategory.Product: 'Product',
-  RepairCategory.Service: 'Service',
-  RepairCategory.Unknown: 'Unknown',
+const _$ReportCategoryEnumMap = {
+  ReportCategory.Product: 'Product',
+  ReportCategory.Service: 'Service',
+  ReportCategory.Unknown: 'Unknown',
 };
 
 _$_resolved _$$_resolvedFromJson(Map<String, dynamic> json) => $checkedCreate(
@@ -47,7 +47,7 @@ _$_resolved _$$_resolvedFromJson(Map<String, dynamic> json) => $checkedCreate(
       ($checkedConvert) {
         final val = _$_resolved(
           category: $checkedConvert(
-              'category', (v) => $enumDecode(_$RepairCategoryEnumMap, v)),
+              'category', (v) => $enumDecode(_$ReportCategoryEnumMap, v)),
           desc: $checkedConvert('desc', (v) => v as String),
           imgs: $checkedConvert('imgs',
               (v) => (v as List<dynamic>).map((e) => e as String).toList()),
@@ -65,7 +65,7 @@ _$_resolved _$$_resolvedFromJson(Map<String, dynamic> json) => $checkedCreate(
 
 Map<String, dynamic> _$$_resolvedToJson(_$_resolved instance) =>
     <String, dynamic>{
-      'category': _$RepairCategoryEnumMap[instance.category]!,
+      'category': _$ReportCategoryEnumMap[instance.category]!,
       'desc': instance.desc,
       'imgs': instance.imgs,
       'created': instance.created.toIso8601String(),
@@ -80,7 +80,7 @@ _$_canceled _$$_canceledFromJson(Map<String, dynamic> json) => $checkedCreate(
       ($checkedConvert) {
         final val = _$_canceled(
           category: $checkedConvert(
-              'category', (v) => $enumDecode(_$RepairCategoryEnumMap, v)),
+              'category', (v) => $enumDecode(_$ReportCategoryEnumMap, v)),
           desc: $checkedConvert('desc', (v) => v as String),
           imgs: $checkedConvert('imgs',
               (v) => (v as List<dynamic>).map((e) => e as String).toList()),
@@ -96,7 +96,7 @@ _$_canceled _$$_canceledFromJson(Map<String, dynamic> json) => $checkedCreate(
 
 Map<String, dynamic> _$$_canceledToJson(_$_canceled instance) =>
     <String, dynamic>{
-      'category': _$RepairCategoryEnumMap[instance.category]!,
+      'category': _$ReportCategoryEnumMap[instance.category]!,
       'desc': instance.desc,
       'imgs': instance.imgs,
       'created': instance.created.toIso8601String(),

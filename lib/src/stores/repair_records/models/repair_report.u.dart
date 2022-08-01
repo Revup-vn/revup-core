@@ -8,7 +8,7 @@ part 'repair_report.u.g.dart';
 class RepairReport with _$RepairReport {
   @FreezedUnionValue('1')
   const factory RepairReport.unresolved({
-    required RepairCategory category,
+    required ReportCategory category,
     required String desc,
     required List<String> imgs,
     required DateTime created,
@@ -16,7 +16,7 @@ class RepairReport with _$RepairReport {
 
   @FreezedUnionValue('2')
   const factory RepairReport.resolved({
-    required RepairCategory category,
+    required ReportCategory category,
     required String desc,
     required List<String> imgs,
     required DateTime created,
@@ -26,7 +26,7 @@ class RepairReport with _$RepairReport {
 
   @FreezedUnionValue('3')
   const factory RepairReport.canceled({
-    required RepairCategory category,
+    required ReportCategory category,
     required String desc,
     required List<String> imgs,
     required DateTime created,
@@ -37,7 +37,7 @@ class RepairReport with _$RepairReport {
       _$RepairReportFromJson(json);
 }
 
-enum RepairCategory {
+enum ReportCategory {
   Product,
   Service,
   Unknown,

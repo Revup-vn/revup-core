@@ -31,45 +31,45 @@ RepairReport _$RepairReportFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RepairReport {
-  RepairCategory get category => throw _privateConstructorUsedError;
+  ReportCategory get category => throw _privateConstructorUsedError;
   String get desc => throw _privateConstructorUsedError;
   List<String> get imgs => throw _privateConstructorUsedError;
   DateTime get created => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(RepairCategory category, String desc,
+    required TResult Function(ReportCategory category, String desc,
             List<String> imgs, DateTime created)
         unresolved,
-    required TResult Function(RepairCategory category, String desc,
+    required TResult Function(ReportCategory category, String desc,
             List<String> imgs, DateTime created, DateTime resolved, String aId)
         resolved,
-    required TResult Function(RepairCategory category, String desc,
+    required TResult Function(ReportCategory category, String desc,
             List<String> imgs, DateTime created, DateTime closed)
         canceled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created)?
         unresolved,
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created, DateTime resolved, String aId)?
         resolved,
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created, DateTime closed)?
         canceled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created)?
         unresolved,
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created, DateTime resolved, String aId)?
         resolved,
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created, DateTime closed)?
         canceled,
     required TResult orElse(),
@@ -109,7 +109,7 @@ abstract class $RepairReportCopyWith<$Res> {
           RepairReport value, $Res Function(RepairReport) then) =
       _$RepairReportCopyWithImpl<$Res>;
   $Res call(
-      {RepairCategory category,
+      {ReportCategory category,
       String desc,
       List<String> imgs,
       DateTime created});
@@ -134,7 +134,7 @@ class _$RepairReportCopyWithImpl<$Res> implements $RepairReportCopyWith<$Res> {
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as RepairCategory,
+              as ReportCategory,
       desc: desc == freezed
           ? _value.desc
           : desc // ignore: cast_nullable_to_non_nullable
@@ -159,7 +159,7 @@ abstract class _$$_unresolvedCopyWith<$Res>
       __$$_unresolvedCopyWithImpl<$Res>;
   @override
   $Res call(
-      {RepairCategory category,
+      {ReportCategory category,
       String desc,
       List<String> imgs,
       DateTime created});
@@ -186,7 +186,7 @@ class __$$_unresolvedCopyWithImpl<$Res> extends _$RepairReportCopyWithImpl<$Res>
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as RepairCategory,
+              as ReportCategory,
       desc: desc == freezed
           ? _value.desc
           : desc // ignore: cast_nullable_to_non_nullable
@@ -219,7 +219,7 @@ class _$_unresolved implements _unresolved {
       _$$_unresolvedFromJson(json);
 
   @override
-  final RepairCategory category;
+  final ReportCategory category;
   @override
   final String desc;
   final List<String> _imgs;
@@ -268,13 +268,13 @@ class _$_unresolved implements _unresolved {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(RepairCategory category, String desc,
+    required TResult Function(ReportCategory category, String desc,
             List<String> imgs, DateTime created)
         unresolved,
-    required TResult Function(RepairCategory category, String desc,
+    required TResult Function(ReportCategory category, String desc,
             List<String> imgs, DateTime created, DateTime resolved, String aId)
         resolved,
-    required TResult Function(RepairCategory category, String desc,
+    required TResult Function(ReportCategory category, String desc,
             List<String> imgs, DateTime created, DateTime closed)
         canceled,
   }) {
@@ -284,13 +284,13 @@ class _$_unresolved implements _unresolved {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created)?
         unresolved,
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created, DateTime resolved, String aId)?
         resolved,
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created, DateTime closed)?
         canceled,
   }) {
@@ -300,13 +300,13 @@ class _$_unresolved implements _unresolved {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created)?
         unresolved,
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created, DateTime resolved, String aId)?
         resolved,
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created, DateTime closed)?
         canceled,
     required TResult orElse(),
@@ -361,7 +361,7 @@ class _$_unresolved implements _unresolved {
 
 abstract class _unresolved implements RepairReport {
   const factory _unresolved(
-      {required final RepairCategory category,
+      {required final ReportCategory category,
       required final String desc,
       required final List<String> imgs,
       required final DateTime created}) = _$_unresolved;
@@ -370,7 +370,7 @@ abstract class _unresolved implements RepairReport {
       _$_unresolved.fromJson;
 
   @override
-  RepairCategory get category;
+  ReportCategory get category;
   @override
   String get desc;
   @override
@@ -391,7 +391,7 @@ abstract class _$$_resolvedCopyWith<$Res>
       __$$_resolvedCopyWithImpl<$Res>;
   @override
   $Res call(
-      {RepairCategory category,
+      {ReportCategory category,
       String desc,
       List<String> imgs,
       DateTime created,
@@ -422,7 +422,7 @@ class __$$_resolvedCopyWithImpl<$Res> extends _$RepairReportCopyWithImpl<$Res>
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as RepairCategory,
+              as ReportCategory,
       desc: desc == freezed
           ? _value.desc
           : desc // ignore: cast_nullable_to_non_nullable
@@ -465,7 +465,7 @@ class _$_resolved implements _resolved {
       _$$_resolvedFromJson(json);
 
   @override
-  final RepairCategory category;
+  final ReportCategory category;
   @override
   final String desc;
   final List<String> _imgs;
@@ -522,13 +522,13 @@ class _$_resolved implements _resolved {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(RepairCategory category, String desc,
+    required TResult Function(ReportCategory category, String desc,
             List<String> imgs, DateTime created)
         unresolved,
-    required TResult Function(RepairCategory category, String desc,
+    required TResult Function(ReportCategory category, String desc,
             List<String> imgs, DateTime created, DateTime resolved, String aId)
         resolved,
-    required TResult Function(RepairCategory category, String desc,
+    required TResult Function(ReportCategory category, String desc,
             List<String> imgs, DateTime created, DateTime closed)
         canceled,
   }) {
@@ -538,13 +538,13 @@ class _$_resolved implements _resolved {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created)?
         unresolved,
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created, DateTime resolved, String aId)?
         resolved,
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created, DateTime closed)?
         canceled,
   }) {
@@ -554,13 +554,13 @@ class _$_resolved implements _resolved {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created)?
         unresolved,
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created, DateTime resolved, String aId)?
         resolved,
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created, DateTime closed)?
         canceled,
     required TResult orElse(),
@@ -615,7 +615,7 @@ class _$_resolved implements _resolved {
 
 abstract class _resolved implements RepairReport {
   const factory _resolved(
-      {required final RepairCategory category,
+      {required final ReportCategory category,
       required final String desc,
       required final List<String> imgs,
       required final DateTime created,
@@ -625,7 +625,7 @@ abstract class _resolved implements RepairReport {
   factory _resolved.fromJson(Map<String, dynamic> json) = _$_resolved.fromJson;
 
   @override
-  RepairCategory get category;
+  ReportCategory get category;
   @override
   String get desc;
   @override
@@ -648,7 +648,7 @@ abstract class _$$_canceledCopyWith<$Res>
       __$$_canceledCopyWithImpl<$Res>;
   @override
   $Res call(
-      {RepairCategory category,
+      {ReportCategory category,
       String desc,
       List<String> imgs,
       DateTime created,
@@ -677,7 +677,7 @@ class __$$_canceledCopyWithImpl<$Res> extends _$RepairReportCopyWithImpl<$Res>
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as RepairCategory,
+              as ReportCategory,
       desc: desc == freezed
           ? _value.desc
           : desc // ignore: cast_nullable_to_non_nullable
@@ -715,7 +715,7 @@ class _$_canceled implements _canceled {
       _$$_canceledFromJson(json);
 
   @override
-  final RepairCategory category;
+  final ReportCategory category;
   @override
   final String desc;
   final List<String> _imgs;
@@ -768,13 +768,13 @@ class _$_canceled implements _canceled {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(RepairCategory category, String desc,
+    required TResult Function(ReportCategory category, String desc,
             List<String> imgs, DateTime created)
         unresolved,
-    required TResult Function(RepairCategory category, String desc,
+    required TResult Function(ReportCategory category, String desc,
             List<String> imgs, DateTime created, DateTime resolved, String aId)
         resolved,
-    required TResult Function(RepairCategory category, String desc,
+    required TResult Function(ReportCategory category, String desc,
             List<String> imgs, DateTime created, DateTime closed)
         canceled,
   }) {
@@ -784,13 +784,13 @@ class _$_canceled implements _canceled {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created)?
         unresolved,
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created, DateTime resolved, String aId)?
         resolved,
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created, DateTime closed)?
         canceled,
   }) {
@@ -800,13 +800,13 @@ class _$_canceled implements _canceled {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created)?
         unresolved,
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created, DateTime resolved, String aId)?
         resolved,
-    TResult Function(RepairCategory category, String desc, List<String> imgs,
+    TResult Function(ReportCategory category, String desc, List<String> imgs,
             DateTime created, DateTime closed)?
         canceled,
     required TResult orElse(),
@@ -861,7 +861,7 @@ class _$_canceled implements _canceled {
 
 abstract class _canceled implements RepairReport {
   const factory _canceled(
-      {required final RepairCategory category,
+      {required final ReportCategory category,
       required final String desc,
       required final List<String> imgs,
       required final DateTime created,
@@ -870,7 +870,7 @@ abstract class _canceled implements RepairReport {
   factory _canceled.fromJson(Map<String, dynamic> json) = _$_canceled.fromJson;
 
   @override
-  RepairCategory get category;
+  ReportCategory get category;
   @override
   String get desc;
   @override

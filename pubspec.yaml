@@ -1,6 +1,6 @@
 name: revup_core
 description: Core package for revup app
-version: 3.0.1+1-dev
+version: 3.1.0-dev
 publish_to: none
 
 environment:
