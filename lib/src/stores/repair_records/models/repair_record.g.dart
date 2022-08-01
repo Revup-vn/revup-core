@@ -20,9 +20,19 @@ _$_pending _$$_pendingFromJson(Map<String, dynamic> json) => $checkedCreate(
           vehicle: $checkedConvert('vehicle', (v) => v as String),
           money: $checkedConvert('money', (v) => v as int),
           from: $checkedConvert(
-              'from', (v) => Location.fromJson(v as Map<String, dynamic>)),
+              'from',
+              (v) => const GeoPointConverter()
+                  .fromJson(v as Map<String, dynamic>)),
           to: $checkedConvert(
-              'to', (v) => Location.fromJson(v as Map<String, dynamic>)),
+              'to',
+              (v) => const GeoPointConverter()
+                  .fromJson(v as Map<String, dynamic>)),
+          services: $checkedConvert(
+              'services',
+              (v) => (v as List<dynamic>)
+                  .map((e) =>
+                      OptionalService.fromJson(e as Map<String, dynamic>))
+                  .toList()),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -39,8 +49,9 @@ Map<String, dynamic> _$$_pendingToJson(_$_pending instance) =>
       'desc': instance.desc,
       'vehicle': instance.vehicle,
       'money': instance.money,
-      'from': instance.from.toJson(),
-      'to': instance.to.toJson(),
+      'from': const GeoPointConverter().toJson(instance.from),
+      'to': const GeoPointConverter().toJson(instance.to),
+      'services': instance.services.map((e) => e.toJson()).toList(),
       'type': instance.$type,
     };
 
@@ -59,9 +70,13 @@ _$_accept _$$_acceptFromJson(Map<String, dynamic> json) => $checkedCreate(
           money: $checkedConvert('money', (v) => v as int),
           moving: $checkedConvert('moving', (v) => DateTime.parse(v as String)),
           from: $checkedConvert(
-              'from', (v) => Location.fromJson(v as Map<String, dynamic>)),
+              'from',
+              (v) => const GeoPointConverter()
+                  .fromJson(v as Map<String, dynamic>)),
           to: $checkedConvert(
-              'to', (v) => Location.fromJson(v as Map<String, dynamic>)),
+              'to',
+              (v) => const GeoPointConverter()
+                  .fromJson(v as Map<String, dynamic>)),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -78,8 +93,8 @@ Map<String, dynamic> _$$_acceptToJson(_$_accept instance) => <String, dynamic>{
       'vehicle': instance.vehicle,
       'money': instance.money,
       'moving': instance.moving.toIso8601String(),
-      'from': instance.from.toJson(),
-      'to': instance.to.toJson(),
+      'from': const GeoPointConverter().toJson(instance.from),
+      'to': const GeoPointConverter().toJson(instance.to),
       'type': instance.$type,
     };
 
@@ -97,9 +112,13 @@ _$_aborted _$$_abortedFromJson(Map<String, dynamic> json) => $checkedCreate(
           vehicle: $checkedConvert('vehicle', (v) => v as String),
           money: $checkedConvert('money', (v) => v as int),
           from: $checkedConvert(
-              'from', (v) => Location.fromJson(v as Map<String, dynamic>)),
+              'from',
+              (v) => const GeoPointConverter()
+                  .fromJson(v as Map<String, dynamic>)),
           to: $checkedConvert(
-              'to', (v) => Location.fromJson(v as Map<String, dynamic>)),
+              'to',
+              (v) => const GeoPointConverter()
+                  .fromJson(v as Map<String, dynamic>)),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -116,8 +135,8 @@ Map<String, dynamic> _$$_abortedToJson(_$_aborted instance) =>
       'desc': instance.desc,
       'vehicle': instance.vehicle,
       'money': instance.money,
-      'from': instance.from.toJson(),
-      'to': instance.to.toJson(),
+      'from': const GeoPointConverter().toJson(instance.from),
+      'to': const GeoPointConverter().toJson(instance.to),
       'type': instance.$type,
     };
 
@@ -138,9 +157,13 @@ _$_arrived _$$_arrivedFromJson(Map<String, dynamic> json) => $checkedCreate(
           arrived:
               $checkedConvert('arrived', (v) => DateTime.parse(v as String)),
           from: $checkedConvert(
-              'from', (v) => Location.fromJson(v as Map<String, dynamic>)),
+              'from',
+              (v) => const GeoPointConverter()
+                  .fromJson(v as Map<String, dynamic>)),
           to: $checkedConvert(
-              'to', (v) => Location.fromJson(v as Map<String, dynamic>)),
+              'to',
+              (v) => const GeoPointConverter()
+                  .fromJson(v as Map<String, dynamic>)),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -159,8 +182,8 @@ Map<String, dynamic> _$$_arrivedToJson(_$_arrived instance) =>
       'money': instance.money,
       'moving': instance.moving.toIso8601String(),
       'arrived': instance.arrived.toIso8601String(),
-      'from': instance.from.toJson(),
-      'to': instance.to.toJson(),
+      'from': const GeoPointConverter().toJson(instance.from),
+      'to': const GeoPointConverter().toJson(instance.to),
       'type': instance.$type,
     };
 
@@ -181,9 +204,13 @@ _$_started _$$_startedFromJson(Map<String, dynamic> json) => $checkedCreate(
           started:
               $checkedConvert('started', (v) => DateTime.parse(v as String)),
           from: $checkedConvert(
-              'from', (v) => Location.fromJson(v as Map<String, dynamic>)),
+              'from',
+              (v) => const GeoPointConverter()
+                  .fromJson(v as Map<String, dynamic>)),
           to: $checkedConvert(
-              'to', (v) => Location.fromJson(v as Map<String, dynamic>)),
+              'to',
+              (v) => const GeoPointConverter()
+                  .fromJson(v as Map<String, dynamic>)),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -202,8 +229,8 @@ Map<String, dynamic> _$$_startedToJson(_$_started instance) =>
       'money': instance.money,
       'moving': instance.moving.toIso8601String(),
       'started': instance.started.toIso8601String(),
-      'from': instance.from.toJson(),
-      'to': instance.to.toJson(),
+      'from': const GeoPointConverter().toJson(instance.from),
+      'to': const GeoPointConverter().toJson(instance.to),
       'type': instance.$type,
     };
 
@@ -230,9 +257,13 @@ _$_finished _$$_finishedFromJson(Map<String, dynamic> json) => $checkedCreate(
           feedback: $checkedConvert(
               'feedback', (v) => Feedback.fromJson(v as Map<String, dynamic>)),
           from: $checkedConvert(
-              'from', (v) => Location.fromJson(v as Map<String, dynamic>)),
+              'from',
+              (v) => const GeoPointConverter()
+                  .fromJson(v as Map<String, dynamic>)),
           to: $checkedConvert(
-              'to', (v) => Location.fromJson(v as Map<String, dynamic>)),
+              'to',
+              (v) => const GeoPointConverter()
+                  .fromJson(v as Map<String, dynamic>)),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -254,7 +285,7 @@ Map<String, dynamic> _$$_finishedToJson(_$_finished instance) =>
       'completed': instance.completed.toIso8601String(),
       'imgs': instance.imgs,
       'feedback': instance.feedback.toJson(),
-      'from': instance.from.toJson(),
-      'to': instance.to.toJson(),
+      'from': const GeoPointConverter().toJson(instance.from),
+      'to': const GeoPointConverter().toJson(instance.to),
       'type': instance.$type,
     };

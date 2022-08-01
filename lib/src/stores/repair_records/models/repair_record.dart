@@ -1,8 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:geoflutterfire2/geoflutterfire2.dart';
 
 import '../../models/serializable.dart';
+import '../../shared/geo_point_converter.dart';
 import 'feedback.dart';
-import 'location.dart';
+import 'optional_service.u.dart';
 
 part 'repair_record.freezed.dart';
 part 'repair_record.g.dart';
@@ -18,8 +20,9 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required String desc,
     required String vehicle,
     required int money,
-    required Location from,
-    required Location to,
+    @GeoPointConverter() required GeoFirePoint from,
+    @GeoPointConverter() required GeoFirePoint to,
+    required List<OptionalService> services,
   }) = _pending;
 
   @FreezedUnionValue('2')
@@ -32,8 +35,8 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required String vehicle,
     required int money,
     required DateTime moving,
-    required Location from,
-    required Location to,
+    @GeoPointConverter() required GeoFirePoint from,
+    @GeoPointConverter() required GeoFirePoint to,
   }) = _accept;
 
   @FreezedUnionValue('3')
@@ -45,8 +48,8 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required String desc,
     required String vehicle,
     required int money,
-    required Location from,
-    required Location to,
+    @GeoPointConverter() required GeoFirePoint from,
+    @GeoPointConverter() required GeoFirePoint to,
   }) = _aborted;
 
   @FreezedUnionValue('4')
@@ -60,8 +63,8 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required int money,
     required DateTime moving,
     required DateTime arrived,
-    required Location from,
-    required Location to,
+    @GeoPointConverter() required GeoFirePoint from,
+    @GeoPointConverter() required GeoFirePoint to,
   }) = _arrived;
 
   @FreezedUnionValue('5')
@@ -75,8 +78,8 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required int money,
     required DateTime moving,
     required DateTime started,
-    required Location from,
-    required Location to,
+    @GeoPointConverter() required GeoFirePoint from,
+    @GeoPointConverter() required GeoFirePoint to,
   }) = _started;
 
   @FreezedUnionValue('6')
@@ -93,8 +96,8 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required DateTime completed,
     required List<String> imgs,
     required Feedback feedback,
-    required Location from,
-    required Location to,
+    @GeoPointConverter() required GeoFirePoint from,
+    @GeoPointConverter() required GeoFirePoint to,
   }) = _finished;
 
   factory RepairRecord.fromJson(Map<String, dynamic> json) =>

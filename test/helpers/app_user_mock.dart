@@ -1,4 +1,5 @@
 import 'package:revup_core/src/stores/stores.u.dart';
+import 'package:revup_core/src/stores/users/models/video_call_account.dart';
 
 AppUser mockUserIns() => AppUser.consumer(
       uuid: 'uuid',
@@ -12,6 +13,11 @@ AppUser mockUserIns() => AppUser.consumer(
       avatarUrl: 'avatarUrl',
       createdTime: DateTime.now(),
       lastUpdatedTime: DateTime.now(),
+      vac: const VideoCallAccount(
+        id: '123',
+        pwd: '123',
+        username: '123',
+      ),
     );
 Map<String, dynamic> mockUserValidJson() => <String, dynamic>{
       'uuid': 'uui12312123qeddd',
@@ -26,4 +32,9 @@ Map<String, dynamic> mockUserValidJson() => <String, dynamic>{
       'created_time': '2022-07-13T05:02:16.976050',
       'last_updated_time': '2022-07-13T05:02:16.976051',
       'type': '1',
+      'vac': {
+        'id': '123',
+        'username': '123',
+        'pwd': '123',
+      }
     };

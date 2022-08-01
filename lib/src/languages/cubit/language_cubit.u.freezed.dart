@@ -232,7 +232,9 @@ class _$_system implements _system {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_systemToJson(this);
+    return _$$_systemToJson(
+      this,
+    );
   }
 }
 
@@ -362,7 +364,9 @@ class _$_vietnamese implements _vietnamese {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_vietnameseToJson(this);
+    return _$$_vietnameseToJson(
+      this,
+    );
   }
 }
 
@@ -486,7 +490,9 @@ class _$_english implements _english {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_englishToJson(this);
+    return _$$_englishToJson(
+      this,
+    );
   }
 }
 

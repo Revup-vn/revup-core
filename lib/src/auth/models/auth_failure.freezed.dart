@@ -274,7 +274,9 @@ class _$_server extends _server {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_serverToJson(this);
+    return _$$_serverToJson(
+      this,
+    );
   }
 }
 
@@ -423,7 +425,9 @@ class _$_storage extends _storage {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_storageToJson(this);
+    return _$$_storageToJson(
+      this,
+    );
   }
 }
 
@@ -568,7 +572,9 @@ class _$_cancelled extends _cancelled {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_cancelledToJson(this);
+    return _$$_cancelledToJson(
+      this,
+    );
   }
 }
 
@@ -738,7 +744,9 @@ class _$_invalidData extends _invalidData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_invalidDataToJson(this);
+    return _$$_invalidDataToJson(
+      this,
+    );
   }
 }
 
@@ -924,7 +932,9 @@ class _$_verifyPhoneNumber extends _verifyPhoneNumber {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_verifyPhoneNumberToJson(this);
+    return _$$_verifyPhoneNumberToJson(
+      this,
+    );
   }
 }
 
@@ -1075,7 +1085,9 @@ class _$_unknown extends _unknown {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_unknownToJson(this);
+    return _$$_unknownToJson(
+      this,
+    );
   }
 }
 

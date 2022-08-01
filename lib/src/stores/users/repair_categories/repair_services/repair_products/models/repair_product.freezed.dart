@@ -178,7 +178,9 @@ class _$_RepairProduct implements _RepairProduct {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RepairProductToJson(this);
+    return _$$_RepairProductToJson(
+      this,
+    );
   }
 }
 

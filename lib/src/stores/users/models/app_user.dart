@@ -1,6 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:geoflutterfire2/geoflutterfire2.dart';
 
 import '../../models/serializable.dart';
+import '../../shared/geo_point_converter.dart';
+import 'video_call_account.dart';
 
 part 'app_user.freezed.dart';
 part 'app_user.g.dart';
@@ -22,6 +25,7 @@ class AppUser extends Serializable<AppUser> with _$AppUser {
     required String avatarUrl,
     required DateTime createdTime,
     required DateTime lastUpdatedTime,
+    required VideoCallAccount vac,
   }) = _consumer;
 
   @FreezedUnionValue('2')
@@ -41,6 +45,9 @@ class AppUser extends Serializable<AppUser> with _$AppUser {
     required String idCardImage,
     required String backgroundUrl,
     required String bio,
+    required VideoCallAccount vac,
+    required bool online,
+    @GeoPointConverter() required GeoFirePoint curLocation,
   }) = _provider;
 
   @FreezedUnionValue('3')

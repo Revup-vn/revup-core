@@ -224,7 +224,9 @@ class _$_authorized implements _authorized {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_authorizedToJson(this);
+    return _$$_authorizedToJson(
+      this,
+    );
   }
 }
 
@@ -354,7 +356,9 @@ class _$_denied implements _denied {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_deniedToJson(this);
+    return _$$_deniedToJson(
+      this,
+    );
   }
 }
 
@@ -510,7 +514,9 @@ class _$_registered implements _registered {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_registeredToJson(this);
+    return _$$_registeredToJson(
+      this,
+    );
   }
 }
 
@@ -648,7 +654,9 @@ class _$_failToRegister implements _failToRegister {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_failToRegisterToJson(this);
+    return _$$_failToRegisterToJson(
+      this,
+    );
   }
 }
 

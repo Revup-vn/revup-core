@@ -153,7 +153,9 @@ class _$_Token implements _Token {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TokenToJson(this);
+    return _$$_TokenToJson(
+      this,
+    );
   }
 }
 

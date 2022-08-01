@@ -55,7 +55,8 @@ mixin _$AppUser {
             bool active,
             String avatarUrl,
             DateTime createdTime,
-            DateTime lastUpdatedTime)
+            DateTime lastUpdatedTime,
+            VideoCallAccount vac)
         consumer,
     required TResult Function(
             String uuid,
@@ -72,7 +73,10 @@ mixin _$AppUser {
             String idCardNum,
             String idCardImage,
             String backgroundUrl,
-            String bio)
+            String bio,
+            VideoCallAccount vac,
+            bool online,
+            @GeoPointConverter() GeoFirePoint curLocation)
         provider,
     required TResult Function(
             String uuid,
@@ -102,7 +106,8 @@ mixin _$AppUser {
             bool active,
             String avatarUrl,
             DateTime createdTime,
-            DateTime lastUpdatedTime)?
+            DateTime lastUpdatedTime,
+            VideoCallAccount vac)?
         consumer,
     TResult Function(
             String uuid,
@@ -119,7 +124,10 @@ mixin _$AppUser {
             String idCardNum,
             String idCardImage,
             String backgroundUrl,
-            String bio)?
+            String bio,
+            VideoCallAccount vac,
+            bool online,
+            @GeoPointConverter() GeoFirePoint curLocation)?
         provider,
     TResult Function(
             String uuid,
@@ -149,7 +157,8 @@ mixin _$AppUser {
             bool active,
             String avatarUrl,
             DateTime createdTime,
-            DateTime lastUpdatedTime)?
+            DateTime lastUpdatedTime,
+            VideoCallAccount vac)?
         consumer,
     TResult Function(
             String uuid,
@@ -166,7 +175,10 @@ mixin _$AppUser {
             String idCardNum,
             String idCardImage,
             String backgroundUrl,
-            String bio)?
+            String bio,
+            VideoCallAccount vac,
+            bool online,
+            @GeoPointConverter() GeoFirePoint curLocation)?
         provider,
     TResult Function(
             String uuid,
@@ -317,7 +329,10 @@ abstract class _$$_consumerCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       bool active,
       String avatarUrl,
       DateTime createdTime,
-      DateTime lastUpdatedTime});
+      DateTime lastUpdatedTime,
+      VideoCallAccount vac});
+
+  $VideoCallAccountCopyWith<$Res> get vac;
 }
 
 /// @nodoc
@@ -343,6 +358,7 @@ class __$$_consumerCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
     Object? avatarUrl = freezed,
     Object? createdTime = freezed,
     Object? lastUpdatedTime = freezed,
+    Object? vac = freezed,
   }) {
     return _then(_$_consumer(
       uuid: uuid == freezed
@@ -389,7 +405,18 @@ class __$$_consumerCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
           ? _value.lastUpdatedTime
           : lastUpdatedTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      vac: vac == freezed
+          ? _value.vac
+          : vac // ignore: cast_nullable_to_non_nullable
+              as VideoCallAccount,
     ));
+  }
+
+  @override
+  $VideoCallAccountCopyWith<$Res> get vac {
+    return $VideoCallAccountCopyWith<$Res>(_value.vac, (value) {
+      return _then(_value.copyWith(vac: value));
+    });
   }
 }
 
@@ -408,6 +435,7 @@ class _$_consumer implements _consumer {
       required this.avatarUrl,
       required this.createdTime,
       required this.lastUpdatedTime,
+      required this.vac,
       final String? $type})
       : $type = $type ?? '1';
 
@@ -436,13 +464,15 @@ class _$_consumer implements _consumer {
   final DateTime createdTime;
   @override
   final DateTime lastUpdatedTime;
+  @override
+  final VideoCallAccount vac;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'AppUser.consumer(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, active: $active, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime)';
+    return 'AppUser.consumer(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, active: $active, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime, vac: $vac)';
   }
 
   @override
@@ -462,7 +492,8 @@ class _$_consumer implements _consumer {
             const DeepCollectionEquality()
                 .equals(other.createdTime, createdTime) &&
             const DeepCollectionEquality()
-                .equals(other.lastUpdatedTime, lastUpdatedTime));
+                .equals(other.lastUpdatedTime, lastUpdatedTime) &&
+            const DeepCollectionEquality().equals(other.vac, vac));
   }
 
   @JsonKey(ignore: true)
@@ -479,7 +510,8 @@ class _$_consumer implements _consumer {
       const DeepCollectionEquality().hash(active),
       const DeepCollectionEquality().hash(avatarUrl),
       const DeepCollectionEquality().hash(createdTime),
-      const DeepCollectionEquality().hash(lastUpdatedTime));
+      const DeepCollectionEquality().hash(lastUpdatedTime),
+      const DeepCollectionEquality().hash(vac));
 
   @JsonKey(ignore: true)
   @override
@@ -500,7 +532,8 @@ class _$_consumer implements _consumer {
             bool active,
             String avatarUrl,
             DateTime createdTime,
-            DateTime lastUpdatedTime)
+            DateTime lastUpdatedTime,
+            VideoCallAccount vac)
         consumer,
     required TResult Function(
             String uuid,
@@ -517,7 +550,10 @@ class _$_consumer implements _consumer {
             String idCardNum,
             String idCardImage,
             String backgroundUrl,
-            String bio)
+            String bio,
+            VideoCallAccount vac,
+            bool online,
+            @GeoPointConverter() GeoFirePoint curLocation)
         provider,
     required TResult Function(
             String uuid,
@@ -534,7 +570,7 @@ class _$_consumer implements _consumer {
         admin,
   }) {
     return consumer(uuid, firstName, lastName, phone, dob, addr, email, active,
-        avatarUrl, createdTime, lastUpdatedTime);
+        avatarUrl, createdTime, lastUpdatedTime, vac);
   }
 
   @override
@@ -551,7 +587,8 @@ class _$_consumer implements _consumer {
             bool active,
             String avatarUrl,
             DateTime createdTime,
-            DateTime lastUpdatedTime)?
+            DateTime lastUpdatedTime,
+            VideoCallAccount vac)?
         consumer,
     TResult Function(
             String uuid,
@@ -568,7 +605,10 @@ class _$_consumer implements _consumer {
             String idCardNum,
             String idCardImage,
             String backgroundUrl,
-            String bio)?
+            String bio,
+            VideoCallAccount vac,
+            bool online,
+            @GeoPointConverter() GeoFirePoint curLocation)?
         provider,
     TResult Function(
             String uuid,
@@ -585,7 +625,7 @@ class _$_consumer implements _consumer {
         admin,
   }) {
     return consumer?.call(uuid, firstName, lastName, phone, dob, addr, email,
-        active, avatarUrl, createdTime, lastUpdatedTime);
+        active, avatarUrl, createdTime, lastUpdatedTime, vac);
   }
 
   @override
@@ -602,7 +642,8 @@ class _$_consumer implements _consumer {
             bool active,
             String avatarUrl,
             DateTime createdTime,
-            DateTime lastUpdatedTime)?
+            DateTime lastUpdatedTime,
+            VideoCallAccount vac)?
         consumer,
     TResult Function(
             String uuid,
@@ -619,7 +660,10 @@ class _$_consumer implements _consumer {
             String idCardNum,
             String idCardImage,
             String backgroundUrl,
-            String bio)?
+            String bio,
+            VideoCallAccount vac,
+            bool online,
+            @GeoPointConverter() GeoFirePoint curLocation)?
         provider,
     TResult Function(
             String uuid,
@@ -638,7 +682,7 @@ class _$_consumer implements _consumer {
   }) {
     if (consumer != null) {
       return consumer(uuid, firstName, lastName, phone, dob, addr, email,
-          active, avatarUrl, createdTime, lastUpdatedTime);
+          active, avatarUrl, createdTime, lastUpdatedTime, vac);
     }
     return orElse();
   }
@@ -679,7 +723,9 @@ class _$_consumer implements _consumer {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_consumerToJson(this);
+    return _$$_consumerToJson(
+      this,
+    );
   }
 }
 
@@ -695,7 +741,8 @@ abstract class _consumer implements AppUser {
       required final bool active,
       required final String avatarUrl,
       required final DateTime createdTime,
-      required final DateTime lastUpdatedTime}) = _$_consumer;
+      required final DateTime lastUpdatedTime,
+      required final VideoCallAccount vac}) = _$_consumer;
 
   factory _consumer.fromJson(Map<String, dynamic> json) = _$_consumer.fromJson;
 
@@ -721,6 +768,7 @@ abstract class _consumer implements AppUser {
   DateTime get createdTime;
   @override
   DateTime get lastUpdatedTime;
+  VideoCallAccount get vac;
   @override
   @JsonKey(ignore: true)
   _$$_consumerCopyWith<_$_consumer> get copyWith =>
@@ -748,7 +796,12 @@ abstract class _$$_providerCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       String idCardNum,
       String idCardImage,
       String backgroundUrl,
-      String bio});
+      String bio,
+      VideoCallAccount vac,
+      bool online,
+      @GeoPointConverter() GeoFirePoint curLocation});
+
+  $VideoCallAccountCopyWith<$Res> get vac;
 }
 
 /// @nodoc
@@ -778,6 +831,9 @@ class __$$_providerCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
     Object? idCardImage = freezed,
     Object? backgroundUrl = freezed,
     Object? bio = freezed,
+    Object? vac = freezed,
+    Object? online = freezed,
+    Object? curLocation = freezed,
   }) {
     return _then(_$_provider(
       uuid: uuid == freezed
@@ -840,7 +896,26 @@ class __$$_providerCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
           ? _value.bio
           : bio // ignore: cast_nullable_to_non_nullable
               as String,
+      vac: vac == freezed
+          ? _value.vac
+          : vac // ignore: cast_nullable_to_non_nullable
+              as VideoCallAccount,
+      online: online == freezed
+          ? _value.online
+          : online // ignore: cast_nullable_to_non_nullable
+              as bool,
+      curLocation: curLocation == freezed
+          ? _value.curLocation
+          : curLocation // ignore: cast_nullable_to_non_nullable
+              as GeoFirePoint,
     ));
+  }
+
+  @override
+  $VideoCallAccountCopyWith<$Res> get vac {
+    return $VideoCallAccountCopyWith<$Res>(_value.vac, (value) {
+      return _then(_value.copyWith(vac: value));
+    });
   }
 }
 
@@ -863,6 +938,9 @@ class _$_provider implements _provider {
       required this.idCardImage,
       required this.backgroundUrl,
       required this.bio,
+      required this.vac,
+      required this.online,
+      @GeoPointConverter() required this.curLocation,
       final String? $type})
       : $type = $type ?? '2';
 
@@ -899,13 +977,20 @@ class _$_provider implements _provider {
   final String backgroundUrl;
   @override
   final String bio;
+  @override
+  final VideoCallAccount vac;
+  @override
+  final bool online;
+  @override
+  @GeoPointConverter()
+  final GeoFirePoint curLocation;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'AppUser.provider(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, active: $active, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime, idCardNum: $idCardNum, idCardImage: $idCardImage, backgroundUrl: $backgroundUrl, bio: $bio)';
+    return 'AppUser.provider(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, active: $active, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime, idCardNum: $idCardNum, idCardImage: $idCardImage, backgroundUrl: $backgroundUrl, bio: $bio, vac: $vac, online: $online, curLocation: $curLocation)';
   }
 
   @override
@@ -931,7 +1016,11 @@ class _$_provider implements _provider {
                 .equals(other.idCardImage, idCardImage) &&
             const DeepCollectionEquality()
                 .equals(other.backgroundUrl, backgroundUrl) &&
-            const DeepCollectionEquality().equals(other.bio, bio));
+            const DeepCollectionEquality().equals(other.bio, bio) &&
+            const DeepCollectionEquality().equals(other.vac, vac) &&
+            const DeepCollectionEquality().equals(other.online, online) &&
+            const DeepCollectionEquality()
+                .equals(other.curLocation, curLocation));
   }
 
   @JsonKey(ignore: true)
@@ -952,7 +1041,10 @@ class _$_provider implements _provider {
       const DeepCollectionEquality().hash(idCardNum),
       const DeepCollectionEquality().hash(idCardImage),
       const DeepCollectionEquality().hash(backgroundUrl),
-      const DeepCollectionEquality().hash(bio));
+      const DeepCollectionEquality().hash(bio),
+      const DeepCollectionEquality().hash(vac),
+      const DeepCollectionEquality().hash(online),
+      const DeepCollectionEquality().hash(curLocation));
 
   @JsonKey(ignore: true)
   @override
@@ -973,7 +1065,8 @@ class _$_provider implements _provider {
             bool active,
             String avatarUrl,
             DateTime createdTime,
-            DateTime lastUpdatedTime)
+            DateTime lastUpdatedTime,
+            VideoCallAccount vac)
         consumer,
     required TResult Function(
             String uuid,
@@ -990,7 +1083,10 @@ class _$_provider implements _provider {
             String idCardNum,
             String idCardImage,
             String backgroundUrl,
-            String bio)
+            String bio,
+            VideoCallAccount vac,
+            bool online,
+            @GeoPointConverter() GeoFirePoint curLocation)
         provider,
     required TResult Function(
             String uuid,
@@ -1021,7 +1117,10 @@ class _$_provider implements _provider {
         idCardNum,
         idCardImage,
         backgroundUrl,
-        bio);
+        bio,
+        vac,
+        online,
+        curLocation);
   }
 
   @override
@@ -1038,7 +1137,8 @@ class _$_provider implements _provider {
             bool active,
             String avatarUrl,
             DateTime createdTime,
-            DateTime lastUpdatedTime)?
+            DateTime lastUpdatedTime,
+            VideoCallAccount vac)?
         consumer,
     TResult Function(
             String uuid,
@@ -1055,7 +1155,10 @@ class _$_provider implements _provider {
             String idCardNum,
             String idCardImage,
             String backgroundUrl,
-            String bio)?
+            String bio,
+            VideoCallAccount vac,
+            bool online,
+            @GeoPointConverter() GeoFirePoint curLocation)?
         provider,
     TResult Function(
             String uuid,
@@ -1086,7 +1189,10 @@ class _$_provider implements _provider {
         idCardNum,
         idCardImage,
         backgroundUrl,
-        bio);
+        bio,
+        vac,
+        online,
+        curLocation);
   }
 
   @override
@@ -1103,7 +1209,8 @@ class _$_provider implements _provider {
             bool active,
             String avatarUrl,
             DateTime createdTime,
-            DateTime lastUpdatedTime)?
+            DateTime lastUpdatedTime,
+            VideoCallAccount vac)?
         consumer,
     TResult Function(
             String uuid,
@@ -1120,7 +1227,10 @@ class _$_provider implements _provider {
             String idCardNum,
             String idCardImage,
             String backgroundUrl,
-            String bio)?
+            String bio,
+            VideoCallAccount vac,
+            bool online,
+            @GeoPointConverter() GeoFirePoint curLocation)?
         provider,
     TResult Function(
             String uuid,
@@ -1153,7 +1263,10 @@ class _$_provider implements _provider {
           idCardNum,
           idCardImage,
           backgroundUrl,
-          bio);
+          bio,
+          vac,
+          online,
+          curLocation);
     }
     return orElse();
   }
@@ -1194,27 +1307,33 @@ class _$_provider implements _provider {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_providerToJson(this);
+    return _$$_providerToJson(
+      this,
+    );
   }
 }
 
 abstract class _provider implements AppUser {
   const factory _provider(
-      {required final String uuid,
-      required final String firstName,
-      required final String lastName,
-      required final String phone,
-      required final DateTime dob,
-      required final String addr,
-      required final String email,
-      required final bool active,
-      required final String avatarUrl,
-      required final DateTime createdTime,
-      required final DateTime lastUpdatedTime,
-      required final String idCardNum,
-      required final String idCardImage,
-      required final String backgroundUrl,
-      required final String bio}) = _$_provider;
+          {required final String uuid,
+          required final String firstName,
+          required final String lastName,
+          required final String phone,
+          required final DateTime dob,
+          required final String addr,
+          required final String email,
+          required final bool active,
+          required final String avatarUrl,
+          required final DateTime createdTime,
+          required final DateTime lastUpdatedTime,
+          required final String idCardNum,
+          required final String idCardImage,
+          required final String backgroundUrl,
+          required final String bio,
+          required final VideoCallAccount vac,
+          required final bool online,
+          @GeoPointConverter() required final GeoFirePoint curLocation}) =
+      _$_provider;
 
   factory _provider.fromJson(Map<String, dynamic> json) = _$_provider.fromJson;
 
@@ -1244,6 +1363,10 @@ abstract class _provider implements AppUser {
   String get idCardImage;
   String get backgroundUrl;
   String get bio;
+  VideoCallAccount get vac;
+  bool get online;
+  @GeoPointConverter()
+  GeoFirePoint get curLocation;
   @override
   @JsonKey(ignore: true)
   _$$_providerCopyWith<_$_provider> get copyWith =>
@@ -1448,7 +1571,8 @@ class _$_admin implements _admin {
             bool active,
             String avatarUrl,
             DateTime createdTime,
-            DateTime lastUpdatedTime)
+            DateTime lastUpdatedTime,
+            VideoCallAccount vac)
         consumer,
     required TResult Function(
             String uuid,
@@ -1465,7 +1589,10 @@ class _$_admin implements _admin {
             String idCardNum,
             String idCardImage,
             String backgroundUrl,
-            String bio)
+            String bio,
+            VideoCallAccount vac,
+            bool online,
+            @GeoPointConverter() GeoFirePoint curLocation)
         provider,
     required TResult Function(
             String uuid,
@@ -1499,7 +1626,8 @@ class _$_admin implements _admin {
             bool active,
             String avatarUrl,
             DateTime createdTime,
-            DateTime lastUpdatedTime)?
+            DateTime lastUpdatedTime,
+            VideoCallAccount vac)?
         consumer,
     TResult Function(
             String uuid,
@@ -1516,7 +1644,10 @@ class _$_admin implements _admin {
             String idCardNum,
             String idCardImage,
             String backgroundUrl,
-            String bio)?
+            String bio,
+            VideoCallAccount vac,
+            bool online,
+            @GeoPointConverter() GeoFirePoint curLocation)?
         provider,
     TResult Function(
             String uuid,
@@ -1550,7 +1681,8 @@ class _$_admin implements _admin {
             bool active,
             String avatarUrl,
             DateTime createdTime,
-            DateTime lastUpdatedTime)?
+            DateTime lastUpdatedTime,
+            VideoCallAccount vac)?
         consumer,
     TResult Function(
             String uuid,
@@ -1567,7 +1699,10 @@ class _$_admin implements _admin {
             String idCardNum,
             String idCardImage,
             String backgroundUrl,
-            String bio)?
+            String bio,
+            VideoCallAccount vac,
+            bool online,
+            @GeoPointConverter() GeoFirePoint curLocation)?
         provider,
     TResult Function(
             String uuid,
@@ -1627,7 +1762,9 @@ class _$_admin implements _admin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_adminToJson(this);
+    return _$$_adminToJson(
+      this,
+    );
   }
 }
 

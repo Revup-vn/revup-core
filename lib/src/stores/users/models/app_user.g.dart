@@ -24,6 +24,8 @@ _$_consumer _$$_consumerFromJson(Map<String, dynamic> json) => $checkedCreate(
               'created_time', (v) => DateTime.parse(v as String)),
           lastUpdatedTime: $checkedConvert(
               'last_updated_time', (v) => DateTime.parse(v as String)),
+          vac: $checkedConvert('vac',
+              (v) => VideoCallAccount.fromJson(v as Map<String, dynamic>)),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -51,6 +53,7 @@ Map<String, dynamic> _$$_consumerToJson(_$_consumer instance) =>
       'avatar_url': instance.avatarUrl,
       'created_time': instance.createdTime.toIso8601String(),
       'last_updated_time': instance.lastUpdatedTime.toIso8601String(),
+      'vac': instance.vac.toJson(),
       'type': instance.$type,
     };
 
@@ -76,6 +79,13 @@ _$_provider _$$_providerFromJson(Map<String, dynamic> json) => $checkedCreate(
           idCardImage: $checkedConvert('id_card_image', (v) => v as String),
           backgroundUrl: $checkedConvert('background_url', (v) => v as String),
           bio: $checkedConvert('bio', (v) => v as String),
+          vac: $checkedConvert('vac',
+              (v) => VideoCallAccount.fromJson(v as Map<String, dynamic>)),
+          online: $checkedConvert('online', (v) => v as bool),
+          curLocation: $checkedConvert(
+              'cur_location',
+              (v) => const GeoPointConverter()
+                  .fromJson(v as Map<String, dynamic>)),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -89,6 +99,7 @@ _$_provider _$$_providerFromJson(Map<String, dynamic> json) => $checkedCreate(
         'idCardNum': 'id_card_num',
         'idCardImage': 'id_card_image',
         'backgroundUrl': 'background_url',
+        'curLocation': 'cur_location',
         r'$type': 'type'
       },
     );
@@ -110,6 +121,9 @@ Map<String, dynamic> _$$_providerToJson(_$_provider instance) =>
       'id_card_image': instance.idCardImage,
       'background_url': instance.backgroundUrl,
       'bio': instance.bio,
+      'vac': instance.vac.toJson(),
+      'online': instance.online,
+      'cur_location': const GeoPointConverter().toJson(instance.curLocation),
       'type': instance.$type,
     };
 

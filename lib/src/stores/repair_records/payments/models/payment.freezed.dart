@@ -301,7 +301,9 @@ class _$_service implements _service {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_serviceToJson(this);
+    return _$$_serviceToJson(
+      this,
+    );
   }
 }
 
@@ -502,7 +504,9 @@ class _$_product implements _product {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_productToJson(this);
+    return _$$_productToJson(
+      this,
+    );
   }
 }
 
