@@ -16,6 +16,11 @@ abstract class IStore<T extends Serializable<T>> {
   );
   Future<Either<StoreFailure, IList<T>>> all();
 
+  // This method is unsafe and you need to catch errors if them occurs
+  // Get the `CollectionReference<Map<String,dynamic>>` in the current
+  // IStore instance
+  CollectionReference<Map<String, dynamic>> collection();
+
   Future<Either<StoreFailure, IList<T>>> where(
     String field, {
     Object? isEqualTo,
@@ -48,10 +53,6 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
         (dynamic _) => left(const StoreFailure.convert()),
         right,
       );
-
-  @protected
-  @internal
-  CollectionReference<Map<String, dynamic>> collection();
 
   @internal
   @protected
