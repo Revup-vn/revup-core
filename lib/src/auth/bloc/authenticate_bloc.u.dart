@@ -42,13 +42,12 @@ class AuthenticateBloc
           OTPGetter onSubmitOTP,
           OnCompleteSignUp onSignUpSubmit,
           Function0<Future<Unit>> onSignUpSuccess,
-          void Function()? onTimeOut,
         ) async =>
             _onLoginWithPhone(
           onSubmitOTP,
           onSignUpSubmit,
           onSignUpSuccess,
-          onTimeOut,
+          () => emit(const AuthenticateState.phoneCodeExpired()),
         )(phoneNumber, emit),
         loginWithEmail: (String email, String password) async =>
             (await _authRepos.emailSignIn(

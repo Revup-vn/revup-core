@@ -23,9 +23,7 @@ class PhoneAuthenticator extends Authenticator {
   Future<bool> isPhoneValid(String phone) async =>
       phone.isNotEmpty &&
       await isFieldValid('phone', phone) &&
-      !(await _func
-              .httpsCallable('checkIfPhoneExists')
-              .call<bool>({phone: phone}))
+      !(await _func.httpsCallable('phoneexists').call<bool>({phone: phone}))
           .data;
 
   Future<Either<Exception, UserCredential>> signIn({

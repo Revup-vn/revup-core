@@ -83,6 +83,24 @@ Map<String, dynamic> _$$_signUpSuccessToJson(_$_signUpSuccess instance) =>
       'runtimeType': instance.$type,
     };
 
+_$_codeExpired _$$_codeExpiredFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_codeExpired',
+      json,
+      ($checkedConvert) {
+        final val = _$_codeExpired(
+          $type: $checkedConvert('runtimeType', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'runtimeType'},
+    );
+
+Map<String, dynamic> _$$_codeExpiredToJson(_$_codeExpired instance) =>
+    <String, dynamic>{
+      'runtimeType': instance.$type,
+    };
+
 _$_partial _$$_partialFromJson(Map<String, dynamic> json) => $checkedCreate(
       r'_$_partial',
       json,
