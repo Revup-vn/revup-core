@@ -20,6 +20,8 @@ AuthType _$AuthTypeFromJson(Map<String, dynamic> json) {
       return _google.fromJson(json);
     case 'phone':
       return _phone.fromJson(json);
+    case 'email':
+      return _email.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'runtimeType', 'AuthType',
@@ -34,18 +36,21 @@ mixin _$AuthType {
   TResult when<TResult extends Object?>({
     required TResult Function(AppUser user) google,
     required TResult Function(AppUser user) phone,
+    required TResult Function(AppUser user) email,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(AppUser user)? google,
     TResult Function(AppUser user)? phone,
+    TResult Function(AppUser user)? email,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AppUser user)? google,
     TResult Function(AppUser user)? phone,
+    TResult Function(AppUser user)? email,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -53,18 +58,21 @@ mixin _$AuthType {
   TResult map<TResult extends Object?>({
     required TResult Function(_google value) google,
     required TResult Function(_phone value) phone,
+    required TResult Function(_email value) email,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_google value)? google,
     TResult Function(_phone value)? phone,
+    TResult Function(_email value)? email,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_google value)? google,
     TResult Function(_phone value)? phone,
+    TResult Function(_email value)? email,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -187,6 +195,7 @@ class _$_google implements _google {
   TResult when<TResult extends Object?>({
     required TResult Function(AppUser user) google,
     required TResult Function(AppUser user) phone,
+    required TResult Function(AppUser user) email,
   }) {
     return google(user);
   }
@@ -196,6 +205,7 @@ class _$_google implements _google {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(AppUser user)? google,
     TResult Function(AppUser user)? phone,
+    TResult Function(AppUser user)? email,
   }) {
     return google?.call(user);
   }
@@ -205,6 +215,7 @@ class _$_google implements _google {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AppUser user)? google,
     TResult Function(AppUser user)? phone,
+    TResult Function(AppUser user)? email,
     required TResult orElse(),
   }) {
     if (google != null) {
@@ -218,6 +229,7 @@ class _$_google implements _google {
   TResult map<TResult extends Object?>({
     required TResult Function(_google value) google,
     required TResult Function(_phone value) phone,
+    required TResult Function(_email value) email,
   }) {
     return google(this);
   }
@@ -227,6 +239,7 @@ class _$_google implements _google {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_google value)? google,
     TResult Function(_phone value)? phone,
+    TResult Function(_email value)? email,
   }) {
     return google?.call(this);
   }
@@ -236,6 +249,7 @@ class _$_google implements _google {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_google value)? google,
     TResult Function(_phone value)? phone,
+    TResult Function(_email value)? email,
     required TResult orElse(),
   }) {
     if (google != null) {
@@ -341,6 +355,7 @@ class _$_phone implements _phone {
   TResult when<TResult extends Object?>({
     required TResult Function(AppUser user) google,
     required TResult Function(AppUser user) phone,
+    required TResult Function(AppUser user) email,
   }) {
     return phone(user);
   }
@@ -350,6 +365,7 @@ class _$_phone implements _phone {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(AppUser user)? google,
     TResult Function(AppUser user)? phone,
+    TResult Function(AppUser user)? email,
   }) {
     return phone?.call(user);
   }
@@ -359,6 +375,7 @@ class _$_phone implements _phone {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AppUser user)? google,
     TResult Function(AppUser user)? phone,
+    TResult Function(AppUser user)? email,
     required TResult orElse(),
   }) {
     if (phone != null) {
@@ -372,6 +389,7 @@ class _$_phone implements _phone {
   TResult map<TResult extends Object?>({
     required TResult Function(_google value) google,
     required TResult Function(_phone value) phone,
+    required TResult Function(_email value) email,
   }) {
     return phone(this);
   }
@@ -381,6 +399,7 @@ class _$_phone implements _phone {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_google value)? google,
     TResult Function(_phone value)? phone,
+    TResult Function(_email value)? email,
   }) {
     return phone?.call(this);
   }
@@ -390,6 +409,7 @@ class _$_phone implements _phone {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_google value)? google,
     TResult Function(_phone value)? phone,
+    TResult Function(_email value)? email,
     required TResult orElse(),
   }) {
     if (phone != null) {
@@ -416,5 +436,165 @@ abstract class _phone implements AuthType {
   @override
   @JsonKey(ignore: true)
   _$$_phoneCopyWith<_$_phone> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_emailCopyWith<$Res> implements $AuthTypeCopyWith<$Res> {
+  factory _$$_emailCopyWith(_$_email value, $Res Function(_$_email) then) =
+      __$$_emailCopyWithImpl<$Res>;
+  @override
+  $Res call({AppUser user});
+
+  @override
+  $AppUserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$_emailCopyWithImpl<$Res> extends _$AuthTypeCopyWithImpl<$Res>
+    implements _$$_emailCopyWith<$Res> {
+  __$$_emailCopyWithImpl(_$_email _value, $Res Function(_$_email) _then)
+      : super(_value, (v) => _then(v as _$_email));
+
+  @override
+  _$_email get _value => super._value as _$_email;
+
+  @override
+  $Res call({
+    Object? user = freezed,
+  }) {
+    return _then(_$_email(
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as AppUser,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_email implements _email {
+  const _$_email({required this.user, final String? $type})
+      : $type = $type ?? 'email';
+
+  factory _$_email.fromJson(Map<String, dynamic> json) =>
+      _$$_emailFromJson(json);
+
+  @override
+  final AppUser user;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'AuthType.email(user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_email &&
+            const DeepCollectionEquality().equals(other.user, user));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_emailCopyWith<_$_email> get copyWith =>
+      __$$_emailCopyWithImpl<_$_email>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AppUser user) google,
+    required TResult Function(AppUser user) phone,
+    required TResult Function(AppUser user) email,
+  }) {
+    return email(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(AppUser user)? google,
+    TResult Function(AppUser user)? phone,
+    TResult Function(AppUser user)? email,
+  }) {
+    return email?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AppUser user)? google,
+    TResult Function(AppUser user)? phone,
+    TResult Function(AppUser user)? email,
+    required TResult orElse(),
+  }) {
+    if (email != null) {
+      return email(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_google value) google,
+    required TResult Function(_phone value) phone,
+    required TResult Function(_email value) email,
+  }) {
+    return email(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_google value)? google,
+    TResult Function(_phone value)? phone,
+    TResult Function(_email value)? email,
+  }) {
+    return email?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_google value)? google,
+    TResult Function(_phone value)? phone,
+    TResult Function(_email value)? email,
+    required TResult orElse(),
+  }) {
+    if (email != null) {
+      return email(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_emailToJson(
+      this,
+    );
+  }
+}
+
+abstract class _email implements AuthType {
+  const factory _email({required final AppUser user}) = _$_email;
+
+  factory _email.fromJson(Map<String, dynamic> json) = _$_email.fromJson;
+
+  @override
+  AppUser get user;
+  @override
+  @JsonKey(ignore: true)
+  _$$_emailCopyWith<_$_email> get copyWith =>
       throw _privateConstructorUsedError;
 }

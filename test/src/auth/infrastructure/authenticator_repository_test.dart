@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import 'package:revup_core/src/auth/infrastructure/authenticator/email_authenticator.u.dart';
 import 'package:revup_core/src/auth/infrastructure/infrastructure.dart';
 import 'package:revup_core/src/auth/models/auth_failure.dart';
 import 'package:revup_core/src/auth/utils/utils.dart';
@@ -15,6 +16,8 @@ import '../../../helpers/firebase_mock_class.dart';
 class MockGG extends Mock implements GoogleAuthenticator {}
 
 class MockPhone extends Mock implements PhoneAuthenticator {}
+
+class MockEmail extends Mock implements EmailAuthenticator {}
 
 void main() {
   late MockGG gg;
@@ -33,7 +36,11 @@ void main() {
   });
 
   setUp(() {
-    repo = AuthenticatorRepository(phone, gg);
+    repo = AuthenticatorRepository(
+      phone,
+      gg,
+      MockEmail(),
+    );
   });
 
   group('ggSignUpIn', () {

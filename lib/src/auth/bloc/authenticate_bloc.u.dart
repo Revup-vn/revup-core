@@ -11,8 +11,8 @@ import '../models/models.dart';
 
 part 'authenticate_event.dart';
 part 'authenticate_state.dart';
-part 'authenticate_bloc.freezed.dart';
-part 'authenticate_bloc.g.dart';
+part 'authenticate_bloc.u.freezed.dart';
+part 'authenticate_bloc.u.g.dart';
 
 typedef PhoneGetter = Function0<FutureOr<String>>;
 
@@ -43,26 +43,33 @@ class AuthenticateBloc
           OnCompleteSignUp onSignUpSubmit,
           Function0<Future<Unit>> onSignUpSuccess,
           void Function()? onTimeOut,
-        ) async {
-          emit(const AuthenticateState.loading());
-          (await _authRepos.phoneSignUpIn(
-            onSubmitOTP: onSubmitOTP,
-            onSignUpSubmit: onSignUpSubmit,
-          )(
-            phoneNumber,
-            onTimeOut,
-          ))
-              .fold(
-            (l) => emit(AuthenticateState.failure(failure: l)),
-            (r) => emit(
-              AuthenticateState.authenticated(
-                authType: AuthType.phone(user: r),
-              ),
-            ),
-          );
-
-          return unit;
-        },
+        ) async =>
+            _onLoginWithPhone(
+          onSubmitOTP,
+          onSignUpSubmit,
+          onSignUpSuccess,
+          onTimeOut,
+        )(phoneNumber, emit),
+        loginWithEmail: (String email, String password) async =>
+            (await _authRepos.emailSignIn(
+          email: email,
+          pwd: password,
+        ))
+                .fold(
+          (l) => emit(AuthenticateState.failure(failure: l)),
+          (r) => emit(
+            AuthenticateState.authenticated(authType: AuthType.email(user: r)),
+          ),
+        ),
+        signUpWithEmail: (String email, String password) async =>
+            (await _authRepos.emailSignUp(email: email, pwd: password)).fold(
+          (l) => emit(AuthenticateState.failure(failure: l)),
+          (r) => emit(
+            r
+                ? const AuthenticateState.signUpSuccess()
+                : const AuthenticateState.failure(),
+          ),
+        ),
       );
 
   Future<Unit> _onSignOut(
@@ -83,6 +90,14 @@ class AuthenticateBloc
           emit(const AuthenticateState.loading());
           (await _authRepos.phoneSignOut())
               ? emit(const AuthenticateState.empty(isFirstTime: true))
+              : emit(AuthenticateState.failure(message: errorMessage));
+
+          return unit;
+        },
+        email: (AppUser user) async {
+          emit(const AuthenticateState.loading());
+          (await _authRepos.emailSignOut())
+              ? emit(const AuthenticateState.empty(isFirstTime: false))
               : emit(AuthenticateState.failure(message: errorMessage));
 
           return unit;
@@ -116,6 +131,33 @@ class AuthenticateBloc
 
     return unit;
   }
+
+  Function2<String, Emitter<AuthenticateState>, Future<Unit>> _onLoginWithPhone(
+    OTPGetter onSubmitOTP,
+    OnCompleteSignUp onSignUpSubmit,
+    Function0<Future<Unit>> onSignUpSuccess,
+    void Function()? onTimeOut,
+  ) =>
+      (phoneNumber, emit) async {
+        emit(const AuthenticateState.loading());
+        (await _authRepos.phoneSignUpIn(
+          onSubmitOTP: onSubmitOTP,
+          onSignUpSubmit: onSignUpSubmit,
+        )(
+          phoneNumber,
+          onTimeOut,
+        ))
+            .fold(
+          (l) => emit(AuthenticateState.failure(failure: l)),
+          (r) => emit(
+            AuthenticateState.authenticated(
+              authType: AuthType.phone(user: r),
+            ),
+          ),
+        );
+
+        return unit;
+      };
 
   final AuthenticatorRepository _authRepos;
 

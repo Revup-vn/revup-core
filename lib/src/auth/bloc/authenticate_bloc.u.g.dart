@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'authenticate_bloc.dart';
+part of 'authenticate_bloc.u.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -62,6 +62,24 @@ _$_authenticated _$$_authenticatedFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_authenticatedToJson(_$_authenticated instance) =>
     <String, dynamic>{
       'auth_type': instance.authType.toJson(),
+      'runtimeType': instance.$type,
+    };
+
+_$_signUpSuccess _$$_signUpSuccessFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_signUpSuccess',
+      json,
+      ($checkedConvert) {
+        final val = _$_signUpSuccess(
+          $type: $checkedConvert('runtimeType', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'runtimeType'},
+    );
+
+Map<String, dynamic> _$$_signUpSuccessToJson(_$_signUpSuccess instance) =>
+    <String, dynamic>{
       'runtimeType': instance.$type,
     };
 

@@ -9,6 +9,7 @@ class VideoCallAccount with _$VideoCallAccount {
     required String id,
     required String username,
     required String pwd,
+    required String email,
   }) = _VideoCallAccount;
   factory VideoCallAccount.fromJson(Map<String, dynamic> json) =>
       _$VideoCallAccountFromJson(json);
