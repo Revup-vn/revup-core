@@ -8,7 +8,7 @@ part 'language_cubit.u.freezed.dart';
 part 'language_cubit.u.g.dart';
 
 class LanguageCubit extends HydratedCubit<LanguageState> {
-  LanguageCubit(String local) : super(LanguageState.system(local));
+  LanguageCubit() : super(const LanguageState.system());
 
   static Locale fallbackLocale = const Locale('en');
 

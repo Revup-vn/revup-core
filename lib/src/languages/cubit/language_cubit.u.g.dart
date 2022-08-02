@@ -11,7 +11,6 @@ _$_system _$$_systemFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = _$_system(
-          $checkedConvert('local', (v) => v as String),
           $type: $checkedConvert('runtimeType', (v) => v as String?),
         );
         return val;
@@ -20,7 +19,6 @@ _$_system _$$_systemFromJson(Map<String, dynamic> json) => $checkedCreate(
     );
 
 Map<String, dynamic> _$$_systemToJson(_$_system instance) => <String, dynamic>{
-      'local': instance.local,
       'runtimeType': instance.$type,
     };
 

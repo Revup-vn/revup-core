@@ -10,6 +10,7 @@ import 'package:flash/flash.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../core.dart';
@@ -59,7 +60,9 @@ Future<void> bootstrap({
                   themeMode: state,
                   theme: lightTheme,
                   locale: context.watch<LanguageCubit>().state.when(
-                        system: Locale.new,
+                        system: () => Locale(
+                          Intl.getCurrentLocale().split('_').take(1).join(),
+                        ),
                         vietnamese: () => const Locale('vi'),
                         english: () => const Locale('en'),
                       ),
