@@ -16,6 +16,7 @@ AppUser mockUserIns() => AppUser.consumer(
         id: '123',
         pwd: '123',
         username: '123',
+        email: '',
       ),
     );
 Map<String, dynamic> mockUserValidJson() => <String, dynamic>{
@@ -35,5 +36,6 @@ Map<String, dynamic> mockUserValidJson() => <String, dynamic>{
         'id': '123',
         'username': '123',
         'pwd': '123',
+        'email': '',
       }
     };

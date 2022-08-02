@@ -12,6 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../auth/auth.dart';
+import '../auth/infrastructure/authenticator/email_authenticator.u.dart';
 import '../storages/storages.dart';
 import '../stores/repair_records/repair_records.dart';
 import '../stores/stores.u.dart';
@@ -70,9 +71,15 @@ final _authenticatorProviders = [
       context.read<IStore<AppUser>>() as UserRepository,
     ),
   ),
+  RepositoryProvider<EmailAuthenticator>(
+    create: (context) => EmailAuthenticator(context.read(), context.read()),
+  ),
   RepositoryProvider<AuthenticatorRepository>(
-    create: (context) =>
-        AuthenticatorRepository(context.read(), context.read()),
+    create: (context) => AuthenticatorRepository(
+      context.read(),
+      context.read(),
+      context.read(),
+    ),
   ),
 ];
 

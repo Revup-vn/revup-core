@@ -1,4 +1,4 @@
-part of 'authenticate_bloc.dart';
+part of 'authenticate_bloc.u.dart';
 
 @freezed
 class AuthenticateState with _$AuthenticateState {
@@ -8,6 +8,7 @@ class AuthenticateState with _$AuthenticateState {
 
   const factory AuthenticateState.authenticated({required AuthType authType}) =
       _authenticated;
+  const factory AuthenticateState.signUpSuccess() = _signUpSuccess;
 
   const factory AuthenticateState.partial({
     required AppUser appUser,

@@ -10,6 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../stores/stores.u.dart';
 import '../models/models.dart';
 import '../utils/utils.dart';
+import 'authenticator/email_authenticator.u.dart';
 import 'infrastructure.dart';
 
 typedef OnCompleteSignUp = FutureOr<AppUser> Function(User);
@@ -18,10 +19,98 @@ class AuthenticatorRepository {
   AuthenticatorRepository(
     this._phoneAuthenticatorService,
     this._googleAuthenticatorService,
+    this._emailAuthenticator,
   );
 
+  final EmailAuthenticator _emailAuthenticator;
   final PhoneAuthenticator _phoneAuthenticatorService;
   final GoogleAuthenticator _googleAuthenticatorService;
+
+  Future<Either<AuthFailure, bool>> emailSignUp({
+    required String email,
+    required String pwd,
+  }) async =>
+      await Task(
+        () => _emailAuthenticator.emailSignUp(email: email, password: pwd),
+      )
+          .attempt()
+          .map(
+            (a) async => a.fold<Future<Either<AuthFailure, bool>>>(
+              (l) async => l is FirebaseException
+                  ? left(AuthFailure.server(l.code))
+                  : left(const AuthFailure.unknown()),
+              (r) async => r.user?.uid.isEmpty ?? true
+                  ? const Left<AuthFailure, bool>(
+                      AuthFailure.server('No UID on sign up'),
+                    )
+                  : await Task(
+                      () => _emailAuthenticator.signUp(
+                        AppUser.admin(
+                          uuid: r.user!.uid,
+                          firstName: 'John',
+                          lastName: 'Doe',
+                          phone: 'XXX-XXX-XXXX',
+                          dob: DateTime(2000),
+                          addr: 'Netherlands',
+                          email: r.user?.email ?? '',
+                          active: true,
+                          avatarUrl: '',
+                          createdTime: DateTime.now(),
+                          lastUpdatedTime: DateTime.now(),
+                        ),
+                      ),
+                    )
+                      .attempt()
+                      .map(
+                        (a) => a.leftMap<AuthFailure>(
+                          (l) => const AuthFailure.storage(),
+                        ),
+                      )
+                      .run(),
+            ),
+          )
+          .run();
+
+  Future<Either<AuthFailure, AppUser>> emailSignIn({
+    required String email,
+    required String pwd,
+  }) async =>
+      await Task(
+        () => _emailAuthenticator.getSignInCredentials(
+          email: email,
+          password: pwd,
+        ),
+      )
+          .attempt()
+          .map(
+            (a) async => a.fold<Future<Either<AuthFailure, AppUser>>>(
+              (l) async => l is FirebaseException
+                  ? left(AuthFailure.server(l.code))
+                  : left(const AuthFailure.unknown()),
+              (r) async => r.user?.uid.isEmpty ?? true
+                  ? const Left<AuthFailure, AppUser>(AuthFailure.storage())
+                  : await Task(
+                      () => _emailAuthenticator.getUserDocument(r.user!.uid),
+                    )
+                      .attempt()
+                      .map(
+                        (a) => a.fold<Either<AuthFailure, AppUser>>(
+                          (_) => left(const AuthFailure.storage()),
+                          (r) =>
+                              catching(() => AppUser.fromJson(r.data()!)).fold(
+                            (dynamic _) => left(
+                              const AuthFailure.invalidData(
+                                'Cannot parse data',
+                              ),
+                            ),
+                            right,
+                          ),
+                        ),
+                      )
+                      .run(),
+            ),
+          )
+          .run();
 
   FutureOr<Either<AuthFailure, AppUser>> ggSignUpIn({
     required OnCompleteSignUp onSignUpSubmit,
@@ -78,6 +167,11 @@ class AuthenticatorRepository {
   }
 
   FutureOr<bool> ggSignOut() => Task(_googleAuthenticatorService.signOut)
+      .attempt()
+      .map((a) => a.fold((l) => false, (r) => r))
+      .run();
+
+  FutureOr<bool> emailSignOut() => Task(_emailAuthenticator.signOut)
       .attempt()
       .map((a) => a.fold((l) => false, (r) => r))
       .run();

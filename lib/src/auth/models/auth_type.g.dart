@@ -43,3 +43,22 @@ Map<String, dynamic> _$$_phoneToJson(_$_phone instance) => <String, dynamic>{
       'user': instance.user.toJson(),
       'runtimeType': instance.$type,
     };
+
+_$_email _$$_emailFromJson(Map<String, dynamic> json) => $checkedCreate(
+      r'_$_email',
+      json,
+      ($checkedConvert) {
+        final val = _$_email(
+          user: $checkedConvert(
+              'user', (v) => AppUser.fromJson(v as Map<String, dynamic>)),
+          $type: $checkedConvert('runtimeType', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'runtimeType'},
+    );
+
+Map<String, dynamic> _$$_emailToJson(_$_email instance) => <String, dynamic>{
+      'user': instance.user.toJson(),
+      'runtimeType': instance.$type,
+    };

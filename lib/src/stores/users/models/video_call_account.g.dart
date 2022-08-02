@@ -15,6 +15,7 @@ _$_VideoCallAccount _$$_VideoCallAccountFromJson(Map<String, dynamic> json) =>
           id: $checkedConvert('id', (v) => v as String),
           username: $checkedConvert('username', (v) => v as String),
           pwd: $checkedConvert('pwd', (v) => v as String),
+          email: $checkedConvert('email', (v) => v as String),
         );
         return val;
       },
@@ -25,4 +26,5 @@ Map<String, dynamic> _$$_VideoCallAccountToJson(_$_VideoCallAccount instance) =>
       'id': instance.id,
       'username': instance.username,
       'pwd': instance.pwd,
+      'email': instance.email,
     };

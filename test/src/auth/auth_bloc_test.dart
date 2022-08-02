@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:revup_core/src/auth/bloc/authenticate_bloc.dart';
+import 'package:revup_core/src/auth/bloc/authenticate_bloc.u.dart';
 import 'package:revup_core/src/auth/infrastructure/infrastructure.dart';
 import 'package:revup_core/src/auth/models/auth_failure.dart';
 import 'package:revup_core/src/auth/models/auth_type.dart';
