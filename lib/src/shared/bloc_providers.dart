@@ -25,9 +25,7 @@ MultiBlocProvider coreBlocProviders({required Widget child}) =>
           create: (context) => ConnectivityBloc(context.read()),
         ),
         BlocProvider<LanguageCubit>(
-          create: (context) => LanguageCubit(
-            Intl.getCurrentLocale().split('_').take(1).join(),
-          ),
+          create: (context) => LanguageCubit(),
         ),
         BlocProvider<NotificationCubit>(
           create: (context) => NotificationCubit(context.read()),

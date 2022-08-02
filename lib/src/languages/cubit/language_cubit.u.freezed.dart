@@ -33,21 +33,21 @@ LanguageState _$LanguageStateFromJson(Map<String, dynamic> json) {
 mixin _$LanguageState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String local) system,
+    required TResult Function() system,
     required TResult Function() vietnamese,
     required TResult Function() english,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String local)? system,
+    TResult Function()? system,
     TResult Function()? vietnamese,
     TResult Function()? english,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String local)? system,
+    TResult Function()? system,
     TResult Function()? vietnamese,
     TResult Function()? english,
     required TResult orElse(),
@@ -99,7 +99,6 @@ class _$LanguageStateCopyWithImpl<$Res>
 abstract class _$$_systemCopyWith<$Res> {
   factory _$$_systemCopyWith(_$_system value, $Res Function(_$_system) then) =
       __$$_systemCopyWithImpl<$Res>;
-  $Res call({String local});
 }
 
 /// @nodoc
@@ -110,88 +109,64 @@ class __$$_systemCopyWithImpl<$Res> extends _$LanguageStateCopyWithImpl<$Res>
 
   @override
   _$_system get _value => super._value as _$_system;
-
-  @override
-  $Res call({
-    Object? local = freezed,
-  }) {
-    return _then(_$_system(
-      local == freezed
-          ? _value.local
-          : local // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_system implements _system {
-  const _$_system(this.local, {final String? $type})
-      : $type = $type ?? 'system';
+  const _$_system({final String? $type}) : $type = $type ?? 'system';
 
   factory _$_system.fromJson(Map<String, dynamic> json) =>
       _$$_systemFromJson(json);
-
-  @override
-  final String local;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'LanguageState.system(local: $local)';
+    return 'LanguageState.system()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_system &&
-            const DeepCollectionEquality().equals(other.local, local));
+        (other.runtimeType == runtimeType && other is _$_system);
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(local));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_systemCopyWith<_$_system> get copyWith =>
-      __$$_systemCopyWithImpl<_$_system>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String local) system,
+    required TResult Function() system,
     required TResult Function() vietnamese,
     required TResult Function() english,
   }) {
-    return system(local);
+    return system();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String local)? system,
+    TResult Function()? system,
     TResult Function()? vietnamese,
     TResult Function()? english,
   }) {
-    return system?.call(local);
+    return system?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String local)? system,
+    TResult Function()? system,
     TResult Function()? vietnamese,
     TResult Function()? english,
     required TResult orElse(),
   }) {
     if (system != null) {
-      return system(local);
+      return system();
     }
     return orElse();
   }
@@ -239,14 +214,9 @@ class _$_system implements _system {
 }
 
 abstract class _system implements LanguageState {
-  const factory _system(final String local) = _$_system;
+  const factory _system() = _$_system;
 
   factory _system.fromJson(Map<String, dynamic> json) = _$_system.fromJson;
-
-  String get local;
-  @JsonKey(ignore: true)
-  _$$_systemCopyWith<_$_system> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -297,7 +267,7 @@ class _$_vietnamese implements _vietnamese {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String local) system,
+    required TResult Function() system,
     required TResult Function() vietnamese,
     required TResult Function() english,
   }) {
@@ -307,7 +277,7 @@ class _$_vietnamese implements _vietnamese {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String local)? system,
+    TResult Function()? system,
     TResult Function()? vietnamese,
     TResult Function()? english,
   }) {
@@ -317,7 +287,7 @@ class _$_vietnamese implements _vietnamese {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String local)? system,
+    TResult Function()? system,
     TResult Function()? vietnamese,
     TResult Function()? english,
     required TResult orElse(),
@@ -423,7 +393,7 @@ class _$_english implements _english {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String local) system,
+    required TResult Function() system,
     required TResult Function() vietnamese,
     required TResult Function() english,
   }) {
@@ -433,7 +403,7 @@ class _$_english implements _english {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String local)? system,
+    TResult Function()? system,
     TResult Function()? vietnamese,
     TResult Function()? english,
   }) {
@@ -443,7 +413,7 @@ class _$_english implements _english {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String local)? system,
+    TResult Function()? system,
     TResult Function()? vietnamese,
     TResult Function()? english,
     required TResult orElse(),
