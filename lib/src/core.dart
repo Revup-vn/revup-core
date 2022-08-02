@@ -7,6 +7,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flash/flash.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -46,6 +47,10 @@ Future<void> bootstrap({
       WidgetsFlutterBinding.ensureInitialized();
       await Hive.initFlutter();
       await Firebase.initializeApp(options: fOptions);
+      await SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+      ]);
       await _buildHydratedStorage(
         () async => runApp(
           coreRepositoryProviders(
@@ -98,6 +103,9 @@ Widget _flashTheme(BuildContext ctx, Widget? w) {
   return FlashTheme(
     flashBarTheme: isDark ? kDarkDialogueBarScheme : kLightDialogueBarScheme,
     flashDialogTheme: isDark ? kDarkDialogColorScheme : kLightDialogColorScheme,
-    child: w ?? Container(),
+    child: MediaQuery(
+      data: MediaQuery.of(ctx).copyWith(textScaleFactor: 1),
+      child: w ?? const SizedBox(),
+    ),
   );
 }
