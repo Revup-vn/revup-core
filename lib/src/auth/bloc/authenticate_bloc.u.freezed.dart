@@ -26,8 +26,7 @@ mixin _$AuthenticateEvent {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)
+            Function0<Future<Unit>> onSignUpSuccess)
         loginWithPhone,
     required TResult Function(AuthType authType, String? errorMessage) signOut,
     required TResult Function() reset,
@@ -42,8 +41,7 @@ mixin _$AuthenticateEvent {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)?
+            Function0<Future<Unit>> onSignUpSuccess)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
     TResult Function()? reset,
@@ -58,8 +56,7 @@ mixin _$AuthenticateEvent {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)?
+            Function0<Future<Unit>> onSignUpSuccess)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
     TResult Function()? reset,
@@ -189,8 +186,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)
+            Function0<Future<Unit>> onSignUpSuccess)
         loginWithPhone,
     required TResult Function(AuthType authType, String? errorMessage) signOut,
     required TResult Function() reset,
@@ -208,8 +204,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)?
+            Function0<Future<Unit>> onSignUpSuccess)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
     TResult Function()? reset,
@@ -227,8 +222,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)?
+            Function0<Future<Unit>> onSignUpSuccess)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
     TResult Function()? reset,
@@ -377,8 +371,7 @@ class _$_loginWithEmail implements _loginWithEmail {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)
+            Function0<Future<Unit>> onSignUpSuccess)
         loginWithPhone,
     required TResult Function(AuthType authType, String? errorMessage) signOut,
     required TResult Function() reset,
@@ -396,8 +389,7 @@ class _$_loginWithEmail implements _loginWithEmail {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)?
+            Function0<Future<Unit>> onSignUpSuccess)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
     TResult Function()? reset,
@@ -415,8 +407,7 @@ class _$_loginWithEmail implements _loginWithEmail {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)?
+            Function0<Future<Unit>> onSignUpSuccess)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
     TResult Function()? reset,
@@ -567,8 +558,7 @@ class _$_signUpWithEmail implements _signUpWithEmail {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)
+            Function0<Future<Unit>> onSignUpSuccess)
         loginWithPhone,
     required TResult Function(AuthType authType, String? errorMessage) signOut,
     required TResult Function() reset,
@@ -586,8 +576,7 @@ class _$_signUpWithEmail implements _signUpWithEmail {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)?
+            Function0<Future<Unit>> onSignUpSuccess)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
     TResult Function()? reset,
@@ -605,8 +594,7 @@ class _$_signUpWithEmail implements _signUpWithEmail {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)?
+            Function0<Future<Unit>> onSignUpSuccess)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
     TResult Function()? reset,
@@ -683,8 +671,7 @@ abstract class _$$_loginWithPhoneCopyWith<$Res> {
       {String phoneNumber,
       OTPGetter onSubmitOTP,
       OnCompleteSignUp onSignUpSubmit,
-      Function0<Future<Unit>> onSignUpSuccess,
-      VoidCallback? onTimeOut});
+      Function0<Future<Unit>> onSignUpSuccess});
 }
 
 /// @nodoc
@@ -704,7 +691,6 @@ class __$$_loginWithPhoneCopyWithImpl<$Res>
     Object? onSubmitOTP = freezed,
     Object? onSignUpSubmit = freezed,
     Object? onSignUpSuccess = freezed,
-    Object? onTimeOut = freezed,
   }) {
     return _then(_$_loginWithPhone(
       phoneNumber: phoneNumber == freezed
@@ -723,10 +709,6 @@ class __$$_loginWithPhoneCopyWithImpl<$Res>
           ? _value.onSignUpSuccess
           : onSignUpSuccess // ignore: cast_nullable_to_non_nullable
               as Function0<Future<Unit>>,
-      onTimeOut: onTimeOut == freezed
-          ? _value.onTimeOut
-          : onTimeOut // ignore: cast_nullable_to_non_nullable
-              as VoidCallback?,
     ));
   }
 }
@@ -738,8 +720,7 @@ class _$_loginWithPhone implements _loginWithPhone {
       {required this.phoneNumber,
       required this.onSubmitOTP,
       required this.onSignUpSubmit,
-      required this.onSignUpSuccess,
-      this.onTimeOut});
+      required this.onSignUpSuccess});
 
   @override
   final String phoneNumber;
@@ -749,12 +730,10 @@ class _$_loginWithPhone implements _loginWithPhone {
   final OnCompleteSignUp onSignUpSubmit;
   @override
   final Function0<Future<Unit>> onSignUpSuccess;
-  @override
-  final VoidCallback? onTimeOut;
 
   @override
   String toString() {
-    return 'AuthenticateEvent.loginWithPhone(phoneNumber: $phoneNumber, onSubmitOTP: $onSubmitOTP, onSignUpSubmit: $onSignUpSubmit, onSignUpSuccess: $onSignUpSuccess, onTimeOut: $onTimeOut)';
+    return 'AuthenticateEvent.loginWithPhone(phoneNumber: $phoneNumber, onSubmitOTP: $onSubmitOTP, onSignUpSubmit: $onSignUpSubmit, onSignUpSuccess: $onSignUpSuccess)';
   }
 
   @override
@@ -769,9 +748,7 @@ class _$_loginWithPhone implements _loginWithPhone {
             (identical(other.onSignUpSubmit, onSignUpSubmit) ||
                 other.onSignUpSubmit == onSignUpSubmit) &&
             (identical(other.onSignUpSuccess, onSignUpSuccess) ||
-                other.onSignUpSuccess == onSignUpSuccess) &&
-            (identical(other.onTimeOut, onTimeOut) ||
-                other.onTimeOut == onTimeOut));
+                other.onSignUpSuccess == onSignUpSuccess));
   }
 
   @override
@@ -780,8 +757,7 @@ class _$_loginWithPhone implements _loginWithPhone {
       const DeepCollectionEquality().hash(phoneNumber),
       onSubmitOTP,
       onSignUpSubmit,
-      onSignUpSuccess,
-      onTimeOut);
+      onSignUpSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -799,14 +775,13 @@ class _$_loginWithPhone implements _loginWithPhone {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)
+            Function0<Future<Unit>> onSignUpSuccess)
         loginWithPhone,
     required TResult Function(AuthType authType, String? errorMessage) signOut,
     required TResult Function() reset,
   }) {
     return loginWithPhone(
-        phoneNumber, onSubmitOTP, onSignUpSubmit, onSignUpSuccess, onTimeOut);
+        phoneNumber, onSubmitOTP, onSignUpSubmit, onSignUpSuccess);
   }
 
   @override
@@ -819,14 +794,13 @@ class _$_loginWithPhone implements _loginWithPhone {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)?
+            Function0<Future<Unit>> onSignUpSuccess)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
     TResult Function()? reset,
   }) {
     return loginWithPhone?.call(
-        phoneNumber, onSubmitOTP, onSignUpSubmit, onSignUpSuccess, onTimeOut);
+        phoneNumber, onSubmitOTP, onSignUpSubmit, onSignUpSuccess);
   }
 
   @override
@@ -839,8 +813,7 @@ class _$_loginWithPhone implements _loginWithPhone {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)?
+            Function0<Future<Unit>> onSignUpSuccess)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
     TResult Function()? reset,
@@ -848,7 +821,7 @@ class _$_loginWithPhone implements _loginWithPhone {
   }) {
     if (loginWithPhone != null) {
       return loginWithPhone(
-          phoneNumber, onSubmitOTP, onSignUpSubmit, onSignUpSuccess, onTimeOut);
+          phoneNumber, onSubmitOTP, onSignUpSubmit, onSignUpSuccess);
     }
     return orElse();
   }
@@ -899,17 +872,16 @@ class _$_loginWithPhone implements _loginWithPhone {
 
 abstract class _loginWithPhone implements AuthenticateEvent {
   const factory _loginWithPhone(
-      {required final String phoneNumber,
-      required final OTPGetter onSubmitOTP,
-      required final OnCompleteSignUp onSignUpSubmit,
-      required final Function0<Future<Unit>> onSignUpSuccess,
-      final VoidCallback? onTimeOut}) = _$_loginWithPhone;
+          {required final String phoneNumber,
+          required final OTPGetter onSubmitOTP,
+          required final OnCompleteSignUp onSignUpSubmit,
+          required final Function0<Future<Unit>> onSignUpSuccess}) =
+      _$_loginWithPhone;
 
   String get phoneNumber;
   OTPGetter get onSubmitOTP;
   OnCompleteSignUp get onSignUpSubmit;
   Function0<Future<Unit>> get onSignUpSuccess;
-  VoidCallback? get onTimeOut;
   @JsonKey(ignore: true)
   _$$_loginWithPhoneCopyWith<_$_loginWithPhone> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1008,8 +980,7 @@ class _$_signedOut implements _signedOut {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)
+            Function0<Future<Unit>> onSignUpSuccess)
         loginWithPhone,
     required TResult Function(AuthType authType, String? errorMessage) signOut,
     required TResult Function() reset,
@@ -1027,8 +998,7 @@ class _$_signedOut implements _signedOut {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)?
+            Function0<Future<Unit>> onSignUpSuccess)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
     TResult Function()? reset,
@@ -1046,8 +1016,7 @@ class _$_signedOut implements _signedOut {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)?
+            Function0<Future<Unit>> onSignUpSuccess)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
     TResult Function()? reset,
@@ -1161,8 +1130,7 @@ class _$_reset implements _reset {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)
+            Function0<Future<Unit>> onSignUpSuccess)
         loginWithPhone,
     required TResult Function(AuthType authType, String? errorMessage) signOut,
     required TResult Function() reset,
@@ -1180,8 +1148,7 @@ class _$_reset implements _reset {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)?
+            Function0<Future<Unit>> onSignUpSuccess)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
     TResult Function()? reset,
@@ -1199,8 +1166,7 @@ class _$_reset implements _reset {
             String phoneNumber,
             OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit,
-            Function0<Future<Unit>> onSignUpSuccess,
-            VoidCallback? onTimeOut)?
+            Function0<Future<Unit>> onSignUpSuccess)?
         loginWithPhone,
     TResult Function(AuthType authType, String? errorMessage)? signOut,
     TResult Function()? reset,
@@ -1270,6 +1236,8 @@ AuthenticateState _$AuthenticateStateFromJson(Map<String, dynamic> json) {
       return _authenticated.fromJson(json);
     case 'signUpSuccess':
       return _signUpSuccess.fromJson(json);
+    case 'phoneCodeExpired':
+      return _codeExpired.fromJson(json);
     case 'partial':
       return _partial.fromJson(json);
     case 'failure':
@@ -1289,6 +1257,7 @@ mixin _$AuthenticateState {
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function() signUpSuccess,
+    required TResult Function() phoneCodeExpired,
     required TResult Function(AppUser appUser) partial,
     required TResult Function(String? message, AuthFailure? failure) failure,
   }) =>
@@ -1299,6 +1268,7 @@ mixin _$AuthenticateState {
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
+    TResult Function()? phoneCodeExpired,
     TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
   }) =>
@@ -1309,6 +1279,7 @@ mixin _$AuthenticateState {
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
+    TResult Function()? phoneCodeExpired,
     TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
     required TResult orElse(),
@@ -1320,6 +1291,7 @@ mixin _$AuthenticateState {
     required TResult Function(_loading value) loading,
     required TResult Function(_authenticated value) authenticated,
     required TResult Function(_signUpSuccess value) signUpSuccess,
+    required TResult Function(_codeExpired value) phoneCodeExpired,
     required TResult Function(_partial value) partial,
     required TResult Function(_error value) failure,
   }) =>
@@ -1330,6 +1302,7 @@ mixin _$AuthenticateState {
     TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
     TResult Function(_signUpSuccess value)? signUpSuccess,
+    TResult Function(_codeExpired value)? phoneCodeExpired,
     TResult Function(_partial value)? partial,
     TResult Function(_error value)? failure,
   }) =>
@@ -1340,6 +1313,7 @@ mixin _$AuthenticateState {
     TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
     TResult Function(_signUpSuccess value)? signUpSuccess,
+    TResult Function(_codeExpired value)? phoneCodeExpired,
     TResult Function(_partial value)? partial,
     TResult Function(_error value)? failure,
     required TResult orElse(),
@@ -1440,6 +1414,7 @@ class _$_empty implements _empty {
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function() signUpSuccess,
+    required TResult Function() phoneCodeExpired,
     required TResult Function(AppUser appUser) partial,
     required TResult Function(String? message, AuthFailure? failure) failure,
   }) {
@@ -1453,6 +1428,7 @@ class _$_empty implements _empty {
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
+    TResult Function()? phoneCodeExpired,
     TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
   }) {
@@ -1466,6 +1442,7 @@ class _$_empty implements _empty {
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
+    TResult Function()? phoneCodeExpired,
     TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
     required TResult orElse(),
@@ -1483,6 +1460,7 @@ class _$_empty implements _empty {
     required TResult Function(_loading value) loading,
     required TResult Function(_authenticated value) authenticated,
     required TResult Function(_signUpSuccess value) signUpSuccess,
+    required TResult Function(_codeExpired value) phoneCodeExpired,
     required TResult Function(_partial value) partial,
     required TResult Function(_error value) failure,
   }) {
@@ -1496,6 +1474,7 @@ class _$_empty implements _empty {
     TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
     TResult Function(_signUpSuccess value)? signUpSuccess,
+    TResult Function(_codeExpired value)? phoneCodeExpired,
     TResult Function(_partial value)? partial,
     TResult Function(_error value)? failure,
   }) {
@@ -1509,6 +1488,7 @@ class _$_empty implements _empty {
     TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
     TResult Function(_signUpSuccess value)? signUpSuccess,
+    TResult Function(_codeExpired value)? phoneCodeExpired,
     TResult Function(_partial value)? partial,
     TResult Function(_error value)? failure,
     required TResult orElse(),
@@ -1589,6 +1569,7 @@ class _$_loading implements _loading {
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function() signUpSuccess,
+    required TResult Function() phoneCodeExpired,
     required TResult Function(AppUser appUser) partial,
     required TResult Function(String? message, AuthFailure? failure) failure,
   }) {
@@ -1602,6 +1583,7 @@ class _$_loading implements _loading {
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
+    TResult Function()? phoneCodeExpired,
     TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
   }) {
@@ -1615,6 +1597,7 @@ class _$_loading implements _loading {
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
+    TResult Function()? phoneCodeExpired,
     TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
     required TResult orElse(),
@@ -1632,6 +1615,7 @@ class _$_loading implements _loading {
     required TResult Function(_loading value) loading,
     required TResult Function(_authenticated value) authenticated,
     required TResult Function(_signUpSuccess value) signUpSuccess,
+    required TResult Function(_codeExpired value) phoneCodeExpired,
     required TResult Function(_partial value) partial,
     required TResult Function(_error value) failure,
   }) {
@@ -1645,6 +1629,7 @@ class _$_loading implements _loading {
     TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
     TResult Function(_signUpSuccess value)? signUpSuccess,
+    TResult Function(_codeExpired value)? phoneCodeExpired,
     TResult Function(_partial value)? partial,
     TResult Function(_error value)? failure,
   }) {
@@ -1658,6 +1643,7 @@ class _$_loading implements _loading {
     TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
     TResult Function(_signUpSuccess value)? signUpSuccess,
+    TResult Function(_codeExpired value)? phoneCodeExpired,
     TResult Function(_partial value)? partial,
     TResult Function(_error value)? failure,
     required TResult orElse(),
@@ -1768,6 +1754,7 @@ class _$_authenticated implements _authenticated {
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function() signUpSuccess,
+    required TResult Function() phoneCodeExpired,
     required TResult Function(AppUser appUser) partial,
     required TResult Function(String? message, AuthFailure? failure) failure,
   }) {
@@ -1781,6 +1768,7 @@ class _$_authenticated implements _authenticated {
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
+    TResult Function()? phoneCodeExpired,
     TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
   }) {
@@ -1794,6 +1782,7 @@ class _$_authenticated implements _authenticated {
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
+    TResult Function()? phoneCodeExpired,
     TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
     required TResult orElse(),
@@ -1811,6 +1800,7 @@ class _$_authenticated implements _authenticated {
     required TResult Function(_loading value) loading,
     required TResult Function(_authenticated value) authenticated,
     required TResult Function(_signUpSuccess value) signUpSuccess,
+    required TResult Function(_codeExpired value) phoneCodeExpired,
     required TResult Function(_partial value) partial,
     required TResult Function(_error value) failure,
   }) {
@@ -1824,6 +1814,7 @@ class _$_authenticated implements _authenticated {
     TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
     TResult Function(_signUpSuccess value)? signUpSuccess,
+    TResult Function(_codeExpired value)? phoneCodeExpired,
     TResult Function(_partial value)? partial,
     TResult Function(_error value)? failure,
   }) {
@@ -1837,6 +1828,7 @@ class _$_authenticated implements _authenticated {
     TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
     TResult Function(_signUpSuccess value)? signUpSuccess,
+    TResult Function(_codeExpired value)? phoneCodeExpired,
     TResult Function(_partial value)? partial,
     TResult Function(_error value)? failure,
     required TResult orElse(),
@@ -1921,6 +1913,7 @@ class _$_signUpSuccess implements _signUpSuccess {
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function() signUpSuccess,
+    required TResult Function() phoneCodeExpired,
     required TResult Function(AppUser appUser) partial,
     required TResult Function(String? message, AuthFailure? failure) failure,
   }) {
@@ -1934,6 +1927,7 @@ class _$_signUpSuccess implements _signUpSuccess {
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
+    TResult Function()? phoneCodeExpired,
     TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
   }) {
@@ -1947,6 +1941,7 @@ class _$_signUpSuccess implements _signUpSuccess {
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
+    TResult Function()? phoneCodeExpired,
     TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
     required TResult orElse(),
@@ -1964,6 +1959,7 @@ class _$_signUpSuccess implements _signUpSuccess {
     required TResult Function(_loading value) loading,
     required TResult Function(_authenticated value) authenticated,
     required TResult Function(_signUpSuccess value) signUpSuccess,
+    required TResult Function(_codeExpired value) phoneCodeExpired,
     required TResult Function(_partial value) partial,
     required TResult Function(_error value) failure,
   }) {
@@ -1977,6 +1973,7 @@ class _$_signUpSuccess implements _signUpSuccess {
     TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
     TResult Function(_signUpSuccess value)? signUpSuccess,
+    TResult Function(_codeExpired value)? phoneCodeExpired,
     TResult Function(_partial value)? partial,
     TResult Function(_error value)? failure,
   }) {
@@ -1990,6 +1987,7 @@ class _$_signUpSuccess implements _signUpSuccess {
     TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
     TResult Function(_signUpSuccess value)? signUpSuccess,
+    TResult Function(_codeExpired value)? phoneCodeExpired,
     TResult Function(_partial value)? partial,
     TResult Function(_error value)? failure,
     required TResult orElse(),
@@ -2013,6 +2011,159 @@ abstract class _signUpSuccess implements AuthenticateState {
 
   factory _signUpSuccess.fromJson(Map<String, dynamic> json) =
       _$_signUpSuccess.fromJson;
+}
+
+/// @nodoc
+abstract class _$$_codeExpiredCopyWith<$Res> {
+  factory _$$_codeExpiredCopyWith(
+          _$_codeExpired value, $Res Function(_$_codeExpired) then) =
+      __$$_codeExpiredCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_codeExpiredCopyWithImpl<$Res>
+    extends _$AuthenticateStateCopyWithImpl<$Res>
+    implements _$$_codeExpiredCopyWith<$Res> {
+  __$$_codeExpiredCopyWithImpl(
+      _$_codeExpired _value, $Res Function(_$_codeExpired) _then)
+      : super(_value, (v) => _then(v as _$_codeExpired));
+
+  @override
+  _$_codeExpired get _value => super._value as _$_codeExpired;
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_codeExpired implements _codeExpired {
+  const _$_codeExpired({final String? $type})
+      : $type = $type ?? 'phoneCodeExpired';
+
+  factory _$_codeExpired.fromJson(Map<String, dynamic> json) =>
+      _$$_codeExpiredFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'AuthenticateState.phoneCodeExpired()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_codeExpired);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isFirstTime) empty,
+    required TResult Function() loading,
+    required TResult Function(AuthType authType) authenticated,
+    required TResult Function() signUpSuccess,
+    required TResult Function() phoneCodeExpired,
+    required TResult Function(AppUser appUser) partial,
+    required TResult Function(String? message, AuthFailure? failure) failure,
+  }) {
+    return phoneCodeExpired();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(bool isFirstTime)? empty,
+    TResult Function()? loading,
+    TResult Function(AuthType authType)? authenticated,
+    TResult Function()? signUpSuccess,
+    TResult Function()? phoneCodeExpired,
+    TResult Function(AppUser appUser)? partial,
+    TResult Function(String? message, AuthFailure? failure)? failure,
+  }) {
+    return phoneCodeExpired?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isFirstTime)? empty,
+    TResult Function()? loading,
+    TResult Function(AuthType authType)? authenticated,
+    TResult Function()? signUpSuccess,
+    TResult Function()? phoneCodeExpired,
+    TResult Function(AppUser appUser)? partial,
+    TResult Function(String? message, AuthFailure? failure)? failure,
+    required TResult orElse(),
+  }) {
+    if (phoneCodeExpired != null) {
+      return phoneCodeExpired();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_empty value) empty,
+    required TResult Function(_loading value) loading,
+    required TResult Function(_authenticated value) authenticated,
+    required TResult Function(_signUpSuccess value) signUpSuccess,
+    required TResult Function(_codeExpired value) phoneCodeExpired,
+    required TResult Function(_partial value) partial,
+    required TResult Function(_error value) failure,
+  }) {
+    return phoneCodeExpired(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_empty value)? empty,
+    TResult Function(_loading value)? loading,
+    TResult Function(_authenticated value)? authenticated,
+    TResult Function(_signUpSuccess value)? signUpSuccess,
+    TResult Function(_codeExpired value)? phoneCodeExpired,
+    TResult Function(_partial value)? partial,
+    TResult Function(_error value)? failure,
+  }) {
+    return phoneCodeExpired?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_empty value)? empty,
+    TResult Function(_loading value)? loading,
+    TResult Function(_authenticated value)? authenticated,
+    TResult Function(_signUpSuccess value)? signUpSuccess,
+    TResult Function(_codeExpired value)? phoneCodeExpired,
+    TResult Function(_partial value)? partial,
+    TResult Function(_error value)? failure,
+    required TResult orElse(),
+  }) {
+    if (phoneCodeExpired != null) {
+      return phoneCodeExpired(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_codeExpiredToJson(
+      this,
+    );
+  }
+}
+
+abstract class _codeExpired implements AuthenticateState {
+  const factory _codeExpired() = _$_codeExpired;
+
+  factory _codeExpired.fromJson(Map<String, dynamic> json) =
+      _$_codeExpired.fromJson;
 }
 
 /// @nodoc
@@ -2100,6 +2251,7 @@ class _$_partial implements _partial {
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function() signUpSuccess,
+    required TResult Function() phoneCodeExpired,
     required TResult Function(AppUser appUser) partial,
     required TResult Function(String? message, AuthFailure? failure) failure,
   }) {
@@ -2113,6 +2265,7 @@ class _$_partial implements _partial {
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
+    TResult Function()? phoneCodeExpired,
     TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
   }) {
@@ -2126,6 +2279,7 @@ class _$_partial implements _partial {
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
+    TResult Function()? phoneCodeExpired,
     TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
     required TResult orElse(),
@@ -2143,6 +2297,7 @@ class _$_partial implements _partial {
     required TResult Function(_loading value) loading,
     required TResult Function(_authenticated value) authenticated,
     required TResult Function(_signUpSuccess value) signUpSuccess,
+    required TResult Function(_codeExpired value) phoneCodeExpired,
     required TResult Function(_partial value) partial,
     required TResult Function(_error value) failure,
   }) {
@@ -2156,6 +2311,7 @@ class _$_partial implements _partial {
     TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
     TResult Function(_signUpSuccess value)? signUpSuccess,
+    TResult Function(_codeExpired value)? phoneCodeExpired,
     TResult Function(_partial value)? partial,
     TResult Function(_error value)? failure,
   }) {
@@ -2169,6 +2325,7 @@ class _$_partial implements _partial {
     TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
     TResult Function(_signUpSuccess value)? signUpSuccess,
+    TResult Function(_codeExpired value)? phoneCodeExpired,
     TResult Function(_partial value)? partial,
     TResult Function(_error value)? failure,
     required TResult orElse(),
@@ -2295,6 +2452,7 @@ class _$_error implements _error {
     required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function() signUpSuccess,
+    required TResult Function() phoneCodeExpired,
     required TResult Function(AppUser appUser) partial,
     required TResult Function(String? message, AuthFailure? failure) failure,
   }) {
@@ -2308,6 +2466,7 @@ class _$_error implements _error {
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
+    TResult Function()? phoneCodeExpired,
     TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
   }) {
@@ -2321,6 +2480,7 @@ class _$_error implements _error {
     TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
+    TResult Function()? phoneCodeExpired,
     TResult Function(AppUser appUser)? partial,
     TResult Function(String? message, AuthFailure? failure)? failure,
     required TResult orElse(),
@@ -2338,6 +2498,7 @@ class _$_error implements _error {
     required TResult Function(_loading value) loading,
     required TResult Function(_authenticated value) authenticated,
     required TResult Function(_signUpSuccess value) signUpSuccess,
+    required TResult Function(_codeExpired value) phoneCodeExpired,
     required TResult Function(_partial value) partial,
     required TResult Function(_error value) failure,
   }) {
@@ -2351,6 +2512,7 @@ class _$_error implements _error {
     TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
     TResult Function(_signUpSuccess value)? signUpSuccess,
+    TResult Function(_codeExpired value)? phoneCodeExpired,
     TResult Function(_partial value)? partial,
     TResult Function(_error value)? failure,
   }) {
@@ -2364,6 +2526,7 @@ class _$_error implements _error {
     TResult Function(_loading value)? loading,
     TResult Function(_authenticated value)? authenticated,
     TResult Function(_signUpSuccess value)? signUpSuccess,
+    TResult Function(_codeExpired value)? phoneCodeExpired,
     TResult Function(_partial value)? partial,
     TResult Function(_error value)? failure,
     required TResult orElse(),

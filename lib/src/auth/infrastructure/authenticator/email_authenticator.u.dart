@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'authenticator.dart';
 
 class EmailAuthenticator extends Authenticator {
-  EmailAuthenticator(super.store, this._auth);
+  EmailAuthenticator(this._auth, super.store);
 
   final FirebaseAuth _auth;
 

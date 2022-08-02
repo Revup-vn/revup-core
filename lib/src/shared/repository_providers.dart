@@ -72,7 +72,10 @@ final _authenticatorProviders = [
     ),
   ),
   RepositoryProvider<EmailAuthenticator>(
-    create: (context) => EmailAuthenticator(context.read(), context.read()),
+    create: (context) => EmailAuthenticator(
+      context.read(),
+      context.read<IStore<AppUser>>() as UserRepository,
+    ),
   ),
   RepositoryProvider<AuthenticatorRepository>(
     create: (context) => AuthenticatorRepository(
