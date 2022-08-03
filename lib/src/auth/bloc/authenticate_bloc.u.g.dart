@@ -89,15 +89,20 @@ _$_codeExpired _$$_codeExpiredFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = _$_codeExpired(
+          phoneNumber: $checkedConvert('phone_number', (v) => v as String),
           $type: $checkedConvert('runtimeType', (v) => v as String?),
         );
         return val;
       },
-      fieldKeyMap: const {r'$type': 'runtimeType'},
+      fieldKeyMap: const {
+        'phoneNumber': 'phone_number',
+        r'$type': 'runtimeType'
+      },
     );
 
 Map<String, dynamic> _$$_codeExpiredToJson(_$_codeExpired instance) =>
     <String, dynamic>{
+      'phone_number': instance.phoneNumber,
       'runtimeType': instance.$type,
     };
 

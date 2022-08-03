@@ -10,7 +10,9 @@ class AuthenticateState with _$AuthenticateState {
       _authenticated;
   const factory AuthenticateState.signUpSuccess() = _signUpSuccess;
 
-  const factory AuthenticateState.phoneCodeExpired() = _codeExpired;
+  const factory AuthenticateState.phoneCodeExpired({
+    required String phoneNumber,
+  }) = _codeExpired;
 
   const factory AuthenticateState.partial({
     required AppUser appUser,

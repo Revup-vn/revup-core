@@ -46,7 +46,11 @@ class AuthenticateBloc
           onSubmitOTP,
           onSignUpSubmit,
           onSignUpSuccess,
-          () => emit(const AuthenticateState.phoneCodeExpired()),
+          () => emit(
+            AuthenticateState.phoneCodeExpired(
+              phoneNumber: phoneNumber,
+            ),
+          ),
         )(phoneNumber, emit),
         loginWithEmail: (String email, String password) async =>
             (await _authRepos.emailSignIn(
