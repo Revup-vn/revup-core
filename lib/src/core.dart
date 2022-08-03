@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flash/flash.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -15,7 +15,7 @@ import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../core.dart';
-import 'components/dialogs/dialogs.dart';
+import 'components/dialogs/shared/shared.dart';
 import 'observers/observers.dart';
 import 'shared/providers.dart';
 import 'theme/theme.dart';
@@ -28,7 +28,9 @@ FutureOr<R> _buildHydratedStorage<R>(Function0<FutureOr<R>> body) async =>
         WidgetsFlutterBinding.ensureInitialized();
 
         return HydratedStorage.build(
-          storageDirectory: await getTemporaryDirectory(),
+          storageDirectory: kIsWeb
+              ? HydratedStorage.webStorageDirectory
+              : await getTemporaryDirectory(),
         );
       },
     );
@@ -62,7 +64,11 @@ Future<void> bootstrap({
                 supportedLocales: locales,
                 localizationsDelegates: localizationsDelegates,
                 localeListResolutionCallback: _resolveLocal,
-                builder: _flashTheme,
+                builder: (_, w) => FlashThemeProvider(
+                  child: _FixedText(
+                    child: w,
+                  ),
+                ),
               ),
     );
 
@@ -122,15 +128,18 @@ Locale? _resolveLocal(
       orElse: () => LanguageCubit.fallbackLocale,
     );
 
-Widget _flashTheme(BuildContext ctx, Widget? w) {
-  final isDark = MediaQuery.of(ctx).platformBrightness == Brightness.dark;
+class _FixedText extends StatelessWidget {
+  const _FixedText({
+    super.key,
+    this.child,
+  });
+  final Widget? child;
 
-  return FlashTheme(
-    flashBarTheme: isDark ? kDarkDialogueBarScheme : kLightDialogueBarScheme,
-    flashDialogTheme: isDark ? kDarkDialogColorScheme : kLightDialogColorScheme,
-    child: MediaQuery(
-      data: MediaQuery.of(ctx).copyWith(textScaleFactor: 1),
-      child: w ?? const SizedBox(),
-    ),
-  );
+  @override
+  Widget build(BuildContext context) {
+    return MediaQuery(
+      data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
+      child: child ?? const SizedBox(),
+    );
+  }
 }

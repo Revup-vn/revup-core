@@ -29,6 +29,7 @@ class AuthenticatorRepository {
   Future<Either<AuthFailure, bool>> emailSignUp({
     required String email,
     required String pwd,
+    required OnCompleteSignUp onCompleteSignUp,
   }) async =>
       await Task(
         () => _emailAuthenticator.emailSignUp(email: email, password: pwd),
@@ -44,20 +45,8 @@ class AuthenticatorRepository {
                       AuthFailure.server('No UID on sign up'),
                     )
                   : await Task(
-                      () => _emailAuthenticator.signUp(
-                        AppUser.admin(
-                          uuid: r.user!.uid,
-                          firstName: 'John',
-                          lastName: 'Doe',
-                          phone: 'XXX-XXX-XXXX',
-                          dob: DateTime(2000),
-                          addr: 'Netherlands',
-                          email: r.user?.email ?? '',
-                          active: true,
-                          avatarUrl: '',
-                          createdTime: DateTime.now(),
-                          lastUpdatedTime: DateTime.now(),
-                        ),
+                      () async => _emailAuthenticator.signUp(
+                        await onCompleteSignUp(r.user!),
                       ),
                     )
                       .attempt()

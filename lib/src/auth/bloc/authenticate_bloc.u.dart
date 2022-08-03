@@ -59,8 +59,17 @@ class AuthenticateBloc
             AuthenticateState.authenticated(authType: AuthType.email(user: r)),
           ),
         ),
-        signUpWithEmail: (String email, String password) async =>
-            (await _authRepos.emailSignUp(email: email, pwd: password)).fold(
+        signUpWithEmail: (
+          String email,
+          String password,
+          OnCompleteSignUp onCompleteSignUp,
+        ) async =>
+            (await _authRepos.emailSignUp(
+          email: email,
+          pwd: password,
+          onCompleteSignUp: onCompleteSignUp,
+        ))
+                .fold(
           (l) => emit(AuthenticateState.failure(failure: l)),
           (r) => emit(
             r

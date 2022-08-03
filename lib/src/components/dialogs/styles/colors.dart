@@ -17,10 +17,9 @@ final kLightDialogueBarScheme = FlashBarThemeData(
       kLightColorScheme.onPrimaryContainer,
     ],
     center: Alignment.topLeft,
-    radius: 2,
+    radius: 5,
   ),
   borderRadius: BorderRadius.circular(8),
-  barrierColor: kLightColorScheme.primaryContainer,
   barrierDismissible: false,
   boxShadows: kElevationToShadow[8],
   barrierBlur: 0,
@@ -28,7 +27,6 @@ final kLightDialogueBarScheme = FlashBarThemeData(
   borderColor: Colors.transparent,
   borderWidth: 0,
   enableVerticalDrag: false,
-  position: FlashPosition.top,
 );
 
 final kDarkDialogueBarScheme = FlashBarThemeData(
@@ -44,10 +42,9 @@ final kDarkDialogueBarScheme = FlashBarThemeData(
       kDarkColorScheme.onPrimaryContainer,
     ],
     center: Alignment.topLeft,
-    radius: 2,
+    radius: 5,
   ),
   borderRadius: BorderRadius.circular(8),
-  barrierColor: kDarkColorScheme.primaryContainer,
   barrierDismissible: false,
   boxShadows: kElevationToShadow[8],
   barrierBlur: 0,
@@ -55,7 +52,6 @@ final kDarkDialogueBarScheme = FlashBarThemeData(
   borderColor: Colors.transparent,
   borderWidth: 0,
   enableVerticalDrag: false,
-  position: FlashPosition.top,
 );
 
 final kLightDialogColorScheme = FlashDialogThemeData(
@@ -66,7 +62,7 @@ final kLightDialogColorScheme = FlashDialogThemeData(
       kLightColorScheme.onPrimaryContainer,
     ],
     center: Alignment.topLeft,
-    radius: 2,
+    radius: 5,
   ),
   barrierBlur: 0,
   barrierColor: kLightColorScheme.primaryContainer,
@@ -85,11 +81,45 @@ final kDarkDialogColorScheme = FlashDialogThemeData(
       kDarkColorScheme.onPrimaryContainer,
     ],
     center: Alignment.topLeft,
-    radius: 2,
+    radius: 5,
   ),
   barrierBlur: 0,
   barrierColor: kDarkColorScheme.primaryContainer,
   barrierDismissible: false,
+  borderColor: Colors.transparent,
+  borderRadius: BorderRadius.circular(8),
+  boxShadows: kElevationToShadow[8],
+  brightness: Brightness.dark,
+);
+
+final kLightFlashDialogBlockTheme = FlashBlockDialogThemeData(
+  backgroundGradient: RadialGradient(
+    colors: [
+      kLightColorScheme.primaryContainer,
+      kLightColorScheme.onPrimaryContainer,
+    ],
+    center: Alignment.topLeft,
+    radius: 5,
+  ),
+  barrierBlur: 0,
+  barrierColor: kLightColorScheme.primaryContainer,
+  borderColor: Colors.transparent,
+  borderRadius: BorderRadius.circular(8),
+  boxShadows: kElevationToShadow[8],
+  brightness: Brightness.light,
+);
+
+final kDarkFlashDialogBlockTheme = FlashBlockDialogThemeData(
+  backgroundGradient: RadialGradient(
+    colors: [
+      kDarkColorScheme.primaryContainer,
+      kDarkColorScheme.onPrimaryContainer,
+    ],
+    center: Alignment.topLeft,
+    radius: 5,
+  ),
+  barrierBlur: 0,
+  barrierColor: kDarkColorScheme.primaryContainer,
   borderColor: Colors.transparent,
   borderRadius: BorderRadius.circular(8),
   boxShadows: kElevationToShadow[8],
