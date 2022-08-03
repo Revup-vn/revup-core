@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:intl/intl.dart';
 
 part 'language_state.dart';
 part 'language_cubit.u.freezed.dart';
@@ -11,6 +12,9 @@ class LanguageCubit extends HydratedCubit<LanguageState> {
   LanguageCubit() : super(const LanguageState.system());
 
   static Locale fallbackLocale = const Locale('en');
+
+  Locale getSystemLocale() =>
+      Locale(Intl.getCurrentLocale().split('_').take(1).join());
 
   void set(LanguageState state) => emit(state);
 
