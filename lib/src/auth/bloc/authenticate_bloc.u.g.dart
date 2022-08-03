@@ -106,6 +106,29 @@ Map<String, dynamic> _$$_codeExpiredToJson(_$_codeExpired instance) =>
       'runtimeType': instance.$type,
     };
 
+_$_otpVerifyFailed _$$_otpVerifyFailedFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_otpVerifyFailed',
+      json,
+      ($checkedConvert) {
+        final val = _$_otpVerifyFailed(
+          phoneNumber: $checkedConvert('phone_number', (v) => v as String),
+          $type: $checkedConvert('runtimeType', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'phoneNumber': 'phone_number',
+        r'$type': 'runtimeType'
+      },
+    );
+
+Map<String, dynamic> _$$_otpVerifyFailedToJson(_$_otpVerifyFailed instance) =>
+    <String, dynamic>{
+      'phone_number': instance.phoneNumber,
+      'runtimeType': instance.$type,
+    };
+
 _$_partial _$$_partialFromJson(Map<String, dynamic> json) => $checkedCreate(
       r'_$_partial',
       json,

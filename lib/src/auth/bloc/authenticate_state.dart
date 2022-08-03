@@ -13,6 +13,9 @@ class AuthenticateState with _$AuthenticateState {
   const factory AuthenticateState.phoneCodeExpired({
     required String phoneNumber,
   }) = _codeExpired;
+  const factory AuthenticateState.phoneCodeVerifyFailed({
+    required String phoneNumber,
+  }) = _otpVerifyFailed;
 
   const factory AuthenticateState.partial({
     required AppUser appUser,

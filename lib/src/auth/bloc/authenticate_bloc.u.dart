@@ -150,7 +150,13 @@ class AuthenticateBloc
           onTimeOut,
         ))
             .fold(
-          (l) => emit(AuthenticateState.failure(failure: l)),
+          (l) => l.maybeWhen(
+            orElse: () => AuthenticateState.failure(failure: l),
+            invalidOTP: (phoneNumber) =>
+                AuthenticateState.phoneCodeVerifyFailed(
+              phoneNumber: phoneNumber,
+            ),
+          ),
           (r) => emit(
             AuthenticateState.authenticated(
               authType: AuthType.phone(user: r),

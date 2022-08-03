@@ -233,8 +233,11 @@ class AuthenticatorRepository {
             );
           } else {
             l as FirebaseException;
-
-            return left(AuthFailure.server(l.code));
+            if (l.code == 'invalid-verification-code') {
+              return left(AuthFailure.invalidOTP(phoneNumber: phoneNumber));
+            } else {
+              return left(AuthFailure.server(l.code));
+            }
           }
         },
         (uc) async {

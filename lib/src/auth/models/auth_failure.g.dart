@@ -78,6 +78,29 @@ Map<String, dynamic> _$$_invalidDataToJson(_$_invalidData instance) =>
       'runtimeType': instance.$type,
     };
 
+_$_invalidOTP _$$_invalidOTPFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_invalidOTP',
+      json,
+      ($checkedConvert) {
+        final val = _$_invalidOTP(
+          phoneNumber: $checkedConvert('phone_number', (v) => v as String),
+          $type: $checkedConvert('runtimeType', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'phoneNumber': 'phone_number',
+        r'$type': 'runtimeType'
+      },
+    );
+
+Map<String, dynamic> _$$_invalidOTPToJson(_$_invalidOTP instance) =>
+    <String, dynamic>{
+      'phone_number': instance.phoneNumber,
+      'runtimeType': instance.$type,
+    };
+
 _$_verifyPhoneNumber _$$_verifyPhoneNumberFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
       r'_$_verifyPhoneNumber',

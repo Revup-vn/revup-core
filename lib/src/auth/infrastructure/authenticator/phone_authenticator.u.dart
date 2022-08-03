@@ -76,6 +76,8 @@ class PhoneAuthenticator extends Authenticator {
       if (e.code == 'provider-already-linked') {
         loginSuccess
             .complete(right(await _auth.signInWithCredential(authCredentials)));
+      } else if (e.code == 'invalid-verification-code') {
+        loginSuccess.complete(left(e));
       } else {
         rethrow;
       }

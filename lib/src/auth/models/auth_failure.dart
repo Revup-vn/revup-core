@@ -17,6 +17,9 @@ class AuthFailure with _$AuthFailure {
 
   const factory AuthFailure.invalidData([String? message]) = _invalidData;
 
+  const factory AuthFailure.invalidOTP({required String phoneNumber}) =
+      _invalidOTP;
+
   const factory AuthFailure.needToVerifyPhoneNumber(
     AppUser appUser,
   ) = _verifyPhoneNumber;
