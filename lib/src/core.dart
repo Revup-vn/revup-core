@@ -15,7 +15,6 @@ import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../core.dart';
-import 'components/dialogs/shared/shared.dart';
 import 'observers/observers.dart';
 import 'shared/providers.dart';
 import 'theme/theme.dart';
@@ -130,7 +129,6 @@ Locale? _resolveLocal(
 
 class _FixedText extends StatelessWidget {
   const _FixedText({
-    super.key,
     this.child,
   });
   final Widget? child;

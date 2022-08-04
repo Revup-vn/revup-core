@@ -14,7 +14,7 @@ final kLightDialogueBarScheme = FlashBarThemeData(
   backgroundGradient: RadialGradient(
     colors: [
       kLightColorScheme.primaryContainer,
-      kLightColorScheme.onPrimaryContainer,
+      kLightColorScheme.secondaryContainer,
     ],
     center: Alignment.topLeft,
     radius: 5,
@@ -39,7 +39,7 @@ final kDarkDialogueBarScheme = FlashBarThemeData(
   backgroundGradient: RadialGradient(
     colors: [
       kDarkColorScheme.primaryContainer,
-      kDarkColorScheme.onPrimaryContainer,
+      kDarkColorScheme.secondaryContainer,
     ],
     center: Alignment.topLeft,
     radius: 5,
@@ -59,7 +59,7 @@ final kLightDialogColorScheme = FlashDialogThemeData(
   backgroundGradient: RadialGradient(
     colors: [
       kLightColorScheme.primaryContainer,
-      kLightColorScheme.onPrimaryContainer,
+      kLightColorScheme.secondaryContainer,
     ],
     center: Alignment.topLeft,
     radius: 5,
@@ -78,7 +78,7 @@ final kDarkDialogColorScheme = FlashDialogThemeData(
   backgroundGradient: RadialGradient(
     colors: [
       kDarkColorScheme.primaryContainer,
-      kDarkColorScheme.onPrimaryContainer,
+      kDarkColorScheme.secondaryContainer,
     ],
     center: Alignment.topLeft,
     radius: 5,
@@ -96,13 +96,12 @@ final kLightFlashDialogBlockTheme = FlashBlockDialogThemeData(
   backgroundGradient: RadialGradient(
     colors: [
       kLightColorScheme.primaryContainer,
-      kLightColorScheme.onPrimaryContainer,
+      kLightColorScheme.secondaryContainer,
     ],
     center: Alignment.topLeft,
     radius: 5,
   ),
   barrierBlur: 0,
-  barrierColor: kLightColorScheme.primaryContainer,
   borderColor: Colors.transparent,
   borderRadius: BorderRadius.circular(8),
   boxShadows: kElevationToShadow[8],
@@ -113,15 +112,14 @@ final kDarkFlashDialogBlockTheme = FlashBlockDialogThemeData(
   backgroundGradient: RadialGradient(
     colors: [
       kDarkColorScheme.primaryContainer,
-      kDarkColorScheme.onPrimaryContainer,
+      kDarkColorScheme.secondaryContainer,
     ],
     center: Alignment.topLeft,
     radius: 5,
   ),
   barrierBlur: 0,
-  barrierColor: kDarkColorScheme.primaryContainer,
-  borderColor: Colors.transparent,
   borderRadius: BorderRadius.circular(8),
+  borderColor: Colors.transparent,
   boxShadows: kElevationToShadow[8],
   brightness: Brightness.dark,
 );
