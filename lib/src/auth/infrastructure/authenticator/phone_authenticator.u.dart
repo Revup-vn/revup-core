@@ -65,9 +65,10 @@ class PhoneAuthenticator extends Authenticator {
     PhoneAuthCredential authCredentials,
   ) async {
     try {
+      final currentUser = await _auth.userChanges().first;
       loginComplete.complete(
         right(
-          await (_auth.currentUser == null
+          await (currentUser == null
               ? _auth.signInWithCredential(authCredentials)
               : _auth.currentUser!.linkWithCredential(authCredentials)),
         ),
