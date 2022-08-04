@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geoflutterfire2/geoflutterfire2.dart';
 
@@ -7,16 +6,21 @@ class GeoPointConverter
   const GeoPointConverter();
 
   @override
-  Map<String, dynamic> toJson(GeoFirePoint object) =>
-      object.data as Map<String, dynamic>;
+  Map<String, dynamic> toJson(GeoFirePoint object) => <String, dynamic>{
+        'geohash': object.hash,
+        'geopoint': {
+          'latitude': object.latitude,
+          'longitude': object.longitude,
+        }
+      };
 
   @override
   GeoFirePoint fromJson(Map<String, dynamic> json) {
-    final point = json['geopoint'] as GeoPoint;
+    final point = json['geopoint'] as Map<String, double>;
 
     return GeoFirePoint(
-      point.latitude,
-      point.longitude,
+      point['latitude']!,
+      point['longitude']!,
     );
   }
 }
