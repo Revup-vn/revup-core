@@ -64,20 +64,31 @@ class AuthenticateBloc
           String password,
           OnCompleteSignUp onCompleteSignUp,
         ) async =>
-            (await _authRepos.emailSignUp(
-          email: email,
-          pwd: password,
-          onCompleteSignUp: onCompleteSignUp,
-        ))
-                .fold(
-          (l) => emit(AuthenticateState.failure(failure: l)),
-          (r) => emit(
-            r
-                ? const AuthenticateState.signUpSuccess()
-                : const AuthenticateState.failure(),
-          ),
-        ),
+            onSignUpWithEmail(email, password, onCompleteSignUp, emit),
       );
+
+  Future<Unit> onSignUpWithEmail(
+    String email,
+    String password,
+    OnCompleteSignUp onCompleteSignUp,
+    Emitter<AuthenticateState> emit,
+  ) async {
+    (await _authRepos.emailSignUp(
+      email: email,
+      pwd: password,
+      onCompleteSignUp: onCompleteSignUp,
+    ))
+        .fold(
+      (l) => emit(AuthenticateState.failure(failure: l)),
+      (r) => emit(
+        r
+            ? const AuthenticateState.signUpSuccess()
+            : const AuthenticateState.failure(),
+      ),
+    );
+
+    return unit;
+  }
 
   Future<Unit> _onSignOut(
     AuthType authType,
