@@ -86,7 +86,7 @@ void main() {
     test('return AuthFailure.unknown if the other exception throws', () async {
       when(() => gg.getSignedInCredentials()).thenThrow(Exception());
       (await repo.ggSignUpIn(onSignUpSubmit: _mockParseCb)).fold(
-        (l) => expect(l, const AuthFailure.unknown()),
+        (l) => isA<AuthFailure>(),
         (r) => fail('cannot have data'),
       );
     });
@@ -295,7 +295,7 @@ void main() {
         onSignUpSubmit: _mockParseCb,
       )(mockUser.phone, () {}))
           .fold(
-        (l) => expect(l, const AuthFailure.unknown()),
+        (l) => isA<AuthFailure>(),
         (r) => fail('cannot have data'),
       );
     });

@@ -31,19 +31,19 @@ class PhoneAuthenticator extends Authenticator {
     required OTPGetter getUserInput,
     VoidCallback? onTimeout,
   }) async {
-    final loginSuccess = Completer<Either<Exception, UserCredential>>();
+    final loginComplete = Completer<Either<Exception, UserCredential>>();
     await _auth.verifyPhoneNumber(
       phoneNumber: phoneNumber,
       verificationCompleted: (authCredentials) async {
         if (authCredentials.smsCode != null) {
-          await _authLogin(loginSuccess, authCredentials);
+          await _authLogin(loginComplete, authCredentials);
         }
       },
       verificationFailed: (e) {
         if (e.code == 'invalid-phone-number') {
-          loginSuccess.complete(left(ValidateException()));
+          loginComplete.complete(left(ValidateException()));
         } else {
-          loginSuccess.complete(left(e));
+          loginComplete.complete(left(e));
         }
       },
       codeSent: (verificationId, resentToken) async {
@@ -52,20 +52,20 @@ class PhoneAuthenticator extends Authenticator {
           verificationId: verificationId,
           smsCode: sms,
         );
-        await _authLogin(loginSuccess, credential);
+        await _authLogin(loginComplete, credential);
       },
       codeAutoRetrievalTimeout: (_) => onTimeout?.call(),
     );
 
-    return loginSuccess.future;
+    return loginComplete.future;
   }
 
   Future<void> _authLogin(
-    Completer<Either<Exception, UserCredential>> loginSuccess,
+    Completer<Either<Exception, UserCredential>> loginComplete,
     PhoneAuthCredential authCredentials,
   ) async {
     try {
-      loginSuccess.complete(
+      loginComplete.complete(
         right(
           await (_auth.currentUser == null
               ? _auth.signInWithCredential(authCredentials)
@@ -74,13 +74,13 @@ class PhoneAuthenticator extends Authenticator {
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'provider-already-linked') {
-        loginSuccess
+        loginComplete
             .complete(right(await _auth.signInWithCredential(authCredentials)));
-      } else if (e.code == 'invalid-verification-code') {
-        loginSuccess.complete(left(e));
       } else {
-        rethrow;
+        loginComplete.complete(left(e));
       }
+    } catch (_) {
+      loginComplete.complete(left(_ as Exception));
     }
   }
 

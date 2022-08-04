@@ -83,52 +83,6 @@ Map<String, dynamic> _$$_signUpSuccessToJson(_$_signUpSuccess instance) =>
       'runtimeType': instance.$type,
     };
 
-_$_codeExpired _$$_codeExpiredFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      r'_$_codeExpired',
-      json,
-      ($checkedConvert) {
-        final val = _$_codeExpired(
-          phoneNumber: $checkedConvert('phone_number', (v) => v as String),
-          $type: $checkedConvert('runtimeType', (v) => v as String?),
-        );
-        return val;
-      },
-      fieldKeyMap: const {
-        'phoneNumber': 'phone_number',
-        r'$type': 'runtimeType'
-      },
-    );
-
-Map<String, dynamic> _$$_codeExpiredToJson(_$_codeExpired instance) =>
-    <String, dynamic>{
-      'phone_number': instance.phoneNumber,
-      'runtimeType': instance.$type,
-    };
-
-_$_otpVerifyFailed _$$_otpVerifyFailedFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      r'_$_otpVerifyFailed',
-      json,
-      ($checkedConvert) {
-        final val = _$_otpVerifyFailed(
-          phoneNumber: $checkedConvert('phone_number', (v) => v as String),
-          $type: $checkedConvert('runtimeType', (v) => v as String?),
-        );
-        return val;
-      },
-      fieldKeyMap: const {
-        'phoneNumber': 'phone_number',
-        r'$type': 'runtimeType'
-      },
-    );
-
-Map<String, dynamic> _$$_otpVerifyFailedToJson(_$_otpVerifyFailed instance) =>
-    <String, dynamic>{
-      'phone_number': instance.phoneNumber,
-      'runtimeType': instance.$type,
-    };
-
 _$_partial _$$_partialFromJson(Map<String, dynamic> json) => $checkedCreate(
       r'_$_partial',
       json,
@@ -154,12 +108,8 @@ _$_error _$$_errorFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = _$_error(
-          message: $checkedConvert('message', (v) => v as String?),
-          failure: $checkedConvert(
-              'failure',
-              (v) => v == null
-                  ? null
-                  : AuthFailure.fromJson(v as Map<String, dynamic>)),
+          failure: $checkedConvert('failure',
+              (v) => AuthFailure.fromJson(v as Map<String, dynamic>)),
           $type: $checkedConvert('runtimeType', (v) => v as String?),
         );
         return val;
@@ -168,7 +118,6 @@ _$_error _$$_errorFromJson(Map<String, dynamic> json) => $checkedCreate(
     );
 
 Map<String, dynamic> _$$_errorToJson(_$_error instance) => <String, dynamic>{
-      'message': instance.message,
-      'failure': instance.failure?.toJson(),
+      'failure': instance.failure.toJson(),
       'runtimeType': instance.$type,
     };

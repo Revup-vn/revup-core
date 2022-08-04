@@ -18,9 +18,7 @@ typedef PhoneGetter = Function0<FutureOr<String>>;
 class AuthenticateBloc
     extends HydratedBloc<AuthenticateEvent, AuthenticateState> {
   AuthenticateBloc(this._authRepos)
-      : super(
-          const AuthenticateState.empty(isFirstTime: true),
-        ) {
+      : super(const AuthenticateState.empty(isFirstTime: true)) {
     on<AuthenticateEvent>(_onEvent);
   }
 
@@ -47,8 +45,8 @@ class AuthenticateBloc
           onSignUpSubmit,
           onSignUpSuccess,
           () => emit(
-            AuthenticateState.phoneCodeExpired(
-              phoneNumber: phoneNumber,
+            AuthenticateState.failure(
+              failure: AuthFailure.expiredOTP(phoneNumber),
             ),
           ),
         )(phoneNumber, emit),
@@ -69,7 +67,10 @@ class AuthenticateBloc
           (r) => emit(
             r
                 ? const AuthenticateState.signUpSuccess()
-                : const AuthenticateState.failure(),
+                : const AuthenticateState.failure(
+                    failure:
+                        AuthFailure.unknown('Cannot create user in firestore'),
+                  ),
           ),
         ),
       );
@@ -84,7 +85,11 @@ class AuthenticateBloc
           emit(const AuthenticateState.loading());
           (await _authRepos.ggSignOut())
               ? emit(const AuthenticateState.empty(isFirstTime: true))
-              : emit(AuthenticateState.failure(message: errorMessage));
+              : emit(
+                  AuthenticateState.failure(
+                    failure: AuthFailure.unknown(errorMessage),
+                  ),
+                );
 
           return unit;
         },
@@ -92,7 +97,11 @@ class AuthenticateBloc
           emit(const AuthenticateState.loading());
           (await _authRepos.phoneSignOut())
               ? emit(const AuthenticateState.empty(isFirstTime: true))
-              : emit(AuthenticateState.failure(message: errorMessage));
+              : emit(
+                  AuthenticateState.failure(
+                    failure: AuthFailure.unknown(errorMessage),
+                  ),
+                );
 
           return unit;
         },
@@ -100,7 +109,11 @@ class AuthenticateBloc
           emit(const AuthenticateState.loading());
           (await _authRepos.emailSignOut())
               ? emit(const AuthenticateState.empty(isFirstTime: false))
-              : emit(AuthenticateState.failure(message: errorMessage));
+              : emit(
+                  AuthenticateState.failure(
+                    failure: AuthFailure.unknown(errorMessage),
+                  ),
+                );
 
           return unit;
         },
@@ -150,13 +163,7 @@ class AuthenticateBloc
           onTimeOut,
         ))
             .fold(
-          (l) => l.maybeWhen(
-            orElse: () => AuthenticateState.failure(failure: l),
-            invalidOTP: (phoneNumber) =>
-                AuthenticateState.phoneCodeVerifyFailed(
-              phoneNumber: phoneNumber,
-            ),
-          ),
+          (l) => emit(AuthenticateState.failure(failure: l)),
           (r) => emit(
             AuthenticateState.authenticated(
               authType: AuthType.phone(user: r),

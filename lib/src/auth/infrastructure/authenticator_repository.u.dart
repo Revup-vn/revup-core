@@ -38,7 +38,7 @@ class AuthenticatorRepository {
             (a) async => a.fold<Future<Either<AuthFailure, bool>>>(
               (l) async => l is FirebaseException
                   ? left(AuthFailure.server(l.code))
-                  : left(const AuthFailure.unknown()),
+                  : left(AuthFailure.unknown(l.toString())),
               (r) async => r.user?.uid.isEmpty ?? true
                   ? const Left<AuthFailure, bool>(
                       AuthFailure.server('No UID on sign up'),
@@ -86,7 +86,7 @@ class AuthenticatorRepository {
             (a) async => a.fold<Future<Either<AuthFailure, AppUser>>>(
               (l) async => l is FirebaseException
                   ? left(AuthFailure.server(l.code))
-                  : left(const AuthFailure.unknown()),
+                  : left(AuthFailure.unknown(l.toString())),
               (r) async => r.user?.uid.isEmpty ?? true
                   ? const Left<AuthFailure, AppUser>(AuthFailure.storage())
                   : await Task(
@@ -130,7 +130,7 @@ class AuthenticatorRepository {
     } on ValidateException {
       return left(const AuthFailure.invalidData('User cannot be null'));
     } catch (_) {
-      return left(const AuthFailure.unknown());
+      return left(AuthFailure.unknown(_.toString()));
     }
   }
 
@@ -204,7 +204,7 @@ class AuthenticatorRepository {
                 const AuthFailure.invalidData('Phone number is not valid'),
               );
             } catch (_) {
-              tmp = left(const AuthFailure.unknown());
+              tmp = left(AuthFailure.unknown(_.toString()));
             } finally {
               res = tmp ?? left(const AuthFailure.server());
             }
@@ -232,11 +232,12 @@ class AuthenticatorRepository {
               ),
             );
           } else {
-            l as FirebaseException;
-            if (l.code == 'invalid-verification-code') {
-              return left(AuthFailure.invalidOTP(phoneNumber: phoneNumber));
+            if (l is FirebaseException) {
+              return l.code == 'invalid-verification-code'
+                  ? left(AuthFailure.invalidOTP(phoneNumber))
+                  : left(AuthFailure.server(l.code));
             } else {
-              return left(AuthFailure.server(l.code));
+              return left(AuthFailure.unknown(l.toString()));
             }
           }
         },
