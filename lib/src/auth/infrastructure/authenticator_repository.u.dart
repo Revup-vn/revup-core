@@ -134,6 +134,9 @@ class AuthenticatorRepository {
     }
   }
 
+  /// This method should only call when the phone number is already in the
+  /// fire_auth. It will still check for the phone and the email associated
+  /// with the fire_auth account to persist the account to the firestore
   Future<Either<AuthFailure, AppUser>> _signInUp(
     DocumentSnapshot<Map<String, dynamic>> recordData,
     OnCompleteSignUp onSignUpSubmit,
@@ -149,7 +152,8 @@ class AuthenticatorRepository {
       if (user.phoneNumber?.isEmpty ?? true) {
         return left(AuthFailure.needToVerifyPhoneNumber(appUser));
       }
-      if (!(await _phoneAuthenticatorService.isPhoneValid(appUser.phone) &&
+      if (!(await _phoneAuthenticatorService
+              .isPhoneStorePersist(appUser.phone) &&
           await _googleAuthenticatorService.isEmailValid(appUser.email))) {
         return left(
           const AuthFailure.invalidData(
@@ -187,15 +191,16 @@ class AuthenticatorRepository {
             late FutureOr<Either<AuthFailure, AppUser>> res;
 
             try {
-              tmp = await _phoneAux(
-                phoneNumber,
-                onSubmitOTP,
-                onTimeOut,
-                onSignUpSubmit,
-              );
-
               if (assignValueEffectsForTesting != null) {
                 tmp = right(assignValueEffectsForTesting);
+              } else if (await _phoneAuthenticatorService
+                  .isPhoneAuthValid(phoneNumber)) {
+                tmp = await _phoneAux(
+                  phoneNumber,
+                  onSubmitOTP,
+                  onTimeOut,
+                  onSignUpSubmit,
+                );
               }
             } on FirebaseAuthException catch (e) {
               tmp = left(AuthFailure.invalidData(e.code));

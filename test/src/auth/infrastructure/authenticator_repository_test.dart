@@ -126,7 +126,8 @@ void main() {
       test('return AuthFailure.invalidData if phone is existed in the database',
           () async {
         when(() => mSnapShot.exists).thenReturn(false);
-        when(() => phone.isPhoneValid(any())).thenAnswer((_) async => false);
+        when(() => phone.isPhoneAuthValid(any()))
+            .thenAnswer((_) async => false);
         when(() => gg.isEmailValid(any())).thenAnswer((_) async => true);
         when(() => gg.getSignedInCredentials()).thenAnswer((_) async => mu);
         when(() => mu.phoneNumber).thenAnswer((_) => '123');
@@ -151,7 +152,7 @@ void main() {
       test('return AuthFailure.invalidData if email is existed in the database',
           () async {
         when(() => mSnapShot.exists).thenReturn(false);
-        when(() => phone.isPhoneValid(any())).thenAnswer((_) async => true);
+        when(() => phone.isPhoneAuthValid(any())).thenAnswer((_) async => true);
         when(() => gg.isEmailValid(any())).thenAnswer((_) async => false);
         when(() => gg.getSignedInCredentials()).thenAnswer((_) async => mu);
         when(() => mu.phoneNumber).thenAnswer((_) => '123');
@@ -176,7 +177,7 @@ void main() {
       test('return AuthFailure.server if error occurs in signUp process',
           () async {
         when(() => mSnapShot.exists).thenReturn(false);
-        when(() => phone.isPhoneValid(any())).thenAnswer((_) async => true);
+        when(() => phone.isPhoneAuthValid(any())).thenAnswer((_) async => true);
         when(() => gg.isEmailValid(any())).thenAnswer((_) async => true);
         when(() => gg.signUp(any())).thenAnswer((_) async => false);
         when(() => gg.getSignedInCredentials()).thenAnswer((_) async => mu);
@@ -194,7 +195,7 @@ void main() {
 
       test('return AppUser instance if signed up', () async {
         when(() => mSnapShot.exists).thenReturn(false);
-        when(() => phone.isPhoneValid(any())).thenAnswer((_) async => true);
+        when(() => phone.isPhoneAuthValid(any())).thenAnswer((_) async => true);
         when(() => gg.isEmailValid(any())).thenAnswer((_) async => true);
         when(() => gg.signUp(any())).thenAnswer((_) async => true);
         when(() => gg.getSignedInCredentials()).thenAnswer((_) async => mu);
@@ -218,7 +219,7 @@ void main() {
 
   group('phoneSignUpIn', () {
     setUpAll(() {
-      when(() => phone.isPhoneValid(any())).thenAnswer((_) async => false);
+      when(() => phone.isPhoneAuthValid(any())).thenAnswer((_) async => false);
     });
     test('Return AuthFailure.invalidData if the entered sms code is wrong',
         () async {
@@ -288,7 +289,7 @@ void main() {
           onTimeout: any(named: 'onTimeout'),
         ),
       ).thenAnswer((_) async => throw Exception());
-      when(() => phone.isPhoneValid(any())).thenAnswer((_) async => true);
+      when(() => phone.isPhoneAuthValid(any())).thenAnswer((_) async => true);
 
       (await repo.phoneSignUpIn(
         onSubmitOTP: () => '111111',

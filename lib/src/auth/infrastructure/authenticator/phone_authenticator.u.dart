@@ -20,11 +20,13 @@ class PhoneAuthenticator extends Authenticator {
   final FirebaseAuth _auth;
   final FirebaseFunctions _func;
 
-  Future<bool> isPhoneValid(String phone) async =>
+  Future<bool> isPhoneAuthValid(String phone) async =>
       phone.isNotEmpty &&
-      await isFieldValid('phone', phone) &&
       !(await _func.httpsCallable('phoneexists').call<bool>({phone: phone}))
           .data;
+
+  Future<bool> isPhoneStorePersist(String phone) async =>
+      phone.isNotEmpty && await isFieldValid('phone', phone);
 
   Future<Either<Exception, UserCredential>> signIn({
     required String phoneNumber,
