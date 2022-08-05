@@ -11,3 +11,4 @@ export 'src/stores/stores.u.dart';
 export 'src/theme/theme.dart' hide lightTheme, darkTheme;
 export 'src/languages/languages.dart';
 export 'src/connectivity/connectivity.dart';
+export 'src/components/components.dart';

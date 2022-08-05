@@ -14,6 +14,7 @@ class AuthenticateEvent with _$AuthenticateEvent {
   const factory AuthenticateEvent.signUpWithEmail({
     required String email,
     required String password,
+    required OnCompleteSignUp onCompleteSignUp,
   }) = _signUpWithEmail;
 
   const factory AuthenticateEvent.loginWithPhone({

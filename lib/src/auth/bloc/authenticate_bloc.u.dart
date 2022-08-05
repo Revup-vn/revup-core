@@ -34,6 +34,14 @@ class AuthenticateBloc
         ) =>
             _onLoginWithGoogle(onCompleteSignUp, emit),
         reset: () => emit(const AuthenticateState.empty(isFirstTime: false)),
+        loginWithEmail: (String email, String password) async =>
+            _onLoginWithEmail(email, password, emit),
+        signUpWithEmail: (
+          String email,
+          String password,
+          OnCompleteSignUp onCompleteSignUp,
+        ) async =>
+            _onSignUpWithEmail(email, password, onCompleteSignUp, emit),
         loginWithPhone: (
           String phoneNumber,
           OTPGetter onSubmitOTP,
@@ -50,30 +58,49 @@ class AuthenticateBloc
             ),
           ),
         )(phoneNumber, emit),
-        loginWithEmail: (String email, String password) async =>
-            (await _authRepos.emailSignIn(
-          email: email,
-          pwd: password,
-        ))
-                .fold(
-          (l) => emit(AuthenticateState.failure(failure: l)),
-          (r) => emit(
-            AuthenticateState.authenticated(authType: AuthType.email(user: r)),
-          ),
-        ),
-        signUpWithEmail: (String email, String password) async =>
-            (await _authRepos.emailSignUp(email: email, pwd: password)).fold(
-          (l) => emit(AuthenticateState.failure(failure: l)),
-          (r) => emit(
-            r
-                ? const AuthenticateState.signUpSuccess()
-                : const AuthenticateState.failure(
-                    failure:
-                        AuthFailure.unknown('Cannot create user in firestore'),
-                  ),
-          ),
-        ),
       );
+
+  Future<Unit> _onLoginWithEmail(
+    String email,
+    String password,
+    Emitter<AuthenticateState> emit,
+  ) async {
+    (await _authRepos.emailSignIn(
+      email: email,
+      pwd: password,
+    ))
+        .fold(
+      (l) => emit(AuthenticateState.failure(failure: l)),
+      (r) => emit(
+        AuthenticateState.authenticated(authType: AuthType.email(user: r)),
+      ),
+    );
+
+    return unit;
+  }
+
+  Future<Unit> _onSignUpWithEmail(
+    String email,
+    String password,
+    OnCompleteSignUp onCompleteSignUp,
+    Emitter<AuthenticateState> emit,
+  ) async {
+    (await _authRepos.emailSignUp(
+      email: email,
+      pwd: password,
+      onCompleteSignUp: onCompleteSignUp,
+    ))
+        .fold(
+      (l) => emit(AuthenticateState.failure(failure: l)),
+      (r) => emit(
+        r
+            ? const AuthenticateState.signUpSuccess()
+            : const AuthenticateState.failure(failure: AuthFailure.storage()),
+      ),
+    );
+
+    return unit;
+  }
 
   Future<Unit> _onSignOut(
     AuthType authType,

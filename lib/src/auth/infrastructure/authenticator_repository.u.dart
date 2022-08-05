@@ -29,6 +29,7 @@ class AuthenticatorRepository {
   Future<Either<AuthFailure, bool>> emailSignUp({
     required String email,
     required String pwd,
+    required OnCompleteSignUp onCompleteSignUp,
   }) async =>
       await Task(
         () => _emailAuthenticator.emailSignUp(email: email, password: pwd),
@@ -44,20 +45,8 @@ class AuthenticatorRepository {
                       AuthFailure.server('No UID on sign up'),
                     )
                   : await Task(
-                      () => _emailAuthenticator.signUp(
-                        AppUser.admin(
-                          uuid: r.user!.uid,
-                          firstName: 'John',
-                          lastName: 'Doe',
-                          phone: 'XXX-XXX-XXXX',
-                          dob: DateTime(2000),
-                          addr: 'Netherlands',
-                          email: r.user?.email ?? '',
-                          active: true,
-                          avatarUrl: '',
-                          createdTime: DateTime.now(),
-                          lastUpdatedTime: DateTime.now(),
-                        ),
+                      () async => _emailAuthenticator.signUp(
+                        await onCompleteSignUp(r.user!),
                       ),
                     )
                       .attempt()
@@ -229,23 +218,17 @@ class AuthenticatorRepository {
         onTimeout: onTimeOut,
       ))
           .fold<FutureOr<Either<AuthFailure, AppUser>>>(
-        (l) async {
-          if (l is ValidateException) {
-            return left(
-              const AuthFailure.invalidData(
-                'Phone number is not valid',
-              ),
-            );
-          } else {
-            if (l is FirebaseException) {
-              return l.code == 'invalid-verification-code'
-                  ? left(AuthFailure.invalidOTP(phoneNumber))
-                  : left(AuthFailure.server(l.code));
-            } else {
-              return left(AuthFailure.unknown(l.toString()));
-            }
-          }
-        },
+        (l) async => l is ValidateException
+            ? left(
+                const AuthFailure.invalidData(
+                  'Phone number is not valid',
+                ),
+              )
+            : l is FirebaseException
+                ? l.code == 'invalid-verification-code'
+                    ? left(AuthFailure.invalidOTP(phoneNumber))
+                    : left(AuthFailure.server(l.code))
+                : left(AuthFailure.unknown(l.toString())),
         (uc) async {
           if (uc.user == null) {
             return left(const AuthFailure.invalidData());
