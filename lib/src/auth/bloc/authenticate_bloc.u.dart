@@ -34,46 +34,84 @@ class AuthenticateBloc
         ) =>
             _onLoginWithGoogle(onCompleteSignUp, emit),
         reset: () => emit(const AuthenticateState.empty(isFirstTime: false)),
+        loginWithEmail: (String email, String password) async =>
+            _onLoginWithEmail(email, password, emit),
+        signUpWithEmail: (
+          String email,
+          String password,
+          OnCompleteSignUp onCompleteSignUp,
+        ) async =>
+            _onSignUpWithEmail(email, password, onCompleteSignUp, emit),
         loginWithPhone: (
           String phoneNumber,
           OTPGetter onSubmitOTP,
           OnCompleteSignUp onSignUpSubmit,
-          Function0<Future<Unit>> onSignUpSuccess,
         ) async =>
             _onLoginWithPhone(
           onSubmitOTP,
           onSignUpSubmit,
-          onSignUpSuccess,
-          () => emit(
-            AuthenticateState.failure(
-              failure: AuthFailure.expiredOTP(phoneNumber),
+          () => state.maybeMap(
+            empty: (_) => unit,
+            authenticated: (_) => unit,
+            loading: (_) => unit,
+            failure: (value) => value.failure.maybeMap(
+              orElse: () => unit,
+              invalidOTP: (_) => emit(
+                AuthenticateState.failure(
+                  failure: AuthFailure.expiredOTP(phoneNumber),
+                ),
+              ),
+            ),
+            orElse: () => emit(
+              AuthenticateState.failure(
+                failure: AuthFailure.expiredOTP(phoneNumber),
+              ),
             ),
           ),
         )(phoneNumber, emit),
-        loginWithEmail: (String email, String password) async =>
-            (await _authRepos.emailSignIn(
-          email: email,
-          pwd: password,
-        ))
-                .fold(
-          (l) => emit(AuthenticateState.failure(failure: l)),
-          (r) => emit(
-            AuthenticateState.authenticated(authType: AuthType.email(user: r)),
-          ),
-        ),
-        signUpWithEmail: (String email, String password) async =>
-            (await _authRepos.emailSignUp(email: email, pwd: password)).fold(
-          (l) => emit(AuthenticateState.failure(failure: l)),
-          (r) => emit(
-            r
-                ? const AuthenticateState.signUpSuccess()
-                : const AuthenticateState.failure(
-                    failure:
-                        AuthFailure.unknown('Cannot create user in firestore'),
-                  ),
-          ),
-        ),
       );
+
+  Future<Unit> _onLoginWithEmail(
+    String email,
+    String password,
+    Emitter<AuthenticateState> emit,
+  ) async {
+    (await _authRepos.emailSignIn(
+      email: email,
+      pwd: password,
+    ))
+        .fold(
+      (l) => emit(AuthenticateState.failure(failure: l)),
+      (r) => emit(
+        AuthenticateState.authenticated(authType: AuthType.email(user: r)),
+      ),
+    );
+
+    return unit;
+  }
+
+  Future<Unit> _onSignUpWithEmail(
+    String email,
+    String password,
+    OnCompleteSignUp onCompleteSignUp,
+    Emitter<AuthenticateState> emit,
+  ) async {
+    (await _authRepos.emailSignUp(
+      email: email,
+      pwd: password,
+      onCompleteSignUp: onCompleteSignUp,
+    ))
+        .fold(
+      (l) => emit(AuthenticateState.failure(failure: l)),
+      (r) => emit(
+        r
+            ? const AuthenticateState.signUpSuccess()
+            : const AuthenticateState.failure(failure: AuthFailure.storage()),
+      ),
+    );
+
+    return unit;
+  }
 
   Future<Unit> _onSignOut(
     AuthType authType,
@@ -126,7 +164,19 @@ class AuthenticateBloc
     emit(const AuthenticateState.loading());
 
     (await _authRepos.ggSignUpIn(
-      onSignUpSubmit: onCompleteSignUp,
+      onSignUpSubmit: (user) async {
+        emit(
+          AuthenticateState.loading(
+            tmpData: {
+              'phoneNumber': user.phoneNumber ?? '',
+              'photoURL': user.photoURL ?? '',
+              'uid': user.uid,
+              'email': user.email ?? '',
+            },
+          ),
+        );
+        return onCompleteSignUp(user);
+      },
     ))
         .fold(
       (l) => l.maybeWhen(
@@ -150,14 +200,25 @@ class AuthenticateBloc
   Function2<String, Emitter<AuthenticateState>, Future<Unit>> _onLoginWithPhone(
     OTPGetter onSubmitOTP,
     OnCompleteSignUp onSignUpSubmit,
-    Function0<Future<Unit>> onSignUpSuccess,
     void Function()? onTimeOut,
   ) =>
       (phoneNumber, emit) async {
         emit(const AuthenticateState.loading());
         (await _authRepos.phoneSignUpIn(
           onSubmitOTP: onSubmitOTP,
-          onSignUpSubmit: onSignUpSubmit,
+          onSignUpSubmit: (user) async {
+            emit(
+              AuthenticateState.loading(
+                tmpData: {
+                  'phoneNumber': user.phoneNumber ?? '',
+                  'photoURL': user.photoURL ?? '',
+                  'uid': user.uid,
+                  'email': user.email ?? '',
+                },
+              ),
+            );
+            return onSignUpSubmit(user);
+          },
         )(
           phoneNumber,
           onTimeOut,

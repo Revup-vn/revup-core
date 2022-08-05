@@ -14,13 +14,13 @@ class AuthenticateEvent with _$AuthenticateEvent {
   const factory AuthenticateEvent.signUpWithEmail({
     required String email,
     required String password,
+    required OnCompleteSignUp onCompleteSignUp,
   }) = _signUpWithEmail;
 
   const factory AuthenticateEvent.loginWithPhone({
     required String phoneNumber,
     required OTPGetter onSubmitOTP,
     required OnCompleteSignUp onSignUpSubmit,
-    required Function0<Future<Unit>> onSignUpSuccess,
   }) = _loginWithPhone;
 
   const factory AuthenticateEvent.signOut({
