@@ -18,9 +18,7 @@ typedef PhoneGetter = Function0<FutureOr<String>>;
 class AuthenticateBloc
     extends HydratedBloc<AuthenticateEvent, AuthenticateState> {
   AuthenticateBloc(this._authRepos)
-      : super(
-          const AuthenticateState.empty(isFirstTime: true),
-        ) {
+      : super(const AuthenticateState.empty(isFirstTime: true)) {
     on<AuthenticateEvent>(_onEvent);
   }
 
@@ -36,6 +34,14 @@ class AuthenticateBloc
         ) =>
             _onLoginWithGoogle(onCompleteSignUp, emit),
         reset: () => emit(const AuthenticateState.empty(isFirstTime: false)),
+        loginWithEmail: (String email, String password) async =>
+            _onLoginWithEmail(email, password, emit),
+        signUpWithEmail: (
+          String email,
+          String password,
+          OnCompleteSignUp onCompleteSignUp,
+        ) async =>
+            _onSignUpWithEmail(email, password, onCompleteSignUp, emit),
         loginWithPhone: (
           String phoneNumber,
           OTPGetter onSubmitOTP,
@@ -46,28 +52,34 @@ class AuthenticateBloc
           onSubmitOTP,
           onSignUpSubmit,
           onSignUpSuccess,
-          () => emit(const AuthenticateState.phoneCodeExpired()),
-        )(phoneNumber, emit),
-        loginWithEmail: (String email, String password) async =>
-            (await _authRepos.emailSignIn(
-          email: email,
-          pwd: password,
-        ))
-                .fold(
-          (l) => emit(AuthenticateState.failure(failure: l)),
-          (r) => emit(
-            AuthenticateState.authenticated(authType: AuthType.email(user: r)),
+          () => emit(
+            AuthenticateState.failure(
+              failure: AuthFailure.expiredOTP(phoneNumber),
+            ),
           ),
-        ),
-        signUpWithEmail: (
-          String email,
-          String password,
-          OnCompleteSignUp onCompleteSignUp,
-        ) async =>
-            onSignUpWithEmail(email, password, onCompleteSignUp, emit),
+        )(phoneNumber, emit),
       );
 
-  Future<Unit> onSignUpWithEmail(
+  Future<Unit> _onLoginWithEmail(
+    String email,
+    String password,
+    Emitter<AuthenticateState> emit,
+  ) async {
+    (await _authRepos.emailSignIn(
+      email: email,
+      pwd: password,
+    ))
+        .fold(
+      (l) => emit(AuthenticateState.failure(failure: l)),
+      (r) => emit(
+        AuthenticateState.authenticated(authType: AuthType.email(user: r)),
+      ),
+    );
+
+    return unit;
+  }
+
+  Future<Unit> _onSignUpWithEmail(
     String email,
     String password,
     OnCompleteSignUp onCompleteSignUp,
@@ -83,7 +95,7 @@ class AuthenticateBloc
       (r) => emit(
         r
             ? const AuthenticateState.signUpSuccess()
-            : const AuthenticateState.failure(),
+            : const AuthenticateState.failure(failure: AuthFailure.storage()),
       ),
     );
 
@@ -100,7 +112,11 @@ class AuthenticateBloc
           emit(const AuthenticateState.loading());
           (await _authRepos.ggSignOut())
               ? emit(const AuthenticateState.empty(isFirstTime: true))
-              : emit(AuthenticateState.failure(message: errorMessage));
+              : emit(
+                  AuthenticateState.failure(
+                    failure: AuthFailure.unknown(errorMessage),
+                  ),
+                );
 
           return unit;
         },
@@ -108,7 +124,11 @@ class AuthenticateBloc
           emit(const AuthenticateState.loading());
           (await _authRepos.phoneSignOut())
               ? emit(const AuthenticateState.empty(isFirstTime: true))
-              : emit(AuthenticateState.failure(message: errorMessage));
+              : emit(
+                  AuthenticateState.failure(
+                    failure: AuthFailure.unknown(errorMessage),
+                  ),
+                );
 
           return unit;
         },
@@ -116,7 +136,11 @@ class AuthenticateBloc
           emit(const AuthenticateState.loading());
           (await _authRepos.emailSignOut())
               ? emit(const AuthenticateState.empty(isFirstTime: false))
-              : emit(AuthenticateState.failure(message: errorMessage));
+              : emit(
+                  AuthenticateState.failure(
+                    failure: AuthFailure.unknown(errorMessage),
+                  ),
+                );
 
           return unit;
         },
