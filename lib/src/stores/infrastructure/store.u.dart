@@ -22,6 +22,9 @@ abstract class IStore<T extends Serializable<T>> {
   /// `IStore` instance
   CollectionReference<Map<String, dynamic>> collection();
 
+  /// This methods only called when you need to use only this when to query
+  /// from cloud
+  /// otherwise use `collections` method and catch bugs for you self
   Future<Either<StoreFailure, IList<T>>> where(
     String field, {
     Object? isEqualTo,
@@ -228,21 +231,19 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
                   whereNotIn: whereNotIn,
                   isNull: isNull,
                 )
-                .snapshots()
-                .expand(
-                  (snapshot) =>
-                      snapshot.docs.map((e) => fromDocument(e, factory)),
-                )
-                .fold<IList<T>>(
-                  nil(),
-                  (pre, ele) => ele.fold((l) => pre, (r) => cons(r, pre)),
-                ),
+                .get(),
           )
               .attempt()
               .map(
                 (a) => a.fold<Either<StoreFailure, IList<T>>>(
-                  (l) => left(const StoreFailure.query()),
-                  right,
+                  (_) => left(const StoreFailure.query()),
+                  (r) => right(
+                    r.docs.map((e) => fromDocument(e, factory)).fold(
+                          nil(),
+                          (pre, ele) =>
+                              ele.fold((l) => pre, (r) => cons(r, pre)),
+                        ),
+                  ),
                 ),
               )
               .run();
