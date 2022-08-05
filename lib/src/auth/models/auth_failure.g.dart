@@ -124,6 +124,27 @@ Map<String, dynamic> _$$_expiredOTPToJson(_$_expiredOTP instance) =>
       'runtimeType': instance.$type,
     };
 
+_$_uncompletedData _$$_uncompletedDataFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_uncompletedData',
+      json,
+      ($checkedConvert) {
+        final val = _$_uncompletedData(
+          $checkedConvert(
+              'a_user', (v) => AppUser.fromJson(v as Map<String, dynamic>)),
+          $type: $checkedConvert('runtimeType', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'aUser': 'a_user', r'$type': 'runtimeType'},
+    );
+
+Map<String, dynamic> _$$_uncompletedDataToJson(_$_uncompletedData instance) =>
+    <String, dynamic>{
+      'a_user': instance.aUser.toJson(),
+      'runtimeType': instance.$type,
+    };
+
 _$_verifyPhoneNumber _$$_verifyPhoneNumberFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
       r'_$_verifyPhoneNumber',

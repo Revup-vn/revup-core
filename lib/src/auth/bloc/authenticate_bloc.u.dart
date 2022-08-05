@@ -46,15 +46,26 @@ class AuthenticateBloc
           String phoneNumber,
           OTPGetter onSubmitOTP,
           OnCompleteSignUp onSignUpSubmit,
-          Function0<Future<Unit>> onSignUpSuccess,
         ) async =>
             _onLoginWithPhone(
           onSubmitOTP,
           onSignUpSubmit,
-          onSignUpSuccess,
-          () => emit(
-            AuthenticateState.failure(
-              failure: AuthFailure.expiredOTP(phoneNumber),
+          () => state.maybeMap(
+            empty: (_) => unit,
+            authenticated: (_) => unit,
+            loading: (_) => unit,
+            failure: (value) => value.failure.maybeMap(
+              orElse: () => unit,
+              invalidOTP: (_) => emit(
+                AuthenticateState.failure(
+                  failure: AuthFailure.expiredOTP(phoneNumber),
+                ),
+              ),
+            ),
+            orElse: () => emit(
+              AuthenticateState.failure(
+                failure: AuthFailure.expiredOTP(phoneNumber),
+              ),
             ),
           ),
         )(phoneNumber, emit),
@@ -162,6 +173,11 @@ class AuthenticateBloc
             appUser: appUser,
           ),
         ),
+        uncompletedData: (aUser) => emit(
+          AuthenticateState.partial(
+            appUser: aUser,
+          ),
+        ),
         orElse: () => emit(AuthenticateState.failure(failure: l)),
       ),
       (r) => emit(
@@ -177,7 +193,6 @@ class AuthenticateBloc
   Function2<String, Emitter<AuthenticateState>, Future<Unit>> _onLoginWithPhone(
     OTPGetter onSubmitOTP,
     OnCompleteSignUp onSignUpSubmit,
-    Function0<Future<Unit>> onSignUpSuccess,
     void Function()? onTimeOut,
   ) =>
       (phoneNumber, emit) async {

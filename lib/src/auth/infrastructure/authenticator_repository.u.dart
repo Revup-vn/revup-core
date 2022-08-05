@@ -136,27 +136,27 @@ class AuthenticatorRepository {
           .leftMap<AuthFailure>(
         (dynamic _) => const AuthFailure.invalidData('Cannot parse data'),
       );
-    } else {
-      final appUser = await onSignUpSubmit(user);
-      if (user.phoneNumber?.isEmpty ?? true) {
-        return left(AuthFailure.needToVerifyPhoneNumber(appUser));
-      }
-      if (!(await _phoneAuthenticatorService
-              .isPhoneStorePersist(appUser.phone) &&
-          await _googleAuthenticatorService.isEmailValid(appUser.email))) {
-        return left(
-          const AuthFailure.invalidData(
-            'Phone number or email is already existed',
-          ),
-        );
-      }
-
-      return await _googleAuthenticatorService.signUp(appUser)
-          ? right(appUser)
-          : left(
-              const AuthFailure.server('Cannot sign up with google account'),
-            );
     }
+    final appUser = await onSignUpSubmit(user);
+    return user.phoneNumber?.isEmpty ?? true
+        ? left(AuthFailure.needToVerifyPhoneNumber(appUser))
+        : !(await _phoneAuthenticatorService
+                    .isPhoneStorePersist(appUser.phone) &&
+                await _googleAuthenticatorService.isEmailValid(appUser.email))
+            ? left(
+                const AuthFailure.invalidData(
+                  'Phone number or email is already existed',
+                ),
+              )
+            : appUser.firstName.isNotEmpty && appUser.lastName.isNotEmpty
+                ? await _googleAuthenticatorService.signUp(appUser)
+                    ? right(appUser)
+                    : left(
+                        const AuthFailure.server(
+                          'Cannot sign up with google account',
+                        ),
+                      )
+                : left(AuthFailure.uncompletedData(appUser));
   }
 
   FutureOr<bool> ggSignOut() => Task(_googleAuthenticatorService.signOut)

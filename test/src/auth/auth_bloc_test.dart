@@ -209,7 +209,6 @@ void main() {
         act: (b) => b.add(
           AuthenticateEvent.loginWithPhone(
             onSignUpSubmit: (_) => mockUser,
-            onSignUpSuccess: () async => unit,
             onSubmitOTP: () => '',
             phoneNumber: '',
           ),
@@ -241,7 +240,6 @@ void main() {
         act: (b) => b.add(
           AuthenticateEvent.loginWithPhone(
             onSignUpSubmit: (_) => mockUser,
-            onSignUpSuccess: () async => unit,
             onSubmitOTP: () => '',
             phoneNumber: '',
           ),

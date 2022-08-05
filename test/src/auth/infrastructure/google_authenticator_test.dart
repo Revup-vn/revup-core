@@ -52,7 +52,7 @@ void main() {
     when(() => userRepository.users).thenReturn(mockCollection);
     when(() => store.collection(any())).thenReturn(mockCollection);
     when(
-      () => query.get(),
+      () => query.get(any()),
     ).thenAnswer((_) async => snapShot);
   });
   group('isEmailValid', () {

@@ -21,6 +21,8 @@ class AuthFailure with _$AuthFailure {
 
   const factory AuthFailure.expiredOTP(String phoneNumber) = _expiredOTP;
 
+  const factory AuthFailure.uncompletedData(AppUser aUser) = _uncompletedData;
+
   const factory AuthFailure.needToVerifyPhoneNumber(
     AppUser appUser,
   ) = _verifyPhoneNumber;

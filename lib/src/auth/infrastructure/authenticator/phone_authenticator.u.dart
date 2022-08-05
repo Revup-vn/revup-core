@@ -77,8 +77,14 @@ class PhoneAuthenticator extends Authenticator {
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'provider-already-linked') {
-        loginComplete
-            .complete(right(await _auth.signInWithCredential(authCredentials)));
+        try {
+          loginComplete.complete(
+            right(await _auth.signInWithCredential(authCredentials)),
+          );
+        } catch (e) {
+          e as Exception;
+          return loginComplete.complete(left(e));
+        }
       } else {
         loginComplete.complete(left(e));
       }
