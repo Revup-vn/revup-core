@@ -21,7 +21,6 @@ class AuthenticateEvent with _$AuthenticateEvent {
     required String phoneNumber,
     required OTPGetter onSubmitOTP,
     required OnCompleteSignUp onSignUpSubmit,
-    required Function0<Future<Unit>> onSignUpSuccess,
   }) = _loginWithPhone;
 
   const factory AuthenticateEvent.signOut({
