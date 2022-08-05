@@ -20,30 +20,32 @@ class PhoneAuthenticator extends Authenticator {
   final FirebaseAuth _auth;
   final FirebaseFunctions _func;
 
-  Future<bool> isPhoneValid(String phone) async =>
+  Future<bool> isPhoneAuthValid(String phone) async =>
       phone.isNotEmpty &&
-      await isFieldValid('phone', phone) &&
       !(await _func.httpsCallable('phoneexists').call<bool>({phone: phone}))
           .data;
+
+  Future<bool> isPhoneStorePersist(String phone) async =>
+      phone.isNotEmpty && await isFieldValid('phone', phone);
 
   Future<Either<Exception, UserCredential>> signIn({
     required String phoneNumber,
     required OTPGetter getUserInput,
     VoidCallback? onTimeout,
   }) async {
-    final loginSuccess = Completer<Either<Exception, UserCredential>>();
+    final loginComplete = Completer<Either<Exception, UserCredential>>();
     await _auth.verifyPhoneNumber(
       phoneNumber: phoneNumber,
       verificationCompleted: (authCredentials) async {
         if (authCredentials.smsCode != null) {
-          await _authLogin(loginSuccess, authCredentials);
+          await _authLogin(loginComplete, authCredentials);
         }
       },
       verificationFailed: (e) {
         if (e.code == 'invalid-phone-number') {
-          loginSuccess.complete(left(ValidateException()));
+          loginComplete.complete(left(ValidateException()));
         } else {
-          loginSuccess.complete(left(e));
+          loginComplete.complete(left(e));
         }
       },
       codeSent: (verificationId, resentToken) async {
@@ -52,33 +54,36 @@ class PhoneAuthenticator extends Authenticator {
           verificationId: verificationId,
           smsCode: sms,
         );
-        await _authLogin(loginSuccess, credential);
+        await _authLogin(loginComplete, credential);
       },
       codeAutoRetrievalTimeout: (_) => onTimeout?.call(),
     );
 
-    return loginSuccess.future;
+    return loginComplete.future;
   }
 
   Future<void> _authLogin(
-    Completer<Either<Exception, UserCredential>> loginSuccess,
+    Completer<Either<Exception, UserCredential>> loginComplete,
     PhoneAuthCredential authCredentials,
   ) async {
     try {
-      loginSuccess.complete(
+      final currentUser = await _auth.userChanges().first;
+      loginComplete.complete(
         right(
-          await (_auth.currentUser == null
+          await (currentUser == null
               ? _auth.signInWithCredential(authCredentials)
               : _auth.currentUser!.linkWithCredential(authCredentials)),
         ),
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'provider-already-linked') {
-        loginSuccess
+        loginComplete
             .complete(right(await _auth.signInWithCredential(authCredentials)));
       } else {
-        rethrow;
+        loginComplete.complete(left(e));
       }
+    } catch (_) {
+      loginComplete.complete(left(_ as Exception));
     }
   }
 

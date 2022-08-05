@@ -78,6 +78,52 @@ Map<String, dynamic> _$$_invalidDataToJson(_$_invalidData instance) =>
       'runtimeType': instance.$type,
     };
 
+_$_invalidOTP _$$_invalidOTPFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_invalidOTP',
+      json,
+      ($checkedConvert) {
+        final val = _$_invalidOTP(
+          $checkedConvert('phone_number', (v) => v as String),
+          $type: $checkedConvert('runtimeType', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'phoneNumber': 'phone_number',
+        r'$type': 'runtimeType'
+      },
+    );
+
+Map<String, dynamic> _$$_invalidOTPToJson(_$_invalidOTP instance) =>
+    <String, dynamic>{
+      'phone_number': instance.phoneNumber,
+      'runtimeType': instance.$type,
+    };
+
+_$_expiredOTP _$$_expiredOTPFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_expiredOTP',
+      json,
+      ($checkedConvert) {
+        final val = _$_expiredOTP(
+          $checkedConvert('phone_number', (v) => v as String),
+          $type: $checkedConvert('runtimeType', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'phoneNumber': 'phone_number',
+        r'$type': 'runtimeType'
+      },
+    );
+
+Map<String, dynamic> _$$_expiredOTPToJson(_$_expiredOTP instance) =>
+    <String, dynamic>{
+      'phone_number': instance.phoneNumber,
+      'runtimeType': instance.$type,
+    };
+
 _$_verifyPhoneNumber _$$_verifyPhoneNumberFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
       r'_$_verifyPhoneNumber',
@@ -105,6 +151,7 @@ _$_unknown _$$_unknownFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = _$_unknown(
+          $checkedConvert('message', (v) => v as String?),
           $type: $checkedConvert('runtimeType', (v) => v as String?),
         );
         return val;
@@ -114,5 +161,6 @@ _$_unknown _$$_unknownFromJson(Map<String, dynamic> json) => $checkedCreate(
 
 Map<String, dynamic> _$$_unknownToJson(_$_unknown instance) =>
     <String, dynamic>{
+      'message': instance.message,
       'runtimeType': instance.$type,
     };
