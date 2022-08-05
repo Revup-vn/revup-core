@@ -146,6 +146,29 @@ Map<String, dynamic> _$$_verifyPhoneNumberToJson(
       'runtimeType': instance.$type,
     };
 
+_$_notCompletedSignup _$$_notCompletedSignupFromJson(
+        Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_notCompletedSignup',
+      json,
+      ($checkedConvert) {
+        final val = _$_notCompletedSignup(
+          $checkedConvert(
+              'app_user', (v) => AppUser.fromJson(v as Map<String, dynamic>)),
+          $type: $checkedConvert('runtimeType', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'appUser': 'app_user', r'$type': 'runtimeType'},
+    );
+
+Map<String, dynamic> _$$_notCompletedSignupToJson(
+        _$_notCompletedSignup instance) =>
+    <String, dynamic>{
+      'app_user': instance.appUser.toJson(),
+      'runtimeType': instance.$type,
+    };
+
 _$_unknown _$$_unknownFromJson(Map<String, dynamic> json) => $checkedCreate(
       r'_$_unknown',
       json,

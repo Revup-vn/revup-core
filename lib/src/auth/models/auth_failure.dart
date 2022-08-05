@@ -24,6 +24,9 @@ class AuthFailure with _$AuthFailure {
   const factory AuthFailure.needToVerifyPhoneNumber(
     AppUser appUser,
   ) = _verifyPhoneNumber;
+  const factory AuthFailure.notCompletedSignup(
+    AppUser appUser,
+  ) = _notCompletedSignup;
 
   const factory AuthFailure.unknown(String? message) = _unknown;
 

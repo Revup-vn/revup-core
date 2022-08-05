@@ -4,8 +4,7 @@ part of 'authenticate_bloc.u.dart';
 class AuthenticateState with _$AuthenticateState {
   const factory AuthenticateState.empty({required bool isFirstTime}) = _empty;
 
-  const factory AuthenticateState.loading({Map<String, String>? tmpData}) =
-      _loading;
+  const factory AuthenticateState.loading() = _loading;
 
   const factory AuthenticateState.authenticated({required AuthType authType}) =
       _authenticated;

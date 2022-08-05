@@ -1228,7 +1228,7 @@ mixin _$AuthenticateState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isFirstTime) empty,
-    required TResult Function(Map<String, String>? tmpData) loading,
+    required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function() signUpSuccess,
     required TResult Function(AppUser appUser) partial,
@@ -1238,7 +1238,7 @@ mixin _$AuthenticateState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isFirstTime)? empty,
-    TResult Function(Map<String, String>? tmpData)? loading,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
     TResult Function(AppUser appUser)? partial,
@@ -1248,7 +1248,7 @@ mixin _$AuthenticateState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isFirstTime)? empty,
-    TResult Function(Map<String, String>? tmpData)? loading,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
     TResult Function(AppUser appUser)? partial,
@@ -1379,7 +1379,7 @@ class _$_empty implements _empty {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isFirstTime) empty,
-    required TResult Function(Map<String, String>? tmpData) loading,
+    required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function() signUpSuccess,
     required TResult Function(AppUser appUser) partial,
@@ -1392,7 +1392,7 @@ class _$_empty implements _empty {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isFirstTime)? empty,
-    TResult Function(Map<String, String>? tmpData)? loading,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
     TResult Function(AppUser appUser)? partial,
@@ -1405,7 +1405,7 @@ class _$_empty implements _empty {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isFirstTime)? empty,
-    TResult Function(Map<String, String>? tmpData)? loading,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
     TResult Function(AppUser appUser)? partial,
@@ -1485,7 +1485,6 @@ abstract class _$$_loadingCopyWith<$Res> {
   factory _$$_loadingCopyWith(
           _$_loading value, $Res Function(_$_loading) then) =
       __$$_loadingCopyWithImpl<$Res>;
-  $Res call({Map<String, String>? tmpData});
 }
 
 /// @nodoc
@@ -1497,96 +1496,65 @@ class __$$_loadingCopyWithImpl<$Res>
 
   @override
   _$_loading get _value => super._value as _$_loading;
-
-  @override
-  $Res call({
-    Object? tmpData = freezed,
-  }) {
-    return _then(_$_loading(
-      tmpData: tmpData == freezed
-          ? _value._tmpData
-          : tmpData // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>?,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_loading implements _loading {
-  const _$_loading({final Map<String, String>? tmpData, final String? $type})
-      : _tmpData = tmpData,
-        $type = $type ?? 'loading';
+  const _$_loading({final String? $type}) : $type = $type ?? 'loading';
 
   factory _$_loading.fromJson(Map<String, dynamic> json) =>
       _$$_loadingFromJson(json);
-
-  final Map<String, String>? _tmpData;
-  @override
-  Map<String, String>? get tmpData {
-    final value = _tmpData;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(value);
-  }
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'AuthenticateState.loading(tmpData: $tmpData)';
+    return 'AuthenticateState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_loading &&
-            const DeepCollectionEquality().equals(other._tmpData, _tmpData));
+        (other.runtimeType == runtimeType && other is _$_loading);
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tmpData));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_loadingCopyWith<_$_loading> get copyWith =>
-      __$$_loadingCopyWithImpl<_$_loading>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isFirstTime) empty,
-    required TResult Function(Map<String, String>? tmpData) loading,
+    required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function() signUpSuccess,
     required TResult Function(AppUser appUser) partial,
     required TResult Function(AuthFailure failure) failure,
   }) {
-    return loading(tmpData);
+    return loading();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isFirstTime)? empty,
-    TResult Function(Map<String, String>? tmpData)? loading,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
     TResult Function(AppUser appUser)? partial,
     TResult Function(AuthFailure failure)? failure,
   }) {
-    return loading?.call(tmpData);
+    return loading?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isFirstTime)? empty,
-    TResult Function(Map<String, String>? tmpData)? loading,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
     TResult Function(AppUser appUser)? partial,
@@ -1594,7 +1562,7 @@ class _$_loading implements _loading {
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(tmpData);
+      return loading();
     }
     return orElse();
   }
@@ -1651,14 +1619,9 @@ class _$_loading implements _loading {
 }
 
 abstract class _loading implements AuthenticateState {
-  const factory _loading({final Map<String, String>? tmpData}) = _$_loading;
+  const factory _loading() = _$_loading;
 
   factory _loading.fromJson(Map<String, dynamic> json) = _$_loading.fromJson;
-
-  Map<String, String>? get tmpData;
-  @JsonKey(ignore: true)
-  _$$_loadingCopyWith<_$_loading> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1744,7 +1707,7 @@ class _$_authenticated implements _authenticated {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isFirstTime) empty,
-    required TResult Function(Map<String, String>? tmpData) loading,
+    required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function() signUpSuccess,
     required TResult Function(AppUser appUser) partial,
@@ -1757,7 +1720,7 @@ class _$_authenticated implements _authenticated {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isFirstTime)? empty,
-    TResult Function(Map<String, String>? tmpData)? loading,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
     TResult Function(AppUser appUser)? partial,
@@ -1770,7 +1733,7 @@ class _$_authenticated implements _authenticated {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isFirstTime)? empty,
-    TResult Function(Map<String, String>? tmpData)? loading,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
     TResult Function(AppUser appUser)? partial,
@@ -1897,7 +1860,7 @@ class _$_signUpSuccess implements _signUpSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isFirstTime) empty,
-    required TResult Function(Map<String, String>? tmpData) loading,
+    required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function() signUpSuccess,
     required TResult Function(AppUser appUser) partial,
@@ -1910,7 +1873,7 @@ class _$_signUpSuccess implements _signUpSuccess {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isFirstTime)? empty,
-    TResult Function(Map<String, String>? tmpData)? loading,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
     TResult Function(AppUser appUser)? partial,
@@ -1923,7 +1886,7 @@ class _$_signUpSuccess implements _signUpSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isFirstTime)? empty,
-    TResult Function(Map<String, String>? tmpData)? loading,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
     TResult Function(AppUser appUser)? partial,
@@ -2076,7 +2039,7 @@ class _$_partial implements _partial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isFirstTime) empty,
-    required TResult Function(Map<String, String>? tmpData) loading,
+    required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function() signUpSuccess,
     required TResult Function(AppUser appUser) partial,
@@ -2089,7 +2052,7 @@ class _$_partial implements _partial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isFirstTime)? empty,
-    TResult Function(Map<String, String>? tmpData)? loading,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
     TResult Function(AppUser appUser)? partial,
@@ -2102,7 +2065,7 @@ class _$_partial implements _partial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isFirstTime)? empty,
-    TResult Function(Map<String, String>? tmpData)? loading,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
     TResult Function(AppUser appUser)? partial,
@@ -2257,7 +2220,7 @@ class _$_error implements _error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isFirstTime) empty,
-    required TResult Function(Map<String, String>? tmpData) loading,
+    required TResult Function() loading,
     required TResult Function(AuthType authType) authenticated,
     required TResult Function() signUpSuccess,
     required TResult Function(AppUser appUser) partial,
@@ -2270,7 +2233,7 @@ class _$_error implements _error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isFirstTime)? empty,
-    TResult Function(Map<String, String>? tmpData)? loading,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
     TResult Function(AppUser appUser)? partial,
@@ -2283,7 +2246,7 @@ class _$_error implements _error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isFirstTime)? empty,
-    TResult Function(Map<String, String>? tmpData)? loading,
+    TResult Function()? loading,
     TResult Function(AuthType authType)? authenticated,
     TResult Function()? signUpSuccess,
     TResult Function(AppUser appUser)? partial,

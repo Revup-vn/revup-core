@@ -165,22 +165,19 @@ class AuthenticateBloc
 
     (await _authRepos.ggSignUpIn(
       onSignUpSubmit: (user) async {
-        emit(
-          AuthenticateState.loading(
-            tmpData: {
-              'phoneNumber': user.phoneNumber ?? '',
-              'photoURL': user.photoURL ?? '',
-              'uid': user.uid,
-              'email': user.email ?? '',
-            },
-          ),
-        );
-        return onCompleteSignUp(user);
+        final tmp = await onCompleteSignUp(user);
+
+        return tmp;
       },
     ))
         .fold(
       (l) => l.maybeWhen(
         needToVerifyPhoneNumber: (appUser) => emit(
+          AuthenticateState.partial(
+            appUser: appUser,
+          ),
+        ),
+        notCompletedSignup: (appUser) => emit(
           AuthenticateState.partial(
             appUser: appUser,
           ),
@@ -207,16 +204,6 @@ class AuthenticateBloc
         (await _authRepos.phoneSignUpIn(
           onSubmitOTP: onSubmitOTP,
           onSignUpSubmit: (user) async {
-            emit(
-              AuthenticateState.loading(
-                tmpData: {
-                  'phoneNumber': user.phoneNumber ?? '',
-                  'photoURL': user.photoURL ?? '',
-                  'uid': user.uid,
-                  'email': user.email ?? '',
-                },
-              ),
-            );
             return onSignUpSubmit(user);
           },
         )(

@@ -140,22 +140,19 @@ class AuthenticatorRepository {
       final appUser = await onSignUpSubmit(user);
       if (user.phoneNumber?.isEmpty ?? true) {
         return left(AuthFailure.needToVerifyPhoneNumber(appUser));
+      } else {
+        if (appUser.firstName.isNotEmpty && appUser.lastName.isNotEmpty) {
+          return await _googleAuthenticatorService.signUp(appUser)
+              ? right(appUser)
+              : left(
+                  const AuthFailure.server(
+                    'Cannot sign up with google account',
+                  ),
+                );
+        } else {
+          return left(AuthFailure.notCompletedSignup(appUser));
+        }
       }
-      if (!(await _phoneAuthenticatorService
-              .isPhoneStorePersist(appUser.phone) &&
-          await _googleAuthenticatorService.isEmailValid(appUser.email))) {
-        return left(
-          const AuthFailure.invalidData(
-            'Phone number or email is already existed',
-          ),
-        );
-      }
-
-      return await _googleAuthenticatorService.signUp(appUser)
-          ? right(appUser)
-          : left(
-              const AuthFailure.server('Cannot sign up with google account'),
-            );
     }
   }
 
@@ -200,7 +197,7 @@ class AuthenticatorRepository {
             } catch (_) {
               tmp = left(AuthFailure.unknown(_.toString()));
             } finally {
-              res = tmp ?? left(const AuthFailure.server());
+              res = tmp ?? left(const AuthFailure.server()); //
             }
 
             return res;

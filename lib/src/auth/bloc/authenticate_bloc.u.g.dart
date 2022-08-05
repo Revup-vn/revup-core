@@ -32,21 +32,15 @@ _$_loading _$$_loadingFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = _$_loading(
-          tmpData: $checkedConvert(
-              'tmp_data',
-              (v) => (v as Map<String, dynamic>?)?.map(
-                    (k, e) => MapEntry(k, e as String),
-                  )),
           $type: $checkedConvert('runtimeType', (v) => v as String?),
         );
         return val;
       },
-      fieldKeyMap: const {'tmpData': 'tmp_data', r'$type': 'runtimeType'},
+      fieldKeyMap: const {r'$type': 'runtimeType'},
     );
 
 Map<String, dynamic> _$$_loadingToJson(_$_loading instance) =>
     <String, dynamic>{
-      'tmp_data': instance.tmpData,
       'runtimeType': instance.$type,
     };
 
