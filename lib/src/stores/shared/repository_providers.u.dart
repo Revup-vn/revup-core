@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../repair_records/payments/infrastructure/infrastructure.dart';
-import '../repair_records/payments/models/payment.dart';
 import '../stores.u.dart';
 import '../users/users.dart';
 
