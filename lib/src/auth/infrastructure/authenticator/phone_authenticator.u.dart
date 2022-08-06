@@ -83,6 +83,7 @@ class PhoneAuthenticator extends Authenticator {
           );
         } catch (e) {
           e as Exception;
+
           return loginComplete.complete(left(e));
         }
       } else {

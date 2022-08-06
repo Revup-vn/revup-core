@@ -20,17 +20,18 @@ import 'shared/providers.dart';
 import 'theme/theme.dart';
 
 FutureOr<R> _buildHydratedStorage<R>(Function0<FutureOr<R>> body) async =>
-    HydratedBlocOverrides.runZoned(
-      body,
-      blocObserver: AppBlocObserver(),
-      createStorage: () async {
+    runZoned(
+      () async {
         WidgetsFlutterBinding.ensureInitialized();
 
-        return HydratedStorage.build(
+        Bloc.observer = AppBlocObserver();
+        HydratedBloc.storage = await HydratedStorage.build(
           storageDirectory: kIsWeb
               ? HydratedStorage.webStorageDirectory
               : await getTemporaryDirectory(),
         );
+
+        return body();
       },
     );
 

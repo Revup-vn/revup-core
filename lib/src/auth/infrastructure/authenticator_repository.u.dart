@@ -138,6 +138,7 @@ class AuthenticatorRepository {
       );
     }
     final appUser = await onSignUpSubmit(user);
+
     return user.phoneNumber?.isEmpty ?? true
         ? left(AuthFailure.needToVerifyPhoneNumber(appUser))
         : !(await _phoneAuthenticatorService
