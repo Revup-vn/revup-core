@@ -35,7 +35,7 @@ class PaymentRepository extends Store<Payment> {
   String getId(Payment data) => data.id;
 
   @override
-  FutureOr<Either<StoreFailure, Unit>> update(
+  FutureOr<Either<StoreFailure, Unit>> updateFields(
     Payment newData,
     IList<String> fields,
   ) =>

@@ -43,7 +43,7 @@ class RepairServiceRepository extends Store<RepairService> {
   String getId(RepairService data) => data.name;
 
   @override
-  FutureOr<Either<StoreFailure, Unit>> update(
+  FutureOr<Either<StoreFailure, Unit>> updateFields(
     RepairService newData,
     IList<String> fields,
   ) =>

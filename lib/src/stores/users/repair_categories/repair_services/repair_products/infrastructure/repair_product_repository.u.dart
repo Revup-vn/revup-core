@@ -49,7 +49,7 @@ class RepairProductRepository extends Store<RepairProduct> {
   String getId(RepairProduct data) => data.name;
 
   @override
-  FutureOr<Either<StoreFailure, Unit>> update(
+  FutureOr<Either<StoreFailure, Unit>> updateFields(
     RepairProduct newData,
     IList<String> fields,
   ) =>

@@ -29,7 +29,7 @@ class RepairRecordRepository extends Store<RepairRecord> {
   String getId(RepairRecord data) => data.id;
 
   @override
-  FutureOr<Either<StoreFailure, Unit>> update(
+  FutureOr<Either<StoreFailure, Unit>> updateFields(
     RepairRecord newData,
     IList<String> fields,
   ) =>

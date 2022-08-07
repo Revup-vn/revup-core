@@ -29,7 +29,7 @@ class UserRepository extends Store<AppUser> {
   String getId(AppUser data) => data.uuid;
 
   @override
-  FutureOr<Either<StoreFailure, Unit>> update(
+  FutureOr<Either<StoreFailure, Unit>> updateFields(
     AppUser newData,
     IList<String> fields,
   ) =>

@@ -36,7 +36,7 @@ class TokenRepository extends Store<Token> {
   String getId(Token data) => data.token;
 
   @override
-  FutureOr<Either<StoreFailure, Unit>> update(
+  FutureOr<Either<StoreFailure, Unit>> updateFields(
     Token newData,
     IList<String> fields,
   ) =>
