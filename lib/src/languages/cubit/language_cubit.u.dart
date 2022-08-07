@@ -18,6 +18,18 @@ class LanguageCubit extends HydratedCubit<LanguageState> {
 
   void set(LanguageState state) => emit(state);
 
+  DateFormat getDateFormat() => state.when(
+        system: () => DateFormat.yMd(Intl.getCurrentLocale()),
+        vietnamese: () => DateFormat.yMd('vi_VN'),
+        english: DateFormat.yMEd,
+      );
+
+  NumberFormat getCurrencyFormat() => state.maybeWhen(
+        orElse: () =>
+            NumberFormat.currency(locale: Intl.getCurrentLocale(), name: 'VND'),
+        vietnamese: () => NumberFormat.currency(locale: 'vi_VN', symbol: 'đ'),
+      );
+
   @override
   LanguageState? fromJson(Map<String, dynamic> json) =>
       LanguageState.fromJson(json);

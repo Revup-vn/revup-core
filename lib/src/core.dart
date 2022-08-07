@@ -16,7 +16,7 @@ import 'package:path_provider/path_provider.dart';
 
 import '../core.dart';
 import 'observers/observers.dart';
-import 'shared/providers.dart';
+import 'shared/shared.dart';
 import 'theme/theme.dart';
 
 FutureOr<R> _buildHydratedStorage<R>(Function0<FutureOr<R>> body) async =>
