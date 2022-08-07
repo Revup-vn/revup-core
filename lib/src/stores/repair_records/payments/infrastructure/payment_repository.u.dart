@@ -7,9 +7,9 @@ import '../../../infrastructure/infrastructure.dart';
 import '../../../models/store_failure.dart';
 import '../../../utils/utils.dart';
 import '../../models/models.dart';
-import '../models/payment.dart';
+import '../models/payment_service.dart';
 
-class PaymentRepository extends Store<Payment> {
+class PaymentRepository extends Store<PaymentService> {
   PaymentRepository(super.store, RepairRecord record) : id = record.id;
 
   final String id;
@@ -29,18 +29,19 @@ class PaymentRepository extends Store<Payment> {
   DocumentReference<Map<String, dynamic>> doc(String id) => payment(id);
 
   @override
-  Future<Either<StoreFailure, Payment>> get(String id) => auxGet(id);
+  Future<Either<StoreFailure, PaymentService>> get(String id) => auxGet(id);
 
   @override
-  String getId(Payment data) => data.id;
+  String getId(PaymentService data) => data.serviceName;
 
   @override
   FutureOr<Either<StoreFailure, Unit>> updateFields(
-    Payment newData,
+    PaymentService newData,
     IList<String> fields,
   ) =>
       auxUpdate(newData, fields, cons('id', nil()));
 
   @override
-  Function1<Map<String, dynamic>, Payment> dtoFactory() => Payment.fromJson;
+  Function1<Map<String, dynamic>, PaymentService> dtoFactory() =>
+      PaymentService.fromJson;
 }

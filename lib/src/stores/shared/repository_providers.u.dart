@@ -34,6 +34,6 @@ class StoreRepository {
   IStore<Token> userNotificationTokenRepo(AppUser user) =>
       TokenRepository(_store, user);
 
-  IStore<Payment> repairPaymentRepo(RepairRecord record) =>
+  IStore<PaymentService> repairPaymentRepo(RepairRecord record) =>
       PaymentRepository(_store, record);
 }

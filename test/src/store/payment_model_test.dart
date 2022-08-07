@@ -1,13 +1,17 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:revup_core/src/stores/repair_records/payments/models/payment.dart';
+import 'package:revup_core/src/stores/repair_records/payments/models/payment_service.dart';
 
 void main() {
   group('fromJson', () {
     test('parse successfully', () {
-      const type = Payment.product(amount: 123, id: '', name: '');
+      const type = PaymentService.pending(
+        serviceName: '',
+        moneyAmount: 100,
+        products: [],
+      );
 
-      final res = Payment.fromJson(type.toJson());
+      final res = PaymentService.fromJson(type.toJson());
       expect(res.toJson(), type.toJson());
       expect(res, type);
     });
