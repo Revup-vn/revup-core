@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+
 import 'package:intl/intl.dart';
 
 class CurrencyFormatter extends TextInputFormatter {
@@ -20,6 +21,7 @@ class CurrencyFormatter extends TextInputFormatter {
         : onlyNumbers.length >= 16
             ? oldValue.text
             : formatter.format(double.parse(onlyNumbers)).trim();
+
     return TextEditingValue(
       text: res,
       selection: TextSelection.collapsed(offset: res.length),
