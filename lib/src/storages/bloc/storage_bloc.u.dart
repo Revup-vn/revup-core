@@ -38,39 +38,42 @@ class StorageBloc extends Bloc<StorageEvent, StorageState> {
     Emitter<StorageState> emit,
     Stream<TaskSnapshot> sss,
   ) {
-    sss.listen((snapshot) {
-      switch (snapshot.state) {
-        case TaskState.running:
-          emit(
-            StorageState.running(
-              process:
-                  100.0 * (snapshot.bytesTransferred / snapshot.totalBytes),
-            ),
-          );
-          break;
-        case TaskState.paused:
-          emit(const StorageState.paused());
-          break;
-        case TaskState.canceled:
-          emit(const StorageState.canceled());
-          break;
-        case TaskState.error:
-          emit(const StorageState.error(failure: StorageFailure.cloud()));
-          break;
-        case TaskState.success:
-          snapshot.ref
-              .getDownloadURL()
-              .then((value) => emit(StorageState.success(value)))
-              .onError(
-                (_, __) => emit(
-                  const StorageState.error(
-                    failure: StorageFailure.upload(),
+    emit.onEach<TaskSnapshot>(
+      sss,
+      onData: (snapshot) {
+        switch (snapshot.state) {
+          case TaskState.running:
+            emit(
+              StorageState.running(
+                process:
+                    100.0 * (snapshot.bytesTransferred / snapshot.totalBytes),
+              ),
+            );
+            break;
+          case TaskState.paused:
+            emit(const StorageState.paused());
+            break;
+          case TaskState.canceled:
+            emit(const StorageState.canceled());
+            break;
+          case TaskState.error:
+            emit(const StorageState.error(failure: StorageFailure.cloud()));
+            break;
+          case TaskState.success:
+            snapshot.ref
+                .getDownloadURL()
+                .then((value) => emit(StorageState.success(value)))
+                .onError(
+                  (_, __) => emit(
+                    const StorageState.error(
+                      failure: StorageFailure.upload(),
+                    ),
                   ),
-                ),
-              );
-          break;
-      }
-    });
+                );
+            break;
+        }
+      },
+    );
 
     return unit;
   }
