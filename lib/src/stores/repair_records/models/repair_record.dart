@@ -3,10 +3,10 @@ import 'package:geoflutterfire2/geoflutterfire2.dart';
 
 import '../../models/serializable.dart';
 import '../../shared/geo_point_converter.dart';
-import '../../stores.u.dart';
 import 'feedback.dart';
 import 'location.u.dart';
 import 'optional_service.u.dart';
+import 'repair_report.u.dart';
 
 part 'repair_record.freezed.dart';
 part 'repair_record.g.dart';
