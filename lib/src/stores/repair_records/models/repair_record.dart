@@ -6,6 +6,7 @@ import '../../shared/geo_point_converter.dart';
 import 'feedback.dart';
 import 'location.u.dart';
 import 'optional_service.u.dart';
+import 'repair_report.u.dart';
 
 part 'repair_record.freezed.dart';
 part 'repair_record.g.dart';
@@ -99,7 +100,7 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required Feedback feedback,
     required Location from,
     required Location to,
-    RepairRecord? record,
+    RepairReport? report,
   }) = _finished;
 
   factory RepairRecord.fromJson(Map<String, dynamic> json) =>
