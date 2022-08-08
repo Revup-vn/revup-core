@@ -3,6 +3,7 @@ import 'package:geoflutterfire2/geoflutterfire2.dart';
 
 import '../../models/serializable.dart';
 import '../../shared/geo_point_converter.dart';
+import '../../stores.u.dart';
 import 'feedback.dart';
 import 'location.u.dart';
 import 'optional_service.u.dart';
@@ -99,7 +100,7 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required Feedback feedback,
     required Location from,
     required Location to,
-    RepairRecord? record,
+    RepairReport? report,
   }) = _finished;
 
   factory RepairRecord.fromJson(Map<String, dynamic> json) =>

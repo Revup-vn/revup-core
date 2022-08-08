@@ -244,11 +244,11 @@ _$_finished _$$_finishedFromJson(Map<String, dynamic> json) => $checkedCreate(
               'from', (v) => Location.fromJson(v as Map<String, dynamic>)),
           to: $checkedConvert(
               'to', (v) => Location.fromJson(v as Map<String, dynamic>)),
-          record: $checkedConvert(
-              'record',
+          report: $checkedConvert(
+              'report',
               (v) => v == null
                   ? null
-                  : RepairRecord.fromJson(v as Map<String, dynamic>)),
+                  : RepairReport.fromJson(v as Map<String, dynamic>)),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -272,6 +272,6 @@ Map<String, dynamic> _$$_finishedToJson(_$_finished instance) =>
       'feedback': instance.feedback.toJson(),
       'from': instance.from.toJson(),
       'to': instance.to.toJson(),
-      'record': instance.record?.toJson(),
+      'report': instance.report?.toJson(),
       'type': instance.$type,
     };
