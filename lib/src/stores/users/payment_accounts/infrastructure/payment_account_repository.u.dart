@@ -30,9 +30,6 @@ class PaymentAccountRepository extends Store<PaymentAccount> {
   DocumentReference<Map<String, dynamic>> doc(String id) => account(id);
 
   @override
-  Future<Either<StoreFailure, PaymentAccount>> get(String id) => auxGet(id);
-
-  @override
   String getId(PaymentAccount data) => data.id;
 
   @override

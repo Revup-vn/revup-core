@@ -43,9 +43,6 @@ class RepairProductRepository extends Store<RepairProduct> {
   DocumentReference<Map<String, dynamic>> doc(String id) => product(id);
 
   @override
-  Future<Either<StoreFailure, RepairProduct>> get(String id) => auxGet(id);
-
-  @override
   String getId(RepairProduct data) => data.name;
 
   @override

@@ -30,9 +30,6 @@ class TokenRepository extends Store<Token> {
   Function1<Map<String, dynamic>, Token> dtoFactory() => Token.fromJson;
 
   @override
-  Future<Either<StoreFailure, Token>> get(String id) => auxGet(id);
-
-  @override
   String getId(Token data) => data.token;
 
   @override
