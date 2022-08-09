@@ -49,7 +49,6 @@ class StorageRepository {
   ) {
     switch (e.code) {
       case 'storage/invalid-argument':
-        return left(const StorageFailure.upload());
       case 'storage/invalid-url':
         return left(const StorageFailure.invalidUrl());
       case 'storage/canceled':
