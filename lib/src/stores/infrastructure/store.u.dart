@@ -59,8 +59,11 @@ abstract class IStore<T extends Serializable<T>> {
 
   /// This method is unsafe and you need to catch exceptions if them occurs
   ///
-  /// Use this methods for the query with heavily complexity otherwise using
-  /// `where` method.
+  /// Use this methods for the watching the data as a [Stream] and listen for
+  /// changes
+  ///
+  /// If you want to query the data onetime. Use `queryTs` or `where` methods
+  /// instead
   ///
   /// Return the `CollectionReference<Map<String,dynamic>>` in the current
   /// `IStore` instance
@@ -112,12 +115,81 @@ abstract class IStore<T extends Serializable<T>> {
   /// server experienced a failure or the data cannot parsed
   /// otherwise return a bool to indicated the `validity` of the `field`
   Future<Either<StoreFailure, bool>> isFieldValid(String field, String val);
+
+  /// Accept a function has a [CollectionReference] passed as an argument
+  ///  to get a [Query] for querying a list of object from the sore
+  ///
+  /// Return either a [StoreFailure] if the user did not have internet or the
+  /// server experienced a failure. Otherwise, return a List of parsed data
+  /// accordance with the query condition(s).
+  ///
+  /// Eg:
+  /// ```dart
+  /// await queryTs((col) async => col.where('type', isEqualTo: 6)
+  ///                               .where('report', isNull: false)
+  // .                              .orderBy('report.created', descending: true)
+  //                                .get())
+  /// ```
+  ///
+  /// If the a object fail to pass the parser, it will be ignore in the
+  /// result list
+  Future<Either<StoreFailure, IList<T>>> queryTs(
+    Function1<CollectionReference<Map<String, dynamic>>,
+            Future<QuerySnapshot<Map<String, dynamic>>>>
+        thunkQuery,
+  );
+
+  /// Accept the document snapshot and parse it
+  /// return either [StoreFailure] if the data cannot parsed (not valid format)
+  /// or the parsed data itself
+  Either<StoreFailure, T> parseRawData(
+    DocumentSnapshot<Map<String, dynamic>> r,
+  );
 }
 
 abstract class Store<T extends Serializable<T>> implements IStore<T> {
   Store(this.store);
 
   final FirebaseFirestore store;
+
+  @override
+  Future<Either<StoreFailure, IList<T>>> queryTs(
+    Function1<CollectionReference<Map<String, dynamic>>,
+            Future<QuerySnapshot<Map<String, dynamic>>>>
+        query,
+  ) =>
+      Task(() => query(collection()))
+          .attempt()
+          .map(
+            (a) => a.fold<Either<StoreFailure, IList<T>>>(
+              (l) => left(const StoreFailure.query()),
+              (r) => right(
+                r.docs.map((e) => fromDocument(e, dtoFactory())).fold<IList<T>>(
+                      nil(),
+                      (pre, e) => e.fold((l) => pre, (r) => cons(r, pre)),
+                    ),
+              ),
+            ),
+          )
+          .run();
+
+  @protected
+  @internal
+  Future<Either<StoreFailure, T>> queryT(
+    Function0<Future<DocumentSnapshot<Map<String, dynamic>>>> query,
+  ) =>
+      Task(query)
+          .attempt()
+          .map<Either<StoreFailure, T>>(
+            (a) => a.fold(
+              (_) => left(const StoreFailure.query()),
+              (r) => fromDocument(
+                r,
+                dtoFactory(),
+              ),
+            ),
+          )
+          .run();
 
   @protected
   @internal
@@ -129,6 +201,12 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
         (dynamic _) => left(const StoreFailure.convert()),
         right,
       );
+
+  @override
+  Either<StoreFailure, T> parseRawData(
+    DocumentSnapshot<Map<String, dynamic>> r,
+  ) =>
+      fromDocument(r, dtoFactory());
 
   @internal
   @protected
@@ -143,25 +221,7 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
   DocumentReference<Map<String, dynamic>> doc(String id);
 
   @override
-  Future<Either<StoreFailure, T>> get(String id);
-
-  @protected
-  @internal
-  Future<Either<StoreFailure, T>> auxGet(
-    String id,
-  ) =>
-      Task(() => doc(id).get())
-          .attempt()
-          .map<Either<StoreFailure, T>>(
-            (a) => a.fold(
-              (_) => left(const StoreFailure.query()),
-              (r) => fromDocument(
-                r,
-                dtoFactory(),
-              ),
-            ),
-          )
-          .run();
+  Future<Either<StoreFailure, T>> get(String id) => queryT(() => doc(id).get());
 
   @override
   Future<Either<StoreFailure, Unit>> update(T newData) async =>
@@ -234,24 +294,8 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
   }
 
   @override
-  Future<Either<StoreFailure, IList<T>>> all() async => allAux()(dtoFactory());
-
-  Function1<Function1<Map<String, dynamic>, T>,
-          Future<Either<StoreFailure, IList<T>>>>
-      allAux() => (factory) => Task(() => collection().get())
-          .attempt()
-          .map(
-            (a) => a.fold<Either<StoreFailure, IList<T>>>(
-              (l) => left(const StoreFailure.query()),
-              (r) => right(
-                r.docs.map((e) => fromDocument(e, factory)).fold<IList<T>>(
-                      nil(),
-                      (pre, e) => e.fold((l) => pre, (r) => cons(r, pre)),
-                    ),
-              ),
-            ),
-          )
-          .run();
+  Future<Either<StoreFailure, IList<T>>> all() async =>
+      queryTs((col) => col.get());
 
   @override
   Future<Either<StoreFailure, IList<T>>> where(
