@@ -647,7 +647,9 @@ mixin _$StorageState {
     required TResult Function() paused,
     required TResult Function() canceled,
     required TResult Function(StorageFailure failure) error,
-    required TResult Function(String url) success,
+    required TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)
+        success,
     required TResult Function(double process) running,
   }) =>
       throw _privateConstructorUsedError;
@@ -657,7 +659,9 @@ mixin _$StorageState {
     TResult Function()? paused,
     TResult Function()? canceled,
     TResult Function(StorageFailure failure)? error,
-    TResult Function(String url)? success,
+    TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)?
+        success,
     TResult Function(double process)? running,
   }) =>
       throw _privateConstructorUsedError;
@@ -667,7 +671,9 @@ mixin _$StorageState {
     TResult Function()? paused,
     TResult Function()? canceled,
     TResult Function(StorageFailure failure)? error,
-    TResult Function(String url)? success,
+    TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)?
+        success,
     TResult Function(double process)? running,
     required TResult orElse(),
   }) =>
@@ -764,7 +770,9 @@ class _$_initial implements _initial {
     required TResult Function() paused,
     required TResult Function() canceled,
     required TResult Function(StorageFailure failure) error,
-    required TResult Function(String url) success,
+    required TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)
+        success,
     required TResult Function(double process) running,
   }) {
     return initial();
@@ -777,7 +785,9 @@ class _$_initial implements _initial {
     TResult Function()? paused,
     TResult Function()? canceled,
     TResult Function(StorageFailure failure)? error,
-    TResult Function(String url)? success,
+    TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)?
+        success,
     TResult Function(double process)? running,
   }) {
     return initial?.call();
@@ -790,7 +800,9 @@ class _$_initial implements _initial {
     TResult Function()? paused,
     TResult Function()? canceled,
     TResult Function(StorageFailure failure)? error,
-    TResult Function(String url)? success,
+    TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)?
+        success,
     TResult Function(double process)? running,
     required TResult orElse(),
   }) {
@@ -890,7 +902,9 @@ class _$_paused implements _paused {
     required TResult Function() paused,
     required TResult Function() canceled,
     required TResult Function(StorageFailure failure) error,
-    required TResult Function(String url) success,
+    required TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)
+        success,
     required TResult Function(double process) running,
   }) {
     return paused();
@@ -903,7 +917,9 @@ class _$_paused implements _paused {
     TResult Function()? paused,
     TResult Function()? canceled,
     TResult Function(StorageFailure failure)? error,
-    TResult Function(String url)? success,
+    TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)?
+        success,
     TResult Function(double process)? running,
   }) {
     return paused?.call();
@@ -916,7 +932,9 @@ class _$_paused implements _paused {
     TResult Function()? paused,
     TResult Function()? canceled,
     TResult Function(StorageFailure failure)? error,
-    TResult Function(String url)? success,
+    TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)?
+        success,
     TResult Function(double process)? running,
     required TResult orElse(),
   }) {
@@ -1018,7 +1036,9 @@ class _$_canceled implements _canceled {
     required TResult Function() paused,
     required TResult Function() canceled,
     required TResult Function(StorageFailure failure) error,
-    required TResult Function(String url) success,
+    required TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)
+        success,
     required TResult Function(double process) running,
   }) {
     return canceled();
@@ -1031,7 +1051,9 @@ class _$_canceled implements _canceled {
     TResult Function()? paused,
     TResult Function()? canceled,
     TResult Function(StorageFailure failure)? error,
-    TResult Function(String url)? success,
+    TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)?
+        success,
     TResult Function(double process)? running,
   }) {
     return canceled?.call();
@@ -1044,7 +1066,9 @@ class _$_canceled implements _canceled {
     TResult Function()? paused,
     TResult Function()? canceled,
     TResult Function(StorageFailure failure)? error,
-    TResult Function(String url)? success,
+    TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)?
+        success,
     TResult Function(double process)? running,
     required TResult orElse(),
   }) {
@@ -1177,7 +1201,9 @@ class _$_error implements _error {
     required TResult Function() paused,
     required TResult Function() canceled,
     required TResult Function(StorageFailure failure) error,
-    required TResult Function(String url) success,
+    required TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)
+        success,
     required TResult Function(double process) running,
   }) {
     return error(failure);
@@ -1190,7 +1216,9 @@ class _$_error implements _error {
     TResult Function()? paused,
     TResult Function()? canceled,
     TResult Function(StorageFailure failure)? error,
-    TResult Function(String url)? success,
+    TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)?
+        success,
     TResult Function(double process)? running,
   }) {
     return error?.call(failure);
@@ -1203,7 +1231,9 @@ class _$_error implements _error {
     TResult Function()? paused,
     TResult Function()? canceled,
     TResult Function(StorageFailure failure)? error,
-    TResult Function(String url)? success,
+    TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)?
+        success,
     TResult Function(double process)? running,
     required TResult orElse(),
   }) {
@@ -1271,7 +1301,7 @@ abstract class _$$_successCopyWith<$Res> {
   factory _$$_successCopyWith(
           _$_success value, $Res Function(_$_success) then) =
       __$$_successCopyWithImpl<$Res>;
-  $Res call({String url});
+  $Res call({IList<Either<StorageFailure, String>> eitherFailuresOrUrls});
 }
 
 /// @nodoc
@@ -1285,13 +1315,13 @@ class __$$_successCopyWithImpl<$Res> extends _$StorageStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? url = freezed,
+    Object? eitherFailuresOrUrls = freezed,
   }) {
     return _then(_$_success(
-      url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
+      eitherFailuresOrUrls == freezed
+          ? _value.eitherFailuresOrUrls
+          : eitherFailuresOrUrls // ignore: cast_nullable_to_non_nullable
+              as IList<Either<StorageFailure, String>>,
     ));
   }
 }
@@ -1299,14 +1329,14 @@ class __$$_successCopyWithImpl<$Res> extends _$StorageStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_success implements _success {
-  const _$_success(this.url);
+  const _$_success(this.eitherFailuresOrUrls);
 
   @override
-  final String url;
+  final IList<Either<StorageFailure, String>> eitherFailuresOrUrls;
 
   @override
   String toString() {
-    return 'StorageState.success(url: $url)';
+    return 'StorageState.success(eitherFailuresOrUrls: $eitherFailuresOrUrls)';
   }
 
   @override
@@ -1314,12 +1344,13 @@ class _$_success implements _success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_success &&
-            const DeepCollectionEquality().equals(other.url, url));
+            const DeepCollectionEquality()
+                .equals(other.eitherFailuresOrUrls, eitherFailuresOrUrls));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(url));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(eitherFailuresOrUrls));
 
   @JsonKey(ignore: true)
   @override
@@ -1333,10 +1364,12 @@ class _$_success implements _success {
     required TResult Function() paused,
     required TResult Function() canceled,
     required TResult Function(StorageFailure failure) error,
-    required TResult Function(String url) success,
+    required TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)
+        success,
     required TResult Function(double process) running,
   }) {
-    return success(url);
+    return success(eitherFailuresOrUrls);
   }
 
   @override
@@ -1346,10 +1379,12 @@ class _$_success implements _success {
     TResult Function()? paused,
     TResult Function()? canceled,
     TResult Function(StorageFailure failure)? error,
-    TResult Function(String url)? success,
+    TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)?
+        success,
     TResult Function(double process)? running,
   }) {
-    return success?.call(url);
+    return success?.call(eitherFailuresOrUrls);
   }
 
   @override
@@ -1359,12 +1394,14 @@ class _$_success implements _success {
     TResult Function()? paused,
     TResult Function()? canceled,
     TResult Function(StorageFailure failure)? error,
-    TResult Function(String url)? success,
+    TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)?
+        success,
     TResult Function(double process)? running,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(url);
+      return success(eitherFailuresOrUrls);
     }
     return orElse();
   }
@@ -1414,9 +1451,11 @@ class _$_success implements _success {
 }
 
 abstract class _success implements StorageState {
-  const factory _success(final String url) = _$_success;
+  const factory _success(
+          final IList<Either<StorageFailure, String>> eitherFailuresOrUrls) =
+      _$_success;
 
-  String get url;
+  IList<Either<StorageFailure, String>> get eitherFailuresOrUrls;
   @JsonKey(ignore: true)
   _$$_successCopyWith<_$_success> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1489,7 +1528,9 @@ class _$_running implements _running {
     required TResult Function() paused,
     required TResult Function() canceled,
     required TResult Function(StorageFailure failure) error,
-    required TResult Function(String url) success,
+    required TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)
+        success,
     required TResult Function(double process) running,
   }) {
     return running(process);
@@ -1502,7 +1543,9 @@ class _$_running implements _running {
     TResult Function()? paused,
     TResult Function()? canceled,
     TResult Function(StorageFailure failure)? error,
-    TResult Function(String url)? success,
+    TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)?
+        success,
     TResult Function(double process)? running,
   }) {
     return running?.call(process);
@@ -1515,7 +1558,9 @@ class _$_running implements _running {
     TResult Function()? paused,
     TResult Function()? canceled,
     TResult Function(StorageFailure failure)? error,
-    TResult Function(String url)? success,
+    TResult Function(
+            IList<Either<StorageFailure, String>> eitherFailuresOrUrls)?
+        success,
     TResult Function(double process)? running,
     required TResult orElse(),
   }) {

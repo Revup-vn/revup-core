@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -17,15 +19,29 @@ class StorageBloc extends Bloc<StorageEvent, StorageState> {
       await event.when(
         upload: (stgFile) async => _auxUpload(stgFile).fold(
           (l) => emit(StorageState.error(failure: l)),
-          (r) => _mapStreamToState(emit, r),
+          (r) => _mapStreamToState(emit, r, stgFile),
         ),
-        uploadMany: (files) async => Future.forEach<StorageFile>(
-          files.toIterable(),
-          (file) async => _auxUpload(file).fold(
-            (l) => emit(StorageState.error(failure: l)),
-            (r) => _mapStreamToState(emit, r),
-          ),
-        ),
+        uploadMany: (files) async {
+          final len = files.length();
+          final res = <Either<StorageFailure, String>>[];
+
+          await Future.forEach<Tuple2<int, StorageFile>>(
+            files.zipWithIndex().toIterable(),
+            (t) async => res.add(
+              await _auxUpload(t.tail)
+                  .fold<FutureOr<Either<StorageFailure, String>>>(
+                left,
+                (r) async => _mapUploadMany(
+                  emit,
+                  r,
+                  len,
+                  t,
+                ),
+              ),
+            ),
+          );
+          emit(StorageState.success(IList.from(res)));
+        },
         delete: _sr.delete,
         reset: () async => emit(const StorageState.initial()),
       );
@@ -34,9 +50,57 @@ class StorageBloc extends Bloc<StorageEvent, StorageState> {
 
   final StorageRepository _sr;
 
+  Future<Either<StorageFailure, String>> _mapUploadMany(
+    Emitter<StorageState> emit,
+    Stream<TaskSnapshot> sss,
+    int length,
+    Tuple2<int, StorageFile> t,
+  ) async {
+    late Either<StorageFailure, String> result;
+    await emit.onEach<TaskSnapshot>(
+      sss,
+      onData: (ss) {
+        switch (ss.state) {
+          case TaskState.running:
+            emit(
+              StorageState.running(
+                process: (100.0 * (ss.bytesTransferred / ss.totalBytes)) *
+                    t.head /
+                    length,
+              ),
+            );
+            break;
+          case TaskState.paused:
+          case TaskState.canceled:
+          case TaskState.error:
+            emit(
+              StorageState.running(
+                process: 100.0 * t.head / length,
+              ),
+            );
+            result = left(StorageFailure.upload(t.tail));
+            break;
+          case TaskState.success:
+            ss.ref
+                .getDownloadURL()
+                .then(
+                  (value) => result = right(value),
+                )
+                .onError(
+                  (_, __) => result = left(StorageFailure.upload(t.tail)),
+                );
+            break;
+        }
+      },
+    );
+
+    return result;
+  }
+
   Unit _mapStreamToState(
     Emitter<StorageState> emit,
     Stream<TaskSnapshot> sss,
+    StorageFile file,
   ) {
     emit.onEach<TaskSnapshot>(
       sss,
@@ -62,11 +126,14 @@ class StorageBloc extends Bloc<StorageEvent, StorageState> {
           case TaskState.success:
             snapshot.ref
                 .getDownloadURL()
-                .then((value) => emit(StorageState.success(value)))
+                .then(
+                  (value) =>
+                      emit(StorageState.success(cons(right(value), nil()))),
+                )
                 .onError(
                   (_, __) => emit(
-                    const StorageState.error(
-                      failure: StorageFailure.upload(),
+                    StorageState.error(
+                      failure: StorageFailure.upload(file),
                     ),
                   ),
                 );
