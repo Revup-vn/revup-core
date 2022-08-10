@@ -17,7 +17,7 @@ class StorageBloc extends Bloc<StorageEvent, StorageState> {
   StorageBloc(this._sr) : super(const StorageState.initial()) {
     on<StorageEvent>((event, emit) async {
       await event.when(
-        upload: (stgFile) async => _auxUpload(stgFile).fold(
+        upload: (stgFile) async => _auxUploadStream(stgFile).fold(
           (l) => emit(StorageState.error(failure: l)),
           (r) => _mapStreamToState(emit, r, stgFile),
         ),
@@ -28,15 +28,8 @@ class StorageBloc extends Bloc<StorageEvent, StorageState> {
           await Future.forEach<Tuple2<int, StorageFile>>(
             files.zipWithIndex().toIterable(),
             (t) async => res.add(
-              await _auxUpload(t.tail)
-                  .fold<FutureOr<Either<StorageFailure, String>>>(
-                left,
-                (r) async => _mapUploadMany(
-                  emit,
-                  r,
-                  len,
-                  t,
-                ),
+              await _auxUploadUrl(t.tail).whenComplete(
+                () => emit(StorageState.running(process: 100 * t.head / len)),
               ),
             ),
           );
@@ -49,53 +42,6 @@ class StorageBloc extends Bloc<StorageEvent, StorageState> {
   }
 
   final StorageRepository _sr;
-
-  Future<Either<StorageFailure, String>> _mapUploadMany(
-    Emitter<StorageState> emit,
-    Stream<TaskSnapshot> sss,
-    int length,
-    Tuple2<int, StorageFile> t,
-  ) async {
-    late Either<StorageFailure, String> result;
-    await emit.onEach<TaskSnapshot>(
-      sss,
-      onData: (ss) {
-        switch (ss.state) {
-          case TaskState.running:
-            emit(
-              StorageState.running(
-                process: (100.0 * (ss.bytesTransferred / ss.totalBytes)) *
-                    t.head /
-                    length,
-              ),
-            );
-            break;
-          case TaskState.paused:
-          case TaskState.canceled:
-          case TaskState.error:
-            emit(
-              StorageState.running(
-                process: 100.0 * t.head / length,
-              ),
-            );
-            result = left(StorageFailure.upload(t.tail));
-            break;
-          case TaskState.success:
-            ss.ref
-                .getDownloadURL()
-                .then(
-                  (value) => result = right(value),
-                )
-                .onError(
-                  (_, __) => result = left(StorageFailure.upload(t.tail)),
-                );
-            break;
-        }
-      },
-    );
-
-    return result;
-  }
 
   Unit _mapStreamToState(
     Emitter<StorageState> emit,
@@ -145,9 +91,19 @@ class StorageBloc extends Bloc<StorageEvent, StorageState> {
     return unit;
   }
 
-  Either<StorageFailure, Stream<TaskSnapshot>> _auxUpload(StorageFile sf) =>
+  Either<StorageFailure, Stream<TaskSnapshot>> _auxUploadStream(
+    StorageFile sf,
+  ) =>
       sf.map<Either<StorageFailure, Stream<TaskSnapshot>>>(
         profile: (profile) => _sr.upload(
+          file: profile.file,
+          path: profile.path,
+        ),
+      );
+
+  Future<Either<StorageFailure, String>> _auxUploadUrl(StorageFile sf) =>
+      sf.map<Future<Either<StorageFailure, String>>>(
+        profile: (profile) => _sr.updateF(
           file: profile.file,
           path: profile.path,
         ),
