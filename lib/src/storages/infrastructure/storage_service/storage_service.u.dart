@@ -7,5 +7,13 @@ abstract class StorageService<T> {
     String? name,
     String? contentType,
   );
+
+  Future<String> uploadUrl(
+    File file,
+    String? path,
+    String? name,
+    String? contentType,
+  );
+
   Future<void> delete(String url);
 }

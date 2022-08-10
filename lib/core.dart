@@ -13,4 +13,5 @@ export 'src/languages/languages.dart';
 export 'src/connectivity/connectivity.dart';
 export 'src/components/components.dart';
 export 'src/shared/shared.dart' hide coreBlocProviders, coreRepositoryProviders;
-export 'package:cloud_firestore/cloud_firestore.dart';
+export 'package:cloud_firestore/cloud_firestore.dart'
+    show Query, DocumentReference, CollectionReference, QuerySnapshot;
