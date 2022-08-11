@@ -1,9 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:geoflutterfire2/geoflutterfire2.dart';
 
 import '../../models/serializable.dart';
-import '../../shared/geo_point_converter.dart';
-import 'video_call_account.dart';
+import '../../stores.dart';
 
 part 'app_user.freezed.dart';
 part 'app_user.g.dart';
@@ -47,7 +45,7 @@ class AppUser extends Serializable<AppUser> with _$AppUser {
     required String bio,
     required VideoCallAccount vac,
     required bool online,
-    @GeoPointConverter() required GeoFirePoint curLocation,
+    required Location loc,
   }) = _provider;
 
   @FreezedUnionValue('3')

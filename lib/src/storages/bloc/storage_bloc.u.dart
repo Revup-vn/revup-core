@@ -22,7 +22,7 @@ class StorageBloc extends Bloc<StorageEvent, StorageState> {
           (r) => _mapStreamToState(emit, r, stgFile),
         ),
         uploadMany: (files) async {
-          final len = files.length();
+          final len = files.length() - 1;
           final res = <Either<StorageFailure, String>>[];
 
           await Future.forEach<Tuple2<int, StorageFile>>(

@@ -12,5 +12,6 @@ class Token extends Serializable<Token> with _$Token {
     required String platform,
     required String token,
   }) = _Token;
+
   factory Token.fromJson(Map<String, dynamic> json) => _$TokenFromJson(json);
 }

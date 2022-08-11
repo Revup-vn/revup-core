@@ -1,0 +1,4 @@
+enum PaymentAccountFields {
+  Id,
+  ActiveStatus,
+}

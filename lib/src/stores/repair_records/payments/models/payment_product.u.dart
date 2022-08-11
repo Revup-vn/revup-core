@@ -10,6 +10,7 @@ class PaymentProduct with _$PaymentProduct {
     required int unitPrice,
     required int quantity,
   }) = _PaymentProduct;
+
   factory PaymentProduct.fromJson(Map<String, dynamic> json) =>
       _$PaymentProductFromJson(json);
 }

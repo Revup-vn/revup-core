@@ -3,8 +3,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../models/serializable.dart';
 import 'payment_product.u.dart';
 
-part 'payment_service.g.dart';
 part 'payment_service.freezed.dart';
+part 'payment_service.g.dart';
 
 @Freezed(unionKey: 'type')
 class PaymentService extends Serializable<PaymentService>

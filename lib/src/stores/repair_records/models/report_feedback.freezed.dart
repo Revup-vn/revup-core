@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'feedback.dart';
+part of 'report_feedback.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Feedback _$FeedbackFromJson(Map<String, dynamic> json) {
-  return _Feedback.fromJson(json);
+ReportFeedback _$ReportFeedbackFromJson(Map<String, dynamic> json) {
+  return _ReportFeedback.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Feedback {
+mixin _$ReportFeedback {
   @Assert('rating > 0 && rating < 6 ', 'rating must be in range [1,5]')
   int get rating => throw _privateConstructorUsedError;
   DateTime get created => throw _privateConstructorUsedError;
@@ -28,14 +28,15 @@ mixin _$Feedback {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $FeedbackCopyWith<Feedback> get copyWith =>
+  $ReportFeedbackCopyWith<ReportFeedback> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FeedbackCopyWith<$Res> {
-  factory $FeedbackCopyWith(Feedback value, $Res Function(Feedback) then) =
-      _$FeedbackCopyWithImpl<$Res>;
+abstract class $ReportFeedbackCopyWith<$Res> {
+  factory $ReportFeedbackCopyWith(
+          ReportFeedback value, $Res Function(ReportFeedback) then) =
+      _$ReportFeedbackCopyWithImpl<$Res>;
   $Res call(
       {@Assert('rating > 0 && rating < 6 ', 'rating must be in range [1,5]')
           int rating,
@@ -45,12 +46,13 @@ abstract class $FeedbackCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FeedbackCopyWithImpl<$Res> implements $FeedbackCopyWith<$Res> {
-  _$FeedbackCopyWithImpl(this._value, this._then);
+class _$ReportFeedbackCopyWithImpl<$Res>
+    implements $ReportFeedbackCopyWith<$Res> {
+  _$ReportFeedbackCopyWithImpl(this._value, this._then);
 
-  final Feedback _value;
+  final ReportFeedback _value;
   // ignore: unused_field
-  final $Res Function(Feedback) _then;
+  final $Res Function(ReportFeedback) _then;
 
   @override
   $Res call({
@@ -81,10 +83,11 @@ class _$FeedbackCopyWithImpl<$Res> implements $FeedbackCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_FeedbackCopyWith<$Res> implements $FeedbackCopyWith<$Res> {
-  factory _$$_FeedbackCopyWith(
-          _$_Feedback value, $Res Function(_$_Feedback) then) =
-      __$$_FeedbackCopyWithImpl<$Res>;
+abstract class _$$_ReportFeedbackCopyWith<$Res>
+    implements $ReportFeedbackCopyWith<$Res> {
+  factory _$$_ReportFeedbackCopyWith(
+          _$_ReportFeedback value, $Res Function(_$_ReportFeedback) then) =
+      __$$_ReportFeedbackCopyWithImpl<$Res>;
   @override
   $Res call(
       {@Assert('rating > 0 && rating < 6 ', 'rating must be in range [1,5]')
@@ -95,14 +98,15 @@ abstract class _$$_FeedbackCopyWith<$Res> implements $FeedbackCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_FeedbackCopyWithImpl<$Res> extends _$FeedbackCopyWithImpl<$Res>
-    implements _$$_FeedbackCopyWith<$Res> {
-  __$$_FeedbackCopyWithImpl(
-      _$_Feedback _value, $Res Function(_$_Feedback) _then)
-      : super(_value, (v) => _then(v as _$_Feedback));
+class __$$_ReportFeedbackCopyWithImpl<$Res>
+    extends _$ReportFeedbackCopyWithImpl<$Res>
+    implements _$$_ReportFeedbackCopyWith<$Res> {
+  __$$_ReportFeedbackCopyWithImpl(
+      _$_ReportFeedback _value, $Res Function(_$_ReportFeedback) _then)
+      : super(_value, (v) => _then(v as _$_ReportFeedback));
 
   @override
-  _$_Feedback get _value => super._value as _$_Feedback;
+  _$_ReportFeedback get _value => super._value as _$_ReportFeedback;
 
   @override
   $Res call({
@@ -111,7 +115,7 @@ class __$$_FeedbackCopyWithImpl<$Res> extends _$FeedbackCopyWithImpl<$Res>
     Object? updated = freezed,
     Object? desc = freezed,
   }) {
-    return _then(_$_Feedback(
+    return _then(_$_ReportFeedback(
       rating: rating == freezed
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
@@ -134,16 +138,16 @@ class __$$_FeedbackCopyWithImpl<$Res> extends _$FeedbackCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Feedback implements _Feedback {
-  const _$_Feedback(
+class _$_ReportFeedback implements _ReportFeedback {
+  const _$_ReportFeedback(
       {@Assert('rating > 0 && rating < 6 ', 'rating must be in range [1,5]')
           required this.rating,
       required this.created,
       required this.updated,
       required this.desc});
 
-  factory _$_Feedback.fromJson(Map<String, dynamic> json) =>
-      _$$_FeedbackFromJson(json);
+  factory _$_ReportFeedback.fromJson(Map<String, dynamic> json) =>
+      _$$_ReportFeedbackFromJson(json);
 
   @override
   @Assert('rating > 0 && rating < 6 ', 'rating must be in range [1,5]')
@@ -157,14 +161,14 @@ class _$_Feedback implements _Feedback {
 
   @override
   String toString() {
-    return 'Feedback(rating: $rating, created: $created, updated: $updated, desc: $desc)';
+    return 'ReportFeedback(rating: $rating, created: $created, updated: $updated, desc: $desc)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Feedback &&
+            other is _$_ReportFeedback &&
             const DeepCollectionEquality().equals(other.rating, rating) &&
             const DeepCollectionEquality().equals(other.created, created) &&
             const DeepCollectionEquality().equals(other.updated, updated) &&
@@ -182,26 +186,27 @@ class _$_Feedback implements _Feedback {
 
   @JsonKey(ignore: true)
   @override
-  _$$_FeedbackCopyWith<_$_Feedback> get copyWith =>
-      __$$_FeedbackCopyWithImpl<_$_Feedback>(this, _$identity);
+  _$$_ReportFeedbackCopyWith<_$_ReportFeedback> get copyWith =>
+      __$$_ReportFeedbackCopyWithImpl<_$_ReportFeedback>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FeedbackToJson(
+    return _$$_ReportFeedbackToJson(
       this,
     );
   }
 }
 
-abstract class _Feedback implements Feedback {
-  const factory _Feedback(
+abstract class _ReportFeedback implements ReportFeedback {
+  const factory _ReportFeedback(
       {@Assert('rating > 0 && rating < 6 ', 'rating must be in range [1,5]')
           required final int rating,
       required final DateTime created,
       required final DateTime updated,
-      required final String desc}) = _$_Feedback;
+      required final String desc}) = _$_ReportFeedback;
 
-  factory _Feedback.fromJson(Map<String, dynamic> json) = _$_Feedback.fromJson;
+  factory _ReportFeedback.fromJson(Map<String, dynamic> json) =
+      _$_ReportFeedback.fromJson;
 
   @override
   @Assert('rating > 0 && rating < 6 ', 'rating must be in range [1,5]')
@@ -214,6 +219,6 @@ abstract class _Feedback implements Feedback {
   String get desc;
   @override
   @JsonKey(ignore: true)
-  _$$_FeedbackCopyWith<_$_Feedback> get copyWith =>
+  _$$_ReportFeedbackCopyWith<_$_ReportFeedback> get copyWith =>
       throw _privateConstructorUsedError;
 }

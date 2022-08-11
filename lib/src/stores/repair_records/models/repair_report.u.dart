@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../enums/enums.dart';
+
 part 'repair_report.u.freezed.dart';
 part 'repair_report.u.g.dart';
 
@@ -35,10 +37,4 @@ class RepairReport with _$RepairReport {
 
   factory RepairReport.fromJson(Map<String, dynamic> json) =>
       _$RepairReportFromJson(json);
-}
-
-enum ReportCategory {
-  Product,
-  Service,
-  Unknown,
 }
