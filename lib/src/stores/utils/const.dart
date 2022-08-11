@@ -6,3 +6,4 @@ const kStorePathProviderCategoryDocument = 'category';
 const kStorePathProviderCategoryServiceDocument = 'service';
 const kStorePathProviderCategoryServiceProductDocument = 'product';
 const KStorePathUserTokenCollection = 'tokens';
+final kDateDummy = DateTime(1970);

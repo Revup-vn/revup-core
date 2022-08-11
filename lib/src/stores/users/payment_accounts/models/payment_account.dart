@@ -14,6 +14,14 @@ class PaymentAccount extends Serializable<PaymentAccount>
     required bool isActive,
   }) = _momo;
 
+  factory PaymentAccount.dummyMomo(String id) =>
+      PaymentAccount.momo(id: id, isActive: true);
+
   factory PaymentAccount.fromJson(Map<String, dynamic> json) =>
       _$PaymentAccountFromJson(json);
+
+  static const Map<int, String> fields = {
+    1: 'id',
+    2: 'isActive',
+  };
 }

@@ -13,6 +13,20 @@ class Feedback with _$Feedback {
     required String desc,
   }) = _Feedback;
 
+  factory Feedback.dummy() => Feedback(
+        rating: 1,
+        created: DateTime(1970),
+        updated: DateTime(1970),
+        desc: '',
+      );
+
   factory Feedback.fromJson(Map<String, dynamic> json) =>
       _$FeedbackFromJson(json);
+
+  static const Map<int, String> fields = {
+    1: 'rating',
+    2: 'created',
+    3: 'updated',
+    4: 'desc',
+  };
 }

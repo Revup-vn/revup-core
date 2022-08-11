@@ -10,6 +10,15 @@ class PaymentProduct with _$PaymentProduct {
     required int unitPrice,
     required int quantity,
   }) = _PaymentProduct;
+
+  factory PaymentProduct.dummy() =>
+      const PaymentProduct(name: '', unitPrice: 0, quantity: 0);
+
   factory PaymentProduct.fromJson(Map<String, dynamic> json) =>
       _$PaymentProductFromJson(json);
+  static const Map<int, String> fields = {
+    1: 'name',
+    2: 'unit_price',
+    3: 'quantity',
+  };
 }
