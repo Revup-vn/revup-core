@@ -33,13 +33,10 @@ class RepairCategoryRepository extends Store<RepairCategory> {
   DocumentReference<Map<String, dynamic>> doc(String id) => category(id);
 
   @override
-  Future<Either<StoreFailure, RepairCategory>> get(String id) => auxGet(id);
-
-  @override
   String getId(RepairCategory data) => data.name;
 
   @override
-  FutureOr<Either<StoreFailure, Unit>> update(
+  FutureOr<Either<StoreFailure, Unit>> updateFields(
     RepairCategory newData,
     IList<String> fields,
   ) =>

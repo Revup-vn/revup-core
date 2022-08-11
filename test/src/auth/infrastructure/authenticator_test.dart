@@ -32,7 +32,7 @@ void main() {
     query = MockQuery();
     when(() => store.collection(any())).thenReturn(mockCollection);
     when(
-      () => query.get(),
+      () => query.get(any()),
     ).thenAnswer((_) async => snapShot);
     authenticator = TestAuthenticator(UserRepository(store));
   });

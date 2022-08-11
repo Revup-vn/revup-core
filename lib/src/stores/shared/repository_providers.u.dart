@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../infrastructure/infrastructure.dart';
+import '../stores.u.dart';
 import '../users/users.dart';
 
 class StoreRepository {
@@ -33,4 +33,7 @@ class StoreRepository {
 
   IStore<Token> userNotificationTokenRepo(AppUser user) =>
       TokenRepository(_store, user);
+
+  IStore<PaymentService> repairPaymentRepo(RepairRecord record) =>
+      PaymentRepository(_store, record);
 }

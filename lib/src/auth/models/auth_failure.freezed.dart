@@ -24,6 +24,12 @@ AuthFailure _$AuthFailureFromJson(Map<String, dynamic> json) {
       return _cancelled.fromJson(json);
     case 'invalidData':
       return _invalidData.fromJson(json);
+    case 'invalidOTP':
+      return _invalidOTP.fromJson(json);
+    case 'expiredOTP':
+      return _expiredOTP.fromJson(json);
+    case 'uncompletedData':
+      return _uncompletedData.fromJson(json);
     case 'needToVerifyPhoneNumber':
       return _verifyPhoneNumber.fromJson(json);
     case 'unknown':
@@ -43,8 +49,11 @@ mixin _$AuthFailure {
     required TResult Function() storage,
     required TResult Function() cancelled,
     required TResult Function(String? message) invalidData,
+    required TResult Function(String phoneNumber) invalidOTP,
+    required TResult Function(String phoneNumber) expiredOTP,
+    required TResult Function(AppUser aUser) uncompletedData,
     required TResult Function(AppUser appUser) needToVerifyPhoneNumber,
-    required TResult Function() unknown,
+    required TResult Function(String? message) unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,8 +62,11 @@ mixin _$AuthFailure {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
     TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
-    TResult Function()? unknown,
+    TResult Function(String? message)? unknown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,8 +75,11 @@ mixin _$AuthFailure {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
     TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
-    TResult Function()? unknown,
+    TResult Function(String? message)? unknown,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -74,6 +89,9 @@ mixin _$AuthFailure {
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_invalidOTP value) invalidOTP,
+    required TResult Function(_expiredOTP value) expiredOTP,
+    required TResult Function(_uncompletedData value) uncompletedData,
     required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
     required TResult Function(_unknown value) unknown,
   }) =>
@@ -84,6 +102,9 @@ mixin _$AuthFailure {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
     TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
   }) =>
@@ -94,6 +115,9 @@ mixin _$AuthFailure {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
     TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
     required TResult orElse(),
@@ -193,8 +217,11 @@ class _$_server extends _server {
     required TResult Function() storage,
     required TResult Function() cancelled,
     required TResult Function(String? message) invalidData,
+    required TResult Function(String phoneNumber) invalidOTP,
+    required TResult Function(String phoneNumber) expiredOTP,
+    required TResult Function(AppUser aUser) uncompletedData,
     required TResult Function(AppUser appUser) needToVerifyPhoneNumber,
-    required TResult Function() unknown,
+    required TResult Function(String? message) unknown,
   }) {
     return server(message);
   }
@@ -206,8 +233,11 @@ class _$_server extends _server {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
     TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
-    TResult Function()? unknown,
+    TResult Function(String? message)? unknown,
   }) {
     return server?.call(message);
   }
@@ -219,8 +249,11 @@ class _$_server extends _server {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
     TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
-    TResult Function()? unknown,
+    TResult Function(String? message)? unknown,
     required TResult orElse(),
   }) {
     if (server != null) {
@@ -236,6 +269,9 @@ class _$_server extends _server {
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_invalidOTP value) invalidOTP,
+    required TResult Function(_expiredOTP value) expiredOTP,
+    required TResult Function(_uncompletedData value) uncompletedData,
     required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
     required TResult Function(_unknown value) unknown,
   }) {
@@ -249,6 +285,9 @@ class _$_server extends _server {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
     TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
   }) {
@@ -262,6 +301,9 @@ class _$_server extends _server {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
     TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
     required TResult orElse(),
@@ -344,8 +386,11 @@ class _$_storage extends _storage {
     required TResult Function() storage,
     required TResult Function() cancelled,
     required TResult Function(String? message) invalidData,
+    required TResult Function(String phoneNumber) invalidOTP,
+    required TResult Function(String phoneNumber) expiredOTP,
+    required TResult Function(AppUser aUser) uncompletedData,
     required TResult Function(AppUser appUser) needToVerifyPhoneNumber,
-    required TResult Function() unknown,
+    required TResult Function(String? message) unknown,
   }) {
     return storage();
   }
@@ -357,8 +402,11 @@ class _$_storage extends _storage {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
     TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
-    TResult Function()? unknown,
+    TResult Function(String? message)? unknown,
   }) {
     return storage?.call();
   }
@@ -370,8 +418,11 @@ class _$_storage extends _storage {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
     TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
-    TResult Function()? unknown,
+    TResult Function(String? message)? unknown,
     required TResult orElse(),
   }) {
     if (storage != null) {
@@ -387,6 +438,9 @@ class _$_storage extends _storage {
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_invalidOTP value) invalidOTP,
+    required TResult Function(_expiredOTP value) expiredOTP,
+    required TResult Function(_uncompletedData value) uncompletedData,
     required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
     required TResult Function(_unknown value) unknown,
   }) {
@@ -400,6 +454,9 @@ class _$_storage extends _storage {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
     TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
   }) {
@@ -413,6 +470,9 @@ class _$_storage extends _storage {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
     TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
     required TResult orElse(),
@@ -491,8 +551,11 @@ class _$_cancelled extends _cancelled {
     required TResult Function() storage,
     required TResult Function() cancelled,
     required TResult Function(String? message) invalidData,
+    required TResult Function(String phoneNumber) invalidOTP,
+    required TResult Function(String phoneNumber) expiredOTP,
+    required TResult Function(AppUser aUser) uncompletedData,
     required TResult Function(AppUser appUser) needToVerifyPhoneNumber,
-    required TResult Function() unknown,
+    required TResult Function(String? message) unknown,
   }) {
     return cancelled();
   }
@@ -504,8 +567,11 @@ class _$_cancelled extends _cancelled {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
     TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
-    TResult Function()? unknown,
+    TResult Function(String? message)? unknown,
   }) {
     return cancelled?.call();
   }
@@ -517,8 +583,11 @@ class _$_cancelled extends _cancelled {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
     TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
-    TResult Function()? unknown,
+    TResult Function(String? message)? unknown,
     required TResult orElse(),
   }) {
     if (cancelled != null) {
@@ -534,6 +603,9 @@ class _$_cancelled extends _cancelled {
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_invalidOTP value) invalidOTP,
+    required TResult Function(_expiredOTP value) expiredOTP,
+    required TResult Function(_uncompletedData value) uncompletedData,
     required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
     required TResult Function(_unknown value) unknown,
   }) {
@@ -547,6 +619,9 @@ class _$_cancelled extends _cancelled {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
     TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
   }) {
@@ -560,6 +635,9 @@ class _$_cancelled extends _cancelled {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
     TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
     required TResult orElse(),
@@ -663,8 +741,11 @@ class _$_invalidData extends _invalidData {
     required TResult Function() storage,
     required TResult Function() cancelled,
     required TResult Function(String? message) invalidData,
+    required TResult Function(String phoneNumber) invalidOTP,
+    required TResult Function(String phoneNumber) expiredOTP,
+    required TResult Function(AppUser aUser) uncompletedData,
     required TResult Function(AppUser appUser) needToVerifyPhoneNumber,
-    required TResult Function() unknown,
+    required TResult Function(String? message) unknown,
   }) {
     return invalidData(message);
   }
@@ -676,8 +757,11 @@ class _$_invalidData extends _invalidData {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
     TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
-    TResult Function()? unknown,
+    TResult Function(String? message)? unknown,
   }) {
     return invalidData?.call(message);
   }
@@ -689,8 +773,11 @@ class _$_invalidData extends _invalidData {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
     TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
-    TResult Function()? unknown,
+    TResult Function(String? message)? unknown,
     required TResult orElse(),
   }) {
     if (invalidData != null) {
@@ -706,6 +793,9 @@ class _$_invalidData extends _invalidData {
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_invalidOTP value) invalidOTP,
+    required TResult Function(_expiredOTP value) expiredOTP,
+    required TResult Function(_uncompletedData value) uncompletedData,
     required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
     required TResult Function(_unknown value) unknown,
   }) {
@@ -719,6 +809,9 @@ class _$_invalidData extends _invalidData {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
     TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
   }) {
@@ -732,6 +825,9 @@ class _$_invalidData extends _invalidData {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
     TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
     required TResult orElse(),
@@ -760,6 +856,603 @@ abstract class _invalidData extends AuthFailure {
   String? get message;
   @JsonKey(ignore: true)
   _$$_invalidDataCopyWith<_$_invalidData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_invalidOTPCopyWith<$Res> {
+  factory _$$_invalidOTPCopyWith(
+          _$_invalidOTP value, $Res Function(_$_invalidOTP) then) =
+      __$$_invalidOTPCopyWithImpl<$Res>;
+  $Res call({String phoneNumber});
+}
+
+/// @nodoc
+class __$$_invalidOTPCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$$_invalidOTPCopyWith<$Res> {
+  __$$_invalidOTPCopyWithImpl(
+      _$_invalidOTP _value, $Res Function(_$_invalidOTP) _then)
+      : super(_value, (v) => _then(v as _$_invalidOTP));
+
+  @override
+  _$_invalidOTP get _value => super._value as _$_invalidOTP;
+
+  @override
+  $Res call({
+    Object? phoneNumber = freezed,
+  }) {
+    return _then(_$_invalidOTP(
+      phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_invalidOTP extends _invalidOTP {
+  const _$_invalidOTP(this.phoneNumber, {final String? $type})
+      : $type = $type ?? 'invalidOTP',
+        super._();
+
+  factory _$_invalidOTP.fromJson(Map<String, dynamic> json) =>
+      _$$_invalidOTPFromJson(json);
+
+  @override
+  final String phoneNumber;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'AuthFailure.invalidOTP(phoneNumber: $phoneNumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_invalidOTP &&
+            const DeepCollectionEquality()
+                .equals(other.phoneNumber, phoneNumber));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(phoneNumber));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_invalidOTPCopyWith<_$_invalidOTP> get copyWith =>
+      __$$_invalidOTPCopyWithImpl<_$_invalidOTP>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? message) server,
+    required TResult Function() storage,
+    required TResult Function() cancelled,
+    required TResult Function(String? message) invalidData,
+    required TResult Function(String phoneNumber) invalidOTP,
+    required TResult Function(String phoneNumber) expiredOTP,
+    required TResult Function(AppUser aUser) uncompletedData,
+    required TResult Function(AppUser appUser) needToVerifyPhoneNumber,
+    required TResult Function(String? message) unknown,
+  }) {
+    return invalidOTP(phoneNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? message)? server,
+    TResult Function()? storage,
+    TResult Function()? cancelled,
+    TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
+    TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
+    TResult Function(String? message)? unknown,
+  }) {
+    return invalidOTP?.call(phoneNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? message)? server,
+    TResult Function()? storage,
+    TResult Function()? cancelled,
+    TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
+    TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
+    TResult Function(String? message)? unknown,
+    required TResult orElse(),
+  }) {
+    if (invalidOTP != null) {
+      return invalidOTP(phoneNumber);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_server value) server,
+    required TResult Function(_storage value) storage,
+    required TResult Function(_cancelled value) cancelled,
+    required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_invalidOTP value) invalidOTP,
+    required TResult Function(_expiredOTP value) expiredOTP,
+    required TResult Function(_uncompletedData value) uncompletedData,
+    required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
+    required TResult Function(_unknown value) unknown,
+  }) {
+    return invalidOTP(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_server value)? server,
+    TResult Function(_storage value)? storage,
+    TResult Function(_cancelled value)? cancelled,
+    TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
+    TResult Function(_unknown value)? unknown,
+  }) {
+    return invalidOTP?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_server value)? server,
+    TResult Function(_storage value)? storage,
+    TResult Function(_cancelled value)? cancelled,
+    TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
+    TResult Function(_unknown value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (invalidOTP != null) {
+      return invalidOTP(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_invalidOTPToJson(
+      this,
+    );
+  }
+}
+
+abstract class _invalidOTP extends AuthFailure {
+  const factory _invalidOTP(final String phoneNumber) = _$_invalidOTP;
+  const _invalidOTP._() : super._();
+
+  factory _invalidOTP.fromJson(Map<String, dynamic> json) =
+      _$_invalidOTP.fromJson;
+
+  String get phoneNumber;
+  @JsonKey(ignore: true)
+  _$$_invalidOTPCopyWith<_$_invalidOTP> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_expiredOTPCopyWith<$Res> {
+  factory _$$_expiredOTPCopyWith(
+          _$_expiredOTP value, $Res Function(_$_expiredOTP) then) =
+      __$$_expiredOTPCopyWithImpl<$Res>;
+  $Res call({String phoneNumber});
+}
+
+/// @nodoc
+class __$$_expiredOTPCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$$_expiredOTPCopyWith<$Res> {
+  __$$_expiredOTPCopyWithImpl(
+      _$_expiredOTP _value, $Res Function(_$_expiredOTP) _then)
+      : super(_value, (v) => _then(v as _$_expiredOTP));
+
+  @override
+  _$_expiredOTP get _value => super._value as _$_expiredOTP;
+
+  @override
+  $Res call({
+    Object? phoneNumber = freezed,
+  }) {
+    return _then(_$_expiredOTP(
+      phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_expiredOTP extends _expiredOTP {
+  const _$_expiredOTP(this.phoneNumber, {final String? $type})
+      : $type = $type ?? 'expiredOTP',
+        super._();
+
+  factory _$_expiredOTP.fromJson(Map<String, dynamic> json) =>
+      _$$_expiredOTPFromJson(json);
+
+  @override
+  final String phoneNumber;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'AuthFailure.expiredOTP(phoneNumber: $phoneNumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_expiredOTP &&
+            const DeepCollectionEquality()
+                .equals(other.phoneNumber, phoneNumber));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(phoneNumber));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_expiredOTPCopyWith<_$_expiredOTP> get copyWith =>
+      __$$_expiredOTPCopyWithImpl<_$_expiredOTP>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? message) server,
+    required TResult Function() storage,
+    required TResult Function() cancelled,
+    required TResult Function(String? message) invalidData,
+    required TResult Function(String phoneNumber) invalidOTP,
+    required TResult Function(String phoneNumber) expiredOTP,
+    required TResult Function(AppUser aUser) uncompletedData,
+    required TResult Function(AppUser appUser) needToVerifyPhoneNumber,
+    required TResult Function(String? message) unknown,
+  }) {
+    return expiredOTP(phoneNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? message)? server,
+    TResult Function()? storage,
+    TResult Function()? cancelled,
+    TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
+    TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
+    TResult Function(String? message)? unknown,
+  }) {
+    return expiredOTP?.call(phoneNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? message)? server,
+    TResult Function()? storage,
+    TResult Function()? cancelled,
+    TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
+    TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
+    TResult Function(String? message)? unknown,
+    required TResult orElse(),
+  }) {
+    if (expiredOTP != null) {
+      return expiredOTP(phoneNumber);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_server value) server,
+    required TResult Function(_storage value) storage,
+    required TResult Function(_cancelled value) cancelled,
+    required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_invalidOTP value) invalidOTP,
+    required TResult Function(_expiredOTP value) expiredOTP,
+    required TResult Function(_uncompletedData value) uncompletedData,
+    required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
+    required TResult Function(_unknown value) unknown,
+  }) {
+    return expiredOTP(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_server value)? server,
+    TResult Function(_storage value)? storage,
+    TResult Function(_cancelled value)? cancelled,
+    TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
+    TResult Function(_unknown value)? unknown,
+  }) {
+    return expiredOTP?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_server value)? server,
+    TResult Function(_storage value)? storage,
+    TResult Function(_cancelled value)? cancelled,
+    TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
+    TResult Function(_unknown value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (expiredOTP != null) {
+      return expiredOTP(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_expiredOTPToJson(
+      this,
+    );
+  }
+}
+
+abstract class _expiredOTP extends AuthFailure {
+  const factory _expiredOTP(final String phoneNumber) = _$_expiredOTP;
+  const _expiredOTP._() : super._();
+
+  factory _expiredOTP.fromJson(Map<String, dynamic> json) =
+      _$_expiredOTP.fromJson;
+
+  String get phoneNumber;
+  @JsonKey(ignore: true)
+  _$$_expiredOTPCopyWith<_$_expiredOTP> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_uncompletedDataCopyWith<$Res> {
+  factory _$$_uncompletedDataCopyWith(
+          _$_uncompletedData value, $Res Function(_$_uncompletedData) then) =
+      __$$_uncompletedDataCopyWithImpl<$Res>;
+  $Res call({AppUser aUser});
+
+  $AppUserCopyWith<$Res> get aUser;
+}
+
+/// @nodoc
+class __$$_uncompletedDataCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$$_uncompletedDataCopyWith<$Res> {
+  __$$_uncompletedDataCopyWithImpl(
+      _$_uncompletedData _value, $Res Function(_$_uncompletedData) _then)
+      : super(_value, (v) => _then(v as _$_uncompletedData));
+
+  @override
+  _$_uncompletedData get _value => super._value as _$_uncompletedData;
+
+  @override
+  $Res call({
+    Object? aUser = freezed,
+  }) {
+    return _then(_$_uncompletedData(
+      aUser == freezed
+          ? _value.aUser
+          : aUser // ignore: cast_nullable_to_non_nullable
+              as AppUser,
+    ));
+  }
+
+  @override
+  $AppUserCopyWith<$Res> get aUser {
+    return $AppUserCopyWith<$Res>(_value.aUser, (value) {
+      return _then(_value.copyWith(aUser: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_uncompletedData extends _uncompletedData {
+  const _$_uncompletedData(this.aUser, {final String? $type})
+      : $type = $type ?? 'uncompletedData',
+        super._();
+
+  factory _$_uncompletedData.fromJson(Map<String, dynamic> json) =>
+      _$$_uncompletedDataFromJson(json);
+
+  @override
+  final AppUser aUser;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'AuthFailure.uncompletedData(aUser: $aUser)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_uncompletedData &&
+            const DeepCollectionEquality().equals(other.aUser, aUser));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(aUser));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_uncompletedDataCopyWith<_$_uncompletedData> get copyWith =>
+      __$$_uncompletedDataCopyWithImpl<_$_uncompletedData>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? message) server,
+    required TResult Function() storage,
+    required TResult Function() cancelled,
+    required TResult Function(String? message) invalidData,
+    required TResult Function(String phoneNumber) invalidOTP,
+    required TResult Function(String phoneNumber) expiredOTP,
+    required TResult Function(AppUser aUser) uncompletedData,
+    required TResult Function(AppUser appUser) needToVerifyPhoneNumber,
+    required TResult Function(String? message) unknown,
+  }) {
+    return uncompletedData(aUser);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? message)? server,
+    TResult Function()? storage,
+    TResult Function()? cancelled,
+    TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
+    TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
+    TResult Function(String? message)? unknown,
+  }) {
+    return uncompletedData?.call(aUser);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? message)? server,
+    TResult Function()? storage,
+    TResult Function()? cancelled,
+    TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
+    TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
+    TResult Function(String? message)? unknown,
+    required TResult orElse(),
+  }) {
+    if (uncompletedData != null) {
+      return uncompletedData(aUser);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_server value) server,
+    required TResult Function(_storage value) storage,
+    required TResult Function(_cancelled value) cancelled,
+    required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_invalidOTP value) invalidOTP,
+    required TResult Function(_expiredOTP value) expiredOTP,
+    required TResult Function(_uncompletedData value) uncompletedData,
+    required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
+    required TResult Function(_unknown value) unknown,
+  }) {
+    return uncompletedData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_server value)? server,
+    TResult Function(_storage value)? storage,
+    TResult Function(_cancelled value)? cancelled,
+    TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
+    TResult Function(_unknown value)? unknown,
+  }) {
+    return uncompletedData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_server value)? server,
+    TResult Function(_storage value)? storage,
+    TResult Function(_cancelled value)? cancelled,
+    TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
+    TResult Function(_unknown value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (uncompletedData != null) {
+      return uncompletedData(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_uncompletedDataToJson(
+      this,
+    );
+  }
+}
+
+abstract class _uncompletedData extends AuthFailure {
+  const factory _uncompletedData(final AppUser aUser) = _$_uncompletedData;
+  const _uncompletedData._() : super._();
+
+  factory _uncompletedData.fromJson(Map<String, dynamic> json) =
+      _$_uncompletedData.fromJson;
+
+  AppUser get aUser;
+  @JsonKey(ignore: true)
+  _$$_uncompletedDataCopyWith<_$_uncompletedData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -851,8 +1544,11 @@ class _$_verifyPhoneNumber extends _verifyPhoneNumber {
     required TResult Function() storage,
     required TResult Function() cancelled,
     required TResult Function(String? message) invalidData,
+    required TResult Function(String phoneNumber) invalidOTP,
+    required TResult Function(String phoneNumber) expiredOTP,
+    required TResult Function(AppUser aUser) uncompletedData,
     required TResult Function(AppUser appUser) needToVerifyPhoneNumber,
-    required TResult Function() unknown,
+    required TResult Function(String? message) unknown,
   }) {
     return needToVerifyPhoneNumber(appUser);
   }
@@ -864,8 +1560,11 @@ class _$_verifyPhoneNumber extends _verifyPhoneNumber {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
     TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
-    TResult Function()? unknown,
+    TResult Function(String? message)? unknown,
   }) {
     return needToVerifyPhoneNumber?.call(appUser);
   }
@@ -877,8 +1576,11 @@ class _$_verifyPhoneNumber extends _verifyPhoneNumber {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
     TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
-    TResult Function()? unknown,
+    TResult Function(String? message)? unknown,
     required TResult orElse(),
   }) {
     if (needToVerifyPhoneNumber != null) {
@@ -894,6 +1596,9 @@ class _$_verifyPhoneNumber extends _verifyPhoneNumber {
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_invalidOTP value) invalidOTP,
+    required TResult Function(_expiredOTP value) expiredOTP,
+    required TResult Function(_uncompletedData value) uncompletedData,
     required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
     required TResult Function(_unknown value) unknown,
   }) {
@@ -907,6 +1612,9 @@ class _$_verifyPhoneNumber extends _verifyPhoneNumber {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
     TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
   }) {
@@ -920,6 +1628,9 @@ class _$_verifyPhoneNumber extends _verifyPhoneNumber {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
     TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
     required TResult orElse(),
@@ -957,6 +1668,7 @@ abstract class _$$_unknownCopyWith<$Res> {
   factory _$$_unknownCopyWith(
           _$_unknown value, $Res Function(_$_unknown) then) =
       __$$_unknownCopyWithImpl<$Res>;
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -967,35 +1679,58 @@ class __$$_unknownCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 
   @override
   _$_unknown get _value => super._value as _$_unknown;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$_unknown(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_unknown extends _unknown {
-  const _$_unknown({final String? $type})
+  const _$_unknown(this.message, {final String? $type})
       : $type = $type ?? 'unknown',
         super._();
 
   factory _$_unknown.fromJson(Map<String, dynamic> json) =>
       _$$_unknownFromJson(json);
 
+  @override
+  final String? message;
+
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'AuthFailure.unknown()';
+    return 'AuthFailure.unknown(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_unknown);
+        (other.runtimeType == runtimeType &&
+            other is _$_unknown &&
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_unknownCopyWith<_$_unknown> get copyWith =>
+      __$$_unknownCopyWithImpl<_$_unknown>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1004,10 +1739,13 @@ class _$_unknown extends _unknown {
     required TResult Function() storage,
     required TResult Function() cancelled,
     required TResult Function(String? message) invalidData,
+    required TResult Function(String phoneNumber) invalidOTP,
+    required TResult Function(String phoneNumber) expiredOTP,
+    required TResult Function(AppUser aUser) uncompletedData,
     required TResult Function(AppUser appUser) needToVerifyPhoneNumber,
-    required TResult Function() unknown,
+    required TResult Function(String? message) unknown,
   }) {
-    return unknown();
+    return unknown(message);
   }
 
   @override
@@ -1017,10 +1755,13 @@ class _$_unknown extends _unknown {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
     TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
-    TResult Function()? unknown,
+    TResult Function(String? message)? unknown,
   }) {
-    return unknown?.call();
+    return unknown?.call(message);
   }
 
   @override
@@ -1030,12 +1771,15 @@ class _$_unknown extends _unknown {
     TResult Function()? storage,
     TResult Function()? cancelled,
     TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
     TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
-    TResult Function()? unknown,
+    TResult Function(String? message)? unknown,
     required TResult orElse(),
   }) {
     if (unknown != null) {
-      return unknown();
+      return unknown(message);
     }
     return orElse();
   }
@@ -1047,6 +1791,9 @@ class _$_unknown extends _unknown {
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
     required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_invalidOTP value) invalidOTP,
+    required TResult Function(_expiredOTP value) expiredOTP,
+    required TResult Function(_uncompletedData value) uncompletedData,
     required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
     required TResult Function(_unknown value) unknown,
   }) {
@@ -1060,6 +1807,9 @@ class _$_unknown extends _unknown {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
     TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
   }) {
@@ -1073,6 +1823,9 @@ class _$_unknown extends _unknown {
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
     TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
     TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
     TResult Function(_unknown value)? unknown,
     required TResult orElse(),
@@ -1092,8 +1845,13 @@ class _$_unknown extends _unknown {
 }
 
 abstract class _unknown extends AuthFailure {
-  const factory _unknown() = _$_unknown;
+  const factory _unknown(final String? message) = _$_unknown;
   const _unknown._() : super._();
 
   factory _unknown.fromJson(Map<String, dynamic> json) = _$_unknown.fromJson;
+
+  String? get message;
+  @JsonKey(ignore: true)
+  _$$_unknownCopyWith<_$_unknown> get copyWith =>
+      throw _privateConstructorUsedError;
 }

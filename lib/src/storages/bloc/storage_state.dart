@@ -6,6 +6,8 @@ class StorageState with _$StorageState {
   const factory StorageState.paused() = _paused;
   const factory StorageState.canceled() = _canceled;
   const factory StorageState.error({required StorageFailure failure}) = _error;
-  const factory StorageState.success(String url) = _success;
+  const factory StorageState.success(
+    IList<Either<StorageFailure, String>> eitherFailuresOrUrls,
+  ) = _success;
   const factory StorageState.running({required double process}) = _running;
 }

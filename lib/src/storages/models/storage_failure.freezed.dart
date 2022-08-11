@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$StorageFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() upload,
+    required TResult Function(StorageFile file) upload,
     required TResult Function(String path) fileNotExisted,
     required TResult Function() invalidFile,
     required TResult Function() full,
@@ -32,7 +32,7 @@ mixin _$StorageFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -46,7 +46,7 @@ mixin _$StorageFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -125,6 +125,9 @@ class _$StorageFailureCopyWithImpl<$Res>
 abstract class _$$_uploadCopyWith<$Res> {
   factory _$$_uploadCopyWith(_$_upload value, $Res Function(_$_upload) then) =
       __$$_uploadCopyWithImpl<$Res>;
+  $Res call({StorageFile file});
+
+  $StorageFileCopyWith<$Res> get file;
 }
 
 /// @nodoc
@@ -135,31 +138,61 @@ class __$$_uploadCopyWithImpl<$Res> extends _$StorageFailureCopyWithImpl<$Res>
 
   @override
   _$_upload get _value => super._value as _$_upload;
+
+  @override
+  $Res call({
+    Object? file = freezed,
+  }) {
+    return _then(_$_upload(
+      file == freezed
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as StorageFile,
+    ));
+  }
+
+  @override
+  $StorageFileCopyWith<$Res> get file {
+    return $StorageFileCopyWith<$Res>(_value.file, (value) {
+      return _then(_value.copyWith(file: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$_upload implements _upload {
-  const _$_upload();
+  const _$_upload(this.file);
+
+  @override
+  final StorageFile file;
 
   @override
   String toString() {
-    return 'StorageFailure.upload()';
+    return 'StorageFailure.upload(file: $file)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_upload);
+        (other.runtimeType == runtimeType &&
+            other is _$_upload &&
+            const DeepCollectionEquality().equals(other.file, file));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(file));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_uploadCopyWith<_$_upload> get copyWith =>
+      __$$_uploadCopyWithImpl<_$_upload>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() upload,
+    required TResult Function(StorageFile file) upload,
     required TResult Function(String path) fileNotExisted,
     required TResult Function() invalidFile,
     required TResult Function() full,
@@ -170,13 +203,13 @@ class _$_upload implements _upload {
     required TResult Function() canceled,
     required TResult Function(String desc) unknown,
   }) {
-    return upload();
+    return upload(file);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -187,13 +220,13 @@ class _$_upload implements _upload {
     TResult Function()? canceled,
     TResult Function(String desc)? unknown,
   }) {
-    return upload?.call();
+    return upload?.call(file);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -206,7 +239,7 @@ class _$_upload implements _upload {
     required TResult orElse(),
   }) {
     if (upload != null) {
-      return upload();
+      return upload(file);
     }
     return orElse();
   }
@@ -268,7 +301,12 @@ class _$_upload implements _upload {
 }
 
 abstract class _upload implements StorageFailure {
-  const factory _upload() = _$_upload;
+  const factory _upload(final StorageFile file) = _$_upload;
+
+  StorageFile get file;
+  @JsonKey(ignore: true)
+  _$$_uploadCopyWith<_$_upload> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -336,7 +374,7 @@ class _$_fileNotExisted implements _fileNotExisted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() upload,
+    required TResult Function(StorageFile file) upload,
     required TResult Function(String path) fileNotExisted,
     required TResult Function() invalidFile,
     required TResult Function() full,
@@ -353,7 +391,7 @@ class _$_fileNotExisted implements _fileNotExisted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -370,7 +408,7 @@ class _$_fileNotExisted implements _fileNotExisted {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -494,7 +532,7 @@ class _$_invalidFile implements _invalidFile {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() upload,
+    required TResult Function(StorageFile file) upload,
     required TResult Function(String path) fileNotExisted,
     required TResult Function() invalidFile,
     required TResult Function() full,
@@ -511,7 +549,7 @@ class _$_invalidFile implements _invalidFile {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -528,7 +566,7 @@ class _$_invalidFile implements _invalidFile {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -644,7 +682,7 @@ class _$_full implements _full {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() upload,
+    required TResult Function(StorageFile file) upload,
     required TResult Function(String path) fileNotExisted,
     required TResult Function() invalidFile,
     required TResult Function() full,
@@ -661,7 +699,7 @@ class _$_full implements _full {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -678,7 +716,7 @@ class _$_full implements _full {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -794,7 +832,7 @@ class _$_cloud implements _cloud {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() upload,
+    required TResult Function(StorageFile file) upload,
     required TResult Function(String path) fileNotExisted,
     required TResult Function() invalidFile,
     required TResult Function() full,
@@ -811,7 +849,7 @@ class _$_cloud implements _cloud {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -828,7 +866,7 @@ class _$_cloud implements _cloud {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -947,7 +985,7 @@ class _$_invalidUrl implements _invalidUrl {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() upload,
+    required TResult Function(StorageFile file) upload,
     required TResult Function(String path) fileNotExisted,
     required TResult Function() invalidFile,
     required TResult Function() full,
@@ -964,7 +1002,7 @@ class _$_invalidUrl implements _invalidUrl {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -981,7 +1019,7 @@ class _$_invalidUrl implements _invalidUrl {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -1100,7 +1138,7 @@ class _$_retryExceed implements _retryExceed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() upload,
+    required TResult Function(StorageFile file) upload,
     required TResult Function(String path) fileNotExisted,
     required TResult Function() invalidFile,
     required TResult Function() full,
@@ -1117,7 +1155,7 @@ class _$_retryExceed implements _retryExceed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -1134,7 +1172,7 @@ class _$_retryExceed implements _retryExceed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -1253,7 +1291,7 @@ class _$_unauthorized implements _unauthorized {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() upload,
+    required TResult Function(StorageFile file) upload,
     required TResult Function(String path) fileNotExisted,
     required TResult Function() invalidFile,
     required TResult Function() full,
@@ -1270,7 +1308,7 @@ class _$_unauthorized implements _unauthorized {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -1287,7 +1325,7 @@ class _$_unauthorized implements _unauthorized {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -1405,7 +1443,7 @@ class _$_canceled implements _canceled {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() upload,
+    required TResult Function(StorageFile file) upload,
     required TResult Function(String path) fileNotExisted,
     required TResult Function() invalidFile,
     required TResult Function() full,
@@ -1422,7 +1460,7 @@ class _$_canceled implements _canceled {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -1439,7 +1477,7 @@ class _$_canceled implements _canceled {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -1580,7 +1618,7 @@ class _$_unknown implements _unknown {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() upload,
+    required TResult Function(StorageFile file) upload,
     required TResult Function(String path) fileNotExisted,
     required TResult Function() invalidFile,
     required TResult Function() full,
@@ -1597,7 +1635,7 @@ class _$_unknown implements _unknown {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,
@@ -1614,7 +1652,7 @@ class _$_unknown implements _unknown {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? upload,
+    TResult Function(StorageFile file)? upload,
     TResult Function(String path)? fileNotExisted,
     TResult Function()? invalidFile,
     TResult Function()? full,

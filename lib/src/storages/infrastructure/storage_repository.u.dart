@@ -17,19 +17,22 @@ class StorageRepository {
     String? path,
     String? name,
     String? contentType,
-  }) {
-    try {
-      return right(_ss.upload(file, path, name, contentType));
-    } on FileSystemException {
-      return left(StorageFailure.fileNotExisted(path ?? ''));
-    } on StdinException {
-      return left(const StorageFailure.invalidFile());
-    } on FirebaseException catch (e) {
-      return _firebaseExceptionToFailure(e);
-    } catch (_) {
-      return left(StorageFailure.unknown(_.toString()));
-    }
-  }
+  }) =>
+      _auxCatching(
+        () => right(_ss.upload(file, path, name, contentType)),
+        path,
+      );
+
+  Future<Either<StorageFailure, String>> updateF({
+    required File file,
+    String? path,
+    String? name,
+    String? contentType,
+  }) async =>
+      _auxCatching(
+        () => right(_ss.uploadUrl(file, path, name, contentType)),
+        path,
+      ).traverseFuture((r) async => r);
 
   Future<Either<StorageFailure, Unit>> delete(String url) async =>
       Task(() => delete(url))
@@ -44,12 +47,28 @@ class StorageRepository {
           )
           .run();
 
+  Either<StorageFailure, T> _auxCatching<T>(
+    Function0<Either<StorageFailure, T>> cb,
+    String? path,
+  ) {
+    try {
+      return cb();
+    } on FileSystemException {
+      return left(StorageFailure.fileNotExisted(path ?? ''));
+    } on StdinException {
+      return left(const StorageFailure.invalidFile());
+    } on FirebaseException catch (e) {
+      return _firebaseExceptionToFailure(e);
+    } catch (_) {
+      return left(StorageFailure.unknown(_.toString()));
+    }
+  }
+
   Either<StorageFailure, T> _firebaseExceptionToFailure<T>(
     FirebaseException e,
   ) {
     switch (e.code) {
       case 'storage/invalid-argument':
-        return left(const StorageFailure.upload());
       case 'storage/invalid-url':
         return left(const StorageFailure.invalidUrl());
       case 'storage/canceled':

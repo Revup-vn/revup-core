@@ -29,6 +29,7 @@ class AuthenticatorRepository {
   Future<Either<AuthFailure, bool>> emailSignUp({
     required String email,
     required String pwd,
+    required OnCompleteSignUp onCompleteSignUp,
   }) async =>
       await Task(
         () => _emailAuthenticator.emailSignUp(email: email, password: pwd),
@@ -38,26 +39,14 @@ class AuthenticatorRepository {
             (a) async => a.fold<Future<Either<AuthFailure, bool>>>(
               (l) async => l is FirebaseException
                   ? left(AuthFailure.server(l.code))
-                  : left(const AuthFailure.unknown()),
+                  : left(AuthFailure.unknown(l.toString())),
               (r) async => r.user?.uid.isEmpty ?? true
                   ? const Left<AuthFailure, bool>(
                       AuthFailure.server('No UID on sign up'),
                     )
                   : await Task(
-                      () => _emailAuthenticator.signUp(
-                        AppUser.admin(
-                          uuid: r.user!.uid,
-                          firstName: 'John',
-                          lastName: 'Doe',
-                          phone: 'XXX-XXX-XXXX',
-                          dob: DateTime(2000),
-                          addr: 'Netherlands',
-                          email: r.user?.email ?? '',
-                          active: true,
-                          avatarUrl: '',
-                          createdTime: DateTime.now(),
-                          lastUpdatedTime: DateTime.now(),
-                        ),
+                      () async => _emailAuthenticator.signUp(
+                        await onCompleteSignUp(r.user!),
                       ),
                     )
                       .attempt()
@@ -86,7 +75,7 @@ class AuthenticatorRepository {
             (a) async => a.fold<Future<Either<AuthFailure, AppUser>>>(
               (l) async => l is FirebaseException
                   ? left(AuthFailure.server(l.code))
-                  : left(const AuthFailure.unknown()),
+                  : left(AuthFailure.unknown(l.toString())),
               (r) async => r.user?.uid.isEmpty ?? true
                   ? const Left<AuthFailure, AppUser>(AuthFailure.storage())
                   : await Task(
@@ -130,10 +119,13 @@ class AuthenticatorRepository {
     } on ValidateException {
       return left(const AuthFailure.invalidData('User cannot be null'));
     } catch (_) {
-      return left(const AuthFailure.unknown());
+      return left(AuthFailure.unknown(_.toString()));
     }
   }
 
+  /// This method should only call when the phone number is already in the
+  /// fire_auth. It will still check for the phone and the email associated
+  /// with the fire_auth account to persist the account to the firestore
   Future<Either<AuthFailure, AppUser>> _signInUp(
     DocumentSnapshot<Map<String, dynamic>> recordData,
     OnCompleteSignUp onSignUpSubmit,
@@ -144,26 +136,28 @@ class AuthenticatorRepository {
           .leftMap<AuthFailure>(
         (dynamic _) => const AuthFailure.invalidData('Cannot parse data'),
       );
-    } else {
-      final appUser = await onSignUpSubmit(user);
-      if (user.phoneNumber?.isEmpty ?? true) {
-        return left(AuthFailure.needToVerifyPhoneNumber(appUser));
-      }
-      if (!(await _phoneAuthenticatorService.isPhoneValid(appUser.phone) &&
-          await _googleAuthenticatorService.isEmailValid(appUser.email))) {
-        return left(
-          const AuthFailure.invalidData(
-            'Phone number or email is already existed',
-          ),
-        );
-      }
-
-      return await _googleAuthenticatorService.signUp(appUser)
-          ? right(appUser)
-          : left(
-              const AuthFailure.server('Cannot sign up with google account'),
-            );
     }
+    final appUser = await onSignUpSubmit(user);
+
+    return user.phoneNumber?.isEmpty ?? true
+        ? left(AuthFailure.needToVerifyPhoneNumber(appUser))
+        : !(await _phoneAuthenticatorService
+                    .isPhoneStorePersist(appUser.phone) &&
+                await _googleAuthenticatorService.isEmailValid(appUser.email))
+            ? left(
+                const AuthFailure.invalidData(
+                  'Phone number or email is already existed',
+                ),
+              )
+            : appUser.firstName.isNotEmpty && appUser.lastName.isNotEmpty
+                ? await _googleAuthenticatorService.signUp(appUser)
+                    ? right(appUser)
+                    : left(
+                        const AuthFailure.server(
+                          'Cannot sign up with google account',
+                        ),
+                      )
+                : left(AuthFailure.uncompletedData(appUser));
   }
 
   FutureOr<bool> ggSignOut() => Task(_googleAuthenticatorService.signOut)
@@ -187,15 +181,16 @@ class AuthenticatorRepository {
             late FutureOr<Either<AuthFailure, AppUser>> res;
 
             try {
-              tmp = await _phoneAux(
-                phoneNumber,
-                onSubmitOTP,
-                onTimeOut,
-                onSignUpSubmit,
-              );
-
               if (assignValueEffectsForTesting != null) {
                 tmp = right(assignValueEffectsForTesting);
+              } else if (await _phoneAuthenticatorService
+                  .isPhoneAuthValid(phoneNumber)) {
+                tmp = await _phoneAux(
+                  phoneNumber,
+                  onSubmitOTP,
+                  onTimeOut,
+                  onSignUpSubmit,
+                );
               }
             } on FirebaseAuthException catch (e) {
               tmp = left(AuthFailure.invalidData(e.code));
@@ -204,7 +199,7 @@ class AuthenticatorRepository {
                 const AuthFailure.invalidData('Phone number is not valid'),
               );
             } catch (_) {
-              tmp = left(const AuthFailure.unknown());
+              tmp = left(AuthFailure.unknown(_.toString()));
             } finally {
               res = tmp ?? left(const AuthFailure.server());
             }
@@ -224,19 +219,17 @@ class AuthenticatorRepository {
         onTimeout: onTimeOut,
       ))
           .fold<FutureOr<Either<AuthFailure, AppUser>>>(
-        (l) async {
-          if (l is ValidateException) {
-            return left(
-              const AuthFailure.invalidData(
-                'Phone number is not valid',
-              ),
-            );
-          } else {
-            l as FirebaseException;
-
-            return left(AuthFailure.server(l.code));
-          }
-        },
+        (l) async => l is ValidateException
+            ? left(
+                const AuthFailure.invalidData(
+                  'Phone number is not valid',
+                ),
+              )
+            : l is FirebaseException
+                ? l.code == 'invalid-verification-code'
+                    ? left(AuthFailure.invalidOTP(phoneNumber))
+                    : left(AuthFailure.server(l.code))
+                : left(AuthFailure.unknown(l.toString())),
         (uc) async {
           if (uc.user == null) {
             return left(const AuthFailure.invalidData());

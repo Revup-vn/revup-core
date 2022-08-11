@@ -16,7 +16,9 @@ abstract class Authenticator {
 
   @internal
   Future<bool> isFieldValid(String field, String val) async =>
-      (await _store.users.where(field, isEqualTo: val).get()).size == 0;
+      (await _store.isFieldValid(field, val))
+          .toOption()
+          .fold(() => false, (a) => a);
 
   Future<DocumentSnapshot<Map<String, dynamic>>> getUserDocument(
     String id,

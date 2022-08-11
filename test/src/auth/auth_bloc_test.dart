@@ -57,7 +57,14 @@ void main() {
             b.add(AuthenticateEvent.signOut(authType: mockPhoneAuthType)),
         expect: () => [
           const AuthenticateState.loading(),
-          const AuthenticateState.failure(),
+          isA<AuthenticateState>().having(
+            (p0) => p0.maybeMap(
+              failure: (_) => true,
+              orElse: () => false,
+            ),
+            'Is a AuthFailure',
+            true,
+          ),
         ],
       );
 
@@ -70,7 +77,14 @@ void main() {
         act: (b) => b.add(AuthenticateEvent.signOut(authType: mockGGAuthType)),
         expect: () => [
           const AuthenticateState.loading(),
-          const AuthenticateState.failure(),
+          isA<AuthenticateState>().having(
+            (p0) => p0.maybeMap(
+              failure: (_) => true,
+              orElse: () => false,
+            ),
+            'Is a AuthFailure',
+            true,
+          ),
         ],
       );
 
@@ -122,14 +136,21 @@ void main() {
             () => repository.ggSignUpIn(
               onSignUpSubmit: any(named: 'onSignUpSubmit'),
             ),
-          ).thenAnswer((_) => left(const AuthFailure.unknown()));
+          ).thenAnswer((_) => left(const AuthFailure.unknown('')));
         },
         act: (b) => b.add(
           AuthenticateEvent.loginWithGoogle(onCompleteSignUp: (_) => mockUser),
         ),
         expect: () => [
           const AuthenticateState.loading(),
-          const AuthenticateState.failure(failure: AuthFailure.unknown()),
+          isA<AuthenticateState>().having(
+            (p0) => p0.maybeMap(
+              failure: (_) => true,
+              orElse: () => false,
+            ),
+            'Is a AuthFailure',
+            true,
+          ),
         ],
       );
 
@@ -183,19 +204,25 @@ void main() {
               onSignUpSubmit: any(named: 'onSignUpSubmit'),
               onSubmitOTP: any(named: 'onSubmitOTP'),
             ),
-          ).thenReturn((a, b) => left(const AuthFailure.unknown()));
+          ).thenReturn((a, b) => left(const AuthFailure.unknown('')));
         },
         act: (b) => b.add(
           AuthenticateEvent.loginWithPhone(
             onSignUpSubmit: (_) => mockUser,
-            onSignUpSuccess: () async => unit,
             onSubmitOTP: () => '',
             phoneNumber: '',
           ),
         ),
         expect: () => [
           const AuthenticateState.loading(),
-          const AuthenticateState.failure(failure: AuthFailure.unknown()),
+          isA<AuthenticateState>().having(
+            (p0) => p0.maybeMap(
+              failure: (_) => true,
+              orElse: () => false,
+            ),
+            'Is a AuthFailure',
+            true,
+          ),
         ],
       );
 
@@ -213,7 +240,6 @@ void main() {
         act: (b) => b.add(
           AuthenticateEvent.loginWithPhone(
             onSignUpSubmit: (_) => mockUser,
-            onSignUpSuccess: () async => unit,
             onSubmitOTP: () => '',
             phoneNumber: '',
           ),

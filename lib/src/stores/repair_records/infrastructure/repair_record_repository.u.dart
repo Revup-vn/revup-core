@@ -23,13 +23,10 @@ class RepairRecordRepository extends Store<RepairRecord> {
   DocumentReference<Map<String, dynamic>> doc(String id) => record(id);
 
   @override
-  Future<Either<StoreFailure, RepairRecord>> get(String id) async => auxGet(id);
-
-  @override
   String getId(RepairRecord data) => data.id;
 
   @override
-  FutureOr<Either<StoreFailure, Unit>> update(
+  FutureOr<Either<StoreFailure, Unit>> updateFields(
     RepairRecord newData,
     IList<String> fields,
   ) =>
