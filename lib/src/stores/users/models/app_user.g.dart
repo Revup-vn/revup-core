@@ -82,10 +82,8 @@ _$_provider _$$_providerFromJson(Map<String, dynamic> json) => $checkedCreate(
           vac: $checkedConvert('vac',
               (v) => VideoCallAccount.fromJson(v as Map<String, dynamic>)),
           online: $checkedConvert('online', (v) => v as bool),
-          curLocation: $checkedConvert(
-              'cur_location',
-              (v) => const GeoPointConverter()
-                  .fromJson(v as Map<String, dynamic>)),
+          loc: $checkedConvert(
+              'loc', (v) => Location.fromJson(v as Map<String, dynamic>)),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -99,7 +97,6 @@ _$_provider _$$_providerFromJson(Map<String, dynamic> json) => $checkedCreate(
         'idCardNum': 'id_card_num',
         'idCardImage': 'id_card_image',
         'backgroundUrl': 'background_url',
-        'curLocation': 'cur_location',
         r'$type': 'type'
       },
     );
@@ -123,7 +120,7 @@ Map<String, dynamic> _$$_providerToJson(_$_provider instance) =>
       'bio': instance.bio,
       'vac': instance.vac.toJson(),
       'online': instance.online,
-      'cur_location': const GeoPointConverter().toJson(instance.curLocation),
+      'loc': instance.loc.toJson(),
       'type': instance.$type,
     };
 

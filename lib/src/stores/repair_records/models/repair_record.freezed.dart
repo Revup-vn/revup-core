@@ -44,6 +44,8 @@ mixin _$RepairRecord {
   String get desc => throw _privateConstructorUsedError;
   String get vehicle => throw _privateConstructorUsedError;
   int get money => throw _privateConstructorUsedError;
+  Location get from => throw _privateConstructorUsedError;
+  Location get to => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
@@ -54,8 +56,8 @@ mixin _$RepairRecord {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)
         pending,
     required TResult Function(
@@ -119,7 +121,7 @@ mixin _$RepairRecord {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)
@@ -136,8 +138,8 @@ mixin _$RepairRecord {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)?
         pending,
     TResult Function(
@@ -193,7 +195,7 @@ mixin _$RepairRecord {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)?
@@ -210,8 +212,8 @@ mixin _$RepairRecord {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)?
         pending,
     TResult Function(
@@ -267,7 +269,7 @@ mixin _$RepairRecord {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)?
@@ -324,7 +326,12 @@ abstract class $RepairRecordCopyWith<$Res> {
       DateTime created,
       String desc,
       String vehicle,
-      int money});
+      int money,
+      Location from,
+      Location to});
+
+  $LocationCopyWith<$Res> get from;
+  $LocationCopyWith<$Res> get to;
 }
 
 /// @nodoc
@@ -344,6 +351,8 @@ class _$RepairRecordCopyWithImpl<$Res> implements $RepairRecordCopyWith<$Res> {
     Object? desc = freezed,
     Object? vehicle = freezed,
     Object? money = freezed,
+    Object? from = freezed,
+    Object? to = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -374,7 +383,29 @@ class _$RepairRecordCopyWithImpl<$Res> implements $RepairRecordCopyWith<$Res> {
           ? _value.money
           : money // ignore: cast_nullable_to_non_nullable
               as int,
+      from: from == freezed
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
+              as Location,
+      to: to == freezed
+          ? _value.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as Location,
     ));
+  }
+
+  @override
+  $LocationCopyWith<$Res> get from {
+    return $LocationCopyWith<$Res>(_value.from, (value) {
+      return _then(_value.copyWith(from: value));
+    });
+  }
+
+  @override
+  $LocationCopyWith<$Res> get to {
+    return $LocationCopyWith<$Res>(_value.to, (value) {
+      return _then(_value.copyWith(to: value));
+    });
   }
 }
 
@@ -393,9 +424,14 @@ abstract class _$$_pendingCopyWith<$Res>
       String desc,
       String vehicle,
       int money,
-      @GeoPointConverter() GeoFirePoint from,
-      @GeoPointConverter() GeoFirePoint to,
+      Location from,
+      Location to,
       List<OptionalService> services});
+
+  @override
+  $LocationCopyWith<$Res> get from;
+  @override
+  $LocationCopyWith<$Res> get to;
 }
 
 /// @nodoc
@@ -452,11 +488,11 @@ class __$$_pendingCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
       from: from == freezed
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
-              as GeoFirePoint,
+              as Location,
       to: to == freezed
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
-              as GeoFirePoint,
+              as Location,
       services: services == freezed
           ? _value._services
           : services // ignore: cast_nullable_to_non_nullable
@@ -476,8 +512,8 @@ class _$_pending implements _pending {
       required this.desc,
       required this.vehicle,
       required this.money,
-      @GeoPointConverter() required this.from,
-      @GeoPointConverter() required this.to,
+      required this.from,
+      required this.to,
       required final List<OptionalService> services,
       final String? $type})
       : _services = services,
@@ -501,11 +537,9 @@ class _$_pending implements _pending {
   @override
   final int money;
   @override
-  @GeoPointConverter()
-  final GeoFirePoint from;
+  final Location from;
   @override
-  @GeoPointConverter()
-  final GeoFirePoint to;
+  final Location to;
   final List<OptionalService> _services;
   @override
   List<OptionalService> get services {
@@ -569,8 +603,8 @@ class _$_pending implements _pending {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)
         pending,
     required TResult Function(
@@ -634,7 +668,7 @@ class _$_pending implements _pending {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)
@@ -655,8 +689,8 @@ class _$_pending implements _pending {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)?
         pending,
     TResult Function(
@@ -712,7 +746,7 @@ class _$_pending implements _pending {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)?
@@ -733,8 +767,8 @@ class _$_pending implements _pending {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)?
         pending,
     TResult Function(
@@ -790,7 +824,7 @@ class _$_pending implements _pending {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)?
@@ -864,8 +898,8 @@ abstract class _pending implements RepairRecord {
       required final String desc,
       required final String vehicle,
       required final int money,
-      @GeoPointConverter() required final GeoFirePoint from,
-      @GeoPointConverter() required final GeoFirePoint to,
+      required final Location from,
+      required final Location to,
       required final List<OptionalService> services}) = _$_pending;
 
   factory _pending.fromJson(Map<String, dynamic> json) = _$_pending.fromJson;
@@ -884,10 +918,10 @@ abstract class _pending implements RepairRecord {
   String get vehicle;
   @override
   int get money;
-  @GeoPointConverter()
-  GeoFirePoint get from;
-  @GeoPointConverter()
-  GeoFirePoint get to;
+  @override
+  Location get from;
+  @override
+  Location get to;
   List<OptionalService> get services;
   @override
   @JsonKey(ignore: true)
@@ -912,7 +946,9 @@ abstract class _$$_acceptCopyWith<$Res> implements $RepairRecordCopyWith<$Res> {
       Location from,
       Location to});
 
+  @override
   $LocationCopyWith<$Res> get from;
+  @override
   $LocationCopyWith<$Res> get to;
 }
 
@@ -980,20 +1016,6 @@ class __$$_acceptCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           : to // ignore: cast_nullable_to_non_nullable
               as Location,
     ));
-  }
-
-  @override
-  $LocationCopyWith<$Res> get from {
-    return $LocationCopyWith<$Res>(_value.from, (value) {
-      return _then(_value.copyWith(from: value));
-    });
-  }
-
-  @override
-  $LocationCopyWith<$Res> get to {
-    return $LocationCopyWith<$Res>(_value.to, (value) {
-      return _then(_value.copyWith(to: value));
-    });
   }
 }
 
@@ -1094,8 +1116,8 @@ class _$_accept implements _accept {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)
         pending,
     required TResult Function(
@@ -1159,7 +1181,7 @@ class _$_accept implements _accept {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)
@@ -1180,8 +1202,8 @@ class _$_accept implements _accept {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)?
         pending,
     TResult Function(
@@ -1237,7 +1259,7 @@ class _$_accept implements _accept {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)?
@@ -1258,8 +1280,8 @@ class _$_accept implements _accept {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)?
         pending,
     TResult Function(
@@ -1315,7 +1337,7 @@ class _$_accept implements _accept {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)?
@@ -1410,7 +1432,9 @@ abstract class _accept implements RepairRecord {
   @override
   int get money;
   DateTime get moving;
+  @override
   Location get from;
+  @override
   Location get to;
   @override
   @JsonKey(ignore: true)
@@ -1436,7 +1460,9 @@ abstract class _$$_abortedCopyWith<$Res>
       Location from,
       Location to});
 
+  @override
   $LocationCopyWith<$Res> get from;
+  @override
   $LocationCopyWith<$Res> get to;
 }
 
@@ -1499,20 +1525,6 @@ class __$$_abortedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           : to // ignore: cast_nullable_to_non_nullable
               as Location,
     ));
-  }
-
-  @override
-  $LocationCopyWith<$Res> get from {
-    return $LocationCopyWith<$Res>(_value.from, (value) {
-      return _then(_value.copyWith(from: value));
-    });
-  }
-
-  @override
-  $LocationCopyWith<$Res> get to {
-    return $LocationCopyWith<$Res>(_value.to, (value) {
-      return _then(_value.copyWith(to: value));
-    });
   }
 }
 
@@ -1608,8 +1620,8 @@ class _$_aborted implements _aborted {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)
         pending,
     required TResult Function(
@@ -1673,7 +1685,7 @@ class _$_aborted implements _aborted {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)
@@ -1693,8 +1705,8 @@ class _$_aborted implements _aborted {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)?
         pending,
     TResult Function(
@@ -1750,7 +1762,7 @@ class _$_aborted implements _aborted {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)?
@@ -1770,8 +1782,8 @@ class _$_aborted implements _aborted {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)?
         pending,
     TResult Function(
@@ -1827,7 +1839,7 @@ class _$_aborted implements _aborted {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)?
@@ -1919,7 +1931,9 @@ abstract class _aborted implements RepairRecord {
   String get vehicle;
   @override
   int get money;
+  @override
   Location get from;
+  @override
   Location get to;
   @override
   @JsonKey(ignore: true)
@@ -1947,7 +1961,9 @@ abstract class _$$_arrivedCopyWith<$Res>
       Location from,
       Location to});
 
+  @override
   $LocationCopyWith<$Res> get from;
+  @override
   $LocationCopyWith<$Res> get to;
 }
 
@@ -2020,20 +2036,6 @@ class __$$_arrivedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           : to // ignore: cast_nullable_to_non_nullable
               as Location,
     ));
-  }
-
-  @override
-  $LocationCopyWith<$Res> get from {
-    return $LocationCopyWith<$Res>(_value.from, (value) {
-      return _then(_value.copyWith(from: value));
-    });
-  }
-
-  @override
-  $LocationCopyWith<$Res> get to {
-    return $LocationCopyWith<$Res>(_value.to, (value) {
-      return _then(_value.copyWith(to: value));
-    });
   }
 }
 
@@ -2139,8 +2141,8 @@ class _$_arrived implements _arrived {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)
         pending,
     required TResult Function(
@@ -2204,7 +2206,7 @@ class _$_arrived implements _arrived {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)
@@ -2225,8 +2227,8 @@ class _$_arrived implements _arrived {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)?
         pending,
     TResult Function(
@@ -2282,7 +2284,7 @@ class _$_arrived implements _arrived {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)?
@@ -2303,8 +2305,8 @@ class _$_arrived implements _arrived {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)?
         pending,
     TResult Function(
@@ -2360,7 +2362,7 @@ class _$_arrived implements _arrived {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)?
@@ -2457,7 +2459,9 @@ abstract class _arrived implements RepairRecord {
   int get money;
   DateTime get moving;
   DateTime get arrived;
+  @override
   Location get from;
+  @override
   Location get to;
   @override
   @JsonKey(ignore: true)
@@ -2485,7 +2489,9 @@ abstract class _$$_startedCopyWith<$Res>
       Location from,
       Location to});
 
+  @override
   $LocationCopyWith<$Res> get from;
+  @override
   $LocationCopyWith<$Res> get to;
 }
 
@@ -2558,20 +2564,6 @@ class __$$_startedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           : to // ignore: cast_nullable_to_non_nullable
               as Location,
     ));
-  }
-
-  @override
-  $LocationCopyWith<$Res> get from {
-    return $LocationCopyWith<$Res>(_value.from, (value) {
-      return _then(_value.copyWith(from: value));
-    });
-  }
-
-  @override
-  $LocationCopyWith<$Res> get to {
-    return $LocationCopyWith<$Res>(_value.to, (value) {
-      return _then(_value.copyWith(to: value));
-    });
   }
 }
 
@@ -2677,8 +2669,8 @@ class _$_started implements _started {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)
         pending,
     required TResult Function(
@@ -2742,7 +2734,7 @@ class _$_started implements _started {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)
@@ -2763,8 +2755,8 @@ class _$_started implements _started {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)?
         pending,
     TResult Function(
@@ -2820,7 +2812,7 @@ class _$_started implements _started {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)?
@@ -2841,8 +2833,8 @@ class _$_started implements _started {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)?
         pending,
     TResult Function(
@@ -2898,7 +2890,7 @@ class _$_started implements _started {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)?
@@ -2995,7 +2987,9 @@ abstract class _started implements RepairRecord {
   int get money;
   DateTime get moving;
   DateTime get started;
+  @override
   Location get from;
+  @override
   Location get to;
   @override
   @JsonKey(ignore: true)
@@ -3022,13 +3016,15 @@ abstract class _$$_finishedCopyWith<$Res>
       DateTime started,
       DateTime completed,
       List<String> imgs,
-      Feedback feedback,
+      ReportFeedback feedback,
       Location from,
       Location to,
       RepairReport? report});
 
-  $FeedbackCopyWith<$Res> get feedback;
+  $ReportFeedbackCopyWith<$Res> get feedback;
+  @override
   $LocationCopyWith<$Res> get from;
+  @override
   $LocationCopyWith<$Res> get to;
   $RepairReportCopyWith<$Res>? get report;
 }
@@ -3109,7 +3105,7 @@ class __$$_finishedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
       feedback: feedback == freezed
           ? _value.feedback
           : feedback // ignore: cast_nullable_to_non_nullable
-              as Feedback,
+              as ReportFeedback,
       from: from == freezed
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
@@ -3126,23 +3122,9 @@ class __$$_finishedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
   }
 
   @override
-  $FeedbackCopyWith<$Res> get feedback {
-    return $FeedbackCopyWith<$Res>(_value.feedback, (value) {
+  $ReportFeedbackCopyWith<$Res> get feedback {
+    return $ReportFeedbackCopyWith<$Res>(_value.feedback, (value) {
       return _then(_value.copyWith(feedback: value));
-    });
-  }
-
-  @override
-  $LocationCopyWith<$Res> get from {
-    return $LocationCopyWith<$Res>(_value.from, (value) {
-      return _then(_value.copyWith(from: value));
-    });
-  }
-
-  @override
-  $LocationCopyWith<$Res> get to {
-    return $LocationCopyWith<$Res>(_value.to, (value) {
-      return _then(_value.copyWith(to: value));
     });
   }
 
@@ -3212,7 +3194,7 @@ class _$_finished implements _finished {
   }
 
   @override
-  final Feedback feedback;
+  final ReportFeedback feedback;
   @override
   final Location from;
   @override
@@ -3286,8 +3268,8 @@ class _$_finished implements _finished {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)
         pending,
     required TResult Function(
@@ -3351,7 +3333,7 @@ class _$_finished implements _finished {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)
@@ -3372,8 +3354,8 @@ class _$_finished implements _finished {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)?
         pending,
     TResult Function(
@@ -3429,7 +3411,7 @@ class _$_finished implements _finished {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)?
@@ -3450,8 +3432,8 @@ class _$_finished implements _finished {
             String desc,
             String vehicle,
             int money,
-            @GeoPointConverter() GeoFirePoint from,
-            @GeoPointConverter() GeoFirePoint to,
+            Location from,
+            Location to,
             List<OptionalService> services)?
         pending,
     TResult Function(
@@ -3507,7 +3489,7 @@ class _$_finished implements _finished {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            Feedback feedback,
+            ReportFeedback feedback,
             Location from,
             Location to,
             RepairReport? report)?
@@ -3585,7 +3567,7 @@ abstract class _finished implements RepairRecord {
       required final DateTime started,
       required final DateTime completed,
       required final List<String> imgs,
-      required final Feedback feedback,
+      required final ReportFeedback feedback,
       required final Location from,
       required final Location to,
       final RepairReport? report}) = _$_finished;
@@ -3610,8 +3592,10 @@ abstract class _finished implements RepairRecord {
   DateTime get started;
   DateTime get completed;
   List<String> get imgs;
-  Feedback get feedback;
+  ReportFeedback get feedback;
+  @override
   Location get from;
+  @override
   Location get to;
   RepairReport? get report;
   @override

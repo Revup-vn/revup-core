@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../infrastructure/infrastructure.dart';
-import '../../../stores.u.dart';
+import '../../../stores.dart';
 import '../../../utils/utils.dart';
 
 class PaymentAccountRepository extends Store<PaymentAccount> {

@@ -15,7 +15,7 @@ import '../../auth/auth.dart';
 import '../../auth/infrastructure/authenticator/email_authenticator.u.dart';
 import '../../storages/storages.dart';
 import '../../stores/repair_records/repair_records.dart';
-import '../../stores/stores.u.dart';
+import '../../stores/stores.dart';
 import '../../stores/users/users.dart';
 
 MultiRepositoryProvider coreRepositoryProviders({required Widget providers}) =>

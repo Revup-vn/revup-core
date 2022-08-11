@@ -13,6 +13,7 @@ class RepairProduct extends Serializable<RepairProduct> with _$RepairProduct {
     required String img,
     required int price,
   }) = _RepairProduct;
+
   factory RepairProduct.fromJson(Map<String, dynamic> json) =>
       _$RepairProductFromJson(json);
 }

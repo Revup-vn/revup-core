@@ -1,0 +1,1 @@
+enum RepairServiceFields { Name, Fee }

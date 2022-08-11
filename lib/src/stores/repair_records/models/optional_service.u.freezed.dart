@@ -22,7 +22,7 @@ OptionalService _$OptionalServiceFromJson(Map<String, dynamic> json) {
 mixin _$OptionalService {
   String get img => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
+  String get desc => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $OptionalServiceCopyWith<$Res> {
   factory $OptionalServiceCopyWith(
           OptionalService value, $Res Function(OptionalService) then) =
       _$OptionalServiceCopyWithImpl<$Res>;
-  $Res call({String img, String name, String description});
+  $Res call({String img, String name, String desc});
 }
 
 /// @nodoc
@@ -51,7 +51,7 @@ class _$OptionalServiceCopyWithImpl<$Res>
   $Res call({
     Object? img = freezed,
     Object? name = freezed,
-    Object? description = freezed,
+    Object? desc = freezed,
   }) {
     return _then(_value.copyWith(
       img: img == freezed
@@ -62,9 +62,9 @@ class _$OptionalServiceCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      desc: desc == freezed
+          ? _value.desc
+          : desc // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -77,7 +77,7 @@ abstract class _$$_OptionalServiceCopyWith<$Res>
           _$_OptionalService value, $Res Function(_$_OptionalService) then) =
       __$$_OptionalServiceCopyWithImpl<$Res>;
   @override
-  $Res call({String img, String name, String description});
+  $Res call({String img, String name, String desc});
 }
 
 /// @nodoc
@@ -95,7 +95,7 @@ class __$$_OptionalServiceCopyWithImpl<$Res>
   $Res call({
     Object? img = freezed,
     Object? name = freezed,
-    Object? description = freezed,
+    Object? desc = freezed,
   }) {
     return _then(_$_OptionalService(
       img: img == freezed
@@ -106,9 +106,9 @@ class __$$_OptionalServiceCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      desc: desc == freezed
+          ? _value.desc
+          : desc // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -118,7 +118,7 @@ class __$$_OptionalServiceCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_OptionalService implements _OptionalService {
   const _$_OptionalService(
-      {required this.img, required this.name, required this.description});
+      {required this.img, required this.name, required this.desc});
 
   factory _$_OptionalService.fromJson(Map<String, dynamic> json) =>
       _$$_OptionalServiceFromJson(json);
@@ -128,11 +128,11 @@ class _$_OptionalService implements _OptionalService {
   @override
   final String name;
   @override
-  final String description;
+  final String desc;
 
   @override
   String toString() {
-    return 'OptionalService(img: $img, name: $name, description: $description)';
+    return 'OptionalService(img: $img, name: $name, desc: $desc)';
   }
 
   @override
@@ -142,8 +142,7 @@ class _$_OptionalService implements _OptionalService {
             other is _$_OptionalService &&
             const DeepCollectionEquality().equals(other.img, img) &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description));
+            const DeepCollectionEquality().equals(other.desc, desc));
   }
 
   @JsonKey(ignore: true)
@@ -152,7 +151,7 @@ class _$_OptionalService implements _OptionalService {
       runtimeType,
       const DeepCollectionEquality().hash(img),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(description));
+      const DeepCollectionEquality().hash(desc));
 
   @JsonKey(ignore: true)
   @override
@@ -171,7 +170,7 @@ abstract class _OptionalService implements OptionalService {
   const factory _OptionalService(
       {required final String img,
       required final String name,
-      required final String description}) = _$_OptionalService;
+      required final String desc}) = _$_OptionalService;
 
   factory _OptionalService.fromJson(Map<String, dynamic> json) =
       _$_OptionalService.fromJson;
@@ -181,7 +180,7 @@ abstract class _OptionalService implements OptionalService {
   @override
   String get name;
   @override
-  String get description;
+  String get desc;
   @override
   @JsonKey(ignore: true)
   _$$_OptionalServiceCopyWith<_$_OptionalService> get copyWith =>

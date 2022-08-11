@@ -20,13 +20,9 @@ _$_pending _$$_pendingFromJson(Map<String, dynamic> json) => $checkedCreate(
           vehicle: $checkedConvert('vehicle', (v) => v as String),
           money: $checkedConvert('money', (v) => v as int),
           from: $checkedConvert(
-              'from',
-              (v) => const GeoPointConverter()
-                  .fromJson(v as Map<String, dynamic>)),
+              'from', (v) => Location.fromJson(v as Map<String, dynamic>)),
           to: $checkedConvert(
-              'to',
-              (v) => const GeoPointConverter()
-                  .fromJson(v as Map<String, dynamic>)),
+              'to', (v) => Location.fromJson(v as Map<String, dynamic>)),
           services: $checkedConvert(
               'services',
               (v) => (v as List<dynamic>)
@@ -49,8 +45,8 @@ Map<String, dynamic> _$$_pendingToJson(_$_pending instance) =>
       'desc': instance.desc,
       'vehicle': instance.vehicle,
       'money': instance.money,
-      'from': const GeoPointConverter().toJson(instance.from),
-      'to': const GeoPointConverter().toJson(instance.to),
+      'from': instance.from.toJson(),
+      'to': instance.to.toJson(),
       'services': instance.services.map((e) => e.toJson()).toList(),
       'type': instance.$type,
     };
@@ -238,8 +234,8 @@ _$_finished _$$_finishedFromJson(Map<String, dynamic> json) => $checkedCreate(
               $checkedConvert('completed', (v) => DateTime.parse(v as String)),
           imgs: $checkedConvert('imgs',
               (v) => (v as List<dynamic>).map((e) => e as String).toList()),
-          feedback: $checkedConvert(
-              'feedback', (v) => Feedback.fromJson(v as Map<String, dynamic>)),
+          feedback: $checkedConvert('feedback',
+              (v) => ReportFeedback.fromJson(v as Map<String, dynamic>)),
           from: $checkedConvert(
               'from', (v) => Location.fromJson(v as Map<String, dynamic>)),
           to: $checkedConvert(

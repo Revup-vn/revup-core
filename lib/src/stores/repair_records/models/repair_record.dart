@@ -1,9 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:geoflutterfire2/geoflutterfire2.dart';
 
 import '../../models/serializable.dart';
-import '../../shared/geo_point_converter.dart';
-import 'feedback.dart';
+import 'report_feedback.dart';
 import 'location.u.dart';
 import 'optional_service.u.dart';
 import 'repair_report.u.dart';
@@ -22,8 +20,8 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required String desc,
     required String vehicle,
     required int money,
-    @GeoPointConverter() required GeoFirePoint from,
-    @GeoPointConverter() required GeoFirePoint to,
+    required Location from,
+    required Location to,
     required List<OptionalService> services,
   }) = _pending;
 
@@ -97,7 +95,7 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required DateTime started,
     required DateTime completed,
     required List<String> imgs,
-    required Feedback feedback,
+    required ReportFeedback feedback,
     required Location from,
     required Location to,
     RepairReport? report,

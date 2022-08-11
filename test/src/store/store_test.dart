@@ -2,7 +2,7 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:revup_core/src/stores/stores.u.dart';
+import 'package:revup_core/src/stores/stores.dart';
 
 // final mockCollection = MockCollection();
 
