@@ -21,8 +21,8 @@ Location _$LocationFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Location {
   String get name => throw _privateConstructorUsedError;
-  @GeoPointConverter()
-  GeoFirePoint get point => throw _privateConstructorUsedError;
+  double get long => throw _privateConstructorUsedError;
+  double get lat => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ mixin _$Location {
 abstract class $LocationCopyWith<$Res> {
   factory $LocationCopyWith(Location value, $Res Function(Location) then) =
       _$LocationCopyWithImpl<$Res>;
-  $Res call({String name, @GeoPointConverter() GeoFirePoint point});
+  $Res call({String name, double long, double lat});
 }
 
 /// @nodoc
@@ -48,17 +48,22 @@ class _$LocationCopyWithImpl<$Res> implements $LocationCopyWith<$Res> {
   @override
   $Res call({
     Object? name = freezed,
-    Object? point = freezed,
+    Object? long = freezed,
+    Object? lat = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      point: point == freezed
-          ? _value.point
-          : point // ignore: cast_nullable_to_non_nullable
-              as GeoFirePoint,
+      long: long == freezed
+          ? _value.long
+          : long // ignore: cast_nullable_to_non_nullable
+              as double,
+      lat: lat == freezed
+          ? _value.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -69,7 +74,7 @@ abstract class _$$_LocationCopyWith<$Res> implements $LocationCopyWith<$Res> {
           _$_Location value, $Res Function(_$_Location) then) =
       __$$_LocationCopyWithImpl<$Res>;
   @override
-  $Res call({String name, @GeoPointConverter() GeoFirePoint point});
+  $Res call({String name, double long, double lat});
 }
 
 /// @nodoc
@@ -85,17 +90,22 @@ class __$$_LocationCopyWithImpl<$Res> extends _$LocationCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
-    Object? point = freezed,
+    Object? long = freezed,
+    Object? lat = freezed,
   }) {
     return _then(_$_Location(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      point: point == freezed
-          ? _value.point
-          : point // ignore: cast_nullable_to_non_nullable
-              as GeoFirePoint,
+      long: long == freezed
+          ? _value.long
+          : long // ignore: cast_nullable_to_non_nullable
+              as double,
+      lat: lat == freezed
+          ? _value.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -103,9 +113,10 @@ class __$$_LocationCopyWithImpl<$Res> extends _$LocationCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Location extends _Location {
-  const _$_Location(
-      {required this.name, @GeoPointConverter() required this.point})
-      : super._();
+  const _$_Location({required this.name, required this.long, required this.lat})
+      : assert(lat >= -90 && lat <= 90 && long >= -180 && long <= 180,
+            'Invalid data'),
+        super._();
 
   factory _$_Location.fromJson(Map<String, dynamic> json) =>
       _$$_LocationFromJson(json);
@@ -113,8 +124,32 @@ class _$_Location extends _Location {
   @override
   final String name;
   @override
-  @GeoPointConverter()
-  final GeoFirePoint point;
+  final double long;
+  @override
+  final double lat;
+
+  @override
+  String toString() {
+    return 'Location(name: $name, long: $long, lat: $lat)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Location &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.long, long) &&
+            const DeepCollectionEquality().equals(other.lat, lat));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(long),
+      const DeepCollectionEquality().hash(lat));
 
   @JsonKey(ignore: true)
   @override
@@ -132,7 +167,8 @@ class _$_Location extends _Location {
 abstract class _Location extends Location {
   const factory _Location(
       {required final String name,
-      @GeoPointConverter() required final GeoFirePoint point}) = _$_Location;
+      required final double long,
+      required final double lat}) = _$_Location;
   const _Location._() : super._();
 
   factory _Location.fromJson(Map<String, dynamic> json) = _$_Location.fromJson;
@@ -140,8 +176,9 @@ abstract class _Location extends Location {
   @override
   String get name;
   @override
-  @GeoPointConverter()
-  GeoFirePoint get point;
+  double get long;
+  @override
+  double get lat;
   @override
   @JsonKey(ignore: true)
   _$$_LocationCopyWith<_$_Location> get copyWith =>

@@ -12,10 +12,8 @@ _$_Location _$$_LocationFromJson(Map<String, dynamic> json) => $checkedCreate(
       ($checkedConvert) {
         final val = _$_Location(
           name: $checkedConvert('name', (v) => v as String),
-          point: $checkedConvert(
-              'point',
-              (v) => const GeoPointConverter()
-                  .fromJson(v as Map<String, dynamic>)),
+          long: $checkedConvert('long', (v) => (v as num).toDouble()),
+          lat: $checkedConvert('lat', (v) => (v as num).toDouble()),
         );
         return val;
       },
@@ -24,5 +22,6 @@ _$_Location _$$_LocationFromJson(Map<String, dynamic> json) => $checkedCreate(
 Map<String, dynamic> _$$_LocationToJson(_$_Location instance) =>
     <String, dynamic>{
       'name': instance.name,
-      'point': const GeoPointConverter().toJson(instance.point),
+      'long': instance.long,
+      'lat': instance.lat,
     };

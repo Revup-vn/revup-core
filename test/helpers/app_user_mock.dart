@@ -1,4 +1,4 @@
-import 'package:revup_core/src/stores/stores.u.dart';
+import 'package:revup_core/src/stores/stores.dart';
 
 AppUser mockUserIns() => AppUser.consumer(
       uuid: 'uuid',

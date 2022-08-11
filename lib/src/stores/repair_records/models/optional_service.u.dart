@@ -8,18 +8,9 @@ class OptionalService with _$OptionalService {
   const factory OptionalService({
     required String img,
     required String name,
-    required String description,
+    required String desc,
   }) = _OptionalService;
-
-  factory OptionalService.dummy() =>
-      const OptionalService(img: '', name: '', description: '');
 
   factory OptionalService.fromJson(Map<String, dynamic> json) =>
       _$OptionalServiceFromJson(json);
-
-  static const Map<int, String> fields = {
-    1: 'img',
-    2: 'name',
-    3: 'description',
-  };
 }
