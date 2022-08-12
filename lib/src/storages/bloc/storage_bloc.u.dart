@@ -9,9 +9,9 @@ import '../infrastructure/infrastructure.dart';
 import '../models/storage_failure.dart';
 import '../models/storage_file.u.dart';
 
+part 'storage_bloc.u.freezed.dart';
 part 'storage_event.dart';
 part 'storage_state.dart';
-part 'storage_bloc.u.freezed.dart';
 
 class StorageBloc extends Bloc<StorageEvent, StorageState> {
   StorageBloc(this._sr) : super(const StorageState.initial()) {
@@ -27,11 +27,18 @@ class StorageBloc extends Bloc<StorageEvent, StorageState> {
 
           await Future.forEach<Tuple2<int, StorageFile>>(
             files.zipWithIndex().toIterable(),
-            (t) async => res.add(
-              await _auxUploadUrl(t.tail).whenComplete(
-                () => emit(StorageState.running(process: 100 * t.head / len)),
-              ),
-            ),
+            (t) async {
+              if (t.tail.file.path.isEmpty) {
+                res.add(right(''));
+              } else {
+                res.add(
+                  await _auxUploadUrl(t.tail).whenComplete(
+                    () =>
+                        emit(StorageState.running(process: 100 * t.head / len)),
+                  ),
+                );
+              }
+            },
           );
           emit(StorageState.success(IList.from(res)));
         },
