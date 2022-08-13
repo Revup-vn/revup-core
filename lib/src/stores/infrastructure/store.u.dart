@@ -270,17 +270,21 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
         const StoreFailure.update(message: 'Cannot update id-related fields'),
       );
     }
+
+    final json = newData.toJson();
     final validFields = IList.from(
-      newData.toJson().keys.map((s) => s.camelCaseToSnakeCase).toList(),
+      json.keys.map((s) => s.camelCaseToSnakeCase).toList(),
     );
-    if (fields.all((a) => validFields.any((f) => a == f))) {
+
+    if (!fields.all((a) => validFields.any((f) => a == f))) {
       return left(const StoreFailure.update(message: 'Invalid Fields'));
     }
 
     return Task(
-      () => doc(getId(newData)).set(
-        newData.toJson(),
-        SetOptions(merge: true, mergeFields: fields.toList()),
+      () => doc(getId(newData)).update(
+        Map.fromEntries(
+          fields.map((a) => MapEntry<String, dynamic>(a, json[a])).toIterable(),
+        ),
       ),
     )
         .attempt()
