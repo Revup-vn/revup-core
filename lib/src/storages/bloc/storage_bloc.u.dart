@@ -27,18 +27,14 @@ class StorageBloc extends Bloc<StorageEvent, StorageState> {
 
           await Future.forEach<Tuple2<int, StorageFile>>(
             files.zipWithIndex().toIterable(),
-            (t) async {
-              if (t.tail.file.path.isEmpty) {
-                res.add(right(''));
-              } else {
-                res.add(
-                  await _auxUploadUrl(t.tail).whenComplete(
-                    () =>
-                        emit(StorageState.running(process: 100 * t.head / len)),
-                  ),
-                );
-              }
-            },
+            (t) async => res.add(
+              t.tail.file.path.isEmpty
+                  ? right('')
+                  : await _auxUploadUrl(t.tail).whenComplete(
+                      () => emit(
+                          StorageState.running(process: 100 * t.head / len)),
+                    ),
+            ),
           );
           emit(StorageState.success(IList.from(res)));
         },

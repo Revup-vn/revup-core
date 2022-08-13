@@ -273,7 +273,7 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
     final validFields = IList.from(
       newData.toJson().keys.map((s) => s.camelCaseToSnakeCase).toList(),
     );
-    if (fields.all((a) => validFields.any((f) => a == f))) {
+    if (!fields.all((a) => validFields.any((f) => a == f))) {
       return left(const StoreFailure.update(message: 'Invalid Fields'));
     }
 
