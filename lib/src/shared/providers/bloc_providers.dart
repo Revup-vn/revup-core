@@ -27,7 +27,10 @@ MultiBlocProvider coreBlocProviders({required Widget child}) =>
           create: (context) => LanguageCubit(),
         ),
         BlocProvider<NotificationCubit>(
-          create: (context) => NotificationCubit(context.read()),
+          create: (context) => NotificationCubit(
+            context.read(),
+            context.read(),
+          ),
         ),
       ],
       child: child,
