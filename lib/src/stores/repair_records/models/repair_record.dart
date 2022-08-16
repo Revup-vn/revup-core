@@ -1,10 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../models/serializable.dart';
-import 'report_feedback.dart';
 import 'location.u.dart';
 import 'optional_service.u.dart';
 import 'repair_report.u.dart';
+import 'report_feedback.dart';
 
 part 'repair_record.freezed.dart';
 part 'repair_record.g.dart';
