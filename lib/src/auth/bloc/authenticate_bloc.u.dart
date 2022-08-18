@@ -8,10 +8,10 @@ import '../../stores/users/users.dart';
 import '../infrastructure/infrastructure.dart';
 import '../models/models.dart';
 
-part 'authenticate_event.dart';
-part 'authenticate_state.dart';
 part 'authenticate_bloc.u.freezed.dart';
 part 'authenticate_bloc.u.g.dart';
+part 'authenticate_event.dart';
+part 'authenticate_state.dart';
 
 typedef PhoneGetter = Function0<FutureOr<String>>;
 
@@ -124,8 +124,8 @@ class AuthenticateBloc
           (await _authRepos.ggSignOut())
               ? emit(const AuthenticateState.empty(isFirstTime: true))
               : emit(
-                  AuthenticateState.failure(
-                    failure: AuthFailure.unknown(errorMessage),
+                  const AuthenticateState.failure(
+                    failure: AuthFailure.signOut(),
                   ),
                 );
 

@@ -22,6 +22,8 @@ AuthFailure _$AuthFailureFromJson(Map<String, dynamic> json) {
       return _storage.fromJson(json);
     case 'cancelled':
       return _cancelled.fromJson(json);
+    case 'signOut':
+      return _signOut.fromJson(json);
     case 'invalidData':
       return _invalidData.fromJson(json);
     case 'invalidOTP':
@@ -48,6 +50,7 @@ mixin _$AuthFailure {
     required TResult Function(String? message) server,
     required TResult Function() storage,
     required TResult Function() cancelled,
+    required TResult Function() signOut,
     required TResult Function(String? message) invalidData,
     required TResult Function(String phoneNumber) invalidOTP,
     required TResult Function(String phoneNumber) expiredOTP,
@@ -61,6 +64,7 @@ mixin _$AuthFailure {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -74,6 +78,7 @@ mixin _$AuthFailure {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -88,6 +93,7 @@ mixin _$AuthFailure {
     required TResult Function(_server value) server,
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
+    required TResult Function(_signOut value) signOut,
     required TResult Function(_invalidData value) invalidData,
     required TResult Function(_invalidOTP value) invalidOTP,
     required TResult Function(_expiredOTP value) expiredOTP,
@@ -101,6 +107,7 @@ mixin _$AuthFailure {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -114,6 +121,7 @@ mixin _$AuthFailure {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -216,6 +224,7 @@ class _$_server extends _server {
     required TResult Function(String? message) server,
     required TResult Function() storage,
     required TResult Function() cancelled,
+    required TResult Function() signOut,
     required TResult Function(String? message) invalidData,
     required TResult Function(String phoneNumber) invalidOTP,
     required TResult Function(String phoneNumber) expiredOTP,
@@ -232,6 +241,7 @@ class _$_server extends _server {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -248,6 +258,7 @@ class _$_server extends _server {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -268,6 +279,7 @@ class _$_server extends _server {
     required TResult Function(_server value) server,
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
+    required TResult Function(_signOut value) signOut,
     required TResult Function(_invalidData value) invalidData,
     required TResult Function(_invalidOTP value) invalidOTP,
     required TResult Function(_expiredOTP value) expiredOTP,
@@ -284,6 +296,7 @@ class _$_server extends _server {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -300,6 +313,7 @@ class _$_server extends _server {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -385,6 +399,7 @@ class _$_storage extends _storage {
     required TResult Function(String? message) server,
     required TResult Function() storage,
     required TResult Function() cancelled,
+    required TResult Function() signOut,
     required TResult Function(String? message) invalidData,
     required TResult Function(String phoneNumber) invalidOTP,
     required TResult Function(String phoneNumber) expiredOTP,
@@ -401,6 +416,7 @@ class _$_storage extends _storage {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -417,6 +433,7 @@ class _$_storage extends _storage {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -437,6 +454,7 @@ class _$_storage extends _storage {
     required TResult Function(_server value) server,
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
+    required TResult Function(_signOut value) signOut,
     required TResult Function(_invalidData value) invalidData,
     required TResult Function(_invalidOTP value) invalidOTP,
     required TResult Function(_expiredOTP value) expiredOTP,
@@ -453,6 +471,7 @@ class _$_storage extends _storage {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -469,6 +488,7 @@ class _$_storage extends _storage {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -550,6 +570,7 @@ class _$_cancelled extends _cancelled {
     required TResult Function(String? message) server,
     required TResult Function() storage,
     required TResult Function() cancelled,
+    required TResult Function() signOut,
     required TResult Function(String? message) invalidData,
     required TResult Function(String phoneNumber) invalidOTP,
     required TResult Function(String phoneNumber) expiredOTP,
@@ -566,6 +587,7 @@ class _$_cancelled extends _cancelled {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -582,6 +604,7 @@ class _$_cancelled extends _cancelled {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -602,6 +625,7 @@ class _$_cancelled extends _cancelled {
     required TResult Function(_server value) server,
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
+    required TResult Function(_signOut value) signOut,
     required TResult Function(_invalidData value) invalidData,
     required TResult Function(_invalidOTP value) invalidOTP,
     required TResult Function(_expiredOTP value) expiredOTP,
@@ -618,6 +642,7 @@ class _$_cancelled extends _cancelled {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -634,6 +659,7 @@ class _$_cancelled extends _cancelled {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -662,6 +688,176 @@ abstract class _cancelled extends AuthFailure {
 
   factory _cancelled.fromJson(Map<String, dynamic> json) =
       _$_cancelled.fromJson;
+}
+
+/// @nodoc
+abstract class _$$_signOutCopyWith<$Res> {
+  factory _$$_signOutCopyWith(
+          _$_signOut value, $Res Function(_$_signOut) then) =
+      __$$_signOutCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_signOutCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+    implements _$$_signOutCopyWith<$Res> {
+  __$$_signOutCopyWithImpl(_$_signOut _value, $Res Function(_$_signOut) _then)
+      : super(_value, (v) => _then(v as _$_signOut));
+
+  @override
+  _$_signOut get _value => super._value as _$_signOut;
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_signOut extends _signOut {
+  const _$_signOut({final String? $type})
+      : $type = $type ?? 'signOut',
+        super._();
+
+  factory _$_signOut.fromJson(Map<String, dynamic> json) =>
+      _$$_signOutFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'AuthFailure.signOut()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_signOut);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? message) server,
+    required TResult Function() storage,
+    required TResult Function() cancelled,
+    required TResult Function() signOut,
+    required TResult Function(String? message) invalidData,
+    required TResult Function(String phoneNumber) invalidOTP,
+    required TResult Function(String phoneNumber) expiredOTP,
+    required TResult Function(AppUser aUser) uncompletedData,
+    required TResult Function(AppUser appUser) needToVerifyPhoneNumber,
+    required TResult Function(String? message) unknown,
+  }) {
+    return signOut();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? message)? server,
+    TResult Function()? storage,
+    TResult Function()? cancelled,
+    TResult Function()? signOut,
+    TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
+    TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
+    TResult Function(String? message)? unknown,
+  }) {
+    return signOut?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? message)? server,
+    TResult Function()? storage,
+    TResult Function()? cancelled,
+    TResult Function()? signOut,
+    TResult Function(String? message)? invalidData,
+    TResult Function(String phoneNumber)? invalidOTP,
+    TResult Function(String phoneNumber)? expiredOTP,
+    TResult Function(AppUser aUser)? uncompletedData,
+    TResult Function(AppUser appUser)? needToVerifyPhoneNumber,
+    TResult Function(String? message)? unknown,
+    required TResult orElse(),
+  }) {
+    if (signOut != null) {
+      return signOut();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_server value) server,
+    required TResult Function(_storage value) storage,
+    required TResult Function(_cancelled value) cancelled,
+    required TResult Function(_signOut value) signOut,
+    required TResult Function(_invalidData value) invalidData,
+    required TResult Function(_invalidOTP value) invalidOTP,
+    required TResult Function(_expiredOTP value) expiredOTP,
+    required TResult Function(_uncompletedData value) uncompletedData,
+    required TResult Function(_verifyPhoneNumber value) needToVerifyPhoneNumber,
+    required TResult Function(_unknown value) unknown,
+  }) {
+    return signOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_server value)? server,
+    TResult Function(_storage value)? storage,
+    TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
+    TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
+    TResult Function(_unknown value)? unknown,
+  }) {
+    return signOut?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_server value)? server,
+    TResult Function(_storage value)? storage,
+    TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
+    TResult Function(_invalidData value)? invalidData,
+    TResult Function(_invalidOTP value)? invalidOTP,
+    TResult Function(_expiredOTP value)? expiredOTP,
+    TResult Function(_uncompletedData value)? uncompletedData,
+    TResult Function(_verifyPhoneNumber value)? needToVerifyPhoneNumber,
+    TResult Function(_unknown value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (signOut != null) {
+      return signOut(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_signOutToJson(
+      this,
+    );
+  }
+}
+
+abstract class _signOut extends AuthFailure {
+  const factory _signOut() = _$_signOut;
+  const _signOut._() : super._();
+
+  factory _signOut.fromJson(Map<String, dynamic> json) = _$_signOut.fromJson;
 }
 
 /// @nodoc
@@ -740,6 +936,7 @@ class _$_invalidData extends _invalidData {
     required TResult Function(String? message) server,
     required TResult Function() storage,
     required TResult Function() cancelled,
+    required TResult Function() signOut,
     required TResult Function(String? message) invalidData,
     required TResult Function(String phoneNumber) invalidOTP,
     required TResult Function(String phoneNumber) expiredOTP,
@@ -756,6 +953,7 @@ class _$_invalidData extends _invalidData {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -772,6 +970,7 @@ class _$_invalidData extends _invalidData {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -792,6 +991,7 @@ class _$_invalidData extends _invalidData {
     required TResult Function(_server value) server,
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
+    required TResult Function(_signOut value) signOut,
     required TResult Function(_invalidData value) invalidData,
     required TResult Function(_invalidOTP value) invalidOTP,
     required TResult Function(_expiredOTP value) expiredOTP,
@@ -808,6 +1008,7 @@ class _$_invalidData extends _invalidData {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -824,6 +1025,7 @@ class _$_invalidData extends _invalidData {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -936,6 +1138,7 @@ class _$_invalidOTP extends _invalidOTP {
     required TResult Function(String? message) server,
     required TResult Function() storage,
     required TResult Function() cancelled,
+    required TResult Function() signOut,
     required TResult Function(String? message) invalidData,
     required TResult Function(String phoneNumber) invalidOTP,
     required TResult Function(String phoneNumber) expiredOTP,
@@ -952,6 +1155,7 @@ class _$_invalidOTP extends _invalidOTP {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -968,6 +1172,7 @@ class _$_invalidOTP extends _invalidOTP {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -988,6 +1193,7 @@ class _$_invalidOTP extends _invalidOTP {
     required TResult Function(_server value) server,
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
+    required TResult Function(_signOut value) signOut,
     required TResult Function(_invalidData value) invalidData,
     required TResult Function(_invalidOTP value) invalidOTP,
     required TResult Function(_expiredOTP value) expiredOTP,
@@ -1004,6 +1210,7 @@ class _$_invalidOTP extends _invalidOTP {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -1020,6 +1227,7 @@ class _$_invalidOTP extends _invalidOTP {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -1132,6 +1340,7 @@ class _$_expiredOTP extends _expiredOTP {
     required TResult Function(String? message) server,
     required TResult Function() storage,
     required TResult Function() cancelled,
+    required TResult Function() signOut,
     required TResult Function(String? message) invalidData,
     required TResult Function(String phoneNumber) invalidOTP,
     required TResult Function(String phoneNumber) expiredOTP,
@@ -1148,6 +1357,7 @@ class _$_expiredOTP extends _expiredOTP {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -1164,6 +1374,7 @@ class _$_expiredOTP extends _expiredOTP {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -1184,6 +1395,7 @@ class _$_expiredOTP extends _expiredOTP {
     required TResult Function(_server value) server,
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
+    required TResult Function(_signOut value) signOut,
     required TResult Function(_invalidData value) invalidData,
     required TResult Function(_invalidOTP value) invalidOTP,
     required TResult Function(_expiredOTP value) expiredOTP,
@@ -1200,6 +1412,7 @@ class _$_expiredOTP extends _expiredOTP {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -1216,6 +1429,7 @@ class _$_expiredOTP extends _expiredOTP {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -1337,6 +1551,7 @@ class _$_uncompletedData extends _uncompletedData {
     required TResult Function(String? message) server,
     required TResult Function() storage,
     required TResult Function() cancelled,
+    required TResult Function() signOut,
     required TResult Function(String? message) invalidData,
     required TResult Function(String phoneNumber) invalidOTP,
     required TResult Function(String phoneNumber) expiredOTP,
@@ -1353,6 +1568,7 @@ class _$_uncompletedData extends _uncompletedData {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -1369,6 +1585,7 @@ class _$_uncompletedData extends _uncompletedData {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -1389,6 +1606,7 @@ class _$_uncompletedData extends _uncompletedData {
     required TResult Function(_server value) server,
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
+    required TResult Function(_signOut value) signOut,
     required TResult Function(_invalidData value) invalidData,
     required TResult Function(_invalidOTP value) invalidOTP,
     required TResult Function(_expiredOTP value) expiredOTP,
@@ -1405,6 +1623,7 @@ class _$_uncompletedData extends _uncompletedData {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -1421,6 +1640,7 @@ class _$_uncompletedData extends _uncompletedData {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -1543,6 +1763,7 @@ class _$_verifyPhoneNumber extends _verifyPhoneNumber {
     required TResult Function(String? message) server,
     required TResult Function() storage,
     required TResult Function() cancelled,
+    required TResult Function() signOut,
     required TResult Function(String? message) invalidData,
     required TResult Function(String phoneNumber) invalidOTP,
     required TResult Function(String phoneNumber) expiredOTP,
@@ -1559,6 +1780,7 @@ class _$_verifyPhoneNumber extends _verifyPhoneNumber {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -1575,6 +1797,7 @@ class _$_verifyPhoneNumber extends _verifyPhoneNumber {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -1595,6 +1818,7 @@ class _$_verifyPhoneNumber extends _verifyPhoneNumber {
     required TResult Function(_server value) server,
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
+    required TResult Function(_signOut value) signOut,
     required TResult Function(_invalidData value) invalidData,
     required TResult Function(_invalidOTP value) invalidOTP,
     required TResult Function(_expiredOTP value) expiredOTP,
@@ -1611,6 +1835,7 @@ class _$_verifyPhoneNumber extends _verifyPhoneNumber {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -1627,6 +1852,7 @@ class _$_verifyPhoneNumber extends _verifyPhoneNumber {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -1738,6 +1964,7 @@ class _$_unknown extends _unknown {
     required TResult Function(String? message) server,
     required TResult Function() storage,
     required TResult Function() cancelled,
+    required TResult Function() signOut,
     required TResult Function(String? message) invalidData,
     required TResult Function(String phoneNumber) invalidOTP,
     required TResult Function(String phoneNumber) expiredOTP,
@@ -1754,6 +1981,7 @@ class _$_unknown extends _unknown {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -1770,6 +1998,7 @@ class _$_unknown extends _unknown {
     TResult Function(String? message)? server,
     TResult Function()? storage,
     TResult Function()? cancelled,
+    TResult Function()? signOut,
     TResult Function(String? message)? invalidData,
     TResult Function(String phoneNumber)? invalidOTP,
     TResult Function(String phoneNumber)? expiredOTP,
@@ -1790,6 +2019,7 @@ class _$_unknown extends _unknown {
     required TResult Function(_server value) server,
     required TResult Function(_storage value) storage,
     required TResult Function(_cancelled value) cancelled,
+    required TResult Function(_signOut value) signOut,
     required TResult Function(_invalidData value) invalidData,
     required TResult Function(_invalidOTP value) invalidOTP,
     required TResult Function(_expiredOTP value) expiredOTP,
@@ -1806,6 +2036,7 @@ class _$_unknown extends _unknown {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
@@ -1822,6 +2053,7 @@ class _$_unknown extends _unknown {
     TResult Function(_server value)? server,
     TResult Function(_storage value)? storage,
     TResult Function(_cancelled value)? cancelled,
+    TResult Function(_signOut value)? signOut,
     TResult Function(_invalidData value)? invalidData,
     TResult Function(_invalidOTP value)? invalidOTP,
     TResult Function(_expiredOTP value)? expiredOTP,
