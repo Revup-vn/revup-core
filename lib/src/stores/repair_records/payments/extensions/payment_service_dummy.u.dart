@@ -7,6 +7,7 @@ extension PaymentServiceDummy on PaymentService {
         serviceName: name,
         moneyAmount: 0,
         products: [],
+        isOptional: false,
       );
   static PaymentService dummyPaid(String name) => PaymentService.paid(
         serviceName: name,

@@ -16,7 +16,8 @@ _$_SendMessage _$$_SendMessageFromJson(Map<String, dynamic> json) =>
           body: $checkedConvert('body', (v) => v as String),
           token: $checkedConvert('token', (v) => v as String),
           iconUrl: $checkedConvert('icon_url', (v) => v as String),
-          type: $checkedConvert('type', (v) => v as String),
+          type: $checkedConvert(
+              'type', (v) => $enumDecode(_$NotificationTypeEnumMap, v)),
         );
         return val;
       },
@@ -29,5 +30,16 @@ Map<String, dynamic> _$$_SendMessageToJson(_$_SendMessage instance) =>
       'body': instance.body,
       'token': instance.token,
       'icon_url': instance.iconUrl,
-      'type': instance.type,
+      'type': _$NotificationTypeEnumMap[instance.type]!,
     };
+
+const _$NotificationTypeEnumMap = {
+  NotificationType.NormalMessage: 'NormalMessage',
+  NotificationType.Call: 'Call',
+  NotificationType.ConsumerRequestRepair: 'ConsumerRequestRepair',
+  NotificationType.ProviderAccept: 'ProviderAccept',
+  NotificationType.ProviderDecline: 'ProviderDecline',
+  NotificationType.VerifiedArrival: 'VerifiedArrival',
+  NotificationType.ProviderRepaired: 'ProviderRepaired',
+  NotificationType.ConsumerBilled: 'ConsumerBilled',
+};

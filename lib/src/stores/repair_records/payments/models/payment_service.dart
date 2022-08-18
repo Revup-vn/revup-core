@@ -13,6 +13,7 @@ class PaymentService extends Serializable<PaymentService>
     required String serviceName,
     required int moneyAmount,
     required List<PaymentProduct> products,
+    required bool isOptional,
   }) = _pending;
 
   const factory PaymentService.paid({

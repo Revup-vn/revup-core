@@ -1,30 +1,38 @@
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 
+import '../models/received_message.u.dart';
 import '../models/send_message.u.dart';
 
 part 'notification_state.dart';
 part 'notification_cubit.u.freezed.dart';
 part 'notification_cubit.u.g.dart';
 
-typedef OnMessageListener = FutureOr<void> Function(RemoteMessage);
+typedef OnMessageListener = FutureOr<void> Function(ReceivedMessage);
 
-class NotificationCubit extends Cubit<NotificationState> {
+class NotificationCubit extends HydratedCubit<NotificationState> {
   NotificationCubit(this._messaging, this._functions)
       : _fListeners = nil(),
         _bListeners = nil(),
         super(const NotificationState.denied()) {
     _fss = FirebaseMessaging.onMessage.listen(
-      (event) async => _fListeners.traverseFuture((e) async => e(event)),
+      (event) async => _fListeners.traverseFuture(
+        (e) async => e(
+          ReceivedMessage.fromRemoteMessage(event),
+        ),
+      ),
     );
 
-    _bss = FirebaseMessaging.onMessageOpenedApp
-        .listen((event) => _bListeners.traverseFuture((a) async => a(event)));
+    _bss = FirebaseMessaging.onMessageOpenedApp.listen(
+      (event) => _bListeners.traverseFuture(
+        (a) async => a(ReceivedMessage.fromRemoteMessage(event)),
+      ),
+    );
   }
   final FirebaseMessaging _messaging;
   final FirebaseFunctions _functions;
@@ -99,4 +107,11 @@ class NotificationCubit extends Cubit<NotificationState> {
 
     return super.close();
   }
+
+  @override
+  NotificationState? fromJson(Map<String, dynamic> json) =>
+      NotificationState.fromJson(json);
+
+  @override
+  Map<String, dynamic>? toJson(NotificationState state) => state.toJson();
 }

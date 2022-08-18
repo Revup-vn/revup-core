@@ -24,7 +24,7 @@ mixin _$SendMessage {
   String get body => throw _privateConstructorUsedError;
   String get token => throw _privateConstructorUsedError;
   String get iconUrl => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
+  NotificationType get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +38,11 @@ abstract class $SendMessageCopyWith<$Res> {
           SendMessage value, $Res Function(SendMessage) then) =
       _$SendMessageCopyWithImpl<$Res>;
   $Res call(
-      {String title, String body, String token, String iconUrl, String type});
+      {String title,
+      String body,
+      String token,
+      String iconUrl,
+      NotificationType type});
 }
 
 /// @nodoc
@@ -77,7 +81,7 @@ class _$SendMessageCopyWithImpl<$Res> implements $SendMessageCopyWith<$Res> {
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as NotificationType,
     ));
   }
 }
@@ -90,7 +94,11 @@ abstract class _$$_SendMessageCopyWith<$Res>
       __$$_SendMessageCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String title, String body, String token, String iconUrl, String type});
+      {String title,
+      String body,
+      String token,
+      String iconUrl,
+      NotificationType type});
 }
 
 /// @nodoc
@@ -131,7 +139,7 @@ class __$$_SendMessageCopyWithImpl<$Res> extends _$SendMessageCopyWithImpl<$Res>
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as NotificationType,
     ));
   }
 }
@@ -158,7 +166,7 @@ class _$_SendMessage implements _SendMessage {
   @override
   final String iconUrl;
   @override
-  final String type;
+  final NotificationType type;
 
   @override
   String toString() {
@@ -206,7 +214,7 @@ abstract class _SendMessage implements SendMessage {
       required final String body,
       required final String token,
       required final String iconUrl,
-      required final String type}) = _$_SendMessage;
+      required final NotificationType type}) = _$_SendMessage;
 
   factory _SendMessage.fromJson(Map<String, dynamic> json) =
       _$_SendMessage.fromJson;
@@ -220,7 +228,7 @@ abstract class _SendMessage implements SendMessage {
   @override
   String get iconUrl;
   @override
-  String get type;
+  NotificationType get type;
   @override
   @JsonKey(ignore: true)
   _$$_SendMessageCopyWith<_$_SendMessage> get copyWith =>

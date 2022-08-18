@@ -19,6 +19,7 @@ _$_pending _$$_pendingFromJson(Map<String, dynamic> json) => $checkedCreate(
                   .map(
                       (e) => PaymentProduct.fromJson(e as Map<String, dynamic>))
                   .toList()),
+          isOptional: $checkedConvert('is_optional', (v) => v as bool),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -26,6 +27,7 @@ _$_pending _$$_pendingFromJson(Map<String, dynamic> json) => $checkedCreate(
       fieldKeyMap: const {
         'serviceName': 'service_name',
         'moneyAmount': 'money_amount',
+        'isOptional': 'is_optional',
         r'$type': 'type'
       },
     );
@@ -35,6 +37,7 @@ Map<String, dynamic> _$$_pendingToJson(_$_pending instance) =>
       'service_name': instance.serviceName,
       'money_amount': instance.moneyAmount,
       'products': instance.products.map((e) => e.toJson()).toList(),
+      'is_optional': instance.isOptional,
       'type': instance.$type,
     };
 

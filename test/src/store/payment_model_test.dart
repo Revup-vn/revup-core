@@ -9,6 +9,7 @@ void main() {
         serviceName: '',
         moneyAmount: 100,
         products: [],
+        isOptional: false,
       );
 
       final res = PaymentService.fromJson(type.toJson());
