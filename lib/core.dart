@@ -1,5 +1,6 @@
 library core;
 
+export 'src/notification/notification.dart';
 export 'src/core.dart';
 export 'src/auth/auth.dart'
     show AuthenticateBloc, AuthenticateEvent, AuthenticateState;

@@ -34,8 +34,8 @@ mixin _$PaymentService {
   String get serviceName => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String serviceName, int moneyAmount, List<PaymentProduct> products)
+    required TResult Function(String serviceName, int moneyAmount,
+            List<PaymentProduct> products, bool isOptional)
         pending,
     required TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)
@@ -45,8 +45,8 @@ mixin _$PaymentService {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            String serviceName, int moneyAmount, List<PaymentProduct> products)?
+    TResult Function(String serviceName, int moneyAmount,
+            List<PaymentProduct> products, bool isOptional)?
         pending,
     TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)?
@@ -56,8 +56,8 @@ mixin _$PaymentService {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String serviceName, int moneyAmount, List<PaymentProduct> products)?
+    TResult Function(String serviceName, int moneyAmount,
+            List<PaymentProduct> products, bool isOptional)?
         pending,
     TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)?
@@ -132,7 +132,10 @@ abstract class _$$_pendingCopyWith<$Res>
       __$$_pendingCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String serviceName, int moneyAmount, List<PaymentProduct> products});
+      {String serviceName,
+      int moneyAmount,
+      List<PaymentProduct> products,
+      bool isOptional});
 }
 
 /// @nodoc
@@ -149,6 +152,7 @@ class __$$_pendingCopyWithImpl<$Res> extends _$PaymentServiceCopyWithImpl<$Res>
     Object? serviceName = freezed,
     Object? moneyAmount = freezed,
     Object? products = freezed,
+    Object? isOptional = freezed,
   }) {
     return _then(_$_pending(
       serviceName: serviceName == freezed
@@ -163,6 +167,10 @@ class __$$_pendingCopyWithImpl<$Res> extends _$PaymentServiceCopyWithImpl<$Res>
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
               as List<PaymentProduct>,
+      isOptional: isOptional == freezed
+          ? _value.isOptional
+          : isOptional // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -174,6 +182,7 @@ class _$_pending implements _pending {
       {required this.serviceName,
       required this.moneyAmount,
       required final List<PaymentProduct> products,
+      required this.isOptional,
       final String? $type})
       : _products = products,
         $type = $type ?? 'pending';
@@ -192,12 +201,15 @@ class _$_pending implements _pending {
     return EqualUnmodifiableListView(_products);
   }
 
+  @override
+  final bool isOptional;
+
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'PaymentService.pending(serviceName: $serviceName, moneyAmount: $moneyAmount, products: $products)';
+    return 'PaymentService.pending(serviceName: $serviceName, moneyAmount: $moneyAmount, products: $products, isOptional: $isOptional)';
   }
 
   @override
@@ -209,7 +221,9 @@ class _$_pending implements _pending {
                 .equals(other.serviceName, serviceName) &&
             const DeepCollectionEquality()
                 .equals(other.moneyAmount, moneyAmount) &&
-            const DeepCollectionEquality().equals(other._products, _products));
+            const DeepCollectionEquality().equals(other._products, _products) &&
+            const DeepCollectionEquality()
+                .equals(other.isOptional, isOptional));
   }
 
   @JsonKey(ignore: true)
@@ -218,7 +232,8 @@ class _$_pending implements _pending {
       runtimeType,
       const DeepCollectionEquality().hash(serviceName),
       const DeepCollectionEquality().hash(moneyAmount),
-      const DeepCollectionEquality().hash(_products));
+      const DeepCollectionEquality().hash(_products),
+      const DeepCollectionEquality().hash(isOptional));
 
   @JsonKey(ignore: true)
   @override
@@ -228,36 +243,36 @@ class _$_pending implements _pending {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String serviceName, int moneyAmount, List<PaymentProduct> products)
+    required TResult Function(String serviceName, int moneyAmount,
+            List<PaymentProduct> products, bool isOptional)
         pending,
     required TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)
         paid,
     required TResult Function(String serviceName, String desc) needToVerify,
   }) {
-    return pending(serviceName, moneyAmount, products);
+    return pending(serviceName, moneyAmount, products, isOptional);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            String serviceName, int moneyAmount, List<PaymentProduct> products)?
+    TResult Function(String serviceName, int moneyAmount,
+            List<PaymentProduct> products, bool isOptional)?
         pending,
     TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)?
         paid,
     TResult Function(String serviceName, String desc)? needToVerify,
   }) {
-    return pending?.call(serviceName, moneyAmount, products);
+    return pending?.call(serviceName, moneyAmount, products, isOptional);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String serviceName, int moneyAmount, List<PaymentProduct> products)?
+    TResult Function(String serviceName, int moneyAmount,
+            List<PaymentProduct> products, bool isOptional)?
         pending,
     TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)?
@@ -266,7 +281,7 @@ class _$_pending implements _pending {
     required TResult orElse(),
   }) {
     if (pending != null) {
-      return pending(serviceName, moneyAmount, products);
+      return pending(serviceName, moneyAmount, products, isOptional);
     }
     return orElse();
   }
@@ -317,7 +332,8 @@ abstract class _pending implements PaymentService {
   const factory _pending(
       {required final String serviceName,
       required final int moneyAmount,
-      required final List<PaymentProduct> products}) = _$_pending;
+      required final List<PaymentProduct> products,
+      required final bool isOptional}) = _$_pending;
 
   factory _pending.fromJson(Map<String, dynamic> json) = _$_pending.fromJson;
 
@@ -325,6 +341,7 @@ abstract class _pending implements PaymentService {
   String get serviceName;
   int get moneyAmount;
   List<PaymentProduct> get products;
+  bool get isOptional;
   @override
   @JsonKey(ignore: true)
   _$$_pendingCopyWith<_$_pending> get copyWith =>
@@ -446,8 +463,8 @@ class _$_paid implements _paid {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String serviceName, int moneyAmount, List<PaymentProduct> products)
+    required TResult Function(String serviceName, int moneyAmount,
+            List<PaymentProduct> products, bool isOptional)
         pending,
     required TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)
@@ -460,8 +477,8 @@ class _$_paid implements _paid {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            String serviceName, int moneyAmount, List<PaymentProduct> products)?
+    TResult Function(String serviceName, int moneyAmount,
+            List<PaymentProduct> products, bool isOptional)?
         pending,
     TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)?
@@ -474,8 +491,8 @@ class _$_paid implements _paid {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String serviceName, int moneyAmount, List<PaymentProduct> products)?
+    TResult Function(String serviceName, int moneyAmount,
+            List<PaymentProduct> products, bool isOptional)?
         pending,
     TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)?
@@ -637,8 +654,8 @@ class _$_needToVerify implements _needToVerify {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String serviceName, int moneyAmount, List<PaymentProduct> products)
+    required TResult Function(String serviceName, int moneyAmount,
+            List<PaymentProduct> products, bool isOptional)
         pending,
     required TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)
@@ -651,8 +668,8 @@ class _$_needToVerify implements _needToVerify {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            String serviceName, int moneyAmount, List<PaymentProduct> products)?
+    TResult Function(String serviceName, int moneyAmount,
+            List<PaymentProduct> products, bool isOptional)?
         pending,
     TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)?
@@ -665,8 +682,8 @@ class _$_needToVerify implements _needToVerify {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String serviceName, int moneyAmount, List<PaymentProduct> products)?
+    TResult Function(String serviceName, int moneyAmount,
+            List<PaymentProduct> products, bool isOptional)?
         pending,
     TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)?
