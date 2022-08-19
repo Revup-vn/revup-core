@@ -25,7 +25,6 @@ class AuthenticateEvent with _$AuthenticateEvent {
 
   const factory AuthenticateEvent.signOut({
     required AuthType authType,
-    String? errorMessage,
   }) = _signedOut;
 
   const factory AuthenticateEvent.reset() = _reset;

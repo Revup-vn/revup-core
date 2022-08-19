@@ -27,7 +27,7 @@ mixin _$AuthenticateEvent {
     required TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)
         loginWithPhone,
-    required TResult Function(AuthType authType, String? errorMessage) signOut,
+    required TResult Function(AuthType authType) signOut,
     required TResult Function() reset,
   }) =>
       throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ mixin _$AuthenticateEvent {
     TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)?
         loginWithPhone,
-    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function(AuthType authType)? signOut,
     TResult Function()? reset,
   }) =>
       throw _privateConstructorUsedError;
@@ -55,7 +55,7 @@ mixin _$AuthenticateEvent {
     TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)?
         loginWithPhone,
-    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function(AuthType authType)? signOut,
     TResult Function()? reset,
     required TResult orElse(),
   }) =>
@@ -184,7 +184,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
     required TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)
         loginWithPhone,
-    required TResult Function(AuthType authType, String? errorMessage) signOut,
+    required TResult Function(AuthType authType) signOut,
     required TResult Function() reset,
   }) {
     return loginWithGoogle(onCompleteSignUp);
@@ -201,7 +201,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
     TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)?
         loginWithPhone,
-    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function(AuthType authType)? signOut,
     TResult Function()? reset,
   }) {
     return loginWithGoogle?.call(onCompleteSignUp);
@@ -218,7 +218,7 @@ class _$_loginWithGoogle implements _loginWithGoogle {
     TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)?
         loginWithPhone,
-    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function(AuthType authType)? signOut,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
@@ -366,7 +366,7 @@ class _$_loginWithEmail implements _loginWithEmail {
     required TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)
         loginWithPhone,
-    required TResult Function(AuthType authType, String? errorMessage) signOut,
+    required TResult Function(AuthType authType) signOut,
     required TResult Function() reset,
   }) {
     return loginWithEmail(email, password);
@@ -383,7 +383,7 @@ class _$_loginWithEmail implements _loginWithEmail {
     TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)?
         loginWithPhone,
-    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function(AuthType authType)? signOut,
     TResult Function()? reset,
   }) {
     return loginWithEmail?.call(email, password);
@@ -400,7 +400,7 @@ class _$_loginWithEmail implements _loginWithEmail {
     TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)?
         loginWithPhone,
-    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function(AuthType authType)? signOut,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
@@ -563,7 +563,7 @@ class _$_signUpWithEmail implements _signUpWithEmail {
     required TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)
         loginWithPhone,
-    required TResult Function(AuthType authType, String? errorMessage) signOut,
+    required TResult Function(AuthType authType) signOut,
     required TResult Function() reset,
   }) {
     return signUpWithEmail(email, password, onCompleteSignUp);
@@ -580,7 +580,7 @@ class _$_signUpWithEmail implements _signUpWithEmail {
     TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)?
         loginWithPhone,
-    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function(AuthType authType)? signOut,
     TResult Function()? reset,
   }) {
     return signUpWithEmail?.call(email, password, onCompleteSignUp);
@@ -597,7 +597,7 @@ class _$_signUpWithEmail implements _signUpWithEmail {
     TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)?
         loginWithPhone,
-    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function(AuthType authType)? signOut,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
@@ -767,7 +767,7 @@ class _$_loginWithPhone implements _loginWithPhone {
     required TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)
         loginWithPhone,
-    required TResult Function(AuthType authType, String? errorMessage) signOut,
+    required TResult Function(AuthType authType) signOut,
     required TResult Function() reset,
   }) {
     return loginWithPhone(phoneNumber, onSubmitOTP, onSignUpSubmit);
@@ -784,7 +784,7 @@ class _$_loginWithPhone implements _loginWithPhone {
     TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)?
         loginWithPhone,
-    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function(AuthType authType)? signOut,
     TResult Function()? reset,
   }) {
     return loginWithPhone?.call(phoneNumber, onSubmitOTP, onSignUpSubmit);
@@ -801,7 +801,7 @@ class _$_loginWithPhone implements _loginWithPhone {
     TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)?
         loginWithPhone,
-    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function(AuthType authType)? signOut,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
@@ -874,7 +874,7 @@ abstract class _$$_signedOutCopyWith<$Res> {
   factory _$$_signedOutCopyWith(
           _$_signedOut value, $Res Function(_$_signedOut) then) =
       __$$_signedOutCopyWithImpl<$Res>;
-  $Res call({AuthType authType, String? errorMessage});
+  $Res call({AuthType authType});
 
   $AuthTypeCopyWith<$Res> get authType;
 }
@@ -893,17 +893,12 @@ class __$$_signedOutCopyWithImpl<$Res>
   @override
   $Res call({
     Object? authType = freezed,
-    Object? errorMessage = freezed,
   }) {
     return _then(_$_signedOut(
       authType: authType == freezed
           ? _value.authType
           : authType // ignore: cast_nullable_to_non_nullable
               as AuthType,
-      errorMessage: errorMessage == freezed
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 
@@ -918,16 +913,14 @@ class __$$_signedOutCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_signedOut implements _signedOut {
-  const _$_signedOut({required this.authType, this.errorMessage});
+  const _$_signedOut({required this.authType});
 
   @override
   final AuthType authType;
-  @override
-  final String? errorMessage;
 
   @override
   String toString() {
-    return 'AuthenticateEvent.signOut(authType: $authType, errorMessage: $errorMessage)';
+    return 'AuthenticateEvent.signOut(authType: $authType)';
   }
 
   @override
@@ -935,16 +928,12 @@ class _$_signedOut implements _signedOut {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_signedOut &&
-            const DeepCollectionEquality().equals(other.authType, authType) &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage));
+            const DeepCollectionEquality().equals(other.authType, authType));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(authType),
-      const DeepCollectionEquality().hash(errorMessage));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(authType));
 
   @JsonKey(ignore: true)
   @override
@@ -963,10 +952,10 @@ class _$_signedOut implements _signedOut {
     required TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)
         loginWithPhone,
-    required TResult Function(AuthType authType, String? errorMessage) signOut,
+    required TResult Function(AuthType authType) signOut,
     required TResult Function() reset,
   }) {
-    return signOut(authType, errorMessage);
+    return signOut(authType);
   }
 
   @override
@@ -980,10 +969,10 @@ class _$_signedOut implements _signedOut {
     TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)?
         loginWithPhone,
-    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function(AuthType authType)? signOut,
     TResult Function()? reset,
   }) {
-    return signOut?.call(authType, errorMessage);
+    return signOut?.call(authType);
   }
 
   @override
@@ -997,12 +986,12 @@ class _$_signedOut implements _signedOut {
     TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)?
         loginWithPhone,
-    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function(AuthType authType)? signOut,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (signOut != null) {
-      return signOut(authType, errorMessage);
+      return signOut(authType);
     }
     return orElse();
   }
@@ -1052,12 +1041,9 @@ class _$_signedOut implements _signedOut {
 }
 
 abstract class _signedOut implements AuthenticateEvent {
-  const factory _signedOut(
-      {required final AuthType authType,
-      final String? errorMessage}) = _$_signedOut;
+  const factory _signedOut({required final AuthType authType}) = _$_signedOut;
 
   AuthType get authType;
-  String? get errorMessage;
   @JsonKey(ignore: true)
   _$$_signedOutCopyWith<_$_signedOut> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1110,7 +1096,7 @@ class _$_reset implements _reset {
     required TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)
         loginWithPhone,
-    required TResult Function(AuthType authType, String? errorMessage) signOut,
+    required TResult Function(AuthType authType) signOut,
     required TResult Function() reset,
   }) {
     return reset();
@@ -1127,7 +1113,7 @@ class _$_reset implements _reset {
     TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)?
         loginWithPhone,
-    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function(AuthType authType)? signOut,
     TResult Function()? reset,
   }) {
     return reset?.call();
@@ -1144,7 +1130,7 @@ class _$_reset implements _reset {
     TResult Function(String phoneNumber, OTPGetter onSubmitOTP,
             OnCompleteSignUp onSignUpSubmit)?
         loginWithPhone,
-    TResult Function(AuthType authType, String? errorMessage)? signOut,
+    TResult Function(AuthType authType)? signOut,
     TResult Function()? reset,
     required TResult orElse(),
   }) {

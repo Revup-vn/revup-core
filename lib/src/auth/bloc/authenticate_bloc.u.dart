@@ -8,10 +8,10 @@ import '../../stores/users/users.dart';
 import '../infrastructure/infrastructure.dart';
 import '../models/models.dart';
 
-part 'authenticate_event.dart';
-part 'authenticate_state.dart';
 part 'authenticate_bloc.u.freezed.dart';
 part 'authenticate_bloc.u.g.dart';
+part 'authenticate_event.dart';
+part 'authenticate_state.dart';
 
 typedef PhoneGetter = Function0<FutureOr<String>>;
 
@@ -27,8 +27,7 @@ class AuthenticateBloc
     Emitter<AuthenticateState> emit,
   ) async =>
       event.when(
-        signOut: (authType, errorMessage) async =>
-            _onSignOut(authType, errorMessage, emit),
+        signOut: (authType) async => _onSignOut(authType, emit),
         loginWithGoogle: (
           OnCompleteSignUp onCompleteSignUp,
         ) =>
@@ -115,7 +114,6 @@ class AuthenticateBloc
 
   Future<Unit> _onSignOut(
     AuthType authType,
-    String? errorMessage,
     Emitter<AuthenticateState> emit,
   ) async =>
       authType.when(
@@ -124,8 +122,8 @@ class AuthenticateBloc
           (await _authRepos.ggSignOut())
               ? emit(const AuthenticateState.empty(isFirstTime: true))
               : emit(
-                  AuthenticateState.failure(
-                    failure: AuthFailure.unknown(errorMessage),
+                  const AuthenticateState.failure(
+                    failure: AuthFailure.signOut(),
                   ),
                 );
 
@@ -136,8 +134,8 @@ class AuthenticateBloc
           (await _authRepos.phoneSignOut())
               ? emit(const AuthenticateState.empty(isFirstTime: true))
               : emit(
-                  AuthenticateState.failure(
-                    failure: AuthFailure.unknown(errorMessage),
+                  const AuthenticateState.failure(
+                    failure: AuthFailure.signOut(),
                   ),
                 );
 
@@ -148,8 +146,8 @@ class AuthenticateBloc
           (await _authRepos.emailSignOut())
               ? emit(const AuthenticateState.empty(isFirstTime: false))
               : emit(
-                  AuthenticateState.failure(
-                    failure: AuthFailure.unknown(errorMessage),
+                  const AuthenticateState.failure(
+                    failure: AuthFailure.signOut(),
                   ),
                 );
 

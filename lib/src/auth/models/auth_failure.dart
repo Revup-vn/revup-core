@@ -15,6 +15,8 @@ class AuthFailure with _$AuthFailure {
 
   const factory AuthFailure.cancelled() = _cancelled;
 
+  const factory AuthFailure.signOut() = _signOut;
+
   const factory AuthFailure.invalidData([String? message]) = _invalidData;
 
   const factory AuthFailure.invalidOTP(String phoneNumber) = _invalidOTP;

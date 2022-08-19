@@ -58,6 +58,23 @@ Map<String, dynamic> _$$_cancelledToJson(_$_cancelled instance) =>
       'runtimeType': instance.$type,
     };
 
+_$_signOut _$$_signOutFromJson(Map<String, dynamic> json) => $checkedCreate(
+      r'_$_signOut',
+      json,
+      ($checkedConvert) {
+        final val = _$_signOut(
+          $type: $checkedConvert('runtimeType', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'runtimeType'},
+    );
+
+Map<String, dynamic> _$$_signOutToJson(_$_signOut instance) =>
+    <String, dynamic>{
+      'runtimeType': instance.$type,
+    };
+
 _$_invalidData _$$_invalidDataFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
       r'_$_invalidData',
