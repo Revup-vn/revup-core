@@ -5,34 +5,36 @@ import 'package:intl/intl.dart';
 
 import 'language_mode.dart';
 
-class LanguageCubit extends HydratedCubit<LanguageMode> {
-  LanguageCubit() : super(LanguageMode.System);
+class LanguageCubit extends HydratedCubit<Locale?> {
+  LanguageCubit() : super(null);
 
-  void set(LanguageMode state) => emit(state);
+  void set(LanguageMode state) => emit(state.toLocale());
 
   DateFormat getDateFormat() {
-    switch (state) {
-      case LanguageMode.System:
+    switch (state?.languageCode) {
+      case 'vi':
+        return DateFormat.yMd('vi_VN');
+      case 'en':
+        return DateFormat.yMEd();
+      case null:
+      default:
         return DateFormat.yMd(
           Intl.getCurrentLocale(),
         );
-      case LanguageMode.Vietnamese:
-        return DateFormat.yMd('vi_VN');
-      case LanguageMode.English:
-        return DateFormat.yMEd();
     }
   }
 
   NumberFormat getCurrencyFormat() {
-    switch (state) {
-      case LanguageMode.Vietnamese:
+    switch (state?.languageCode) {
+      case 'vi':
         return NumberFormat.currency(locale: 'vi_VN', symbol: 'đ');
-      case LanguageMode.English:
+      case 'en':
         return NumberFormat.currency(
           locale: 'en',
           name: 'VND',
         );
-      case LanguageMode.System:
+      case null:
+      default:
         final locale = Intl.getCurrentLocale();
         return NumberFormat.currency(
           locale: locale,
@@ -42,15 +44,17 @@ class LanguageCubit extends HydratedCubit<LanguageMode> {
   }
 
   @override
-  LanguageMode? fromJson(Map<String, dynamic> json) =>
-      LanguageMode.values[json['mode']! as int];
+  Locale? fromJson(Map<String, dynamic> json) {
+    final lang = json['lang']! as String?;
+    return lang == null ? null : Locale(lang);
+  }
 
   @override
-  Map<String, dynamic>? toJson(LanguageMode state) =>
-      <String, dynamic>{'mode': state.index};
+  Map<String, dynamic>? toJson(Locale? state) =>
+      <String, dynamic>{'lang': state?.languageCode};
 }
 
-extension LanguageX on LanguageMode {
+extension on LanguageMode {
   Locale? toLocale() {
     switch (this) {
       case LanguageMode.English:

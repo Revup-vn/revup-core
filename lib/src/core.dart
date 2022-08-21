@@ -43,23 +43,28 @@ Future<void> bootstrap({
     bootstrapLite(
       fOptions: fOptions,
       builder: (context, themeMode) =>
-          (lightTheme, darkTheme, routerObserver) => MaterialApp.router(
-                routeInformationParser: route.tail,
-                routerDelegate: AutoRouterDelegate(
-                  route.head,
-                  navigatorObservers: () => [AppRouteObserver()],
-                ),
-                themeMode: themeMode,
-                theme: lightTheme,
-                locale: context.watch<LanguageCubit>().state.toLocale(),
-                darkTheme: darkTheme,
-                supportedLocales: locales,
-                localizationsDelegates: localizationsDelegates,
-                builder: (_, w) => FlashThemeProvider(
-                  child: _FixedText(
-                    child: w,
-                  ),
-                ),
+          (lightTheme, darkTheme, routerObserver) =>
+              BlocBuilder<LanguageCubit, Locale?>(
+                builder: (context, state) {
+                  return MaterialApp.router(
+                    routeInformationParser: route.tail,
+                    routerDelegate: AutoRouterDelegate(
+                      route.head,
+                      navigatorObservers: () => [AppRouteObserver()],
+                    ),
+                    themeMode: themeMode,
+                    theme: lightTheme,
+                    locale: state,
+                    darkTheme: darkTheme,
+                    supportedLocales: locales,
+                    localizationsDelegates: localizationsDelegates,
+                    builder: (_, w) => FlashThemeProvider(
+                      child: _FixedText(
+                        child: w,
+                      ),
+                    ),
+                  );
+                },
               ),
     );
 
