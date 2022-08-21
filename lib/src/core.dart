@@ -51,11 +51,7 @@ Future<void> bootstrap({
                 ),
                 themeMode: themeMode,
                 theme: lightTheme,
-                locale: context.watch<LanguageCubit>().state.when(
-                      system: () => null,
-                      vietnamese: () => const Locale('vi'),
-                      english: () => const Locale('en'),
-                    ),
+                locale: context.watch<LanguageCubit>().state.toLocale(),
                 darkTheme: darkTheme,
                 supportedLocales: locales,
                 localizationsDelegates: localizationsDelegates,
