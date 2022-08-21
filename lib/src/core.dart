@@ -11,7 +11,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../core.dart';
@@ -44,8 +43,7 @@ Future<void> bootstrap({
     bootstrapLite(
       fOptions: fOptions,
       builder: (context, themeMode) =>
-          (lightTheme, darkTheme, routerObserver, resolveLocale) =>
-              MaterialApp.router(
+          (lightTheme, darkTheme, routerObserver) => MaterialApp.router(
                 routeInformationParser: route.tail,
                 routerDelegate: AutoRouterDelegate(
                   route.head,
@@ -54,16 +52,13 @@ Future<void> bootstrap({
                 themeMode: themeMode,
                 theme: lightTheme,
                 locale: context.watch<LanguageCubit>().state.when(
-                      system: () => Locale(
-                        Intl.getCurrentLocale().split('_').take(1).join(),
-                      ),
+                      system: () => null,
                       vietnamese: () => const Locale('vi'),
                       english: () => const Locale('en'),
                     ),
                 darkTheme: darkTheme,
                 supportedLocales: locales,
                 localizationsDelegates: localizationsDelegates,
-                localeListResolutionCallback: _resolveLocal,
                 builder: (_, w) => FlashThemeProvider(
                   child: _FixedText(
                     child: w,
@@ -74,15 +69,8 @@ Future<void> bootstrap({
 
 Future<void> bootstrapLite({
   required FirebaseOptions fOptions,
-  required Function2<
-          BuildContext,
-          ThemeMode,
-          Function4<
-              ThemeData,
-              ThemeData,
-              AppRouteObserver,
-              Function2<List<Locale>?, Iterable<Locale>, Locale?>,
-              StatefulWidget>>
+  required Function2<BuildContext, ThemeMode,
+          Function3<ThemeData, ThemeData, AppRouteObserver, StatefulWidget>>
       builder,
 }) async {
   FlutterError.onError = (details) {
@@ -106,7 +94,6 @@ Future<void> bootstrapLite({
                   lightTheme,
                   darkTheme,
                   AppRouteObserver(),
-                  _resolveLocal,
                 ),
               ),
             ),
@@ -117,16 +104,6 @@ Future<void> bootstrapLite({
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }
-
-Locale? _resolveLocal(
-  List<Locale>? locales,
-  Iterable<Locale> supportedLocales,
-) =>
-    supportedLocales.firstWhere(
-      (l) =>
-          locales?.any((n) => n.languageCode.contains(l.languageCode)) ?? false,
-      orElse: () => LanguageCubit.fallbackLocale,
-    );
 
 class _FixedText extends StatelessWidget {
   const _FixedText({
