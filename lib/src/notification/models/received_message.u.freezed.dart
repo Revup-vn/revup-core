@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ReceivedMessage {
   String get title => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
+  Map<String, dynamic> get data => throw _privateConstructorUsedError;
   NotificationType get type => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +31,11 @@ abstract class $ReceivedMessageCopyWith<$Res> {
   factory $ReceivedMessageCopyWith(
           ReceivedMessage value, $Res Function(ReceivedMessage) then) =
       _$ReceivedMessageCopyWithImpl<$Res>;
-  $Res call({String title, String body, NotificationType type});
+  $Res call(
+      {String title,
+      String body,
+      Map<String, dynamic> data,
+      NotificationType type});
 }
 
 /// @nodoc
@@ -46,6 +51,7 @@ class _$ReceivedMessageCopyWithImpl<$Res>
   $Res call({
     Object? title = freezed,
     Object? body = freezed,
+    Object? data = freezed,
     Object? type = freezed,
   }) {
     return _then(_value.copyWith(
@@ -57,6 +63,10 @@ class _$ReceivedMessageCopyWithImpl<$Res>
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
               as String,
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -72,7 +82,11 @@ abstract class _$$_ReceiveMessageCopyWith<$Res>
           _$_ReceiveMessage value, $Res Function(_$_ReceiveMessage) then) =
       __$$_ReceiveMessageCopyWithImpl<$Res>;
   @override
-  $Res call({String title, String body, NotificationType type});
+  $Res call(
+      {String title,
+      String body,
+      Map<String, dynamic> data,
+      NotificationType type});
 }
 
 /// @nodoc
@@ -90,6 +104,7 @@ class __$$_ReceiveMessageCopyWithImpl<$Res>
   $Res call({
     Object? title = freezed,
     Object? body = freezed,
+    Object? data = freezed,
     Object? type = freezed,
   }) {
     return _then(_$_ReceiveMessage(
@@ -101,6 +116,10 @@ class __$$_ReceiveMessageCopyWithImpl<$Res>
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
               as String,
+      data: data == freezed
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -113,18 +132,29 @@ class __$$_ReceiveMessageCopyWithImpl<$Res>
 
 class _$_ReceiveMessage implements _ReceiveMessage {
   const _$_ReceiveMessage(
-      {required this.title, required this.body, required this.type});
+      {required this.title,
+      required this.body,
+      required final Map<String, dynamic> data,
+      required this.type})
+      : _data = data;
 
   @override
   final String title;
   @override
   final String body;
+  final Map<String, dynamic> _data;
+  @override
+  Map<String, dynamic> get data {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_data);
+  }
+
   @override
   final NotificationType type;
 
   @override
   String toString() {
-    return 'ReceivedMessage(title: $title, body: $body, type: $type)';
+    return 'ReceivedMessage(title: $title, body: $body, data: $data, type: $type)';
   }
 
   @override
@@ -134,6 +164,7 @@ class _$_ReceiveMessage implements _ReceiveMessage {
             other is _$_ReceiveMessage &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.body, body) &&
+            const DeepCollectionEquality().equals(other._data, _data) &&
             const DeepCollectionEquality().equals(other.type, type));
   }
 
@@ -142,6 +173,7 @@ class _$_ReceiveMessage implements _ReceiveMessage {
       runtimeType,
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(body),
+      const DeepCollectionEquality().hash(_data),
       const DeepCollectionEquality().hash(type));
 
   @JsonKey(ignore: true)
@@ -154,12 +186,15 @@ abstract class _ReceiveMessage implements ReceivedMessage {
   const factory _ReceiveMessage(
       {required final String title,
       required final String body,
+      required final Map<String, dynamic> data,
       required final NotificationType type}) = _$_ReceiveMessage;
 
   @override
   String get title;
   @override
   String get body;
+  @override
+  Map<String, dynamic> get data;
   @override
   NotificationType get type;
   @override

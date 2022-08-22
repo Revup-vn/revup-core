@@ -10,13 +10,16 @@ class ReceivedMessage with _$ReceivedMessage {
   const factory ReceivedMessage({
     required String title,
     required String body,
+    required Map<String, dynamic> data,
     required NotificationType type,
   }) = _ReceiveMessage;
 
-  factory ReceivedMessage.fromRemoteMessage(RemoteMessage rm) =>
-      ReceivedMessage(
-        body: rm.notification?.body ?? '',
-        title: rm.notification?.title ?? '',
-        type: SendMessage.notificationTypeFromJson(rm.data),
-      );
+  factory ReceivedMessage.fromRemoteMessage(RemoteMessage rm) {
+    return ReceivedMessage(
+      body: rm.notification?.body ?? '',
+      title: rm.notification?.title ?? '',
+      data: rm.data,
+      type: SendMessage.notificationTypeFromJson(rm.data),
+    );
+  }
 }
