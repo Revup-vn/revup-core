@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,14 +12,17 @@ class ReceivedMessage with _$ReceivedMessage {
   const factory ReceivedMessage({
     required String title,
     required String body,
-    required NotificationType type,
+    String? icon,
+    required MessageData payload,
   }) = _ReceiveMessage;
 
-  factory ReceivedMessage.fromRemoteMessage(RemoteMessage rm) {
-    return ReceivedMessage(
-      body: rm.notification?.body ?? '',
-      title: rm.notification?.title ?? '',
-      type: SendMessage.notificationTypeFromJson(rm.data),
-    );
-  }
+  factory ReceivedMessage.fromRemoteMessage(RemoteMessage rm) =>
+      ReceivedMessage(
+        icon: Platform.isAndroid
+            ? rm.notification?.android?.smallIcon
+            : rm.notification?.apple?.imageUrl,
+        body: rm.notification?.body ?? '',
+        title: rm.notification?.title ?? '',
+        payload: MessageData.fromJson(rm.data),
+      );
 }
