@@ -59,6 +59,11 @@ Future<void> bootstrap({
                 darkTheme: darkTheme,
                 supportedLocales: locales,
                 localizationsDelegates: localizationsDelegates,
+                localeListResolutionCallback:
+                    context.watch<LanguageCubit>().state.maybeWhen(
+                          system: () => null,
+                          orElse: () => _resolveLocal,
+                        ),
                 builder: (_, w) => FlashThemeProvider(
                   child: _FixedText(
                     child: w,
@@ -104,6 +109,16 @@ Future<void> bootstrapLite({
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }
+
+Locale? _resolveLocal(
+  List<Locale>? locales,
+  Iterable<Locale> supportedLocales,
+) =>
+    supportedLocales.firstWhere(
+      (l) =>
+          locales?.any((n) => n.languageCode.contains(l.languageCode)) ?? false,
+      orElse: () => LanguageCubit.fallbackLocale,
+    );
 
 class _FixedText extends StatelessWidget {
   const _FixedText({

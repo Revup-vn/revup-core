@@ -13,7 +13,10 @@ part 'notification_state.dart';
 part 'notification_cubit.u.freezed.dart';
 part 'notification_cubit.u.g.dart';
 
-typedef OnMessageListener = FutureOr<void> Function(ReceivedMessage);
+typedef OnMessageListener<T> = FutureOr<void> Function(
+  ReceivedMessage,
+  Function1<Function1<Map<String, dynamic>, T>, Option<T>>,
+);
 
 class NotificationCubit extends HydratedCubit<NotificationState> {
   NotificationCubit(this._messaging, this._functions)
@@ -24,20 +27,24 @@ class NotificationCubit extends HydratedCubit<NotificationState> {
       (event) async => _fListeners.traverseFuture(
         (e) async => e(
           ReceivedMessage.fromRemoteMessage(event),
+          (val) => catching<dynamic>(() => val(event.data)).toOption(),
         ),
       ),
     );
 
     _bss = FirebaseMessaging.onMessageOpenedApp.listen(
       (event) => _bListeners.traverseFuture(
-        (a) async => a(ReceivedMessage.fromRemoteMessage(event)),
+        (a) async => a(
+          ReceivedMessage.fromRemoteMessage(event),
+          (val) => catching<dynamic>(() => val(event.data)).toOption(),
+        ),
       ),
     );
   }
   final FirebaseMessaging _messaging;
   final FirebaseFunctions _functions;
-  IList<OnMessageListener> _bListeners;
-  IList<OnMessageListener> _fListeners;
+  IList<OnMessageListener<dynamic>> _bListeners;
+  IList<OnMessageListener<dynamic>> _fListeners;
   late StreamSubscription<RemoteMessage> _fss;
   late StreamSubscription<RemoteMessage> _bss;
 
@@ -73,14 +80,32 @@ class NotificationCubit extends HydratedCubit<NotificationState> {
         orElse: () async => unit,
       );
 
-  Unit addForegroundListener(OnMessageListener listener) {
-    _fListeners = cons(listener, _fListeners);
+  /// Eg:
+  /// [Dummy class with fromJson implement]
+  /// ```dart
+  /// class AC {
+  /// AC();
+  /// factory AC.fromJson(Map<String, dynamic> json) => AC();
+  /// }
+  /// ```
+  /// [Your onMessageListener Body]
+  /// ```dart
+  /// context
+  ///     .read<NotificationCubit>()
+  ///     .addForegroundListener<AC>((p0, p1) async {
+  /// final maybeAC = p1(AC.fromJson);
+  /// final receivedMessage = p0;
+  // });
+  /// ```
+  Unit addForegroundListener<T>(OnMessageListener<T> listener) {
+    _fListeners = cons(listener as OnMessageListener, _fListeners);
 
     return unit;
   }
 
-  Unit addBackgroundListener(OnMessageListener listener) {
-    _bListeners = cons(listener, _bListeners);
+  /// Refer to `addForegroundListener` method
+  Unit addBackgroundListener<T>(OnMessageListener<T> listener) {
+    _bListeners = cons(listener as OnMessageListener, _bListeners);
 
     return unit;
   }

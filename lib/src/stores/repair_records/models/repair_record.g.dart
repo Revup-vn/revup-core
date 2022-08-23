@@ -107,6 +107,11 @@ _$_aborted _$$_abortedFromJson(Map<String, dynamic> json) => $checkedCreate(
               'from', (v) => Location.fromJson(v as Map<String, dynamic>)),
           to: $checkedConvert(
               'to', (v) => Location.fromJson(v as Map<String, dynamic>)),
+          report: $checkedConvert(
+              'report',
+              (v) => v == null
+                  ? null
+                  : RepairReport.fromJson(v as Map<String, dynamic>)),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -125,6 +130,7 @@ Map<String, dynamic> _$$_abortedToJson(_$_aborted instance) =>
       'money': instance.money,
       'from': instance.from.toJson(),
       'to': instance.to.toJson(),
+      'report': instance.report?.toJson(),
       'type': instance.$type,
     };
 

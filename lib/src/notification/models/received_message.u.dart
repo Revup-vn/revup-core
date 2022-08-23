@@ -10,7 +10,6 @@ class ReceivedMessage with _$ReceivedMessage {
   const factory ReceivedMessage({
     required String title,
     required String body,
-    required Map<String, dynamic> data,
     required NotificationType type,
   }) = _ReceiveMessage;
 
@@ -18,7 +17,6 @@ class ReceivedMessage with _$ReceivedMessage {
     return ReceivedMessage(
       body: rm.notification?.body ?? '',
       title: rm.notification?.title ?? '',
-      data: rm.data,
       type: SendMessage.notificationTypeFromJson(rm.data),
     );
   }
