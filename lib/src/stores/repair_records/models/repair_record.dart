@@ -50,6 +50,7 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required int money,
     required Location from,
     required Location to,
+    RepairReport? report,
   }) = _aborted;
 
   @FreezedUnionValue('4')

@@ -13,10 +13,11 @@ class ReceivedMessage with _$ReceivedMessage {
     required NotificationType type,
   }) = _ReceiveMessage;
 
-  factory ReceivedMessage.fromRemoteMessage(RemoteMessage rm) =>
-      ReceivedMessage(
-        body: rm.notification?.body ?? '',
-        title: rm.notification?.title ?? '',
-        type: SendMessage.notificationTypeFromJson(rm.data),
-      );
+  factory ReceivedMessage.fromRemoteMessage(RemoteMessage rm) {
+    return ReceivedMessage(
+      body: rm.notification?.body ?? '',
+      title: rm.notification?.title ?? '',
+      type: SendMessage.notificationTypeFromJson(rm.data),
+    );
+  }
 }

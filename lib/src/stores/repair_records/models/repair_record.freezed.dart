@@ -81,7 +81,8 @@ mixin _$RepairRecord {
             String vehicle,
             int money,
             Location from,
-            Location to)
+            Location to,
+            RepairReport? report)
         aborted,
     required TResult Function(
             String id,
@@ -154,8 +155,17 @@ mixin _$RepairRecord {
             Location from,
             Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, DateTime created,
-            String desc, String vehicle, int money, Location from, Location to)?
+    TResult Function(
+            String id,
+            String cid,
+            String pid,
+            DateTime created,
+            String desc,
+            String vehicle,
+            int money,
+            Location from,
+            Location to,
+            RepairReport? report)?
         aborted,
     TResult Function(
             String id,
@@ -228,8 +238,17 @@ mixin _$RepairRecord {
             Location from,
             Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, DateTime created,
-            String desc, String vehicle, int money, Location from, Location to)?
+    TResult Function(
+            String id,
+            String cid,
+            String pid,
+            DateTime created,
+            String desc,
+            String vehicle,
+            int money,
+            Location from,
+            Location to,
+            RepairReport? report)?
         aborted,
     TResult Function(
             String id,
@@ -628,7 +647,8 @@ class _$_pending implements _pending {
             String vehicle,
             int money,
             Location from,
-            Location to)
+            Location to,
+            RepairReport? report)
         aborted,
     required TResult Function(
             String id,
@@ -705,8 +725,17 @@ class _$_pending implements _pending {
             Location from,
             Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, DateTime created,
-            String desc, String vehicle, int money, Location from, Location to)?
+    TResult Function(
+            String id,
+            String cid,
+            String pid,
+            DateTime created,
+            String desc,
+            String vehicle,
+            int money,
+            Location from,
+            Location to,
+            RepairReport? report)?
         aborted,
     TResult Function(
             String id,
@@ -783,8 +812,17 @@ class _$_pending implements _pending {
             Location from,
             Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, DateTime created,
-            String desc, String vehicle, int money, Location from, Location to)?
+    TResult Function(
+            String id,
+            String cid,
+            String pid,
+            DateTime created,
+            String desc,
+            String vehicle,
+            int money,
+            Location from,
+            Location to,
+            RepairReport? report)?
         aborted,
     TResult Function(
             String id,
@@ -1141,7 +1179,8 @@ class _$_accept implements _accept {
             String vehicle,
             int money,
             Location from,
-            Location to)
+            Location to,
+            RepairReport? report)
         aborted,
     required TResult Function(
             String id,
@@ -1218,8 +1257,17 @@ class _$_accept implements _accept {
             Location from,
             Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, DateTime created,
-            String desc, String vehicle, int money, Location from, Location to)?
+    TResult Function(
+            String id,
+            String cid,
+            String pid,
+            DateTime created,
+            String desc,
+            String vehicle,
+            int money,
+            Location from,
+            Location to,
+            RepairReport? report)?
         aborted,
     TResult Function(
             String id,
@@ -1296,8 +1344,17 @@ class _$_accept implements _accept {
             Location from,
             Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, DateTime created,
-            String desc, String vehicle, int money, Location from, Location to)?
+    TResult Function(
+            String id,
+            String cid,
+            String pid,
+            DateTime created,
+            String desc,
+            String vehicle,
+            int money,
+            Location from,
+            Location to,
+            RepairReport? report)?
         aborted,
     TResult Function(
             String id,
@@ -1458,12 +1515,14 @@ abstract class _$$_abortedCopyWith<$Res>
       String vehicle,
       int money,
       Location from,
-      Location to});
+      Location to,
+      RepairReport? report});
 
   @override
   $LocationCopyWith<$Res> get from;
   @override
   $LocationCopyWith<$Res> get to;
+  $RepairReportCopyWith<$Res>? get report;
 }
 
 /// @nodoc
@@ -1486,6 +1545,7 @@ class __$$_abortedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
     Object? money = freezed,
     Object? from = freezed,
     Object? to = freezed,
+    Object? report = freezed,
   }) {
     return _then(_$_aborted(
       id: id == freezed
@@ -1524,7 +1584,22 @@ class __$$_abortedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
               as Location,
+      report: report == freezed
+          ? _value.report
+          : report // ignore: cast_nullable_to_non_nullable
+              as RepairReport?,
     ));
+  }
+
+  @override
+  $RepairReportCopyWith<$Res>? get report {
+    if (_value.report == null) {
+      return null;
+    }
+
+    return $RepairReportCopyWith<$Res>(_value.report!, (value) {
+      return _then(_value.copyWith(report: value));
+    });
   }
 }
 
@@ -1541,6 +1616,7 @@ class _$_aborted implements _aborted {
       required this.money,
       required this.from,
       required this.to,
+      this.report,
       final String? $type})
       : $type = $type ?? '3';
 
@@ -1565,13 +1641,15 @@ class _$_aborted implements _aborted {
   final Location from;
   @override
   final Location to;
+  @override
+  final RepairReport? report;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'RepairRecord.aborted(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, from: $from, to: $to)';
+    return 'RepairRecord.aborted(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, from: $from, to: $to, report: $report)';
   }
 
   @override
@@ -1587,7 +1665,8 @@ class _$_aborted implements _aborted {
             const DeepCollectionEquality().equals(other.vehicle, vehicle) &&
             const DeepCollectionEquality().equals(other.money, money) &&
             const DeepCollectionEquality().equals(other.from, from) &&
-            const DeepCollectionEquality().equals(other.to, to));
+            const DeepCollectionEquality().equals(other.to, to) &&
+            const DeepCollectionEquality().equals(other.report, report));
   }
 
   @JsonKey(ignore: true)
@@ -1602,7 +1681,8 @@ class _$_aborted implements _aborted {
       const DeepCollectionEquality().hash(vehicle),
       const DeepCollectionEquality().hash(money),
       const DeepCollectionEquality().hash(from),
-      const DeepCollectionEquality().hash(to));
+      const DeepCollectionEquality().hash(to),
+      const DeepCollectionEquality().hash(report));
 
   @JsonKey(ignore: true)
   @override
@@ -1645,7 +1725,8 @@ class _$_aborted implements _aborted {
             String vehicle,
             int money,
             Location from,
-            Location to)
+            Location to,
+            RepairReport? report)
         aborted,
     required TResult Function(
             String id,
@@ -1691,7 +1772,8 @@ class _$_aborted implements _aborted {
             RepairReport? report)
         finished,
   }) {
-    return aborted(id, cid, pid, created, desc, vehicle, money, from, to);
+    return aborted(
+        id, cid, pid, created, desc, vehicle, money, from, to, report);
   }
 
   @override
@@ -1721,8 +1803,17 @@ class _$_aborted implements _aborted {
             Location from,
             Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, DateTime created,
-            String desc, String vehicle, int money, Location from, Location to)?
+    TResult Function(
+            String id,
+            String cid,
+            String pid,
+            DateTime created,
+            String desc,
+            String vehicle,
+            int money,
+            Location from,
+            Location to,
+            RepairReport? report)?
         aborted,
     TResult Function(
             String id,
@@ -1768,7 +1859,8 @@ class _$_aborted implements _aborted {
             RepairReport? report)?
         finished,
   }) {
-    return aborted?.call(id, cid, pid, created, desc, vehicle, money, from, to);
+    return aborted?.call(
+        id, cid, pid, created, desc, vehicle, money, from, to, report);
   }
 
   @override
@@ -1798,8 +1890,17 @@ class _$_aborted implements _aborted {
             Location from,
             Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, DateTime created,
-            String desc, String vehicle, int money, Location from, Location to)?
+    TResult Function(
+            String id,
+            String cid,
+            String pid,
+            DateTime created,
+            String desc,
+            String vehicle,
+            int money,
+            Location from,
+            Location to,
+            RepairReport? report)?
         aborted,
     TResult Function(
             String id,
@@ -1847,7 +1948,8 @@ class _$_aborted implements _aborted {
     required TResult orElse(),
   }) {
     if (aborted != null) {
-      return aborted(id, cid, pid, created, desc, vehicle, money, from, to);
+      return aborted(
+          id, cid, pid, created, desc, vehicle, money, from, to, report);
     }
     return orElse();
   }
@@ -1913,7 +2015,8 @@ abstract class _aborted implements RepairRecord {
       required final String vehicle,
       required final int money,
       required final Location from,
-      required final Location to}) = _$_aborted;
+      required final Location to,
+      final RepairReport? report}) = _$_aborted;
 
   factory _aborted.fromJson(Map<String, dynamic> json) = _$_aborted.fromJson;
 
@@ -1935,6 +2038,7 @@ abstract class _aborted implements RepairRecord {
   Location get from;
   @override
   Location get to;
+  RepairReport? get report;
   @override
   @JsonKey(ignore: true)
   _$$_abortedCopyWith<_$_aborted> get copyWith =>
@@ -2166,7 +2270,8 @@ class _$_arrived implements _arrived {
             String vehicle,
             int money,
             Location from,
-            Location to)
+            Location to,
+            RepairReport? report)
         aborted,
     required TResult Function(
             String id,
@@ -2243,8 +2348,17 @@ class _$_arrived implements _arrived {
             Location from,
             Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, DateTime created,
-            String desc, String vehicle, int money, Location from, Location to)?
+    TResult Function(
+            String id,
+            String cid,
+            String pid,
+            DateTime created,
+            String desc,
+            String vehicle,
+            int money,
+            Location from,
+            Location to,
+            RepairReport? report)?
         aborted,
     TResult Function(
             String id,
@@ -2321,8 +2435,17 @@ class _$_arrived implements _arrived {
             Location from,
             Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, DateTime created,
-            String desc, String vehicle, int money, Location from, Location to)?
+    TResult Function(
+            String id,
+            String cid,
+            String pid,
+            DateTime created,
+            String desc,
+            String vehicle,
+            int money,
+            Location from,
+            Location to,
+            RepairReport? report)?
         aborted,
     TResult Function(
             String id,
@@ -2694,7 +2817,8 @@ class _$_started implements _started {
             String vehicle,
             int money,
             Location from,
-            Location to)
+            Location to,
+            RepairReport? report)
         aborted,
     required TResult Function(
             String id,
@@ -2771,8 +2895,17 @@ class _$_started implements _started {
             Location from,
             Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, DateTime created,
-            String desc, String vehicle, int money, Location from, Location to)?
+    TResult Function(
+            String id,
+            String cid,
+            String pid,
+            DateTime created,
+            String desc,
+            String vehicle,
+            int money,
+            Location from,
+            Location to,
+            RepairReport? report)?
         aborted,
     TResult Function(
             String id,
@@ -2849,8 +2982,17 @@ class _$_started implements _started {
             Location from,
             Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, DateTime created,
-            String desc, String vehicle, int money, Location from, Location to)?
+    TResult Function(
+            String id,
+            String cid,
+            String pid,
+            DateTime created,
+            String desc,
+            String vehicle,
+            int money,
+            Location from,
+            Location to,
+            RepairReport? report)?
         aborted,
     TResult Function(
             String id,
@@ -3293,7 +3435,8 @@ class _$_finished implements _finished {
             String vehicle,
             int money,
             Location from,
-            Location to)
+            Location to,
+            RepairReport? report)
         aborted,
     required TResult Function(
             String id,
@@ -3370,8 +3513,17 @@ class _$_finished implements _finished {
             Location from,
             Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, DateTime created,
-            String desc, String vehicle, int money, Location from, Location to)?
+    TResult Function(
+            String id,
+            String cid,
+            String pid,
+            DateTime created,
+            String desc,
+            String vehicle,
+            int money,
+            Location from,
+            Location to,
+            RepairReport? report)?
         aborted,
     TResult Function(
             String id,
@@ -3448,8 +3600,17 @@ class _$_finished implements _finished {
             Location from,
             Location to)?
         accepted,
-    TResult Function(String id, String cid, String pid, DateTime created,
-            String desc, String vehicle, int money, Location from, Location to)?
+    TResult Function(
+            String id,
+            String cid,
+            String pid,
+            DateTime created,
+            String desc,
+            String vehicle,
+            int money,
+            Location from,
+            Location to,
+            RepairReport? report)?
         aborted,
     TResult Function(
             String id,
