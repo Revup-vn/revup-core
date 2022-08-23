@@ -23,8 +23,8 @@ mixin _$SendMessage {
   String get title => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
   String get token => throw _privateConstructorUsedError;
-  String get iconUrl => throw _privateConstructorUsedError;
-  NotificationType get type => throw _privateConstructorUsedError;
+  String get icon => throw _privateConstructorUsedError;
+  MessageData get payload => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,8 +41,8 @@ abstract class $SendMessageCopyWith<$Res> {
       {String title,
       String body,
       String token,
-      String iconUrl,
-      NotificationType type});
+      String icon,
+      MessageData payload});
 }
 
 /// @nodoc
@@ -58,8 +58,8 @@ class _$SendMessageCopyWithImpl<$Res> implements $SendMessageCopyWith<$Res> {
     Object? title = freezed,
     Object? body = freezed,
     Object? token = freezed,
-    Object? iconUrl = freezed,
-    Object? type = freezed,
+    Object? icon = freezed,
+    Object? payload = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed
@@ -74,14 +74,14 @@ class _$SendMessageCopyWithImpl<$Res> implements $SendMessageCopyWith<$Res> {
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String,
-      iconUrl: iconUrl == freezed
-          ? _value.iconUrl
-          : iconUrl // ignore: cast_nullable_to_non_nullable
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as NotificationType,
+      payload: payload == freezed
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as MessageData,
     ));
   }
 }
@@ -97,8 +97,8 @@ abstract class _$$_SendMessageCopyWith<$Res>
       {String title,
       String body,
       String token,
-      String iconUrl,
-      NotificationType type});
+      String icon,
+      MessageData payload});
 }
 
 /// @nodoc
@@ -116,8 +116,8 @@ class __$$_SendMessageCopyWithImpl<$Res> extends _$SendMessageCopyWithImpl<$Res>
     Object? title = freezed,
     Object? body = freezed,
     Object? token = freezed,
-    Object? iconUrl = freezed,
-    Object? type = freezed,
+    Object? icon = freezed,
+    Object? payload = freezed,
   }) {
     return _then(_$_SendMessage(
       title: title == freezed
@@ -132,14 +132,14 @@ class __$$_SendMessageCopyWithImpl<$Res> extends _$SendMessageCopyWithImpl<$Res>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String,
-      iconUrl: iconUrl == freezed
-          ? _value.iconUrl
-          : iconUrl // ignore: cast_nullable_to_non_nullable
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as NotificationType,
+      payload: payload == freezed
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as MessageData,
     ));
   }
 }
@@ -151,8 +151,8 @@ class _$_SendMessage implements _SendMessage {
       {required this.title,
       required this.body,
       required this.token,
-      required this.iconUrl,
-      required this.type});
+      required this.icon,
+      required this.payload});
 
   factory _$_SendMessage.fromJson(Map<String, dynamic> json) =>
       _$$_SendMessageFromJson(json);
@@ -164,13 +164,13 @@ class _$_SendMessage implements _SendMessage {
   @override
   final String token;
   @override
-  final String iconUrl;
+  final String icon;
   @override
-  final NotificationType type;
+  final MessageData payload;
 
   @override
   String toString() {
-    return 'SendMessage(title: $title, body: $body, token: $token, iconUrl: $iconUrl, type: $type)';
+    return 'SendMessage(title: $title, body: $body, token: $token, icon: $icon, payload: $payload)';
   }
 
   @override
@@ -181,8 +181,8 @@ class _$_SendMessage implements _SendMessage {
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.body, body) &&
             const DeepCollectionEquality().equals(other.token, token) &&
-            const DeepCollectionEquality().equals(other.iconUrl, iconUrl) &&
-            const DeepCollectionEquality().equals(other.type, type));
+            const DeepCollectionEquality().equals(other.icon, icon) &&
+            const DeepCollectionEquality().equals(other.payload, payload));
   }
 
   @JsonKey(ignore: true)
@@ -192,8 +192,8 @@ class _$_SendMessage implements _SendMessage {
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(body),
       const DeepCollectionEquality().hash(token),
-      const DeepCollectionEquality().hash(iconUrl),
-      const DeepCollectionEquality().hash(type));
+      const DeepCollectionEquality().hash(icon),
+      const DeepCollectionEquality().hash(payload));
 
   @JsonKey(ignore: true)
   @override
@@ -213,8 +213,8 @@ abstract class _SendMessage implements SendMessage {
       {required final String title,
       required final String body,
       required final String token,
-      required final String iconUrl,
-      required final NotificationType type}) = _$_SendMessage;
+      required final String icon,
+      required final MessageData payload}) = _$_SendMessage;
 
   factory _SendMessage.fromJson(Map<String, dynamic> json) =
       _$_SendMessage.fromJson;
@@ -226,9 +226,9 @@ abstract class _SendMessage implements SendMessage {
   @override
   String get token;
   @override
-  String get iconUrl;
+  String get icon;
   @override
-  NotificationType get type;
+  MessageData get payload;
   @override
   @JsonKey(ignore: true)
   _$$_SendMessageCopyWith<_$_SendMessage> get copyWith =>
