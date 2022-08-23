@@ -71,13 +71,13 @@ class NotificationCubit extends HydratedCubit<NotificationState> {
         orElse: () async => unit,
       );
 
-  Unit addForegroundListener<T extends dynamic>(OnMessageListener listener) {
+  Unit addForegroundListener(OnMessageListener listener) {
     _fListeners = cons(listener, _fListeners);
 
     return unit;
   }
 
-  Unit addBackgroundListener<T>(OnMessageListener listener) {
+  Unit addBackgroundListener(OnMessageListener listener) {
     _bListeners = cons(listener, _bListeners);
 
     return unit;

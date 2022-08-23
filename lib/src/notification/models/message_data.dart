@@ -8,7 +8,13 @@ class MessageData {
           !payload.keys.contains(kTypeEntry),
           'payload must not have entry type',
         );
-  factory MessageData.fromJson(Map<String, dynamic> json) => MessageData(
+
+  MessageData._({
+    required this.type,
+    required this.payload,
+  });
+
+  factory MessageData.fromJson(Map<String, dynamic> json) => MessageData._(
         type: _NotificationTypeEnumMap.entries
             .singleWhere(
               (element) =>
