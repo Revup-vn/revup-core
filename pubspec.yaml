@@ -1,6 +1,6 @@
 name: revup_core
 description: Core package for revup app
-version: 6.2.3-dev
+version: 6.2.3-dev+1
 
 publish_to: none
 
@@ -13,7 +13,7 @@ dependencies:
   cloud_functions: ^3.3.4
   connectivity_plus: ^2.3.6
   dartz: ^0.10.1
-  firebase_auth: ^3.6.3
+  firebase_auth: ^3.6.4
   firebase_core: ^1.20.0
   firebase_messaging: ^12.0.2
   firebase_storage: ^10.3.5
