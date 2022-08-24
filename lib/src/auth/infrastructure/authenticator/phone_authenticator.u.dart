@@ -38,10 +38,12 @@ class PhoneAuthenticator extends Authenticator {
       phoneNumber: phoneNumber,
       verificationCompleted: (authCredentials) async {
         if (authCredentials.smsCode != null) {
+          if (loginComplete.isCompleted) return;
           await _authLogin(loginComplete, authCredentials);
         }
       },
       verificationFailed: (e) {
+        if (loginComplete.isCompleted) return;
         if (e.code == 'invalid-phone-number') {
           loginComplete.complete(left(ValidateException()));
         } else {
