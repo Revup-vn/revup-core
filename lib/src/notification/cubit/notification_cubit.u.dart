@@ -8,6 +8,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import '../models/received_message.u.dart';
 import '../models/send_message.u.dart';
+import '../notification.dart';
 
 part 'notification_state.dart';
 part 'notification_cubit.u.freezed.dart';
@@ -59,6 +60,15 @@ class NotificationCubit extends HydratedCubit<NotificationState> {
         () => _functions
             .httpsCallable('sendtotoken')
             .call<bool>(payload.toJson()),
+      )
+          .map((a) => a.data)
+          .attempt()
+          .map((a) => a.fold((l) => false, (r) => r))
+          .run();
+
+  Future<bool> sendMulticastMessage(MulticastMessage payload) => Task(
+        () =>
+            _functions.httpsCallable('multicast').call<bool>(payload.toJson()),
       )
           .map((a) => a.data)
           .attempt()
