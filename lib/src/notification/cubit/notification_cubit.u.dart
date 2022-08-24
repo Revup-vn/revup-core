@@ -6,8 +6,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-import '../models/received_message.u.dart';
-import '../models/send_message.u.dart';
 import '../notification.dart';
 
 part 'notification_state.dart';
