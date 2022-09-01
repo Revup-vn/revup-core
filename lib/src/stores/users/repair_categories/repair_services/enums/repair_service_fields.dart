@@ -1,1 +1,5 @@
-enum RepairServiceFields { Name, Fee }
+enum RepairServiceFields {
+  Name,
+  Fee,
+  Active,
+}

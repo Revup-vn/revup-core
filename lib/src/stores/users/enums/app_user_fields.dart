@@ -18,4 +18,6 @@ enum AppUserFields {
   Online,
   Location,
   GeoPointLocation,
+  ViolatedTimes,
+  BannedValidatedDate,
 }

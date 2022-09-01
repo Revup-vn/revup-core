@@ -26,6 +26,9 @@ _$_consumer _$$_consumerFromJson(Map<String, dynamic> json) => $checkedCreate(
               'last_updated_time', (v) => DateTime.parse(v as String)),
           vac: $checkedConvert('vac',
               (v) => VideoCallAccount.fromJson(v as Map<String, dynamic>)),
+          violatedTimes: $checkedConvert('violated_times', (v) => v as int),
+          bannedValidatedDate: $checkedConvert('banned_validated_date',
+              (v) => v == null ? null : DateTime.parse(v as String)),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -36,6 +39,8 @@ _$_consumer _$$_consumerFromJson(Map<String, dynamic> json) => $checkedCreate(
         'avatarUrl': 'avatar_url',
         'createdTime': 'created_time',
         'lastUpdatedTime': 'last_updated_time',
+        'violatedTimes': 'violated_times',
+        'bannedValidatedDate': 'banned_validated_date',
         r'$type': 'type'
       },
     );
@@ -54,6 +59,8 @@ Map<String, dynamic> _$$_consumerToJson(_$_consumer instance) =>
       'created_time': instance.createdTime.toIso8601String(),
       'last_updated_time': instance.lastUpdatedTime.toIso8601String(),
       'vac': instance.vac.toJson(),
+      'violated_times': instance.violatedTimes,
+      'banned_validated_date': instance.bannedValidatedDate?.toIso8601String(),
       'type': instance.$type,
     };
 

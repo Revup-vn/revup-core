@@ -11,6 +11,7 @@ class RepairService extends Serializable<RepairService> with _$RepairService {
     required String name,
     required int fee,
     String? img,
+    @Default(true) bool active,
   }) = _RepairService;
 
   factory RepairService.fromJson(Map<String, dynamic> json) =>

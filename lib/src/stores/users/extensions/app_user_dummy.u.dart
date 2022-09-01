@@ -18,6 +18,7 @@ extension AppUserDummy on AppUser {
         createdTime: kDateDummy,
         lastUpdatedTime: kDateDummy,
         vac: VideoCallAccountDummy.dummy(),
+        violatedTimes: 0,
       );
 
   static AppUser dummyProvider(String id) => AppUser.provider(
@@ -80,6 +81,8 @@ extension AppUserDummy on AppUser {
     AppUserFields.Online: 'online',
     AppUserFields.GeoPointLocation: 'cur_location',
     AppUserFields.Location: 'loc',
+    AppUserFields.ViolatedTimes: 'violated_times',
+    AppUserFields.BannedValidatedDate: 'banned_validated_date',
   };
   static String field(AppUserFields f) => _fields[f]!;
 }

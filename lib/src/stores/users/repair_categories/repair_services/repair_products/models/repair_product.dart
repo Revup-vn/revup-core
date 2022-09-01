@@ -12,6 +12,8 @@ class RepairProduct extends Serializable<RepairProduct> with _$RepairProduct {
     required String desc,
     required String img,
     required int price,
+    @Default(1) int quality,
+    @Default(true) bool active,
   }) = _RepairProduct;
 
   factory RepairProduct.fromJson(Map<String, dynamic> json) =>

@@ -9,6 +9,8 @@ extension RepairProductDummy on RepairProduct {
     RepairProductFields.Description: 'desc',
     RepairProductFields.Image: 'img',
     RepairProductFields.Price: 'price',
+    RepairProductFields.Active: 'active',
+    RepairProductFields.Quality: 'quality',
   };
   static String field(RepairProductFields f) => _fields[f]!;
 }

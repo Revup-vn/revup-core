@@ -56,7 +56,9 @@ mixin _$AppUser {
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
-            VideoCallAccount vac)
+            VideoCallAccount vac,
+            int violatedTimes,
+            DateTime? bannedValidatedDate)
         consumer,
     required TResult Function(
             String uuid,
@@ -107,7 +109,9 @@ mixin _$AppUser {
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
-            VideoCallAccount vac)?
+            VideoCallAccount vac,
+            int violatedTimes,
+            DateTime? bannedValidatedDate)?
         consumer,
     TResult Function(
             String uuid,
@@ -158,7 +162,9 @@ mixin _$AppUser {
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
-            VideoCallAccount vac)?
+            VideoCallAccount vac,
+            int violatedTimes,
+            DateTime? bannedValidatedDate)?
         consumer,
     TResult Function(
             String uuid,
@@ -330,7 +336,9 @@ abstract class _$$_consumerCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       String avatarUrl,
       DateTime createdTime,
       DateTime lastUpdatedTime,
-      VideoCallAccount vac});
+      VideoCallAccount vac,
+      int violatedTimes,
+      DateTime? bannedValidatedDate});
 
   $VideoCallAccountCopyWith<$Res> get vac;
 }
@@ -359,6 +367,8 @@ class __$$_consumerCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
     Object? createdTime = freezed,
     Object? lastUpdatedTime = freezed,
     Object? vac = freezed,
+    Object? violatedTimes = freezed,
+    Object? bannedValidatedDate = freezed,
   }) {
     return _then(_$_consumer(
       uuid: uuid == freezed
@@ -409,6 +419,14 @@ class __$$_consumerCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
           ? _value.vac
           : vac // ignore: cast_nullable_to_non_nullable
               as VideoCallAccount,
+      violatedTimes: violatedTimes == freezed
+          ? _value.violatedTimes
+          : violatedTimes // ignore: cast_nullable_to_non_nullable
+              as int,
+      bannedValidatedDate: bannedValidatedDate == freezed
+          ? _value.bannedValidatedDate
+          : bannedValidatedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 
@@ -436,6 +454,8 @@ class _$_consumer implements _consumer {
       required this.createdTime,
       required this.lastUpdatedTime,
       required this.vac,
+      required this.violatedTimes,
+      this.bannedValidatedDate,
       final String? $type})
       : $type = $type ?? '1';
 
@@ -466,13 +486,17 @@ class _$_consumer implements _consumer {
   final DateTime lastUpdatedTime;
   @override
   final VideoCallAccount vac;
+  @override
+  final int violatedTimes;
+  @override
+  final DateTime? bannedValidatedDate;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'AppUser.consumer(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, active: $active, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime, vac: $vac)';
+    return 'AppUser.consumer(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, active: $active, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime, vac: $vac, violatedTimes: $violatedTimes, bannedValidatedDate: $bannedValidatedDate)';
   }
 
   @override
@@ -493,7 +517,11 @@ class _$_consumer implements _consumer {
                 .equals(other.createdTime, createdTime) &&
             const DeepCollectionEquality()
                 .equals(other.lastUpdatedTime, lastUpdatedTime) &&
-            const DeepCollectionEquality().equals(other.vac, vac));
+            const DeepCollectionEquality().equals(other.vac, vac) &&
+            const DeepCollectionEquality()
+                .equals(other.violatedTimes, violatedTimes) &&
+            const DeepCollectionEquality()
+                .equals(other.bannedValidatedDate, bannedValidatedDate));
   }
 
   @JsonKey(ignore: true)
@@ -511,7 +539,9 @@ class _$_consumer implements _consumer {
       const DeepCollectionEquality().hash(avatarUrl),
       const DeepCollectionEquality().hash(createdTime),
       const DeepCollectionEquality().hash(lastUpdatedTime),
-      const DeepCollectionEquality().hash(vac));
+      const DeepCollectionEquality().hash(vac),
+      const DeepCollectionEquality().hash(violatedTimes),
+      const DeepCollectionEquality().hash(bannedValidatedDate));
 
   @JsonKey(ignore: true)
   @override
@@ -533,7 +563,9 @@ class _$_consumer implements _consumer {
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
-            VideoCallAccount vac)
+            VideoCallAccount vac,
+            int violatedTimes,
+            DateTime? bannedValidatedDate)
         consumer,
     required TResult Function(
             String uuid,
@@ -569,8 +601,21 @@ class _$_consumer implements _consumer {
             DateTime lastUpdatedTime)
         admin,
   }) {
-    return consumer(uuid, firstName, lastName, phone, dob, addr, email, active,
-        avatarUrl, createdTime, lastUpdatedTime, vac);
+    return consumer(
+        uuid,
+        firstName,
+        lastName,
+        phone,
+        dob,
+        addr,
+        email,
+        active,
+        avatarUrl,
+        createdTime,
+        lastUpdatedTime,
+        vac,
+        violatedTimes,
+        bannedValidatedDate);
   }
 
   @override
@@ -588,7 +633,9 @@ class _$_consumer implements _consumer {
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
-            VideoCallAccount vac)?
+            VideoCallAccount vac,
+            int violatedTimes,
+            DateTime? bannedValidatedDate)?
         consumer,
     TResult Function(
             String uuid,
@@ -624,8 +671,21 @@ class _$_consumer implements _consumer {
             DateTime lastUpdatedTime)?
         admin,
   }) {
-    return consumer?.call(uuid, firstName, lastName, phone, dob, addr, email,
-        active, avatarUrl, createdTime, lastUpdatedTime, vac);
+    return consumer?.call(
+        uuid,
+        firstName,
+        lastName,
+        phone,
+        dob,
+        addr,
+        email,
+        active,
+        avatarUrl,
+        createdTime,
+        lastUpdatedTime,
+        vac,
+        violatedTimes,
+        bannedValidatedDate);
   }
 
   @override
@@ -643,7 +703,9 @@ class _$_consumer implements _consumer {
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
-            VideoCallAccount vac)?
+            VideoCallAccount vac,
+            int violatedTimes,
+            DateTime? bannedValidatedDate)?
         consumer,
     TResult Function(
             String uuid,
@@ -681,8 +743,21 @@ class _$_consumer implements _consumer {
     required TResult orElse(),
   }) {
     if (consumer != null) {
-      return consumer(uuid, firstName, lastName, phone, dob, addr, email,
-          active, avatarUrl, createdTime, lastUpdatedTime, vac);
+      return consumer(
+          uuid,
+          firstName,
+          lastName,
+          phone,
+          dob,
+          addr,
+          email,
+          active,
+          avatarUrl,
+          createdTime,
+          lastUpdatedTime,
+          vac,
+          violatedTimes,
+          bannedValidatedDate);
     }
     return orElse();
   }
@@ -742,7 +817,9 @@ abstract class _consumer implements AppUser {
       required final String avatarUrl,
       required final DateTime createdTime,
       required final DateTime lastUpdatedTime,
-      required final VideoCallAccount vac}) = _$_consumer;
+      required final VideoCallAccount vac,
+      required final int violatedTimes,
+      final DateTime? bannedValidatedDate}) = _$_consumer;
 
   factory _consumer.fromJson(Map<String, dynamic> json) = _$_consumer.fromJson;
 
@@ -769,6 +846,8 @@ abstract class _consumer implements AppUser {
   @override
   DateTime get lastUpdatedTime;
   VideoCallAccount get vac;
+  int get violatedTimes;
+  DateTime? get bannedValidatedDate;
   @override
   @JsonKey(ignore: true)
   _$$_consumerCopyWith<_$_consumer> get copyWith =>
@@ -1072,7 +1151,9 @@ class _$_provider implements _provider {
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
-            VideoCallAccount vac)
+            VideoCallAccount vac,
+            int violatedTimes,
+            DateTime? bannedValidatedDate)
         consumer,
     required TResult Function(
             String uuid,
@@ -1144,7 +1225,9 @@ class _$_provider implements _provider {
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
-            VideoCallAccount vac)?
+            VideoCallAccount vac,
+            int violatedTimes,
+            DateTime? bannedValidatedDate)?
         consumer,
     TResult Function(
             String uuid,
@@ -1216,7 +1299,9 @@ class _$_provider implements _provider {
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
-            VideoCallAccount vac)?
+            VideoCallAccount vac,
+            int violatedTimes,
+            DateTime? bannedValidatedDate)?
         consumer,
     TResult Function(
             String uuid,
@@ -1576,7 +1661,9 @@ class _$_admin implements _admin {
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
-            VideoCallAccount vac)
+            VideoCallAccount vac,
+            int violatedTimes,
+            DateTime? bannedValidatedDate)
         consumer,
     required TResult Function(
             String uuid,
@@ -1631,7 +1718,9 @@ class _$_admin implements _admin {
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
-            VideoCallAccount vac)?
+            VideoCallAccount vac,
+            int violatedTimes,
+            DateTime? bannedValidatedDate)?
         consumer,
     TResult Function(
             String uuid,
@@ -1686,7 +1775,9 @@ class _$_admin implements _admin {
             String avatarUrl,
             DateTime createdTime,
             DateTime lastUpdatedTime,
-            VideoCallAccount vac)?
+            VideoCallAccount vac,
+            int violatedTimes,
+            DateTime? bannedValidatedDate)?
         consumer,
     TResult Function(
             String uuid,
