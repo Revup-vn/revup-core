@@ -9,4 +9,5 @@ class StoreFailure with _$StoreFailure {
   const factory StoreFailure.update({String? message}) = _update;
   const factory StoreFailure.query() = _query;
   const factory StoreFailure.convert() = _convert;
+  const factory StoreFailure.duplicatedKey() = _duplicatedKey;
 }
