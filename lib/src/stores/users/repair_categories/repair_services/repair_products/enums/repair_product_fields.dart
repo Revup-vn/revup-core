@@ -3,4 +3,6 @@ enum RepairProductFields {
   Description,
   Image,
   Price,
+  Quality,
+  Active,
 }

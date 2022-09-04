@@ -18,6 +18,7 @@ AppUser mockUserIns() => AppUser.consumer(
         username: '123',
         email: '',
       ),
+      violatedTimes: 0,
     );
 Map<String, dynamic> mockUserValidJson() => <String, dynamic>{
       'uuid': 'uui12312123qeddd',

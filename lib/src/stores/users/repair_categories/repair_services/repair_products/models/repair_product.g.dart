@@ -16,6 +16,8 @@ _$_RepairProduct _$$_RepairProductFromJson(Map<String, dynamic> json) =>
           desc: $checkedConvert('desc', (v) => v as String),
           img: $checkedConvert('img', (v) => v as String),
           price: $checkedConvert('price', (v) => v as int),
+          quality: $checkedConvert('quality', (v) => v as int? ?? 1),
+          active: $checkedConvert('active', (v) => v as bool? ?? true),
         );
         return val;
       },
@@ -27,4 +29,6 @@ Map<String, dynamic> _$$_RepairProductToJson(_$_RepairProduct instance) =>
       'desc': instance.desc,
       'img': instance.img,
       'price': instance.price,
+      'quality': instance.quality,
+      'active': instance.active,
     };

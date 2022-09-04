@@ -24,6 +24,8 @@ mixin _$RepairProduct {
   String get desc => throw _privateConstructorUsedError;
   String get img => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
+  int get quality => throw _privateConstructorUsedError;
+  bool get active => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +38,13 @@ abstract class $RepairProductCopyWith<$Res> {
   factory $RepairProductCopyWith(
           RepairProduct value, $Res Function(RepairProduct) then) =
       _$RepairProductCopyWithImpl<$Res>;
-  $Res call({String name, String desc, String img, int price});
+  $Res call(
+      {String name,
+      String desc,
+      String img,
+      int price,
+      int quality,
+      bool active});
 }
 
 /// @nodoc
@@ -54,6 +62,8 @@ class _$RepairProductCopyWithImpl<$Res>
     Object? desc = freezed,
     Object? img = freezed,
     Object? price = freezed,
+    Object? quality = freezed,
+    Object? active = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -72,6 +82,14 @@ class _$RepairProductCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      quality: quality == freezed
+          ? _value.quality
+          : quality // ignore: cast_nullable_to_non_nullable
+              as int,
+      active: active == freezed
+          ? _value.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -83,7 +101,13 @@ abstract class _$$_RepairProductCopyWith<$Res>
           _$_RepairProduct value, $Res Function(_$_RepairProduct) then) =
       __$$_RepairProductCopyWithImpl<$Res>;
   @override
-  $Res call({String name, String desc, String img, int price});
+  $Res call(
+      {String name,
+      String desc,
+      String img,
+      int price,
+      int quality,
+      bool active});
 }
 
 /// @nodoc
@@ -103,6 +127,8 @@ class __$$_RepairProductCopyWithImpl<$Res>
     Object? desc = freezed,
     Object? img = freezed,
     Object? price = freezed,
+    Object? quality = freezed,
+    Object? active = freezed,
   }) {
     return _then(_$_RepairProduct(
       name: name == freezed
@@ -121,6 +147,14 @@ class __$$_RepairProductCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      quality: quality == freezed
+          ? _value.quality
+          : quality // ignore: cast_nullable_to_non_nullable
+              as int,
+      active: active == freezed
+          ? _value.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -132,7 +166,9 @@ class _$_RepairProduct implements _RepairProduct {
       {required this.name,
       required this.desc,
       required this.img,
-      required this.price});
+      required this.price,
+      this.quality = 1,
+      this.active = true});
 
   factory _$_RepairProduct.fromJson(Map<String, dynamic> json) =>
       _$$_RepairProductFromJson(json);
@@ -145,10 +181,16 @@ class _$_RepairProduct implements _RepairProduct {
   final String img;
   @override
   final int price;
+  @override
+  @JsonKey()
+  final int quality;
+  @override
+  @JsonKey()
+  final bool active;
 
   @override
   String toString() {
-    return 'RepairProduct(name: $name, desc: $desc, img: $img, price: $price)';
+    return 'RepairProduct(name: $name, desc: $desc, img: $img, price: $price, quality: $quality, active: $active)';
   }
 
   @override
@@ -159,7 +201,9 @@ class _$_RepairProduct implements _RepairProduct {
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.desc, desc) &&
             const DeepCollectionEquality().equals(other.img, img) &&
-            const DeepCollectionEquality().equals(other.price, price));
+            const DeepCollectionEquality().equals(other.price, price) &&
+            const DeepCollectionEquality().equals(other.quality, quality) &&
+            const DeepCollectionEquality().equals(other.active, active));
   }
 
   @JsonKey(ignore: true)
@@ -169,7 +213,9 @@ class _$_RepairProduct implements _RepairProduct {
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(desc),
       const DeepCollectionEquality().hash(img),
-      const DeepCollectionEquality().hash(price));
+      const DeepCollectionEquality().hash(price),
+      const DeepCollectionEquality().hash(quality),
+      const DeepCollectionEquality().hash(active));
 
   @JsonKey(ignore: true)
   @override
@@ -189,7 +235,9 @@ abstract class _RepairProduct implements RepairProduct {
       {required final String name,
       required final String desc,
       required final String img,
-      required final int price}) = _$_RepairProduct;
+      required final int price,
+      final int quality,
+      final bool active}) = _$_RepairProduct;
 
   factory _RepairProduct.fromJson(Map<String, dynamic> json) =
       _$_RepairProduct.fromJson;
@@ -202,6 +250,10 @@ abstract class _RepairProduct implements RepairProduct {
   String get img;
   @override
   int get price;
+  @override
+  int get quality;
+  @override
+  bool get active;
   @override
   @JsonKey(ignore: true)
   _$$_RepairProductCopyWith<_$_RepairProduct> get copyWith =>

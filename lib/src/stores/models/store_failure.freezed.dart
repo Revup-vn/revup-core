@@ -23,6 +23,7 @@ mixin _$StoreFailure {
     required TResult Function(String? message) update,
     required TResult Function() query,
     required TResult Function() convert,
+    required TResult Function() duplicatedKey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$StoreFailure {
     TResult Function(String? message)? update,
     TResult Function()? query,
     TResult Function()? convert,
+    TResult Function()? duplicatedKey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$StoreFailure {
     TResult Function(String? message)? update,
     TResult Function()? query,
     TResult Function()? convert,
+    TResult Function()? duplicatedKey,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$StoreFailure {
     required TResult Function(_update value) update,
     required TResult Function(_query value) query,
     required TResult Function(_convert value) convert,
+    required TResult Function(_duplicatedKey value) duplicatedKey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$StoreFailure {
     TResult Function(_update value)? update,
     TResult Function(_query value)? query,
     TResult Function(_convert value)? convert,
+    TResult Function(_duplicatedKey value)? duplicatedKey,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$StoreFailure {
     TResult Function(_update value)? update,
     TResult Function(_query value)? query,
     TResult Function(_convert value)? convert,
+    TResult Function(_duplicatedKey value)? duplicatedKey,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,6 +139,7 @@ class _$_create implements _create {
     required TResult Function(String? message) update,
     required TResult Function() query,
     required TResult Function() convert,
+    required TResult Function() duplicatedKey,
   }) {
     return create();
   }
@@ -145,6 +152,7 @@ class _$_create implements _create {
     TResult Function(String? message)? update,
     TResult Function()? query,
     TResult Function()? convert,
+    TResult Function()? duplicatedKey,
   }) {
     return create?.call();
   }
@@ -157,6 +165,7 @@ class _$_create implements _create {
     TResult Function(String? message)? update,
     TResult Function()? query,
     TResult Function()? convert,
+    TResult Function()? duplicatedKey,
     required TResult orElse(),
   }) {
     if (create != null) {
@@ -173,6 +182,7 @@ class _$_create implements _create {
     required TResult Function(_update value) update,
     required TResult Function(_query value) query,
     required TResult Function(_convert value) convert,
+    required TResult Function(_duplicatedKey value) duplicatedKey,
   }) {
     return create(this);
   }
@@ -185,6 +195,7 @@ class _$_create implements _create {
     TResult Function(_update value)? update,
     TResult Function(_query value)? query,
     TResult Function(_convert value)? convert,
+    TResult Function(_duplicatedKey value)? duplicatedKey,
   }) {
     return create?.call(this);
   }
@@ -197,6 +208,7 @@ class _$_create implements _create {
     TResult Function(_update value)? update,
     TResult Function(_query value)? query,
     TResult Function(_convert value)? convert,
+    TResult Function(_duplicatedKey value)? duplicatedKey,
     required TResult orElse(),
   }) {
     if (create != null) {
@@ -253,6 +265,7 @@ class _$_delete implements _delete {
     required TResult Function(String? message) update,
     required TResult Function() query,
     required TResult Function() convert,
+    required TResult Function() duplicatedKey,
   }) {
     return delete();
   }
@@ -265,6 +278,7 @@ class _$_delete implements _delete {
     TResult Function(String? message)? update,
     TResult Function()? query,
     TResult Function()? convert,
+    TResult Function()? duplicatedKey,
   }) {
     return delete?.call();
   }
@@ -277,6 +291,7 @@ class _$_delete implements _delete {
     TResult Function(String? message)? update,
     TResult Function()? query,
     TResult Function()? convert,
+    TResult Function()? duplicatedKey,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -293,6 +308,7 @@ class _$_delete implements _delete {
     required TResult Function(_update value) update,
     required TResult Function(_query value) query,
     required TResult Function(_convert value) convert,
+    required TResult Function(_duplicatedKey value) duplicatedKey,
   }) {
     return delete(this);
   }
@@ -305,6 +321,7 @@ class _$_delete implements _delete {
     TResult Function(_update value)? update,
     TResult Function(_query value)? query,
     TResult Function(_convert value)? convert,
+    TResult Function(_duplicatedKey value)? duplicatedKey,
   }) {
     return delete?.call(this);
   }
@@ -317,6 +334,7 @@ class _$_delete implements _delete {
     TResult Function(_update value)? update,
     TResult Function(_query value)? query,
     TResult Function(_convert value)? convert,
+    TResult Function(_duplicatedKey value)? duplicatedKey,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -397,6 +415,7 @@ class _$_update implements _update {
     required TResult Function(String? message) update,
     required TResult Function() query,
     required TResult Function() convert,
+    required TResult Function() duplicatedKey,
   }) {
     return update(message);
   }
@@ -409,6 +428,7 @@ class _$_update implements _update {
     TResult Function(String? message)? update,
     TResult Function()? query,
     TResult Function()? convert,
+    TResult Function()? duplicatedKey,
   }) {
     return update?.call(message);
   }
@@ -421,6 +441,7 @@ class _$_update implements _update {
     TResult Function(String? message)? update,
     TResult Function()? query,
     TResult Function()? convert,
+    TResult Function()? duplicatedKey,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -437,6 +458,7 @@ class _$_update implements _update {
     required TResult Function(_update value) update,
     required TResult Function(_query value) query,
     required TResult Function(_convert value) convert,
+    required TResult Function(_duplicatedKey value) duplicatedKey,
   }) {
     return update(this);
   }
@@ -449,6 +471,7 @@ class _$_update implements _update {
     TResult Function(_update value)? update,
     TResult Function(_query value)? query,
     TResult Function(_convert value)? convert,
+    TResult Function(_duplicatedKey value)? duplicatedKey,
   }) {
     return update?.call(this);
   }
@@ -461,6 +484,7 @@ class _$_update implements _update {
     TResult Function(_update value)? update,
     TResult Function(_query value)? query,
     TResult Function(_convert value)? convert,
+    TResult Function(_duplicatedKey value)? duplicatedKey,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -522,6 +546,7 @@ class _$_query implements _query {
     required TResult Function(String? message) update,
     required TResult Function() query,
     required TResult Function() convert,
+    required TResult Function() duplicatedKey,
   }) {
     return query();
   }
@@ -534,6 +559,7 @@ class _$_query implements _query {
     TResult Function(String? message)? update,
     TResult Function()? query,
     TResult Function()? convert,
+    TResult Function()? duplicatedKey,
   }) {
     return query?.call();
   }
@@ -546,6 +572,7 @@ class _$_query implements _query {
     TResult Function(String? message)? update,
     TResult Function()? query,
     TResult Function()? convert,
+    TResult Function()? duplicatedKey,
     required TResult orElse(),
   }) {
     if (query != null) {
@@ -562,6 +589,7 @@ class _$_query implements _query {
     required TResult Function(_update value) update,
     required TResult Function(_query value) query,
     required TResult Function(_convert value) convert,
+    required TResult Function(_duplicatedKey value) duplicatedKey,
   }) {
     return query(this);
   }
@@ -574,6 +602,7 @@ class _$_query implements _query {
     TResult Function(_update value)? update,
     TResult Function(_query value)? query,
     TResult Function(_convert value)? convert,
+    TResult Function(_duplicatedKey value)? duplicatedKey,
   }) {
     return query?.call(this);
   }
@@ -586,6 +615,7 @@ class _$_query implements _query {
     TResult Function(_update value)? update,
     TResult Function(_query value)? query,
     TResult Function(_convert value)? convert,
+    TResult Function(_duplicatedKey value)? duplicatedKey,
     required TResult orElse(),
   }) {
     if (query != null) {
@@ -643,6 +673,7 @@ class _$_convert implements _convert {
     required TResult Function(String? message) update,
     required TResult Function() query,
     required TResult Function() convert,
+    required TResult Function() duplicatedKey,
   }) {
     return convert();
   }
@@ -655,6 +686,7 @@ class _$_convert implements _convert {
     TResult Function(String? message)? update,
     TResult Function()? query,
     TResult Function()? convert,
+    TResult Function()? duplicatedKey,
   }) {
     return convert?.call();
   }
@@ -667,6 +699,7 @@ class _$_convert implements _convert {
     TResult Function(String? message)? update,
     TResult Function()? query,
     TResult Function()? convert,
+    TResult Function()? duplicatedKey,
     required TResult orElse(),
   }) {
     if (convert != null) {
@@ -683,6 +716,7 @@ class _$_convert implements _convert {
     required TResult Function(_update value) update,
     required TResult Function(_query value) query,
     required TResult Function(_convert value) convert,
+    required TResult Function(_duplicatedKey value) duplicatedKey,
   }) {
     return convert(this);
   }
@@ -695,6 +729,7 @@ class _$_convert implements _convert {
     TResult Function(_update value)? update,
     TResult Function(_query value)? query,
     TResult Function(_convert value)? convert,
+    TResult Function(_duplicatedKey value)? duplicatedKey,
   }) {
     return convert?.call(this);
   }
@@ -707,6 +742,7 @@ class _$_convert implements _convert {
     TResult Function(_update value)? update,
     TResult Function(_query value)? query,
     TResult Function(_convert value)? convert,
+    TResult Function(_duplicatedKey value)? duplicatedKey,
     required TResult orElse(),
   }) {
     if (convert != null) {
@@ -718,4 +754,133 @@ class _$_convert implements _convert {
 
 abstract class _convert implements StoreFailure {
   const factory _convert() = _$_convert;
+}
+
+/// @nodoc
+abstract class _$$_duplicatedKeyCopyWith<$Res> {
+  factory _$$_duplicatedKeyCopyWith(
+          _$_duplicatedKey value, $Res Function(_$_duplicatedKey) then) =
+      __$$_duplicatedKeyCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_duplicatedKeyCopyWithImpl<$Res>
+    extends _$StoreFailureCopyWithImpl<$Res>
+    implements _$$_duplicatedKeyCopyWith<$Res> {
+  __$$_duplicatedKeyCopyWithImpl(
+      _$_duplicatedKey _value, $Res Function(_$_duplicatedKey) _then)
+      : super(_value, (v) => _then(v as _$_duplicatedKey));
+
+  @override
+  _$_duplicatedKey get _value => super._value as _$_duplicatedKey;
+}
+
+/// @nodoc
+
+class _$_duplicatedKey implements _duplicatedKey {
+  const _$_duplicatedKey();
+
+  @override
+  String toString() {
+    return 'StoreFailure.duplicatedKey()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_duplicatedKey);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() create,
+    required TResult Function() delete,
+    required TResult Function(String? message) update,
+    required TResult Function() query,
+    required TResult Function() convert,
+    required TResult Function() duplicatedKey,
+  }) {
+    return duplicatedKey();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? create,
+    TResult Function()? delete,
+    TResult Function(String? message)? update,
+    TResult Function()? query,
+    TResult Function()? convert,
+    TResult Function()? duplicatedKey,
+  }) {
+    return duplicatedKey?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? create,
+    TResult Function()? delete,
+    TResult Function(String? message)? update,
+    TResult Function()? query,
+    TResult Function()? convert,
+    TResult Function()? duplicatedKey,
+    required TResult orElse(),
+  }) {
+    if (duplicatedKey != null) {
+      return duplicatedKey();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_create value) create,
+    required TResult Function(_delete value) delete,
+    required TResult Function(_update value) update,
+    required TResult Function(_query value) query,
+    required TResult Function(_convert value) convert,
+    required TResult Function(_duplicatedKey value) duplicatedKey,
+  }) {
+    return duplicatedKey(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_create value)? create,
+    TResult Function(_delete value)? delete,
+    TResult Function(_update value)? update,
+    TResult Function(_query value)? query,
+    TResult Function(_convert value)? convert,
+    TResult Function(_duplicatedKey value)? duplicatedKey,
+  }) {
+    return duplicatedKey?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_create value)? create,
+    TResult Function(_delete value)? delete,
+    TResult Function(_update value)? update,
+    TResult Function(_query value)? query,
+    TResult Function(_convert value)? convert,
+    TResult Function(_duplicatedKey value)? duplicatedKey,
+    required TResult orElse(),
+  }) {
+    if (duplicatedKey != null) {
+      return duplicatedKey(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _duplicatedKey implements StoreFailure {
+  const factory _duplicatedKey() = _$_duplicatedKey;
 }

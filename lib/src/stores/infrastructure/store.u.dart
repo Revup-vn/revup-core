@@ -15,8 +15,6 @@ abstract class IStore<T extends Serializable<T>> {
   Future<Either<StoreFailure, Unit>> delete(String id);
 
   /// Create the instance in the cloud with the `data` argument
-  /// Please check if the key is existed before using this method by call
-  /// `isFieldValid`
   /// Return either a [StoreFailure] if the user did not have internet or the
   /// server experienced a failure
   /// otherwise return a [Unit] to indicate the operation is successful
@@ -247,16 +245,35 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
           .run();
 
   @override
-  Future<Either<StoreFailure, Unit>> create(T data) =>
-      Task(() => doc(getId(data)).set(data.toJson()))
-          .attempt()
-          .map<Either<StoreFailure, Unit>>(
-            (fs) => fs.fold(
-              (_) => left(const StoreFailure.create()),
-              (_) => right(unit),
-            ),
-          )
-          .run();
+  Future<Either<StoreFailure, Unit>> create(T data) async =>
+      (await Task(() => get(getId(data)))
+              .attempt()
+              .map<Either<StoreFailure, Unit>>(
+                (a) => a.fold(
+                  (f) => f is StoreFailure
+                      ? f.maybeMap(
+                          orElse: () => left(const StoreFailure.query()),
+                          convert: (_) => right(unit),
+                        )
+                      : left(const StoreFailure.query()),
+                  (_) => left(const StoreFailure.duplicatedKey()),
+                ),
+              )
+              .map(
+                (a) => a.map(
+                  (_) => Task(() => doc(getId(data)).set(data.toJson()))
+                      .attempt()
+                      .map<Either<StoreFailure, Unit>>(
+                        (fs) => fs.fold(
+                          (_) => left(const StoreFailure.create()),
+                          (_) => right(unit),
+                        ),
+                      )
+                      .run(),
+                ),
+              )
+              .run())
+          .fold(left, (r) async => (await r).fold(left, right));
 
   @protected
   @internal

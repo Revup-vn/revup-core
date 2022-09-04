@@ -23,6 +23,7 @@ mixin _$RepairService {
   String get name => throw _privateConstructorUsedError;
   int get fee => throw _privateConstructorUsedError;
   String? get img => throw _privateConstructorUsedError;
+  bool get active => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $RepairServiceCopyWith<$Res> {
   factory $RepairServiceCopyWith(
           RepairService value, $Res Function(RepairService) then) =
       _$RepairServiceCopyWithImpl<$Res>;
-  $Res call({String name, int fee, String? img});
+  $Res call({String name, int fee, String? img, bool active});
 }
 
 /// @nodoc
@@ -52,6 +53,7 @@ class _$RepairServiceCopyWithImpl<$Res>
     Object? name = freezed,
     Object? fee = freezed,
     Object? img = freezed,
+    Object? active = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -66,6 +68,10 @@ class _$RepairServiceCopyWithImpl<$Res>
           ? _value.img
           : img // ignore: cast_nullable_to_non_nullable
               as String?,
+      active: active == freezed
+          ? _value.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -77,7 +83,7 @@ abstract class _$$_RepairServiceCopyWith<$Res>
           _$_RepairService value, $Res Function(_$_RepairService) then) =
       __$$_RepairServiceCopyWithImpl<$Res>;
   @override
-  $Res call({String name, int fee, String? img});
+  $Res call({String name, int fee, String? img, bool active});
 }
 
 /// @nodoc
@@ -96,6 +102,7 @@ class __$$_RepairServiceCopyWithImpl<$Res>
     Object? name = freezed,
     Object? fee = freezed,
     Object? img = freezed,
+    Object? active = freezed,
   }) {
     return _then(_$_RepairService(
       name: name == freezed
@@ -110,6 +117,10 @@ class __$$_RepairServiceCopyWithImpl<$Res>
           ? _value.img
           : img // ignore: cast_nullable_to_non_nullable
               as String?,
+      active: active == freezed
+          ? _value.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -117,7 +128,8 @@ class __$$_RepairServiceCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_RepairService implements _RepairService {
-  const _$_RepairService({required this.name, required this.fee, this.img});
+  const _$_RepairService(
+      {required this.name, required this.fee, this.img, this.active = true});
 
   factory _$_RepairService.fromJson(Map<String, dynamic> json) =>
       _$$_RepairServiceFromJson(json);
@@ -128,10 +140,13 @@ class _$_RepairService implements _RepairService {
   final int fee;
   @override
   final String? img;
+  @override
+  @JsonKey()
+  final bool active;
 
   @override
   String toString() {
-    return 'RepairService(name: $name, fee: $fee, img: $img)';
+    return 'RepairService(name: $name, fee: $fee, img: $img, active: $active)';
   }
 
   @override
@@ -141,7 +156,8 @@ class _$_RepairService implements _RepairService {
             other is _$_RepairService &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.fee, fee) &&
-            const DeepCollectionEquality().equals(other.img, img));
+            const DeepCollectionEquality().equals(other.img, img) &&
+            const DeepCollectionEquality().equals(other.active, active));
   }
 
   @JsonKey(ignore: true)
@@ -150,7 +166,8 @@ class _$_RepairService implements _RepairService {
       runtimeType,
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(fee),
-      const DeepCollectionEquality().hash(img));
+      const DeepCollectionEquality().hash(img),
+      const DeepCollectionEquality().hash(active));
 
   @JsonKey(ignore: true)
   @override
@@ -169,7 +186,8 @@ abstract class _RepairService implements RepairService {
   const factory _RepairService(
       {required final String name,
       required final int fee,
-      final String? img}) = _$_RepairService;
+      final String? img,
+      final bool active}) = _$_RepairService;
 
   factory _RepairService.fromJson(Map<String, dynamic> json) =
       _$_RepairService.fromJson;
@@ -180,6 +198,8 @@ abstract class _RepairService implements RepairService {
   int get fee;
   @override
   String? get img;
+  @override
+  bool get active;
   @override
   @JsonKey(ignore: true)
   _$$_RepairServiceCopyWith<_$_RepairService> get copyWith =>

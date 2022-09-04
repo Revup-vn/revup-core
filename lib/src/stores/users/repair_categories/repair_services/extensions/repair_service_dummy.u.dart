@@ -6,6 +6,7 @@ extension RepairServiceDummy on RepairService {
   static const Map<RepairServiceFields, String> _fields = {
     RepairServiceFields.Name: 'name',
     RepairServiceFields.Fee: 'fee',
+    RepairServiceFields.Active: 'active',
   };
   static String field(RepairServiceFields f) => _fields[f]!;
 }

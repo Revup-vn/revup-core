@@ -15,6 +15,7 @@ _$_RepairService _$$_RepairServiceFromJson(Map<String, dynamic> json) =>
           name: $checkedConvert('name', (v) => v as String),
           fee: $checkedConvert('fee', (v) => v as int),
           img: $checkedConvert('img', (v) => v as String?),
+          active: $checkedConvert('active', (v) => v as bool? ?? true),
         );
         return val;
       },
@@ -25,4 +26,5 @@ Map<String, dynamic> _$$_RepairServiceToJson(_$_RepairService instance) =>
       'name': instance.name,
       'fee': instance.fee,
       'img': instance.img,
+      'active': instance.active,
     };
