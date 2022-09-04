@@ -254,13 +254,14 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
               .attempt()
               .map<Either<StoreFailure, Unit>>(
                 (a) => a.fold(
-                  (f) => f is StoreFailure
-                      ? f.maybeMap(
-                          orElse: () => left(const StoreFailure.query()),
-                          convert: (_) => right(unit),
-                        )
-                      : left(const StoreFailure.query()),
-                  (_) => left(const StoreFailure.duplicatedKey()),
+                  (_) => left(const StoreFailure.query()),
+                  (r) => r.fold(
+                    (l) => l.maybeMap(
+                      orElse: () => left(const StoreFailure.query()),
+                      convert: (_) => right(unit),
+                    ),
+                    (r) => left(const StoreFailure.duplicatedKey()),
+                  ),
                 ),
               )
               .map(
