@@ -24,7 +24,7 @@ class AppUser extends Serializable<AppUser> with _$AppUser {
     required DateTime createdTime,
     required DateTime lastUpdatedTime,
     required VideoCallAccount vac,
-    required int violatedTimes,
+    @Default(0) int violatedTimes,
     DateTime? bannedValidatedDate,
   }) = _consumer;
 

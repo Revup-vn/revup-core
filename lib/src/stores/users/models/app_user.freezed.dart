@@ -454,7 +454,7 @@ class _$_consumer implements _consumer {
       required this.createdTime,
       required this.lastUpdatedTime,
       required this.vac,
-      required this.violatedTimes,
+      this.violatedTimes = 0,
       this.bannedValidatedDate,
       final String? $type})
       : $type = $type ?? '1';
@@ -487,6 +487,7 @@ class _$_consumer implements _consumer {
   @override
   final VideoCallAccount vac;
   @override
+  @JsonKey()
   final int violatedTimes;
   @override
   final DateTime? bannedValidatedDate;
@@ -818,7 +819,7 @@ abstract class _consumer implements AppUser {
       required final DateTime createdTime,
       required final DateTime lastUpdatedTime,
       required final VideoCallAccount vac,
-      required final int violatedTimes,
+      final int violatedTimes,
       final DateTime? bannedValidatedDate}) = _$_consumer;
 
   factory _consumer.fromJson(Map<String, dynamic> json) = _$_consumer.fromJson;

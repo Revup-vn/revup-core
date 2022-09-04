@@ -8,7 +8,6 @@ class VideoCallAccount with _$VideoCallAccount {
   const factory VideoCallAccount({
     required String id,
     required String username,
-    required String pwd,
     required String email,
   }) = _VideoCallAccount;
 

@@ -14,7 +14,6 @@ AppUser mockUserIns() => AppUser.consumer(
       lastUpdatedTime: DateTime.now(),
       vac: const VideoCallAccount(
         id: '123',
-        pwd: '123',
         username: '123',
         email: '',
       ),

@@ -22,7 +22,6 @@ VideoCallAccount _$VideoCallAccountFromJson(Map<String, dynamic> json) {
 mixin _$VideoCallAccount {
   String get id => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
-  String get pwd => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +35,7 @@ abstract class $VideoCallAccountCopyWith<$Res> {
   factory $VideoCallAccountCopyWith(
           VideoCallAccount value, $Res Function(VideoCallAccount) then) =
       _$VideoCallAccountCopyWithImpl<$Res>;
-  $Res call({String id, String username, String pwd, String email});
+  $Res call({String id, String username, String email});
 }
 
 /// @nodoc
@@ -52,7 +51,6 @@ class _$VideoCallAccountCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? username = freezed,
-    Object? pwd = freezed,
     Object? email = freezed,
   }) {
     return _then(_value.copyWith(
@@ -63,10 +61,6 @@ class _$VideoCallAccountCopyWithImpl<$Res>
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
-      pwd: pwd == freezed
-          ? _value.pwd
-          : pwd // ignore: cast_nullable_to_non_nullable
               as String,
       email: email == freezed
           ? _value.email
@@ -83,7 +77,7 @@ abstract class _$$_VideoCallAccountCopyWith<$Res>
           _$_VideoCallAccount value, $Res Function(_$_VideoCallAccount) then) =
       __$$_VideoCallAccountCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String username, String pwd, String email});
+  $Res call({String id, String username, String email});
 }
 
 /// @nodoc
@@ -101,7 +95,6 @@ class __$$_VideoCallAccountCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? username = freezed,
-    Object? pwd = freezed,
     Object? email = freezed,
   }) {
     return _then(_$_VideoCallAccount(
@@ -112,10 +105,6 @@ class __$$_VideoCallAccountCopyWithImpl<$Res>
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
-      pwd: pwd == freezed
-          ? _value.pwd
-          : pwd // ignore: cast_nullable_to_non_nullable
               as String,
       email: email == freezed
           ? _value.email
@@ -129,10 +118,7 @@ class __$$_VideoCallAccountCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_VideoCallAccount implements _VideoCallAccount {
   const _$_VideoCallAccount(
-      {required this.id,
-      required this.username,
-      required this.pwd,
-      required this.email});
+      {required this.id, required this.username, required this.email});
 
   factory _$_VideoCallAccount.fromJson(Map<String, dynamic> json) =>
       _$$_VideoCallAccountFromJson(json);
@@ -142,13 +128,11 @@ class _$_VideoCallAccount implements _VideoCallAccount {
   @override
   final String username;
   @override
-  final String pwd;
-  @override
   final String email;
 
   @override
   String toString() {
-    return 'VideoCallAccount(id: $id, username: $username, pwd: $pwd, email: $email)';
+    return 'VideoCallAccount(id: $id, username: $username, email: $email)';
   }
 
   @override
@@ -158,7 +142,6 @@ class _$_VideoCallAccount implements _VideoCallAccount {
             other is _$_VideoCallAccount &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.username, username) &&
-            const DeepCollectionEquality().equals(other.pwd, pwd) &&
             const DeepCollectionEquality().equals(other.email, email));
   }
 
@@ -168,7 +151,6 @@ class _$_VideoCallAccount implements _VideoCallAccount {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(username),
-      const DeepCollectionEquality().hash(pwd),
       const DeepCollectionEquality().hash(email));
 
   @JsonKey(ignore: true)
@@ -188,7 +170,6 @@ abstract class _VideoCallAccount implements VideoCallAccount {
   const factory _VideoCallAccount(
       {required final String id,
       required final String username,
-      required final String pwd,
       required final String email}) = _$_VideoCallAccount;
 
   factory _VideoCallAccount.fromJson(Map<String, dynamic> json) =
@@ -198,8 +179,6 @@ abstract class _VideoCallAccount implements VideoCallAccount {
   String get id;
   @override
   String get username;
-  @override
-  String get pwd;
   @override
   String get email;
   @override

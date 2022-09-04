@@ -5,7 +5,6 @@ extension VideoCallAccountDummy on VideoCallAccount {
   static VideoCallAccount dummy() => const VideoCallAccount(
         id: '',
         username: '',
-        pwd: '',
         email: '',
       );
 

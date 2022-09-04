@@ -26,7 +26,8 @@ _$_consumer _$$_consumerFromJson(Map<String, dynamic> json) => $checkedCreate(
               'last_updated_time', (v) => DateTime.parse(v as String)),
           vac: $checkedConvert('vac',
               (v) => VideoCallAccount.fromJson(v as Map<String, dynamic>)),
-          violatedTimes: $checkedConvert('violated_times', (v) => v as int),
+          violatedTimes:
+              $checkedConvert('violated_times', (v) => v as int? ?? 0),
           bannedValidatedDate: $checkedConvert('banned_validated_date',
               (v) => v == null ? null : DateTime.parse(v as String)),
           $type: $checkedConvert('type', (v) => v as String?),

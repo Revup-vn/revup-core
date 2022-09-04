@@ -40,7 +40,6 @@ extension AppUserDummy on AppUser {
         vac: const VideoCallAccount(
           id: '',
           username: '',
-          pwd: '',
           email: '',
         ),
         online: true,
