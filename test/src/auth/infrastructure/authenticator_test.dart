@@ -3,9 +3,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:revup_core/src/auth/infrastructure/infrastructure.dart';
+import 'package:revup_core/src/stores/stores.dart';
 import 'package:revup_core/src/stores/users/users.dart';
 import '../../../helpers/app_user_mock.dart';
 import '../../../helpers/firebase_mock_class.dart';
+
+class MockUserRepository extends Mock implements UserRepository {}
 
 class TestAuthenticator extends Authenticator {
   TestAuthenticator(super.store);
@@ -22,10 +25,13 @@ void main() {
   late TestAuthenticator authenticator;
   late MockCollection mockCollection;
   late MockQuery query;
+  late TestAuthenticator _authenticator;
+  late MockUserRepository _mock;
 
   final mockUser = mockUserIns();
 
   setUpAll(() {
+    registerFallbackValue(mockUserIns());
     store = MockStore();
     mockCollection = MockCollection();
     snapShot = MockQuerySnapShot();
@@ -35,6 +41,8 @@ void main() {
       () => query.get(any()),
     ).thenAnswer((_) async => snapShot);
     authenticator = TestAuthenticator(UserRepository(store));
+    _mock = MockUserRepository();
+    _authenticator = TestAuthenticator(_mock);
   });
 
   group('isEmailValid', () {
@@ -59,18 +67,15 @@ void main() {
 
   group('signUp', () {
     test('return true if can insert account to db', () async {
-      final mockDoc = MockDocRef();
-      when(() => mockCollection.doc(any())).thenReturn(mockDoc);
-      when(() => mockDoc.set(any())).thenAnswer((_) async => unit);
-      final res = await authenticator.signUp(mockUser);
+      when(() => _mock.create(any())).thenAnswer((_) async => right(unit));
+      final res = await _authenticator.signUp(mockUser);
       expect(res, isTrue);
     });
 
     test('return false if exception thrown', () async {
-      final mockDoc = MockDocRef();
-      when(() => mockCollection.doc(any())).thenReturn(mockDoc);
-      when(() => mockDoc.set(any())).thenAnswer((_) async => throw Exception());
-      final res = await authenticator.signUp(mockUser);
+      when(() => _mock.create(any()))
+          .thenAnswer((_) async => left(const StoreFailure.convert()));
+      final res = await _authenticator.signUp(mockUser);
       expect(res, isFalse);
     });
   });

@@ -38,5 +38,6 @@ Map<String, dynamic> mockUserValidJson() => <String, dynamic>{
         'username': '123',
         'pwd': '123',
         'email': '',
-      }
+      },
+      'violated_times': 0,
     };
