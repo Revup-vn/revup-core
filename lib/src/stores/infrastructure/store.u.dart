@@ -225,7 +225,7 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
   Future<Either<StoreFailure, Unit>> update(T newData) async =>
       (await delete(getId(newData)))
           .traverseTask<Either<StoreFailure, Unit>>(
-            (_) => Task(() => create(newData)),
+            (_) => Task(() => _auxCreate(newData)),
           )
           .map<Either<StoreFailure, Unit>>(
             (a) => a.fold(left, (r) => r.fold(left, right)),
@@ -261,19 +261,22 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
               )
               .map(
                 (a) => a.map(
-                  (_) => Task(() => doc(getId(data)).set(data.toJson()))
-                      .attempt()
-                      .map<Either<StoreFailure, Unit>>(
-                        (fs) => fs.fold(
-                          (_) => left(const StoreFailure.create()),
-                          (_) => right(unit),
-                        ),
-                      )
-                      .run(),
+                  (_) => _auxCreate(data),
                 ),
               )
               .run())
           .fold(left, (r) async => (await r).fold(left, right));
+
+  Future<Either<StoreFailure, Unit>> _auxCreate(T data) async =>
+      Task(() => doc(getId(data)).set(data.toJson()))
+          .attempt()
+          .map<Either<StoreFailure, Unit>>(
+            (fs) => fs.fold(
+              (_) => left(const StoreFailure.create()),
+              (_) => right(unit),
+            ),
+          )
+          .run();
 
   @protected
   @internal
