@@ -41,10 +41,14 @@ abstract class IStore<T extends Serializable<T>> {
   );
 
   /// Alias for delete and create
+  ///
+  /// [oldData] is passed when the newData has a different id. (Not same as
+  ///  [newData])
+  ///
   /// Return either a [StoreFailure] if the user did not have internet or the
   /// server experienced a failure
   /// otherwise return a [Unit] to indicate the operation is successful
-  Future<Either<StoreFailure, Unit>> update(T newData);
+  Future<Either<StoreFailure, Unit>> update(T newData, [T? oldData]);
 
   /// Get all the elements in the collection
   /// Return either a [StoreFailure] if the user did not have internet or the
@@ -222,10 +226,10 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
   Future<Either<StoreFailure, T>> get(String id) => queryT(() => doc(id).get());
 
   @override
-  Future<Either<StoreFailure, Unit>> update(T newData) async =>
-      (await delete(getId(newData)))
+  Future<Either<StoreFailure, Unit>> update(T newData, [T? oldData]) async =>
+      (await delete(getId(oldData ?? newData)))
           .traverseTask<Either<StoreFailure, Unit>>(
-            (_) => Task(() => create(newData)),
+            (_) => Task(() => _auxCreate(newData)),
           )
           .map<Either<StoreFailure, Unit>>(
             (a) => a.fold(left, (r) => r.fold(left, right)),
@@ -250,30 +254,34 @@ abstract class Store<T extends Serializable<T>> implements IStore<T> {
               .attempt()
               .map<Either<StoreFailure, Unit>>(
                 (a) => a.fold(
-                  (f) => f is StoreFailure
-                      ? f.maybeMap(
-                          orElse: () => left(const StoreFailure.query()),
-                          convert: (_) => right(unit),
-                        )
-                      : left(const StoreFailure.query()),
-                  (_) => left(const StoreFailure.duplicatedKey()),
+                  (_) => left(const StoreFailure.query()),
+                  (r) => r.fold(
+                    (l) => l.maybeMap(
+                      orElse: () => left(const StoreFailure.query()),
+                      convert: (_) => right(unit),
+                    ),
+                    (r) => left(const StoreFailure.duplicatedKey()),
+                  ),
                 ),
               )
               .map(
                 (a) => a.map(
-                  (_) => Task(() => doc(getId(data)).set(data.toJson()))
-                      .attempt()
-                      .map<Either<StoreFailure, Unit>>(
-                        (fs) => fs.fold(
-                          (_) => left(const StoreFailure.create()),
-                          (_) => right(unit),
-                        ),
-                      )
-                      .run(),
+                  (_) => _auxCreate(data),
                 ),
               )
               .run())
           .fold(left, (r) async => (await r).fold(left, right));
+
+  Future<Either<StoreFailure, Unit>> _auxCreate(T data) async =>
+      Task(() => doc(getId(data)).set(data.toJson()))
+          .attempt()
+          .map<Either<StoreFailure, Unit>>(
+            (fs) => fs.fold(
+              (_) => left(const StoreFailure.create()),
+              (_) => right(unit),
+            ),
+          )
+          .run();
 
   @protected
   @internal
