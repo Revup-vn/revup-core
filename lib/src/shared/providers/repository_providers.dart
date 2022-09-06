@@ -10,6 +10,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:momo_vn/momo_vn.dart';
 
 import '../../auth/auth.dart';
 import '../../auth/infrastructure/authenticator/email_authenticator.u.dart';
@@ -31,6 +32,7 @@ MultiRepositoryProvider coreRepositoryProviders({required Widget providers}) =>
         ..._authenticatorProviders,
         ..._storageProvider,
         RepositoryProvider<Connectivity>(create: (_) => Connectivity()),
+        RepositoryProvider<MomoVn>(create: (_) => MomoVn()),
       ],
       child: providers,
     );

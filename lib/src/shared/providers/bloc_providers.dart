@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core.dart';
 import '../../auth/auth.dart';
 import '../../connectivity/bloc/connectivity_bloc.u.dart';
 import '../../languages/languages.dart';
@@ -31,6 +32,9 @@ MultiBlocProvider coreBlocProviders({required Widget child}) =>
             context.read(),
             context.read(),
           ),
+        ),
+        BlocProvider<MomoCubit>(
+          create: (context) => MomoCubit(context.read()),
         ),
       ],
       child: child,
