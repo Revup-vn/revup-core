@@ -2,6 +2,7 @@ library core;
 
 export 'src/notification/notification.dart';
 export 'src/core.dart';
+export 'src/momo/momo.dart';
 export 'src/auth/auth.dart'
     show AuthenticateBloc, AuthenticateEvent, AuthenticateState;
 export 'src/storages/storages.dart'
