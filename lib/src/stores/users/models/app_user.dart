@@ -48,6 +48,7 @@ class AppUser extends Serializable<AppUser> with _$AppUser {
     required VideoCallAccount vac,
     required bool online,
     required Location loc,
+    @Default(false) bool needToUpdateInfo,
   }) = _provider;
 
   @FreezedUnionValue('3')
