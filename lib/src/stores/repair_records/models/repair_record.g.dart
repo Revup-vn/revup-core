@@ -29,11 +29,12 @@ _$_pending _$$_pendingFromJson(Map<String, dynamic> json) => $checkedCreate(
                   .map((e) =>
                       OptionalService.fromJson(e as Map<String, dynamic>))
                   .toList()),
+          imgUrl: $checkedConvert('img_url', (v) => v as String?),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
       },
-      fieldKeyMap: const {r'$type': 'type'},
+      fieldKeyMap: const {'imgUrl': 'img_url', r'$type': 'type'},
     );
 
 Map<String, dynamic> _$$_pendingToJson(_$_pending instance) =>
@@ -48,6 +49,7 @@ Map<String, dynamic> _$$_pendingToJson(_$_pending instance) =>
       'from': instance.from.toJson(),
       'to': instance.to.toJson(),
       'services': instance.services.map((e) => e.toJson()).toList(),
+      'img_url': instance.imgUrl,
       'type': instance.$type,
     };
 
@@ -69,11 +71,12 @@ _$_accept _$$_acceptFromJson(Map<String, dynamic> json) => $checkedCreate(
               'from', (v) => Location.fromJson(v as Map<String, dynamic>)),
           to: $checkedConvert(
               'to', (v) => Location.fromJson(v as Map<String, dynamic>)),
+          imgUrl: $checkedConvert('img_url', (v) => v as String?),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
       },
-      fieldKeyMap: const {r'$type': 'type'},
+      fieldKeyMap: const {'imgUrl': 'img_url', r'$type': 'type'},
     );
 
 Map<String, dynamic> _$$_acceptToJson(_$_accept instance) => <String, dynamic>{
@@ -87,6 +90,7 @@ Map<String, dynamic> _$$_acceptToJson(_$_accept instance) => <String, dynamic>{
       'moving': instance.moving.toIso8601String(),
       'from': instance.from.toJson(),
       'to': instance.to.toJson(),
+      'img_url': instance.imgUrl,
       'type': instance.$type,
     };
 
@@ -112,11 +116,12 @@ _$_aborted _$$_abortedFromJson(Map<String, dynamic> json) => $checkedCreate(
               (v) => v == null
                   ? null
                   : RepairReport.fromJson(v as Map<String, dynamic>)),
+          imgUrl: $checkedConvert('img_url', (v) => v as String?),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
       },
-      fieldKeyMap: const {r'$type': 'type'},
+      fieldKeyMap: const {'imgUrl': 'img_url', r'$type': 'type'},
     );
 
 Map<String, dynamic> _$$_abortedToJson(_$_aborted instance) =>
@@ -131,6 +136,7 @@ Map<String, dynamic> _$$_abortedToJson(_$_aborted instance) =>
       'from': instance.from.toJson(),
       'to': instance.to.toJson(),
       'report': instance.report?.toJson(),
+      'img_url': instance.imgUrl,
       'type': instance.$type,
     };
 
@@ -154,11 +160,12 @@ _$_arrived _$$_arrivedFromJson(Map<String, dynamic> json) => $checkedCreate(
               'from', (v) => Location.fromJson(v as Map<String, dynamic>)),
           to: $checkedConvert(
               'to', (v) => Location.fromJson(v as Map<String, dynamic>)),
+          imgUrl: $checkedConvert('img_url', (v) => v as String?),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
       },
-      fieldKeyMap: const {r'$type': 'type'},
+      fieldKeyMap: const {'imgUrl': 'img_url', r'$type': 'type'},
     );
 
 Map<String, dynamic> _$$_arrivedToJson(_$_arrived instance) =>
@@ -174,6 +181,7 @@ Map<String, dynamic> _$$_arrivedToJson(_$_arrived instance) =>
       'arrived': instance.arrived.toIso8601String(),
       'from': instance.from.toJson(),
       'to': instance.to.toJson(),
+      'img_url': instance.imgUrl,
       'type': instance.$type,
     };
 
@@ -197,11 +205,12 @@ _$_started _$$_startedFromJson(Map<String, dynamic> json) => $checkedCreate(
               'from', (v) => Location.fromJson(v as Map<String, dynamic>)),
           to: $checkedConvert(
               'to', (v) => Location.fromJson(v as Map<String, dynamic>)),
+          imgUrl: $checkedConvert('img_url', (v) => v as String?),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
       },
-      fieldKeyMap: const {r'$type': 'type'},
+      fieldKeyMap: const {'imgUrl': 'img_url', r'$type': 'type'},
     );
 
 Map<String, dynamic> _$$_startedToJson(_$_started instance) =>
@@ -217,6 +226,7 @@ Map<String, dynamic> _$$_startedToJson(_$_started instance) =>
       'started': instance.started.toIso8601String(),
       'from': instance.from.toJson(),
       'to': instance.to.toJson(),
+      'img_url': instance.imgUrl,
       'type': instance.$type,
     };
 
@@ -251,11 +261,12 @@ _$_finished _$$_finishedFromJson(Map<String, dynamic> json) => $checkedCreate(
               (v) => v == null
                   ? null
                   : RepairReport.fromJson(v as Map<String, dynamic>)),
+          imgUrl: $checkedConvert('img_url', (v) => v as String?),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
       },
-      fieldKeyMap: const {r'$type': 'type'},
+      fieldKeyMap: const {'imgUrl': 'img_url', r'$type': 'type'},
     );
 
 Map<String, dynamic> _$$_finishedToJson(_$_finished instance) =>
@@ -275,5 +286,6 @@ Map<String, dynamic> _$$_finishedToJson(_$_finished instance) =>
       'from': instance.from.toJson(),
       'to': instance.to.toJson(),
       'report': instance.report?.toJson(),
+      'img_url': instance.imgUrl,
       'type': instance.$type,
     };

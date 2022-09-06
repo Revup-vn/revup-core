@@ -46,6 +46,7 @@ mixin _$RepairRecord {
   int get money => throw _privateConstructorUsedError;
   Location get from => throw _privateConstructorUsedError;
   Location get to => throw _privateConstructorUsedError;
+  String? get imgUrl => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
@@ -58,7 +59,8 @@ mixin _$RepairRecord {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)
+            List<OptionalService> services,
+            String? imgUrl)
         pending,
     required TResult Function(
             String id,
@@ -70,7 +72,8 @@ mixin _$RepairRecord {
             int money,
             DateTime moving,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         accepted,
     required TResult Function(
             String id,
@@ -82,7 +85,8 @@ mixin _$RepairRecord {
             int money,
             Location from,
             Location to,
-            RepairReport? report)
+            RepairReport? report,
+            String? imgUrl)
         aborted,
     required TResult Function(
             String id,
@@ -95,7 +99,8 @@ mixin _$RepairRecord {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         arrived,
     required TResult Function(
             String id,
@@ -108,7 +113,8 @@ mixin _$RepairRecord {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         started,
     required TResult Function(
             String id,
@@ -125,7 +131,8 @@ mixin _$RepairRecord {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)
+            RepairReport? report,
+            String? imgUrl)
         finished,
   }) =>
       throw _privateConstructorUsedError;
@@ -141,7 +148,8 @@ mixin _$RepairRecord {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)?
+            List<OptionalService> services,
+            String? imgUrl)?
         pending,
     TResult Function(
             String id,
@@ -153,7 +161,8 @@ mixin _$RepairRecord {
             int money,
             DateTime moving,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         accepted,
     TResult Function(
             String id,
@@ -165,7 +174,8 @@ mixin _$RepairRecord {
             int money,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         aborted,
     TResult Function(
             String id,
@@ -178,7 +188,8 @@ mixin _$RepairRecord {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         arrived,
     TResult Function(
             String id,
@@ -191,7 +202,8 @@ mixin _$RepairRecord {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         started,
     TResult Function(
             String id,
@@ -208,7 +220,8 @@ mixin _$RepairRecord {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         finished,
   }) =>
       throw _privateConstructorUsedError;
@@ -224,7 +237,8 @@ mixin _$RepairRecord {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)?
+            List<OptionalService> services,
+            String? imgUrl)?
         pending,
     TResult Function(
             String id,
@@ -236,7 +250,8 @@ mixin _$RepairRecord {
             int money,
             DateTime moving,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         accepted,
     TResult Function(
             String id,
@@ -248,7 +263,8 @@ mixin _$RepairRecord {
             int money,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         aborted,
     TResult Function(
             String id,
@@ -261,7 +277,8 @@ mixin _$RepairRecord {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         arrived,
     TResult Function(
             String id,
@@ -274,7 +291,8 @@ mixin _$RepairRecord {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         started,
     TResult Function(
             String id,
@@ -291,7 +309,8 @@ mixin _$RepairRecord {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         finished,
     required TResult orElse(),
   }) =>
@@ -347,7 +366,8 @@ abstract class $RepairRecordCopyWith<$Res> {
       String vehicle,
       int money,
       Location from,
-      Location to});
+      Location to,
+      String? imgUrl});
 
   $LocationCopyWith<$Res> get from;
   $LocationCopyWith<$Res> get to;
@@ -372,6 +392,7 @@ class _$RepairRecordCopyWithImpl<$Res> implements $RepairRecordCopyWith<$Res> {
     Object? money = freezed,
     Object? from = freezed,
     Object? to = freezed,
+    Object? imgUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -410,6 +431,10 @@ class _$RepairRecordCopyWithImpl<$Res> implements $RepairRecordCopyWith<$Res> {
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
               as Location,
+      imgUrl: imgUrl == freezed
+          ? _value.imgUrl
+          : imgUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -445,7 +470,8 @@ abstract class _$$_pendingCopyWith<$Res>
       int money,
       Location from,
       Location to,
-      List<OptionalService> services});
+      List<OptionalService> services,
+      String? imgUrl});
 
   @override
   $LocationCopyWith<$Res> get from;
@@ -474,6 +500,7 @@ class __$$_pendingCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
     Object? from = freezed,
     Object? to = freezed,
     Object? services = freezed,
+    Object? imgUrl = freezed,
   }) {
     return _then(_$_pending(
       id: id == freezed
@@ -516,6 +543,10 @@ class __$$_pendingCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           ? _value._services
           : services // ignore: cast_nullable_to_non_nullable
               as List<OptionalService>,
+      imgUrl: imgUrl == freezed
+          ? _value.imgUrl
+          : imgUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -534,6 +565,7 @@ class _$_pending implements _pending {
       required this.from,
       required this.to,
       required final List<OptionalService> services,
+      this.imgUrl,
       final String? $type})
       : _services = services,
         $type = $type ?? '1';
@@ -566,12 +598,15 @@ class _$_pending implements _pending {
     return EqualUnmodifiableListView(_services);
   }
 
+  @override
+  final String? imgUrl;
+
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'RepairRecord.pending(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, from: $from, to: $to, services: $services)';
+    return 'RepairRecord.pending(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, from: $from, to: $to, services: $services, imgUrl: $imgUrl)';
   }
 
   @override
@@ -588,7 +623,8 @@ class _$_pending implements _pending {
             const DeepCollectionEquality().equals(other.money, money) &&
             const DeepCollectionEquality().equals(other.from, from) &&
             const DeepCollectionEquality().equals(other.to, to) &&
-            const DeepCollectionEquality().equals(other._services, _services));
+            const DeepCollectionEquality().equals(other._services, _services) &&
+            const DeepCollectionEquality().equals(other.imgUrl, imgUrl));
   }
 
   @JsonKey(ignore: true)
@@ -604,7 +640,8 @@ class _$_pending implements _pending {
       const DeepCollectionEquality().hash(money),
       const DeepCollectionEquality().hash(from),
       const DeepCollectionEquality().hash(to),
-      const DeepCollectionEquality().hash(_services));
+      const DeepCollectionEquality().hash(_services),
+      const DeepCollectionEquality().hash(imgUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -624,7 +661,8 @@ class _$_pending implements _pending {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)
+            List<OptionalService> services,
+            String? imgUrl)
         pending,
     required TResult Function(
             String id,
@@ -636,7 +674,8 @@ class _$_pending implements _pending {
             int money,
             DateTime moving,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         accepted,
     required TResult Function(
             String id,
@@ -648,7 +687,8 @@ class _$_pending implements _pending {
             int money,
             Location from,
             Location to,
-            RepairReport? report)
+            RepairReport? report,
+            String? imgUrl)
         aborted,
     required TResult Function(
             String id,
@@ -661,7 +701,8 @@ class _$_pending implements _pending {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         arrived,
     required TResult Function(
             String id,
@@ -674,7 +715,8 @@ class _$_pending implements _pending {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         started,
     required TResult Function(
             String id,
@@ -691,11 +733,12 @@ class _$_pending implements _pending {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)
+            RepairReport? report,
+            String? imgUrl)
         finished,
   }) {
-    return pending(
-        id, cid, pid, created, desc, vehicle, money, from, to, services);
+    return pending(id, cid, pid, created, desc, vehicle, money, from, to,
+        services, imgUrl);
   }
 
   @override
@@ -711,7 +754,8 @@ class _$_pending implements _pending {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)?
+            List<OptionalService> services,
+            String? imgUrl)?
         pending,
     TResult Function(
             String id,
@@ -723,7 +767,8 @@ class _$_pending implements _pending {
             int money,
             DateTime moving,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         accepted,
     TResult Function(
             String id,
@@ -735,7 +780,8 @@ class _$_pending implements _pending {
             int money,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         aborted,
     TResult Function(
             String id,
@@ -748,7 +794,8 @@ class _$_pending implements _pending {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         arrived,
     TResult Function(
             String id,
@@ -761,7 +808,8 @@ class _$_pending implements _pending {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         started,
     TResult Function(
             String id,
@@ -778,11 +826,12 @@ class _$_pending implements _pending {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         finished,
   }) {
-    return pending?.call(
-        id, cid, pid, created, desc, vehicle, money, from, to, services);
+    return pending?.call(id, cid, pid, created, desc, vehicle, money, from, to,
+        services, imgUrl);
   }
 
   @override
@@ -798,7 +847,8 @@ class _$_pending implements _pending {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)?
+            List<OptionalService> services,
+            String? imgUrl)?
         pending,
     TResult Function(
             String id,
@@ -810,7 +860,8 @@ class _$_pending implements _pending {
             int money,
             DateTime moving,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         accepted,
     TResult Function(
             String id,
@@ -822,7 +873,8 @@ class _$_pending implements _pending {
             int money,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         aborted,
     TResult Function(
             String id,
@@ -835,7 +887,8 @@ class _$_pending implements _pending {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         arrived,
     TResult Function(
             String id,
@@ -848,7 +901,8 @@ class _$_pending implements _pending {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         started,
     TResult Function(
             String id,
@@ -865,13 +919,14 @@ class _$_pending implements _pending {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         finished,
     required TResult orElse(),
   }) {
     if (pending != null) {
-      return pending(
-          id, cid, pid, created, desc, vehicle, money, from, to, services);
+      return pending(id, cid, pid, created, desc, vehicle, money, from, to,
+          services, imgUrl);
     }
     return orElse();
   }
@@ -938,7 +993,8 @@ abstract class _pending implements RepairRecord {
       required final int money,
       required final Location from,
       required final Location to,
-      required final List<OptionalService> services}) = _$_pending;
+      required final List<OptionalService> services,
+      final String? imgUrl}) = _$_pending;
 
   factory _pending.fromJson(Map<String, dynamic> json) = _$_pending.fromJson;
 
@@ -962,6 +1018,8 @@ abstract class _pending implements RepairRecord {
   Location get to;
   List<OptionalService> get services;
   @override
+  String? get imgUrl;
+  @override
   @JsonKey(ignore: true)
   _$$_pendingCopyWith<_$_pending> get copyWith =>
       throw _privateConstructorUsedError;
@@ -982,7 +1040,8 @@ abstract class _$$_acceptCopyWith<$Res> implements $RepairRecordCopyWith<$Res> {
       int money,
       DateTime moving,
       Location from,
-      Location to});
+      Location to,
+      String? imgUrl});
 
   @override
   $LocationCopyWith<$Res> get from;
@@ -1011,6 +1070,7 @@ class __$$_acceptCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
     Object? moving = freezed,
     Object? from = freezed,
     Object? to = freezed,
+    Object? imgUrl = freezed,
   }) {
     return _then(_$_accept(
       id: id == freezed
@@ -1053,6 +1113,10 @@ class __$$_acceptCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
               as Location,
+      imgUrl: imgUrl == freezed
+          ? _value.imgUrl
+          : imgUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1071,6 +1135,7 @@ class _$_accept implements _accept {
       required this.moving,
       required this.from,
       required this.to,
+      this.imgUrl,
       final String? $type})
       : $type = $type ?? '2';
 
@@ -1097,13 +1162,15 @@ class _$_accept implements _accept {
   final Location from;
   @override
   final Location to;
+  @override
+  final String? imgUrl;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'RepairRecord.accepted(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, from: $from, to: $to)';
+    return 'RepairRecord.accepted(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, from: $from, to: $to, imgUrl: $imgUrl)';
   }
 
   @override
@@ -1120,7 +1187,8 @@ class _$_accept implements _accept {
             const DeepCollectionEquality().equals(other.money, money) &&
             const DeepCollectionEquality().equals(other.moving, moving) &&
             const DeepCollectionEquality().equals(other.from, from) &&
-            const DeepCollectionEquality().equals(other.to, to));
+            const DeepCollectionEquality().equals(other.to, to) &&
+            const DeepCollectionEquality().equals(other.imgUrl, imgUrl));
   }
 
   @JsonKey(ignore: true)
@@ -1136,7 +1204,8 @@ class _$_accept implements _accept {
       const DeepCollectionEquality().hash(money),
       const DeepCollectionEquality().hash(moving),
       const DeepCollectionEquality().hash(from),
-      const DeepCollectionEquality().hash(to));
+      const DeepCollectionEquality().hash(to),
+      const DeepCollectionEquality().hash(imgUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -1156,7 +1225,8 @@ class _$_accept implements _accept {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)
+            List<OptionalService> services,
+            String? imgUrl)
         pending,
     required TResult Function(
             String id,
@@ -1168,7 +1238,8 @@ class _$_accept implements _accept {
             int money,
             DateTime moving,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         accepted,
     required TResult Function(
             String id,
@@ -1180,7 +1251,8 @@ class _$_accept implements _accept {
             int money,
             Location from,
             Location to,
-            RepairReport? report)
+            RepairReport? report,
+            String? imgUrl)
         aborted,
     required TResult Function(
             String id,
@@ -1193,7 +1265,8 @@ class _$_accept implements _accept {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         arrived,
     required TResult Function(
             String id,
@@ -1206,7 +1279,8 @@ class _$_accept implements _accept {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         started,
     required TResult Function(
             String id,
@@ -1223,11 +1297,12 @@ class _$_accept implements _accept {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)
+            RepairReport? report,
+            String? imgUrl)
         finished,
   }) {
     return accepted(
-        id, cid, pid, created, desc, vehicle, money, moving, from, to);
+        id, cid, pid, created, desc, vehicle, money, moving, from, to, imgUrl);
   }
 
   @override
@@ -1243,7 +1318,8 @@ class _$_accept implements _accept {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)?
+            List<OptionalService> services,
+            String? imgUrl)?
         pending,
     TResult Function(
             String id,
@@ -1255,7 +1331,8 @@ class _$_accept implements _accept {
             int money,
             DateTime moving,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         accepted,
     TResult Function(
             String id,
@@ -1267,7 +1344,8 @@ class _$_accept implements _accept {
             int money,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         aborted,
     TResult Function(
             String id,
@@ -1280,7 +1358,8 @@ class _$_accept implements _accept {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         arrived,
     TResult Function(
             String id,
@@ -1293,7 +1372,8 @@ class _$_accept implements _accept {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         started,
     TResult Function(
             String id,
@@ -1310,11 +1390,12 @@ class _$_accept implements _accept {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         finished,
   }) {
     return accepted?.call(
-        id, cid, pid, created, desc, vehicle, money, moving, from, to);
+        id, cid, pid, created, desc, vehicle, money, moving, from, to, imgUrl);
   }
 
   @override
@@ -1330,7 +1411,8 @@ class _$_accept implements _accept {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)?
+            List<OptionalService> services,
+            String? imgUrl)?
         pending,
     TResult Function(
             String id,
@@ -1342,7 +1424,8 @@ class _$_accept implements _accept {
             int money,
             DateTime moving,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         accepted,
     TResult Function(
             String id,
@@ -1354,7 +1437,8 @@ class _$_accept implements _accept {
             int money,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         aborted,
     TResult Function(
             String id,
@@ -1367,7 +1451,8 @@ class _$_accept implements _accept {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         arrived,
     TResult Function(
             String id,
@@ -1380,7 +1465,8 @@ class _$_accept implements _accept {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         started,
     TResult Function(
             String id,
@@ -1397,13 +1483,14 @@ class _$_accept implements _accept {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         finished,
     required TResult orElse(),
   }) {
     if (accepted != null) {
-      return accepted(
-          id, cid, pid, created, desc, vehicle, money, moving, from, to);
+      return accepted(id, cid, pid, created, desc, vehicle, money, moving, from,
+          to, imgUrl);
     }
     return orElse();
   }
@@ -1470,7 +1557,8 @@ abstract class _accept implements RepairRecord {
       required final int money,
       required final DateTime moving,
       required final Location from,
-      required final Location to}) = _$_accept;
+      required final Location to,
+      final String? imgUrl}) = _$_accept;
 
   factory _accept.fromJson(Map<String, dynamic> json) = _$_accept.fromJson;
 
@@ -1494,6 +1582,8 @@ abstract class _accept implements RepairRecord {
   @override
   Location get to;
   @override
+  String? get imgUrl;
+  @override
   @JsonKey(ignore: true)
   _$$_acceptCopyWith<_$_accept> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1516,7 +1606,8 @@ abstract class _$$_abortedCopyWith<$Res>
       int money,
       Location from,
       Location to,
-      RepairReport? report});
+      RepairReport? report,
+      String? imgUrl});
 
   @override
   $LocationCopyWith<$Res> get from;
@@ -1546,6 +1637,7 @@ class __$$_abortedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
     Object? from = freezed,
     Object? to = freezed,
     Object? report = freezed,
+    Object? imgUrl = freezed,
   }) {
     return _then(_$_aborted(
       id: id == freezed
@@ -1588,6 +1680,10 @@ class __$$_abortedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           ? _value.report
           : report // ignore: cast_nullable_to_non_nullable
               as RepairReport?,
+      imgUrl: imgUrl == freezed
+          ? _value.imgUrl
+          : imgUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -1617,6 +1713,7 @@ class _$_aborted implements _aborted {
       required this.from,
       required this.to,
       this.report,
+      this.imgUrl,
       final String? $type})
       : $type = $type ?? '3';
 
@@ -1643,13 +1740,15 @@ class _$_aborted implements _aborted {
   final Location to;
   @override
   final RepairReport? report;
+  @override
+  final String? imgUrl;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'RepairRecord.aborted(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, from: $from, to: $to, report: $report)';
+    return 'RepairRecord.aborted(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, from: $from, to: $to, report: $report, imgUrl: $imgUrl)';
   }
 
   @override
@@ -1666,7 +1765,8 @@ class _$_aborted implements _aborted {
             const DeepCollectionEquality().equals(other.money, money) &&
             const DeepCollectionEquality().equals(other.from, from) &&
             const DeepCollectionEquality().equals(other.to, to) &&
-            const DeepCollectionEquality().equals(other.report, report));
+            const DeepCollectionEquality().equals(other.report, report) &&
+            const DeepCollectionEquality().equals(other.imgUrl, imgUrl));
   }
 
   @JsonKey(ignore: true)
@@ -1682,7 +1782,8 @@ class _$_aborted implements _aborted {
       const DeepCollectionEquality().hash(money),
       const DeepCollectionEquality().hash(from),
       const DeepCollectionEquality().hash(to),
-      const DeepCollectionEquality().hash(report));
+      const DeepCollectionEquality().hash(report),
+      const DeepCollectionEquality().hash(imgUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -1702,7 +1803,8 @@ class _$_aborted implements _aborted {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)
+            List<OptionalService> services,
+            String? imgUrl)
         pending,
     required TResult Function(
             String id,
@@ -1714,7 +1816,8 @@ class _$_aborted implements _aborted {
             int money,
             DateTime moving,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         accepted,
     required TResult Function(
             String id,
@@ -1726,7 +1829,8 @@ class _$_aborted implements _aborted {
             int money,
             Location from,
             Location to,
-            RepairReport? report)
+            RepairReport? report,
+            String? imgUrl)
         aborted,
     required TResult Function(
             String id,
@@ -1739,7 +1843,8 @@ class _$_aborted implements _aborted {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         arrived,
     required TResult Function(
             String id,
@@ -1752,7 +1857,8 @@ class _$_aborted implements _aborted {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         started,
     required TResult Function(
             String id,
@@ -1769,11 +1875,12 @@ class _$_aborted implements _aborted {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)
+            RepairReport? report,
+            String? imgUrl)
         finished,
   }) {
     return aborted(
-        id, cid, pid, created, desc, vehicle, money, from, to, report);
+        id, cid, pid, created, desc, vehicle, money, from, to, report, imgUrl);
   }
 
   @override
@@ -1789,7 +1896,8 @@ class _$_aborted implements _aborted {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)?
+            List<OptionalService> services,
+            String? imgUrl)?
         pending,
     TResult Function(
             String id,
@@ -1801,7 +1909,8 @@ class _$_aborted implements _aborted {
             int money,
             DateTime moving,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         accepted,
     TResult Function(
             String id,
@@ -1813,7 +1922,8 @@ class _$_aborted implements _aborted {
             int money,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         aborted,
     TResult Function(
             String id,
@@ -1826,7 +1936,8 @@ class _$_aborted implements _aborted {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         arrived,
     TResult Function(
             String id,
@@ -1839,7 +1950,8 @@ class _$_aborted implements _aborted {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         started,
     TResult Function(
             String id,
@@ -1856,11 +1968,12 @@ class _$_aborted implements _aborted {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         finished,
   }) {
     return aborted?.call(
-        id, cid, pid, created, desc, vehicle, money, from, to, report);
+        id, cid, pid, created, desc, vehicle, money, from, to, report, imgUrl);
   }
 
   @override
@@ -1876,7 +1989,8 @@ class _$_aborted implements _aborted {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)?
+            List<OptionalService> services,
+            String? imgUrl)?
         pending,
     TResult Function(
             String id,
@@ -1888,7 +2002,8 @@ class _$_aborted implements _aborted {
             int money,
             DateTime moving,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         accepted,
     TResult Function(
             String id,
@@ -1900,7 +2015,8 @@ class _$_aborted implements _aborted {
             int money,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         aborted,
     TResult Function(
             String id,
@@ -1913,7 +2029,8 @@ class _$_aborted implements _aborted {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         arrived,
     TResult Function(
             String id,
@@ -1926,7 +2043,8 @@ class _$_aborted implements _aborted {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         started,
     TResult Function(
             String id,
@@ -1943,13 +2061,14 @@ class _$_aborted implements _aborted {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         finished,
     required TResult orElse(),
   }) {
     if (aborted != null) {
-      return aborted(
-          id, cid, pid, created, desc, vehicle, money, from, to, report);
+      return aborted(id, cid, pid, created, desc, vehicle, money, from, to,
+          report, imgUrl);
     }
     return orElse();
   }
@@ -2016,7 +2135,8 @@ abstract class _aborted implements RepairRecord {
       required final int money,
       required final Location from,
       required final Location to,
-      final RepairReport? report}) = _$_aborted;
+      final RepairReport? report,
+      final String? imgUrl}) = _$_aborted;
 
   factory _aborted.fromJson(Map<String, dynamic> json) = _$_aborted.fromJson;
 
@@ -2039,6 +2159,8 @@ abstract class _aborted implements RepairRecord {
   @override
   Location get to;
   RepairReport? get report;
+  @override
+  String? get imgUrl;
   @override
   @JsonKey(ignore: true)
   _$$_abortedCopyWith<_$_aborted> get copyWith =>
@@ -2063,7 +2185,8 @@ abstract class _$$_arrivedCopyWith<$Res>
       DateTime moving,
       DateTime arrived,
       Location from,
-      Location to});
+      Location to,
+      String? imgUrl});
 
   @override
   $LocationCopyWith<$Res> get from;
@@ -2093,6 +2216,7 @@ class __$$_arrivedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
     Object? arrived = freezed,
     Object? from = freezed,
     Object? to = freezed,
+    Object? imgUrl = freezed,
   }) {
     return _then(_$_arrived(
       id: id == freezed
@@ -2139,6 +2263,10 @@ class __$$_arrivedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
               as Location,
+      imgUrl: imgUrl == freezed
+          ? _value.imgUrl
+          : imgUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -2158,6 +2286,7 @@ class _$_arrived implements _arrived {
       required this.arrived,
       required this.from,
       required this.to,
+      this.imgUrl,
       final String? $type})
       : $type = $type ?? '4';
 
@@ -2186,13 +2315,15 @@ class _$_arrived implements _arrived {
   final Location from;
   @override
   final Location to;
+  @override
+  final String? imgUrl;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'RepairRecord.arrived(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, arrived: $arrived, from: $from, to: $to)';
+    return 'RepairRecord.arrived(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, arrived: $arrived, from: $from, to: $to, imgUrl: $imgUrl)';
   }
 
   @override
@@ -2210,7 +2341,8 @@ class _$_arrived implements _arrived {
             const DeepCollectionEquality().equals(other.moving, moving) &&
             const DeepCollectionEquality().equals(other.arrived, arrived) &&
             const DeepCollectionEquality().equals(other.from, from) &&
-            const DeepCollectionEquality().equals(other.to, to));
+            const DeepCollectionEquality().equals(other.to, to) &&
+            const DeepCollectionEquality().equals(other.imgUrl, imgUrl));
   }
 
   @JsonKey(ignore: true)
@@ -2227,7 +2359,8 @@ class _$_arrived implements _arrived {
       const DeepCollectionEquality().hash(moving),
       const DeepCollectionEquality().hash(arrived),
       const DeepCollectionEquality().hash(from),
-      const DeepCollectionEquality().hash(to));
+      const DeepCollectionEquality().hash(to),
+      const DeepCollectionEquality().hash(imgUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -2247,7 +2380,8 @@ class _$_arrived implements _arrived {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)
+            List<OptionalService> services,
+            String? imgUrl)
         pending,
     required TResult Function(
             String id,
@@ -2259,7 +2393,8 @@ class _$_arrived implements _arrived {
             int money,
             DateTime moving,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         accepted,
     required TResult Function(
             String id,
@@ -2271,7 +2406,8 @@ class _$_arrived implements _arrived {
             int money,
             Location from,
             Location to,
-            RepairReport? report)
+            RepairReport? report,
+            String? imgUrl)
         aborted,
     required TResult Function(
             String id,
@@ -2284,7 +2420,8 @@ class _$_arrived implements _arrived {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         arrived,
     required TResult Function(
             String id,
@@ -2297,7 +2434,8 @@ class _$_arrived implements _arrived {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         started,
     required TResult Function(
             String id,
@@ -2314,11 +2452,12 @@ class _$_arrived implements _arrived {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)
+            RepairReport? report,
+            String? imgUrl)
         finished,
   }) {
     return arrived(id, cid, pid, created, desc, vehicle, money, moving,
-        this.arrived, from, to);
+        this.arrived, from, to, imgUrl);
   }
 
   @override
@@ -2334,7 +2473,8 @@ class _$_arrived implements _arrived {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)?
+            List<OptionalService> services,
+            String? imgUrl)?
         pending,
     TResult Function(
             String id,
@@ -2346,7 +2486,8 @@ class _$_arrived implements _arrived {
             int money,
             DateTime moving,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         accepted,
     TResult Function(
             String id,
@@ -2358,7 +2499,8 @@ class _$_arrived implements _arrived {
             int money,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         aborted,
     TResult Function(
             String id,
@@ -2371,7 +2513,8 @@ class _$_arrived implements _arrived {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         arrived,
     TResult Function(
             String id,
@@ -2384,7 +2527,8 @@ class _$_arrived implements _arrived {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         started,
     TResult Function(
             String id,
@@ -2401,11 +2545,12 @@ class _$_arrived implements _arrived {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         finished,
   }) {
     return arrived?.call(id, cid, pid, created, desc, vehicle, money, moving,
-        this.arrived, from, to);
+        this.arrived, from, to, imgUrl);
   }
 
   @override
@@ -2421,7 +2566,8 @@ class _$_arrived implements _arrived {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)?
+            List<OptionalService> services,
+            String? imgUrl)?
         pending,
     TResult Function(
             String id,
@@ -2433,7 +2579,8 @@ class _$_arrived implements _arrived {
             int money,
             DateTime moving,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         accepted,
     TResult Function(
             String id,
@@ -2445,7 +2592,8 @@ class _$_arrived implements _arrived {
             int money,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         aborted,
     TResult Function(
             String id,
@@ -2458,7 +2606,8 @@ class _$_arrived implements _arrived {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         arrived,
     TResult Function(
             String id,
@@ -2471,7 +2620,8 @@ class _$_arrived implements _arrived {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         started,
     TResult Function(
             String id,
@@ -2488,13 +2638,14 @@ class _$_arrived implements _arrived {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         finished,
     required TResult orElse(),
   }) {
     if (arrived != null) {
       return arrived(id, cid, pid, created, desc, vehicle, money, moving,
-          this.arrived, from, to);
+          this.arrived, from, to, imgUrl);
     }
     return orElse();
   }
@@ -2562,7 +2713,8 @@ abstract class _arrived implements RepairRecord {
       required final DateTime moving,
       required final DateTime arrived,
       required final Location from,
-      required final Location to}) = _$_arrived;
+      required final Location to,
+      final String? imgUrl}) = _$_arrived;
 
   factory _arrived.fromJson(Map<String, dynamic> json) = _$_arrived.fromJson;
 
@@ -2587,6 +2739,8 @@ abstract class _arrived implements RepairRecord {
   @override
   Location get to;
   @override
+  String? get imgUrl;
+  @override
   @JsonKey(ignore: true)
   _$$_arrivedCopyWith<_$_arrived> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2610,7 +2764,8 @@ abstract class _$$_startedCopyWith<$Res>
       DateTime moving,
       DateTime started,
       Location from,
-      Location to});
+      Location to,
+      String? imgUrl});
 
   @override
   $LocationCopyWith<$Res> get from;
@@ -2640,6 +2795,7 @@ class __$$_startedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
     Object? started = freezed,
     Object? from = freezed,
     Object? to = freezed,
+    Object? imgUrl = freezed,
   }) {
     return _then(_$_started(
       id: id == freezed
@@ -2686,6 +2842,10 @@ class __$$_startedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
               as Location,
+      imgUrl: imgUrl == freezed
+          ? _value.imgUrl
+          : imgUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -2705,6 +2865,7 @@ class _$_started implements _started {
       required this.started,
       required this.from,
       required this.to,
+      this.imgUrl,
       final String? $type})
       : $type = $type ?? '5';
 
@@ -2733,13 +2894,15 @@ class _$_started implements _started {
   final Location from;
   @override
   final Location to;
+  @override
+  final String? imgUrl;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'RepairRecord.started(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, started: $started, from: $from, to: $to)';
+    return 'RepairRecord.started(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, started: $started, from: $from, to: $to, imgUrl: $imgUrl)';
   }
 
   @override
@@ -2757,7 +2920,8 @@ class _$_started implements _started {
             const DeepCollectionEquality().equals(other.moving, moving) &&
             const DeepCollectionEquality().equals(other.started, started) &&
             const DeepCollectionEquality().equals(other.from, from) &&
-            const DeepCollectionEquality().equals(other.to, to));
+            const DeepCollectionEquality().equals(other.to, to) &&
+            const DeepCollectionEquality().equals(other.imgUrl, imgUrl));
   }
 
   @JsonKey(ignore: true)
@@ -2774,7 +2938,8 @@ class _$_started implements _started {
       const DeepCollectionEquality().hash(moving),
       const DeepCollectionEquality().hash(started),
       const DeepCollectionEquality().hash(from),
-      const DeepCollectionEquality().hash(to));
+      const DeepCollectionEquality().hash(to),
+      const DeepCollectionEquality().hash(imgUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -2794,7 +2959,8 @@ class _$_started implements _started {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)
+            List<OptionalService> services,
+            String? imgUrl)
         pending,
     required TResult Function(
             String id,
@@ -2806,7 +2972,8 @@ class _$_started implements _started {
             int money,
             DateTime moving,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         accepted,
     required TResult Function(
             String id,
@@ -2818,7 +2985,8 @@ class _$_started implements _started {
             int money,
             Location from,
             Location to,
-            RepairReport? report)
+            RepairReport? report,
+            String? imgUrl)
         aborted,
     required TResult Function(
             String id,
@@ -2831,7 +2999,8 @@ class _$_started implements _started {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         arrived,
     required TResult Function(
             String id,
@@ -2844,7 +3013,8 @@ class _$_started implements _started {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         started,
     required TResult Function(
             String id,
@@ -2861,11 +3031,12 @@ class _$_started implements _started {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)
+            RepairReport? report,
+            String? imgUrl)
         finished,
   }) {
     return started(id, cid, pid, created, desc, vehicle, money, moving,
-        this.started, from, to);
+        this.started, from, to, imgUrl);
   }
 
   @override
@@ -2881,7 +3052,8 @@ class _$_started implements _started {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)?
+            List<OptionalService> services,
+            String? imgUrl)?
         pending,
     TResult Function(
             String id,
@@ -2893,7 +3065,8 @@ class _$_started implements _started {
             int money,
             DateTime moving,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         accepted,
     TResult Function(
             String id,
@@ -2905,7 +3078,8 @@ class _$_started implements _started {
             int money,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         aborted,
     TResult Function(
             String id,
@@ -2918,7 +3092,8 @@ class _$_started implements _started {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         arrived,
     TResult Function(
             String id,
@@ -2931,7 +3106,8 @@ class _$_started implements _started {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         started,
     TResult Function(
             String id,
@@ -2948,11 +3124,12 @@ class _$_started implements _started {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         finished,
   }) {
     return started?.call(id, cid, pid, created, desc, vehicle, money, moving,
-        this.started, from, to);
+        this.started, from, to, imgUrl);
   }
 
   @override
@@ -2968,7 +3145,8 @@ class _$_started implements _started {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)?
+            List<OptionalService> services,
+            String? imgUrl)?
         pending,
     TResult Function(
             String id,
@@ -2980,7 +3158,8 @@ class _$_started implements _started {
             int money,
             DateTime moving,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         accepted,
     TResult Function(
             String id,
@@ -2992,7 +3171,8 @@ class _$_started implements _started {
             int money,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         aborted,
     TResult Function(
             String id,
@@ -3005,7 +3185,8 @@ class _$_started implements _started {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         arrived,
     TResult Function(
             String id,
@@ -3018,7 +3199,8 @@ class _$_started implements _started {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         started,
     TResult Function(
             String id,
@@ -3035,13 +3217,14 @@ class _$_started implements _started {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         finished,
     required TResult orElse(),
   }) {
     if (started != null) {
       return started(id, cid, pid, created, desc, vehicle, money, moving,
-          this.started, from, to);
+          this.started, from, to, imgUrl);
     }
     return orElse();
   }
@@ -3109,7 +3292,8 @@ abstract class _started implements RepairRecord {
       required final DateTime moving,
       required final DateTime started,
       required final Location from,
-      required final Location to}) = _$_started;
+      required final Location to,
+      final String? imgUrl}) = _$_started;
 
   factory _started.fromJson(Map<String, dynamic> json) = _$_started.fromJson;
 
@@ -3133,6 +3317,8 @@ abstract class _started implements RepairRecord {
   Location get from;
   @override
   Location get to;
+  @override
+  String? get imgUrl;
   @override
   @JsonKey(ignore: true)
   _$$_startedCopyWith<_$_started> get copyWith =>
@@ -3161,7 +3347,8 @@ abstract class _$$_finishedCopyWith<$Res>
       ReportFeedback feedback,
       Location from,
       Location to,
-      RepairReport? report});
+      RepairReport? report,
+      String? imgUrl});
 
   $ReportFeedbackCopyWith<$Res> get feedback;
   @override
@@ -3198,6 +3385,7 @@ class __$$_finishedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
     Object? from = freezed,
     Object? to = freezed,
     Object? report = freezed,
+    Object? imgUrl = freezed,
   }) {
     return _then(_$_finished(
       id: id == freezed
@@ -3260,6 +3448,10 @@ class __$$_finishedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           ? _value.report
           : report // ignore: cast_nullable_to_non_nullable
               as RepairReport?,
+      imgUrl: imgUrl == freezed
+          ? _value.imgUrl
+          : imgUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -3301,6 +3493,7 @@ class _$_finished implements _finished {
       required this.from,
       required this.to,
       this.report,
+      this.imgUrl,
       final String? $type})
       : _imgs = imgs,
         $type = $type ?? '6';
@@ -3343,13 +3536,15 @@ class _$_finished implements _finished {
   final Location to;
   @override
   final RepairReport? report;
+  @override
+  final String? imgUrl;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'RepairRecord.finished(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, started: $started, completed: $completed, imgs: $imgs, feedback: $feedback, from: $from, to: $to, report: $report)';
+    return 'RepairRecord.finished(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, started: $started, completed: $completed, imgs: $imgs, feedback: $feedback, from: $from, to: $to, report: $report, imgUrl: $imgUrl)';
   }
 
   @override
@@ -3371,7 +3566,8 @@ class _$_finished implements _finished {
             const DeepCollectionEquality().equals(other.feedback, feedback) &&
             const DeepCollectionEquality().equals(other.from, from) &&
             const DeepCollectionEquality().equals(other.to, to) &&
-            const DeepCollectionEquality().equals(other.report, report));
+            const DeepCollectionEquality().equals(other.report, report) &&
+            const DeepCollectionEquality().equals(other.imgUrl, imgUrl));
   }
 
   @JsonKey(ignore: true)
@@ -3392,7 +3588,8 @@ class _$_finished implements _finished {
       const DeepCollectionEquality().hash(feedback),
       const DeepCollectionEquality().hash(from),
       const DeepCollectionEquality().hash(to),
-      const DeepCollectionEquality().hash(report));
+      const DeepCollectionEquality().hash(report),
+      const DeepCollectionEquality().hash(imgUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -3412,7 +3609,8 @@ class _$_finished implements _finished {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)
+            List<OptionalService> services,
+            String? imgUrl)
         pending,
     required TResult Function(
             String id,
@@ -3424,7 +3622,8 @@ class _$_finished implements _finished {
             int money,
             DateTime moving,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         accepted,
     required TResult Function(
             String id,
@@ -3436,7 +3635,8 @@ class _$_finished implements _finished {
             int money,
             Location from,
             Location to,
-            RepairReport? report)
+            RepairReport? report,
+            String? imgUrl)
         aborted,
     required TResult Function(
             String id,
@@ -3449,7 +3649,8 @@ class _$_finished implements _finished {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         arrived,
     required TResult Function(
             String id,
@@ -3462,7 +3663,8 @@ class _$_finished implements _finished {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)
+            Location to,
+            String? imgUrl)
         started,
     required TResult Function(
             String id,
@@ -3479,11 +3681,12 @@ class _$_finished implements _finished {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)
+            RepairReport? report,
+            String? imgUrl)
         finished,
   }) {
     return finished(id, cid, pid, created, desc, vehicle, money, moving,
-        this.started, completed, imgs, feedback, from, to, report);
+        this.started, completed, imgs, feedback, from, to, report, imgUrl);
   }
 
   @override
@@ -3499,7 +3702,8 @@ class _$_finished implements _finished {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)?
+            List<OptionalService> services,
+            String? imgUrl)?
         pending,
     TResult Function(
             String id,
@@ -3511,7 +3715,8 @@ class _$_finished implements _finished {
             int money,
             DateTime moving,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         accepted,
     TResult Function(
             String id,
@@ -3523,7 +3728,8 @@ class _$_finished implements _finished {
             int money,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         aborted,
     TResult Function(
             String id,
@@ -3536,7 +3742,8 @@ class _$_finished implements _finished {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         arrived,
     TResult Function(
             String id,
@@ -3549,7 +3756,8 @@ class _$_finished implements _finished {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         started,
     TResult Function(
             String id,
@@ -3566,11 +3774,12 @@ class _$_finished implements _finished {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         finished,
   }) {
     return finished?.call(id, cid, pid, created, desc, vehicle, money, moving,
-        this.started, completed, imgs, feedback, from, to, report);
+        this.started, completed, imgs, feedback, from, to, report, imgUrl);
   }
 
   @override
@@ -3586,7 +3795,8 @@ class _$_finished implements _finished {
             int money,
             Location from,
             Location to,
-            List<OptionalService> services)?
+            List<OptionalService> services,
+            String? imgUrl)?
         pending,
     TResult Function(
             String id,
@@ -3598,7 +3808,8 @@ class _$_finished implements _finished {
             int money,
             DateTime moving,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         accepted,
     TResult Function(
             String id,
@@ -3610,7 +3821,8 @@ class _$_finished implements _finished {
             int money,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         aborted,
     TResult Function(
             String id,
@@ -3623,7 +3835,8 @@ class _$_finished implements _finished {
             DateTime moving,
             DateTime arrived,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         arrived,
     TResult Function(
             String id,
@@ -3636,7 +3849,8 @@ class _$_finished implements _finished {
             DateTime moving,
             DateTime started,
             Location from,
-            Location to)?
+            Location to,
+            String? imgUrl)?
         started,
     TResult Function(
             String id,
@@ -3653,13 +3867,14 @@ class _$_finished implements _finished {
             ReportFeedback feedback,
             Location from,
             Location to,
-            RepairReport? report)?
+            RepairReport? report,
+            String? imgUrl)?
         finished,
     required TResult orElse(),
   }) {
     if (finished != null) {
       return finished(id, cid, pid, created, desc, vehicle, money, moving,
-          this.started, completed, imgs, feedback, from, to, report);
+          this.started, completed, imgs, feedback, from, to, report, imgUrl);
     }
     return orElse();
   }
@@ -3731,7 +3946,8 @@ abstract class _finished implements RepairRecord {
       required final ReportFeedback feedback,
       required final Location from,
       required final Location to,
-      final RepairReport? report}) = _$_finished;
+      final RepairReport? report,
+      final String? imgUrl}) = _$_finished;
 
   factory _finished.fromJson(Map<String, dynamic> json) = _$_finished.fromJson;
 
@@ -3759,6 +3975,8 @@ abstract class _finished implements RepairRecord {
   @override
   Location get to;
   RepairReport? get report;
+  @override
+  String? get imgUrl;
   @override
   @JsonKey(ignore: true)
   _$$_finishedCopyWith<_$_finished> get copyWith =>

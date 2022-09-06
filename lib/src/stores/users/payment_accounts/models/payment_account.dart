@@ -12,6 +12,7 @@ class PaymentAccount extends Serializable<PaymentAccount>
   const factory PaymentAccount.momo({
     required String id,
     required bool isActive,
+    @Default(0) int balance,
   }) = _momo;
 
   factory PaymentAccount.fromJson(Map<String, dynamic> json) =>

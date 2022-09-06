@@ -14,6 +14,7 @@ class PaymentService extends Serializable<PaymentService>
     required int moneyAmount,
     required List<PaymentProduct> products,
     required bool isOptional,
+    @Default(false) bool isComplete,
   }) = _pending;
 
   const factory PaymentService.paid({
@@ -26,6 +27,7 @@ class PaymentService extends Serializable<PaymentService>
   const factory PaymentService.needToVerify({
     required String serviceName,
     required String desc,
+    String? imgUrl,
   }) = _needToVerify;
 
   factory PaymentService.fromJson(Map<String, dynamic> json) =>

@@ -22,19 +22,20 @@ PaymentAccount _$PaymentAccountFromJson(Map<String, dynamic> json) {
 mixin _$PaymentAccount {
   String get id => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
+  int get balance => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id, bool isActive) momo,
+    required TResult Function(String id, bool isActive, int balance) momo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String id, bool isActive)? momo,
+    TResult Function(String id, bool isActive, int balance)? momo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, bool isActive)? momo,
+    TResult Function(String id, bool isActive, int balance)? momo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -65,7 +66,7 @@ abstract class $PaymentAccountCopyWith<$Res> {
   factory $PaymentAccountCopyWith(
           PaymentAccount value, $Res Function(PaymentAccount) then) =
       _$PaymentAccountCopyWithImpl<$Res>;
-  $Res call({String id, bool isActive});
+  $Res call({String id, bool isActive, int balance});
 }
 
 /// @nodoc
@@ -81,6 +82,7 @@ class _$PaymentAccountCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? isActive = freezed,
+    Object? balance = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -91,6 +93,10 @@ class _$PaymentAccountCopyWithImpl<$Res>
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool,
+      balance: balance == freezed
+          ? _value.balance
+          : balance // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -100,7 +106,7 @@ abstract class _$$_momoCopyWith<$Res> implements $PaymentAccountCopyWith<$Res> {
   factory _$$_momoCopyWith(_$_momo value, $Res Function(_$_momo) then) =
       __$$_momoCopyWithImpl<$Res>;
   @override
-  $Res call({String id, bool isActive});
+  $Res call({String id, bool isActive, int balance});
 }
 
 /// @nodoc
@@ -116,6 +122,7 @@ class __$$_momoCopyWithImpl<$Res> extends _$PaymentAccountCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? isActive = freezed,
+    Object? balance = freezed,
   }) {
     return _then(_$_momo(
       id: id == freezed
@@ -126,6 +133,10 @@ class __$$_momoCopyWithImpl<$Res> extends _$PaymentAccountCopyWithImpl<$Res>
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool,
+      balance: balance == freezed
+          ? _value.balance
+          : balance // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -133,7 +144,7 @@ class __$$_momoCopyWithImpl<$Res> extends _$PaymentAccountCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_momo implements _momo {
-  const _$_momo({required this.id, required this.isActive});
+  const _$_momo({required this.id, required this.isActive, this.balance = 0});
 
   factory _$_momo.fromJson(Map<String, dynamic> json) => _$$_momoFromJson(json);
 
@@ -141,10 +152,13 @@ class _$_momo implements _momo {
   final String id;
   @override
   final bool isActive;
+  @override
+  @JsonKey()
+  final int balance;
 
   @override
   String toString() {
-    return 'PaymentAccount.momo(id: $id, isActive: $isActive)';
+    return 'PaymentAccount.momo(id: $id, isActive: $isActive, balance: $balance)';
   }
 
   @override
@@ -153,7 +167,8 @@ class _$_momo implements _momo {
         (other.runtimeType == runtimeType &&
             other is _$_momo &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.isActive, isActive));
+            const DeepCollectionEquality().equals(other.isActive, isActive) &&
+            const DeepCollectionEquality().equals(other.balance, balance));
   }
 
   @JsonKey(ignore: true)
@@ -161,7 +176,8 @@ class _$_momo implements _momo {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(isActive));
+      const DeepCollectionEquality().hash(isActive),
+      const DeepCollectionEquality().hash(balance));
 
   @JsonKey(ignore: true)
   @override
@@ -171,27 +187,27 @@ class _$_momo implements _momo {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id, bool isActive) momo,
+    required TResult Function(String id, bool isActive, int balance) momo,
   }) {
-    return momo(id, isActive);
+    return momo(id, isActive, balance);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String id, bool isActive)? momo,
+    TResult Function(String id, bool isActive, int balance)? momo,
   }) {
-    return momo?.call(id, isActive);
+    return momo?.call(id, isActive, balance);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, bool isActive)? momo,
+    TResult Function(String id, bool isActive, int balance)? momo,
     required TResult orElse(),
   }) {
     if (momo != null) {
-      return momo(id, isActive);
+      return momo(id, isActive, balance);
     }
     return orElse();
   }
@@ -234,7 +250,9 @@ class _$_momo implements _momo {
 
 abstract class _momo implements PaymentAccount {
   const factory _momo(
-      {required final String id, required final bool isActive}) = _$_momo;
+      {required final String id,
+      required final bool isActive,
+      final int balance}) = _$_momo;
 
   factory _momo.fromJson(Map<String, dynamic> json) = _$_momo.fromJson;
 
@@ -242,6 +260,8 @@ abstract class _momo implements PaymentAccount {
   String get id;
   @override
   bool get isActive;
+  @override
+  int get balance;
   @override
   @JsonKey(ignore: true)
   _$$_momoCopyWith<_$_momo> get copyWith => throw _privateConstructorUsedError;

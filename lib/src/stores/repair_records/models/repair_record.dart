@@ -23,6 +23,7 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required Location from,
     required Location to,
     required List<OptionalService> services,
+    String? imgUrl,
   }) = _pending;
 
   @FreezedUnionValue('2')
@@ -37,6 +38,7 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required DateTime moving,
     required Location from,
     required Location to,
+    String? imgUrl,
   }) = _accept;
 
   @FreezedUnionValue('3')
@@ -51,6 +53,7 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required Location from,
     required Location to,
     RepairReport? report,
+    String? imgUrl,
   }) = _aborted;
 
   @FreezedUnionValue('4')
@@ -66,6 +69,7 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required DateTime arrived,
     required Location from,
     required Location to,
+    String? imgUrl,
   }) = _arrived;
 
   @FreezedUnionValue('5')
@@ -81,6 +85,7 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required DateTime started,
     required Location from,
     required Location to,
+    String? imgUrl,
   }) = _started;
 
   @FreezedUnionValue('6')
@@ -100,6 +105,7 @@ class RepairRecord extends Serializable<RepairRecord> with _$RepairRecord {
     required Location from,
     required Location to,
     RepairReport? report,
+    String? imgUrl,
   }) = _finished;
 
   factory RepairRecord.fromJson(Map<String, dynamic> json) =>

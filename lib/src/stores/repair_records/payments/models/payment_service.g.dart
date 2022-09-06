@@ -20,6 +20,8 @@ _$_pending _$$_pendingFromJson(Map<String, dynamic> json) => $checkedCreate(
                       (e) => PaymentProduct.fromJson(e as Map<String, dynamic>))
                   .toList()),
           isOptional: $checkedConvert('is_optional', (v) => v as bool),
+          isComplete:
+              $checkedConvert('is_complete', (v) => v as bool? ?? false),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -28,6 +30,7 @@ _$_pending _$$_pendingFromJson(Map<String, dynamic> json) => $checkedCreate(
         'serviceName': 'service_name',
         'moneyAmount': 'money_amount',
         'isOptional': 'is_optional',
+        'isComplete': 'is_complete',
         r'$type': 'type'
       },
     );
@@ -38,6 +41,7 @@ Map<String, dynamic> _$$_pendingToJson(_$_pending instance) =>
       'money_amount': instance.moneyAmount,
       'products': instance.products.map((e) => e.toJson()).toList(),
       'is_optional': instance.isOptional,
+      'is_complete': instance.isComplete,
       'type': instance.$type,
     };
 
@@ -84,16 +88,22 @@ _$_needToVerify _$$_needToVerifyFromJson(Map<String, dynamic> json) =>
         final val = _$_needToVerify(
           serviceName: $checkedConvert('service_name', (v) => v as String),
           desc: $checkedConvert('desc', (v) => v as String),
+          imgUrl: $checkedConvert('img_url', (v) => v as String?),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
       },
-      fieldKeyMap: const {'serviceName': 'service_name', r'$type': 'type'},
+      fieldKeyMap: const {
+        'serviceName': 'service_name',
+        'imgUrl': 'img_url',
+        r'$type': 'type'
+      },
     );
 
 Map<String, dynamic> _$$_needToVerifyToJson(_$_needToVerify instance) =>
     <String, dynamic>{
       'service_name': instance.serviceName,
       'desc': instance.desc,
+      'img_url': instance.imgUrl,
       'type': instance.$type,
     };

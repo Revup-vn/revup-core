@@ -35,34 +35,37 @@ mixin _$PaymentService {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String serviceName, int moneyAmount,
-            List<PaymentProduct> products, bool isOptional)
+            List<PaymentProduct> products, bool isOptional, bool isComplete)
         pending,
     required TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)
         paid,
-    required TResult Function(String serviceName, String desc) needToVerify,
+    required TResult Function(String serviceName, String desc, String? imgUrl)
+        needToVerify,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String serviceName, int moneyAmount,
-            List<PaymentProduct> products, bool isOptional)?
+            List<PaymentProduct> products, bool isOptional, bool isComplete)?
         pending,
     TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)?
         paid,
-    TResult Function(String serviceName, String desc)? needToVerify,
+    TResult Function(String serviceName, String desc, String? imgUrl)?
+        needToVerify,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String serviceName, int moneyAmount,
-            List<PaymentProduct> products, bool isOptional)?
+            List<PaymentProduct> products, bool isOptional, bool isComplete)?
         pending,
     TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)?
         paid,
-    TResult Function(String serviceName, String desc)? needToVerify,
+    TResult Function(String serviceName, String desc, String? imgUrl)?
+        needToVerify,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,7 +138,8 @@ abstract class _$$_pendingCopyWith<$Res>
       {String serviceName,
       int moneyAmount,
       List<PaymentProduct> products,
-      bool isOptional});
+      bool isOptional,
+      bool isComplete});
 }
 
 /// @nodoc
@@ -153,6 +157,7 @@ class __$$_pendingCopyWithImpl<$Res> extends _$PaymentServiceCopyWithImpl<$Res>
     Object? moneyAmount = freezed,
     Object? products = freezed,
     Object? isOptional = freezed,
+    Object? isComplete = freezed,
   }) {
     return _then(_$_pending(
       serviceName: serviceName == freezed
@@ -171,6 +176,10 @@ class __$$_pendingCopyWithImpl<$Res> extends _$PaymentServiceCopyWithImpl<$Res>
           ? _value.isOptional
           : isOptional // ignore: cast_nullable_to_non_nullable
               as bool,
+      isComplete: isComplete == freezed
+          ? _value.isComplete
+          : isComplete // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -183,6 +192,7 @@ class _$_pending implements _pending {
       required this.moneyAmount,
       required final List<PaymentProduct> products,
       required this.isOptional,
+      this.isComplete = false,
       final String? $type})
       : _products = products,
         $type = $type ?? 'pending';
@@ -203,13 +213,16 @@ class _$_pending implements _pending {
 
   @override
   final bool isOptional;
+  @override
+  @JsonKey()
+  final bool isComplete;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'PaymentService.pending(serviceName: $serviceName, moneyAmount: $moneyAmount, products: $products, isOptional: $isOptional)';
+    return 'PaymentService.pending(serviceName: $serviceName, moneyAmount: $moneyAmount, products: $products, isOptional: $isOptional, isComplete: $isComplete)';
   }
 
   @override
@@ -223,7 +236,9 @@ class _$_pending implements _pending {
                 .equals(other.moneyAmount, moneyAmount) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             const DeepCollectionEquality()
-                .equals(other.isOptional, isOptional));
+                .equals(other.isOptional, isOptional) &&
+            const DeepCollectionEquality()
+                .equals(other.isComplete, isComplete));
   }
 
   @JsonKey(ignore: true)
@@ -233,7 +248,8 @@ class _$_pending implements _pending {
       const DeepCollectionEquality().hash(serviceName),
       const DeepCollectionEquality().hash(moneyAmount),
       const DeepCollectionEquality().hash(_products),
-      const DeepCollectionEquality().hash(isOptional));
+      const DeepCollectionEquality().hash(isOptional),
+      const DeepCollectionEquality().hash(isComplete));
 
   @JsonKey(ignore: true)
   @override
@@ -244,44 +260,49 @@ class _$_pending implements _pending {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String serviceName, int moneyAmount,
-            List<PaymentProduct> products, bool isOptional)
+            List<PaymentProduct> products, bool isOptional, bool isComplete)
         pending,
     required TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)
         paid,
-    required TResult Function(String serviceName, String desc) needToVerify,
+    required TResult Function(String serviceName, String desc, String? imgUrl)
+        needToVerify,
   }) {
-    return pending(serviceName, moneyAmount, products, isOptional);
+    return pending(serviceName, moneyAmount, products, isOptional, isComplete);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String serviceName, int moneyAmount,
-            List<PaymentProduct> products, bool isOptional)?
+            List<PaymentProduct> products, bool isOptional, bool isComplete)?
         pending,
     TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)?
         paid,
-    TResult Function(String serviceName, String desc)? needToVerify,
+    TResult Function(String serviceName, String desc, String? imgUrl)?
+        needToVerify,
   }) {
-    return pending?.call(serviceName, moneyAmount, products, isOptional);
+    return pending?.call(
+        serviceName, moneyAmount, products, isOptional, isComplete);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String serviceName, int moneyAmount,
-            List<PaymentProduct> products, bool isOptional)?
+            List<PaymentProduct> products, bool isOptional, bool isComplete)?
         pending,
     TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)?
         paid,
-    TResult Function(String serviceName, String desc)? needToVerify,
+    TResult Function(String serviceName, String desc, String? imgUrl)?
+        needToVerify,
     required TResult orElse(),
   }) {
     if (pending != null) {
-      return pending(serviceName, moneyAmount, products, isOptional);
+      return pending(
+          serviceName, moneyAmount, products, isOptional, isComplete);
     }
     return orElse();
   }
@@ -333,7 +354,8 @@ abstract class _pending implements PaymentService {
       {required final String serviceName,
       required final int moneyAmount,
       required final List<PaymentProduct> products,
-      required final bool isOptional}) = _$_pending;
+      required final bool isOptional,
+      final bool isComplete}) = _$_pending;
 
   factory _pending.fromJson(Map<String, dynamic> json) = _$_pending.fromJson;
 
@@ -342,6 +364,7 @@ abstract class _pending implements PaymentService {
   int get moneyAmount;
   List<PaymentProduct> get products;
   bool get isOptional;
+  bool get isComplete;
   @override
   @JsonKey(ignore: true)
   _$$_pendingCopyWith<_$_pending> get copyWith =>
@@ -464,12 +487,13 @@ class _$_paid implements _paid {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String serviceName, int moneyAmount,
-            List<PaymentProduct> products, bool isOptional)
+            List<PaymentProduct> products, bool isOptional, bool isComplete)
         pending,
     required TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)
         paid,
-    required TResult Function(String serviceName, String desc) needToVerify,
+    required TResult Function(String serviceName, String desc, String? imgUrl)
+        needToVerify,
   }) {
     return paid(serviceName, moneyAmount, products, paidIn);
   }
@@ -478,12 +502,13 @@ class _$_paid implements _paid {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String serviceName, int moneyAmount,
-            List<PaymentProduct> products, bool isOptional)?
+            List<PaymentProduct> products, bool isOptional, bool isComplete)?
         pending,
     TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)?
         paid,
-    TResult Function(String serviceName, String desc)? needToVerify,
+    TResult Function(String serviceName, String desc, String? imgUrl)?
+        needToVerify,
   }) {
     return paid?.call(serviceName, moneyAmount, products, paidIn);
   }
@@ -492,12 +517,13 @@ class _$_paid implements _paid {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String serviceName, int moneyAmount,
-            List<PaymentProduct> products, bool isOptional)?
+            List<PaymentProduct> products, bool isOptional, bool isComplete)?
         pending,
     TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)?
         paid,
-    TResult Function(String serviceName, String desc)? needToVerify,
+    TResult Function(String serviceName, String desc, String? imgUrl)?
+        needToVerify,
     required TResult orElse(),
   }) {
     if (paid != null) {
@@ -574,7 +600,7 @@ abstract class _$$_needToVerifyCopyWith<$Res>
           _$_needToVerify value, $Res Function(_$_needToVerify) then) =
       __$$_needToVerifyCopyWithImpl<$Res>;
   @override
-  $Res call({String serviceName, String desc});
+  $Res call({String serviceName, String desc, String? imgUrl});
 }
 
 /// @nodoc
@@ -592,6 +618,7 @@ class __$$_needToVerifyCopyWithImpl<$Res>
   $Res call({
     Object? serviceName = freezed,
     Object? desc = freezed,
+    Object? imgUrl = freezed,
   }) {
     return _then(_$_needToVerify(
       serviceName: serviceName == freezed
@@ -602,6 +629,10 @@ class __$$_needToVerifyCopyWithImpl<$Res>
           ? _value.desc
           : desc // ignore: cast_nullable_to_non_nullable
               as String,
+      imgUrl: imgUrl == freezed
+          ? _value.imgUrl
+          : imgUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -610,7 +641,10 @@ class __$$_needToVerifyCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_needToVerify implements _needToVerify {
   const _$_needToVerify(
-      {required this.serviceName, required this.desc, final String? $type})
+      {required this.serviceName,
+      required this.desc,
+      this.imgUrl,
+      final String? $type})
       : $type = $type ?? 'needToVerify';
 
   factory _$_needToVerify.fromJson(Map<String, dynamic> json) =>
@@ -620,13 +654,15 @@ class _$_needToVerify implements _needToVerify {
   final String serviceName;
   @override
   final String desc;
+  @override
+  final String? imgUrl;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'PaymentService.needToVerify(serviceName: $serviceName, desc: $desc)';
+    return 'PaymentService.needToVerify(serviceName: $serviceName, desc: $desc, imgUrl: $imgUrl)';
   }
 
   @override
@@ -636,7 +672,8 @@ class _$_needToVerify implements _needToVerify {
             other is _$_needToVerify &&
             const DeepCollectionEquality()
                 .equals(other.serviceName, serviceName) &&
-            const DeepCollectionEquality().equals(other.desc, desc));
+            const DeepCollectionEquality().equals(other.desc, desc) &&
+            const DeepCollectionEquality().equals(other.imgUrl, imgUrl));
   }
 
   @JsonKey(ignore: true)
@@ -644,7 +681,8 @@ class _$_needToVerify implements _needToVerify {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(serviceName),
-      const DeepCollectionEquality().hash(desc));
+      const DeepCollectionEquality().hash(desc),
+      const DeepCollectionEquality().hash(imgUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -655,44 +693,47 @@ class _$_needToVerify implements _needToVerify {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String serviceName, int moneyAmount,
-            List<PaymentProduct> products, bool isOptional)
+            List<PaymentProduct> products, bool isOptional, bool isComplete)
         pending,
     required TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)
         paid,
-    required TResult Function(String serviceName, String desc) needToVerify,
+    required TResult Function(String serviceName, String desc, String? imgUrl)
+        needToVerify,
   }) {
-    return needToVerify(serviceName, desc);
+    return needToVerify(serviceName, desc, imgUrl);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String serviceName, int moneyAmount,
-            List<PaymentProduct> products, bool isOptional)?
+            List<PaymentProduct> products, bool isOptional, bool isComplete)?
         pending,
     TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)?
         paid,
-    TResult Function(String serviceName, String desc)? needToVerify,
+    TResult Function(String serviceName, String desc, String? imgUrl)?
+        needToVerify,
   }) {
-    return needToVerify?.call(serviceName, desc);
+    return needToVerify?.call(serviceName, desc, imgUrl);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String serviceName, int moneyAmount,
-            List<PaymentProduct> products, bool isOptional)?
+            List<PaymentProduct> products, bool isOptional, bool isComplete)?
         pending,
     TResult Function(String serviceName, int moneyAmount,
             List<PaymentProduct> products, DateTime paidIn)?
         paid,
-    TResult Function(String serviceName, String desc)? needToVerify,
+    TResult Function(String serviceName, String desc, String? imgUrl)?
+        needToVerify,
     required TResult orElse(),
   }) {
     if (needToVerify != null) {
-      return needToVerify(serviceName, desc);
+      return needToVerify(serviceName, desc, imgUrl);
     }
     return orElse();
   }
@@ -742,7 +783,8 @@ class _$_needToVerify implements _needToVerify {
 abstract class _needToVerify implements PaymentService {
   const factory _needToVerify(
       {required final String serviceName,
-      required final String desc}) = _$_needToVerify;
+      required final String desc,
+      final String? imgUrl}) = _$_needToVerify;
 
   factory _needToVerify.fromJson(Map<String, dynamic> json) =
       _$_needToVerify.fromJson;
@@ -750,6 +792,7 @@ abstract class _needToVerify implements PaymentService {
   @override
   String get serviceName;
   String get desc;
+  String? get imgUrl;
   @override
   @JsonKey(ignore: true)
   _$$_needToVerifyCopyWith<_$_needToVerify> get copyWith =>

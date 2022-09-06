@@ -13,6 +13,7 @@ _$_momo _$$_momoFromJson(Map<String, dynamic> json) => $checkedCreate(
         final val = _$_momo(
           id: $checkedConvert('id', (v) => v as String),
           isActive: $checkedConvert('is_active', (v) => v as bool),
+          balance: $checkedConvert('balance', (v) => v as int? ?? 0),
         );
         return val;
       },
@@ -22,4 +23,5 @@ _$_momo _$$_momoFromJson(Map<String, dynamic> json) => $checkedCreate(
 Map<String, dynamic> _$$_momoToJson(_$_momo instance) => <String, dynamic>{
       'id': instance.id,
       'is_active': instance.isActive,
+      'balance': instance.balance,
     };
