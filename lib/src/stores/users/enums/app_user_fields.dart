@@ -20,4 +20,5 @@ enum AppUserFields {
   GeoPointLocation,
   ViolatedTimes,
   BannedValidatedDate,
+  NeedToUpdateInfo,
 }
