@@ -9,5 +9,6 @@ class PaymentInfo with _$PaymentInfo {
     required String recordId,
     required String displayRecordName,
     required String consumerName,
+    required String description,
   }) = _PaymentInfo;
 }
