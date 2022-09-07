@@ -79,7 +79,8 @@ mixin _$AppUser {
             VideoCallAccount vac,
             bool online,
             Location loc,
-            bool needToUpdateInfo)
+            bool needToUpdateInfo,
+            DateTime? inactiveTo)
         provider,
     required TResult Function(
             String uuid,
@@ -133,7 +134,8 @@ mixin _$AppUser {
             VideoCallAccount vac,
             bool online,
             Location loc,
-            bool needToUpdateInfo)?
+            bool needToUpdateInfo,
+            DateTime? inactiveTo)?
         provider,
     TResult Function(
             String uuid,
@@ -187,7 +189,8 @@ mixin _$AppUser {
             VideoCallAccount vac,
             bool online,
             Location loc,
-            bool needToUpdateInfo)?
+            bool needToUpdateInfo,
+            DateTime? inactiveTo)?
         provider,
     TResult Function(
             String uuid,
@@ -590,7 +593,8 @@ class _$_consumer implements _consumer {
             VideoCallAccount vac,
             bool online,
             Location loc,
-            bool needToUpdateInfo)
+            bool needToUpdateInfo,
+            DateTime? inactiveTo)
         provider,
     required TResult Function(
             String uuid,
@@ -661,7 +665,8 @@ class _$_consumer implements _consumer {
             VideoCallAccount vac,
             bool online,
             Location loc,
-            bool needToUpdateInfo)?
+            bool needToUpdateInfo,
+            DateTime? inactiveTo)?
         provider,
     TResult Function(
             String uuid,
@@ -732,7 +737,8 @@ class _$_consumer implements _consumer {
             VideoCallAccount vac,
             bool online,
             Location loc,
-            bool needToUpdateInfo)?
+            bool needToUpdateInfo,
+            DateTime? inactiveTo)?
         provider,
     TResult Function(
             String uuid,
@@ -886,7 +892,8 @@ abstract class _$$_providerCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       VideoCallAccount vac,
       bool online,
       Location loc,
-      bool needToUpdateInfo});
+      bool needToUpdateInfo,
+      DateTime? inactiveTo});
 
   $VideoCallAccountCopyWith<$Res> get vac;
   $LocationCopyWith<$Res> get loc;
@@ -923,6 +930,7 @@ class __$$_providerCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
     Object? online = freezed,
     Object? loc = freezed,
     Object? needToUpdateInfo = freezed,
+    Object? inactiveTo = freezed,
   }) {
     return _then(_$_provider(
       uuid: uuid == freezed
@@ -1001,6 +1009,10 @@ class __$$_providerCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
           ? _value.needToUpdateInfo
           : needToUpdateInfo // ignore: cast_nullable_to_non_nullable
               as bool,
+      inactiveTo: inactiveTo == freezed
+          ? _value.inactiveTo
+          : inactiveTo // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 
@@ -1042,6 +1054,7 @@ class _$_provider implements _provider {
       required this.online,
       required this.loc,
       this.needToUpdateInfo = false,
+      this.inactiveTo,
       final String? $type})
       : $type = $type ?? '2';
 
@@ -1087,13 +1100,15 @@ class _$_provider implements _provider {
   @override
   @JsonKey()
   final bool needToUpdateInfo;
+  @override
+  final DateTime? inactiveTo;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'AppUser.provider(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, active: $active, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime, idCardNum: $idCardNum, idCardImage: $idCardImage, backgroundUrl: $backgroundUrl, bio: $bio, vac: $vac, online: $online, loc: $loc, needToUpdateInfo: $needToUpdateInfo)';
+    return 'AppUser.provider(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, active: $active, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime, idCardNum: $idCardNum, idCardImage: $idCardImage, backgroundUrl: $backgroundUrl, bio: $bio, vac: $vac, online: $online, loc: $loc, needToUpdateInfo: $needToUpdateInfo, inactiveTo: $inactiveTo)';
   }
 
   @override
@@ -1124,7 +1139,9 @@ class _$_provider implements _provider {
             const DeepCollectionEquality().equals(other.online, online) &&
             const DeepCollectionEquality().equals(other.loc, loc) &&
             const DeepCollectionEquality()
-                .equals(other.needToUpdateInfo, needToUpdateInfo));
+                .equals(other.needToUpdateInfo, needToUpdateInfo) &&
+            const DeepCollectionEquality()
+                .equals(other.inactiveTo, inactiveTo));
   }
 
   @JsonKey(ignore: true)
@@ -1149,7 +1166,8 @@ class _$_provider implements _provider {
         const DeepCollectionEquality().hash(vac),
         const DeepCollectionEquality().hash(online),
         const DeepCollectionEquality().hash(loc),
-        const DeepCollectionEquality().hash(needToUpdateInfo)
+        const DeepCollectionEquality().hash(needToUpdateInfo),
+        const DeepCollectionEquality().hash(inactiveTo)
       ]);
 
   @JsonKey(ignore: true)
@@ -1195,7 +1213,8 @@ class _$_provider implements _provider {
             VideoCallAccount vac,
             bool online,
             Location loc,
-            bool needToUpdateInfo)
+            bool needToUpdateInfo,
+            DateTime? inactiveTo)
         provider,
     required TResult Function(
             String uuid,
@@ -1230,7 +1249,8 @@ class _$_provider implements _provider {
         vac,
         online,
         loc,
-        needToUpdateInfo);
+        needToUpdateInfo,
+        inactiveTo);
   }
 
   @override
@@ -1271,7 +1291,8 @@ class _$_provider implements _provider {
             VideoCallAccount vac,
             bool online,
             Location loc,
-            bool needToUpdateInfo)?
+            bool needToUpdateInfo,
+            DateTime? inactiveTo)?
         provider,
     TResult Function(
             String uuid,
@@ -1306,7 +1327,8 @@ class _$_provider implements _provider {
         vac,
         online,
         loc,
-        needToUpdateInfo);
+        needToUpdateInfo,
+        inactiveTo);
   }
 
   @override
@@ -1347,7 +1369,8 @@ class _$_provider implements _provider {
             VideoCallAccount vac,
             bool online,
             Location loc,
-            bool needToUpdateInfo)?
+            bool needToUpdateInfo,
+            DateTime? inactiveTo)?
         provider,
     TResult Function(
             String uuid,
@@ -1384,7 +1407,8 @@ class _$_provider implements _provider {
           vac,
           online,
           loc,
-          needToUpdateInfo);
+          needToUpdateInfo,
+          inactiveTo);
     }
     return orElse();
   }
@@ -1451,7 +1475,8 @@ abstract class _provider implements AppUser {
       required final VideoCallAccount vac,
       required final bool online,
       required final Location loc,
-      final bool needToUpdateInfo}) = _$_provider;
+      final bool needToUpdateInfo,
+      final DateTime? inactiveTo}) = _$_provider;
 
   factory _provider.fromJson(Map<String, dynamic> json) = _$_provider.fromJson;
 
@@ -1485,6 +1510,7 @@ abstract class _provider implements AppUser {
   bool get online;
   Location get loc;
   bool get needToUpdateInfo;
+  DateTime? get inactiveTo;
   @override
   @JsonKey(ignore: true)
   _$$_providerCopyWith<_$_provider> get copyWith =>
@@ -1713,7 +1739,8 @@ class _$_admin implements _admin {
             VideoCallAccount vac,
             bool online,
             Location loc,
-            bool needToUpdateInfo)
+            bool needToUpdateInfo,
+            DateTime? inactiveTo)
         provider,
     required TResult Function(
             String uuid,
@@ -1771,7 +1798,8 @@ class _$_admin implements _admin {
             VideoCallAccount vac,
             bool online,
             Location loc,
-            bool needToUpdateInfo)?
+            bool needToUpdateInfo,
+            DateTime? inactiveTo)?
         provider,
     TResult Function(
             String uuid,
@@ -1829,7 +1857,8 @@ class _$_admin implements _admin {
             VideoCallAccount vac,
             bool online,
             Location loc,
-            bool needToUpdateInfo)?
+            bool needToUpdateInfo,
+            DateTime? inactiveTo)?
         provider,
     TResult Function(
             String uuid,

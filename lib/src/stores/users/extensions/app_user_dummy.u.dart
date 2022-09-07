@@ -83,6 +83,7 @@ extension AppUserDummy on AppUser {
     AppUserFields.ViolatedTimes: 'violated_times',
     AppUserFields.BannedValidatedDate: 'banned_validated_date',
     AppUserFields.NeedToUpdateInfo: 'need_to_update_info',
+    AppUserFields.ProviderInactiveTo: 'inactive_to',
   };
   static String field(AppUserFields f) => _fields[f]!;
 }

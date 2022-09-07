@@ -94,6 +94,8 @@ _$_provider _$$_providerFromJson(Map<String, dynamic> json) => $checkedCreate(
               'loc', (v) => Location.fromJson(v as Map<String, dynamic>)),
           needToUpdateInfo: $checkedConvert(
               'need_to_update_info', (v) => v as bool? ?? false),
+          inactiveTo: $checkedConvert('inactive_to',
+              (v) => v == null ? null : DateTime.parse(v as String)),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -108,6 +110,7 @@ _$_provider _$$_providerFromJson(Map<String, dynamic> json) => $checkedCreate(
         'idCardImage': 'id_card_image',
         'backgroundUrl': 'background_url',
         'needToUpdateInfo': 'need_to_update_info',
+        'inactiveTo': 'inactive_to',
         r'$type': 'type'
       },
     );
@@ -133,6 +136,7 @@ Map<String, dynamic> _$$_providerToJson(_$_provider instance) =>
       'online': instance.online,
       'loc': instance.loc.toJson(),
       'need_to_update_info': instance.needToUpdateInfo,
+      'inactive_to': instance.inactiveTo?.toIso8601String(),
       'type': instance.$type,
     };
 
