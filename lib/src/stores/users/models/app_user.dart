@@ -49,6 +49,7 @@ class AppUser extends Serializable<AppUser> with _$AppUser {
     required bool online,
     required Location loc,
     @Default(false) bool needToUpdateInfo,
+    DateTime? inactiveTo,
   }) = _provider;
 
   @FreezedUnionValue('3')
