@@ -20,6 +20,7 @@ mixin _$PaymentInfo {
   String get recordId => throw _privateConstructorUsedError;
   String get displayRecordName => throw _privateConstructorUsedError;
   String get consumerName => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PaymentInfoCopyWith<PaymentInfo> get copyWith =>
@@ -35,7 +36,8 @@ abstract class $PaymentInfoCopyWith<$Res> {
       {int amount,
       String recordId,
       String displayRecordName,
-      String consumerName});
+      String consumerName,
+      String description});
 }
 
 /// @nodoc
@@ -52,6 +54,7 @@ class _$PaymentInfoCopyWithImpl<$Res> implements $PaymentInfoCopyWith<$Res> {
     Object? recordId = freezed,
     Object? displayRecordName = freezed,
     Object? consumerName = freezed,
+    Object? description = freezed,
   }) {
     return _then(_value.copyWith(
       amount: amount == freezed
@@ -70,6 +73,10 @@ class _$PaymentInfoCopyWithImpl<$Res> implements $PaymentInfoCopyWith<$Res> {
           ? _value.consumerName
           : consumerName // ignore: cast_nullable_to_non_nullable
               as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -85,7 +92,8 @@ abstract class _$$_PaymentInfoCopyWith<$Res>
       {int amount,
       String recordId,
       String displayRecordName,
-      String consumerName});
+      String consumerName,
+      String description});
 }
 
 /// @nodoc
@@ -104,6 +112,7 @@ class __$$_PaymentInfoCopyWithImpl<$Res> extends _$PaymentInfoCopyWithImpl<$Res>
     Object? recordId = freezed,
     Object? displayRecordName = freezed,
     Object? consumerName = freezed,
+    Object? description = freezed,
   }) {
     return _then(_$_PaymentInfo(
       amount: amount == freezed
@@ -122,6 +131,10 @@ class __$$_PaymentInfoCopyWithImpl<$Res> extends _$PaymentInfoCopyWithImpl<$Res>
           ? _value.consumerName
           : consumerName // ignore: cast_nullable_to_non_nullable
               as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -133,7 +146,8 @@ class _$_PaymentInfo implements _PaymentInfo {
       {required this.amount,
       required this.recordId,
       required this.displayRecordName,
-      required this.consumerName});
+      required this.consumerName,
+      required this.description});
 
   @override
   final int amount;
@@ -143,10 +157,12 @@ class _$_PaymentInfo implements _PaymentInfo {
   final String displayRecordName;
   @override
   final String consumerName;
+  @override
+  final String description;
 
   @override
   String toString() {
-    return 'PaymentInfo(amount: $amount, recordId: $recordId, displayRecordName: $displayRecordName, consumerName: $consumerName)';
+    return 'PaymentInfo(amount: $amount, recordId: $recordId, displayRecordName: $displayRecordName, consumerName: $consumerName, description: $description)';
   }
 
   @override
@@ -159,7 +175,9 @@ class _$_PaymentInfo implements _PaymentInfo {
             const DeepCollectionEquality()
                 .equals(other.displayRecordName, displayRecordName) &&
             const DeepCollectionEquality()
-                .equals(other.consumerName, consumerName));
+                .equals(other.consumerName, consumerName) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description));
   }
 
   @override
@@ -168,7 +186,8 @@ class _$_PaymentInfo implements _PaymentInfo {
       const DeepCollectionEquality().hash(amount),
       const DeepCollectionEquality().hash(recordId),
       const DeepCollectionEquality().hash(displayRecordName),
-      const DeepCollectionEquality().hash(consumerName));
+      const DeepCollectionEquality().hash(consumerName),
+      const DeepCollectionEquality().hash(description));
 
   @JsonKey(ignore: true)
   @override
@@ -181,7 +200,8 @@ abstract class _PaymentInfo implements PaymentInfo {
       {required final int amount,
       required final String recordId,
       required final String displayRecordName,
-      required final String consumerName}) = _$_PaymentInfo;
+      required final String consumerName,
+      required final String description}) = _$_PaymentInfo;
 
   @override
   int get amount;
@@ -191,6 +211,8 @@ abstract class _PaymentInfo implements PaymentInfo {
   String get displayRecordName;
   @override
   String get consumerName;
+  @override
+  String get description;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentInfoCopyWith<_$_PaymentInfo> get copyWith =>

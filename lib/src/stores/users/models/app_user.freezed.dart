@@ -78,7 +78,8 @@ mixin _$AppUser {
             String bio,
             VideoCallAccount vac,
             bool online,
-            Location loc)
+            Location loc,
+            bool needToUpdateInfo)
         provider,
     required TResult Function(
             String uuid,
@@ -131,7 +132,8 @@ mixin _$AppUser {
             String bio,
             VideoCallAccount vac,
             bool online,
-            Location loc)?
+            Location loc,
+            bool needToUpdateInfo)?
         provider,
     TResult Function(
             String uuid,
@@ -184,7 +186,8 @@ mixin _$AppUser {
             String bio,
             VideoCallAccount vac,
             bool online,
-            Location loc)?
+            Location loc,
+            bool needToUpdateInfo)?
         provider,
     TResult Function(
             String uuid,
@@ -586,7 +589,8 @@ class _$_consumer implements _consumer {
             String bio,
             VideoCallAccount vac,
             bool online,
-            Location loc)
+            Location loc,
+            bool needToUpdateInfo)
         provider,
     required TResult Function(
             String uuid,
@@ -656,7 +660,8 @@ class _$_consumer implements _consumer {
             String bio,
             VideoCallAccount vac,
             bool online,
-            Location loc)?
+            Location loc,
+            bool needToUpdateInfo)?
         provider,
     TResult Function(
             String uuid,
@@ -726,7 +731,8 @@ class _$_consumer implements _consumer {
             String bio,
             VideoCallAccount vac,
             bool online,
-            Location loc)?
+            Location loc,
+            bool needToUpdateInfo)?
         provider,
     TResult Function(
             String uuid,
@@ -879,7 +885,8 @@ abstract class _$$_providerCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       String bio,
       VideoCallAccount vac,
       bool online,
-      Location loc});
+      Location loc,
+      bool needToUpdateInfo});
 
   $VideoCallAccountCopyWith<$Res> get vac;
   $LocationCopyWith<$Res> get loc;
@@ -915,6 +922,7 @@ class __$$_providerCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
     Object? vac = freezed,
     Object? online = freezed,
     Object? loc = freezed,
+    Object? needToUpdateInfo = freezed,
   }) {
     return _then(_$_provider(
       uuid: uuid == freezed
@@ -989,6 +997,10 @@ class __$$_providerCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
           ? _value.loc
           : loc // ignore: cast_nullable_to_non_nullable
               as Location,
+      needToUpdateInfo: needToUpdateInfo == freezed
+          ? _value.needToUpdateInfo
+          : needToUpdateInfo // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -1029,6 +1041,7 @@ class _$_provider implements _provider {
       required this.vac,
       required this.online,
       required this.loc,
+      this.needToUpdateInfo = false,
       final String? $type})
       : $type = $type ?? '2';
 
@@ -1071,13 +1084,16 @@ class _$_provider implements _provider {
   final bool online;
   @override
   final Location loc;
+  @override
+  @JsonKey()
+  final bool needToUpdateInfo;
 
   @JsonKey(name: 'type')
   final String $type;
 
   @override
   String toString() {
-    return 'AppUser.provider(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, active: $active, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime, idCardNum: $idCardNum, idCardImage: $idCardImage, backgroundUrl: $backgroundUrl, bio: $bio, vac: $vac, online: $online, loc: $loc)';
+    return 'AppUser.provider(uuid: $uuid, firstName: $firstName, lastName: $lastName, phone: $phone, dob: $dob, addr: $addr, email: $email, active: $active, avatarUrl: $avatarUrl, createdTime: $createdTime, lastUpdatedTime: $lastUpdatedTime, idCardNum: $idCardNum, idCardImage: $idCardImage, backgroundUrl: $backgroundUrl, bio: $bio, vac: $vac, online: $online, loc: $loc, needToUpdateInfo: $needToUpdateInfo)';
   }
 
   @override
@@ -1106,31 +1122,35 @@ class _$_provider implements _provider {
             const DeepCollectionEquality().equals(other.bio, bio) &&
             const DeepCollectionEquality().equals(other.vac, vac) &&
             const DeepCollectionEquality().equals(other.online, online) &&
-            const DeepCollectionEquality().equals(other.loc, loc));
+            const DeepCollectionEquality().equals(other.loc, loc) &&
+            const DeepCollectionEquality()
+                .equals(other.needToUpdateInfo, needToUpdateInfo));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(uuid),
-      const DeepCollectionEquality().hash(firstName),
-      const DeepCollectionEquality().hash(lastName),
-      const DeepCollectionEquality().hash(phone),
-      const DeepCollectionEquality().hash(dob),
-      const DeepCollectionEquality().hash(addr),
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(active),
-      const DeepCollectionEquality().hash(avatarUrl),
-      const DeepCollectionEquality().hash(createdTime),
-      const DeepCollectionEquality().hash(lastUpdatedTime),
-      const DeepCollectionEquality().hash(idCardNum),
-      const DeepCollectionEquality().hash(idCardImage),
-      const DeepCollectionEquality().hash(backgroundUrl),
-      const DeepCollectionEquality().hash(bio),
-      const DeepCollectionEquality().hash(vac),
-      const DeepCollectionEquality().hash(online),
-      const DeepCollectionEquality().hash(loc));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(uuid),
+        const DeepCollectionEquality().hash(firstName),
+        const DeepCollectionEquality().hash(lastName),
+        const DeepCollectionEquality().hash(phone),
+        const DeepCollectionEquality().hash(dob),
+        const DeepCollectionEquality().hash(addr),
+        const DeepCollectionEquality().hash(email),
+        const DeepCollectionEquality().hash(active),
+        const DeepCollectionEquality().hash(avatarUrl),
+        const DeepCollectionEquality().hash(createdTime),
+        const DeepCollectionEquality().hash(lastUpdatedTime),
+        const DeepCollectionEquality().hash(idCardNum),
+        const DeepCollectionEquality().hash(idCardImage),
+        const DeepCollectionEquality().hash(backgroundUrl),
+        const DeepCollectionEquality().hash(bio),
+        const DeepCollectionEquality().hash(vac),
+        const DeepCollectionEquality().hash(online),
+        const DeepCollectionEquality().hash(loc),
+        const DeepCollectionEquality().hash(needToUpdateInfo)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -1174,7 +1194,8 @@ class _$_provider implements _provider {
             String bio,
             VideoCallAccount vac,
             bool online,
-            Location loc)
+            Location loc,
+            bool needToUpdateInfo)
         provider,
     required TResult Function(
             String uuid,
@@ -1208,7 +1229,8 @@ class _$_provider implements _provider {
         bio,
         vac,
         online,
-        loc);
+        loc,
+        needToUpdateInfo);
   }
 
   @override
@@ -1248,7 +1270,8 @@ class _$_provider implements _provider {
             String bio,
             VideoCallAccount vac,
             bool online,
-            Location loc)?
+            Location loc,
+            bool needToUpdateInfo)?
         provider,
     TResult Function(
             String uuid,
@@ -1282,7 +1305,8 @@ class _$_provider implements _provider {
         bio,
         vac,
         online,
-        loc);
+        loc,
+        needToUpdateInfo);
   }
 
   @override
@@ -1322,7 +1346,8 @@ class _$_provider implements _provider {
             String bio,
             VideoCallAccount vac,
             bool online,
-            Location loc)?
+            Location loc,
+            bool needToUpdateInfo)?
         provider,
     TResult Function(
             String uuid,
@@ -1358,7 +1383,8 @@ class _$_provider implements _provider {
           bio,
           vac,
           online,
-          loc);
+          loc,
+          needToUpdateInfo);
     }
     return orElse();
   }
@@ -1424,7 +1450,8 @@ abstract class _provider implements AppUser {
       required final String bio,
       required final VideoCallAccount vac,
       required final bool online,
-      required final Location loc}) = _$_provider;
+      required final Location loc,
+      final bool needToUpdateInfo}) = _$_provider;
 
   factory _provider.fromJson(Map<String, dynamic> json) = _$_provider.fromJson;
 
@@ -1457,6 +1484,7 @@ abstract class _provider implements AppUser {
   VideoCallAccount get vac;
   bool get online;
   Location get loc;
+  bool get needToUpdateInfo;
   @override
   @JsonKey(ignore: true)
   _$$_providerCopyWith<_$_provider> get copyWith =>
@@ -1684,7 +1712,8 @@ class _$_admin implements _admin {
             String bio,
             VideoCallAccount vac,
             bool online,
-            Location loc)
+            Location loc,
+            bool needToUpdateInfo)
         provider,
     required TResult Function(
             String uuid,
@@ -1741,7 +1770,8 @@ class _$_admin implements _admin {
             String bio,
             VideoCallAccount vac,
             bool online,
-            Location loc)?
+            Location loc,
+            bool needToUpdateInfo)?
         provider,
     TResult Function(
             String uuid,
@@ -1798,7 +1828,8 @@ class _$_admin implements _admin {
             String bio,
             VideoCallAccount vac,
             bool online,
-            Location loc)?
+            Location loc,
+            bool needToUpdateInfo)?
         provider,
     TResult Function(
             String uuid,
