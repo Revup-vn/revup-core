@@ -21,4 +21,5 @@ enum AppUserFields {
   ViolatedTimes,
   BannedValidatedDate,
   NeedToUpdateInfo,
+  ProviderInactiveTo,
 }
