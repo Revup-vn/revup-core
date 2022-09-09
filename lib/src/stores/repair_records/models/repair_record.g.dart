@@ -250,12 +250,15 @@ _$_finished _$$_finishedFromJson(Map<String, dynamic> json) => $checkedCreate(
               $checkedConvert('completed', (v) => DateTime.parse(v as String)),
           imgs: $checkedConvert('imgs',
               (v) => (v as List<dynamic>).map((e) => e as String).toList()),
-          feedback: $checkedConvert('feedback',
-              (v) => ReportFeedback.fromJson(v as Map<String, dynamic>)),
           from: $checkedConvert(
               'from', (v) => Location.fromJson(v as Map<String, dynamic>)),
           to: $checkedConvert(
               'to', (v) => Location.fromJson(v as Map<String, dynamic>)),
+          feedback: $checkedConvert(
+              'feedback',
+              (v) => v == null
+                  ? null
+                  : ReportFeedback.fromJson(v as Map<String, dynamic>)),
           report: $checkedConvert(
               'report',
               (v) => v == null
@@ -282,9 +285,9 @@ Map<String, dynamic> _$$_finishedToJson(_$_finished instance) =>
       'started': instance.started.toIso8601String(),
       'completed': instance.completed.toIso8601String(),
       'imgs': instance.imgs,
-      'feedback': instance.feedback.toJson(),
       'from': instance.from.toJson(),
       'to': instance.to.toJson(),
+      'feedback': instance.feedback?.toJson(),
       'report': instance.report?.toJson(),
       'img_url': instance.imgUrl,
       'type': instance.$type,

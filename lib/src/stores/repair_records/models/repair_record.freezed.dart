@@ -128,9 +128,9 @@ mixin _$RepairRecord {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)
         finished,
@@ -217,9 +217,9 @@ mixin _$RepairRecord {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)?
         finished,
@@ -306,9 +306,9 @@ mixin _$RepairRecord {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)?
         finished,
@@ -730,9 +730,9 @@ class _$_pending implements _pending {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)
         finished,
@@ -823,9 +823,9 @@ class _$_pending implements _pending {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)?
         finished,
@@ -916,9 +916,9 @@ class _$_pending implements _pending {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)?
         finished,
@@ -1294,9 +1294,9 @@ class _$_accept implements _accept {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)
         finished,
@@ -1387,9 +1387,9 @@ class _$_accept implements _accept {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)?
         finished,
@@ -1480,9 +1480,9 @@ class _$_accept implements _accept {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)?
         finished,
@@ -1872,9 +1872,9 @@ class _$_aborted implements _aborted {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)
         finished,
@@ -1965,9 +1965,9 @@ class _$_aborted implements _aborted {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)?
         finished,
@@ -2058,9 +2058,9 @@ class _$_aborted implements _aborted {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)?
         finished,
@@ -2449,9 +2449,9 @@ class _$_arrived implements _arrived {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)
         finished,
@@ -2542,9 +2542,9 @@ class _$_arrived implements _arrived {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)?
         finished,
@@ -2635,9 +2635,9 @@ class _$_arrived implements _arrived {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)?
         finished,
@@ -3028,9 +3028,9 @@ class _$_started implements _started {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)
         finished,
@@ -3121,9 +3121,9 @@ class _$_started implements _started {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)?
         finished,
@@ -3214,9 +3214,9 @@ class _$_started implements _started {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)?
         finished,
@@ -3344,17 +3344,17 @@ abstract class _$$_finishedCopyWith<$Res>
       DateTime started,
       DateTime completed,
       List<String> imgs,
-      ReportFeedback feedback,
       Location from,
       Location to,
+      ReportFeedback? feedback,
       RepairReport? report,
       String? imgUrl});
 
-  $ReportFeedbackCopyWith<$Res> get feedback;
   @override
   $LocationCopyWith<$Res> get from;
   @override
   $LocationCopyWith<$Res> get to;
+  $ReportFeedbackCopyWith<$Res>? get feedback;
   $RepairReportCopyWith<$Res>? get report;
 }
 
@@ -3381,9 +3381,9 @@ class __$$_finishedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
     Object? started = freezed,
     Object? completed = freezed,
     Object? imgs = freezed,
-    Object? feedback = freezed,
     Object? from = freezed,
     Object? to = freezed,
+    Object? feedback = freezed,
     Object? report = freezed,
     Object? imgUrl = freezed,
   }) {
@@ -3432,10 +3432,6 @@ class __$$_finishedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           ? _value._imgs
           : imgs // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      feedback: feedback == freezed
-          ? _value.feedback
-          : feedback // ignore: cast_nullable_to_non_nullable
-              as ReportFeedback,
       from: from == freezed
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
@@ -3444,6 +3440,10 @@ class __$$_finishedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
               as Location,
+      feedback: feedback == freezed
+          ? _value.feedback
+          : feedback // ignore: cast_nullable_to_non_nullable
+              as ReportFeedback?,
       report: report == freezed
           ? _value.report
           : report // ignore: cast_nullable_to_non_nullable
@@ -3456,8 +3456,12 @@ class __$$_finishedCopyWithImpl<$Res> extends _$RepairRecordCopyWithImpl<$Res>
   }
 
   @override
-  $ReportFeedbackCopyWith<$Res> get feedback {
-    return $ReportFeedbackCopyWith<$Res>(_value.feedback, (value) {
+  $ReportFeedbackCopyWith<$Res>? get feedback {
+    if (_value.feedback == null) {
+      return null;
+    }
+
+    return $ReportFeedbackCopyWith<$Res>(_value.feedback!, (value) {
       return _then(_value.copyWith(feedback: value));
     });
   }
@@ -3489,9 +3493,9 @@ class _$_finished implements _finished {
       required this.started,
       required this.completed,
       required final List<String> imgs,
-      required this.feedback,
       required this.from,
       required this.to,
+      this.feedback,
       this.report,
       this.imgUrl,
       final String? $type})
@@ -3529,11 +3533,11 @@ class _$_finished implements _finished {
   }
 
   @override
-  final ReportFeedback feedback;
-  @override
   final Location from;
   @override
   final Location to;
+  @override
+  final ReportFeedback? feedback;
   @override
   final RepairReport? report;
   @override
@@ -3544,7 +3548,7 @@ class _$_finished implements _finished {
 
   @override
   String toString() {
-    return 'RepairRecord.finished(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, started: $started, completed: $completed, imgs: $imgs, feedback: $feedback, from: $from, to: $to, report: $report, imgUrl: $imgUrl)';
+    return 'RepairRecord.finished(id: $id, cid: $cid, pid: $pid, created: $created, desc: $desc, vehicle: $vehicle, money: $money, moving: $moving, started: $started, completed: $completed, imgs: $imgs, from: $from, to: $to, feedback: $feedback, report: $report, imgUrl: $imgUrl)';
   }
 
   @override
@@ -3563,9 +3567,9 @@ class _$_finished implements _finished {
             const DeepCollectionEquality().equals(other.started, started) &&
             const DeepCollectionEquality().equals(other.completed, completed) &&
             const DeepCollectionEquality().equals(other._imgs, _imgs) &&
-            const DeepCollectionEquality().equals(other.feedback, feedback) &&
             const DeepCollectionEquality().equals(other.from, from) &&
             const DeepCollectionEquality().equals(other.to, to) &&
+            const DeepCollectionEquality().equals(other.feedback, feedback) &&
             const DeepCollectionEquality().equals(other.report, report) &&
             const DeepCollectionEquality().equals(other.imgUrl, imgUrl));
   }
@@ -3585,9 +3589,9 @@ class _$_finished implements _finished {
       const DeepCollectionEquality().hash(started),
       const DeepCollectionEquality().hash(completed),
       const DeepCollectionEquality().hash(_imgs),
-      const DeepCollectionEquality().hash(feedback),
       const DeepCollectionEquality().hash(from),
       const DeepCollectionEquality().hash(to),
+      const DeepCollectionEquality().hash(feedback),
       const DeepCollectionEquality().hash(report),
       const DeepCollectionEquality().hash(imgUrl));
 
@@ -3678,15 +3682,15 @@ class _$_finished implements _finished {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)
         finished,
   }) {
     return finished(id, cid, pid, created, desc, vehicle, money, moving,
-        this.started, completed, imgs, feedback, from, to, report, imgUrl);
+        this.started, completed, imgs, from, to, feedback, report, imgUrl);
   }
 
   @override
@@ -3771,15 +3775,15 @@ class _$_finished implements _finished {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)?
         finished,
   }) {
     return finished?.call(id, cid, pid, created, desc, vehicle, money, moving,
-        this.started, completed, imgs, feedback, from, to, report, imgUrl);
+        this.started, completed, imgs, from, to, feedback, report, imgUrl);
   }
 
   @override
@@ -3864,9 +3868,9 @@ class _$_finished implements _finished {
             DateTime started,
             DateTime completed,
             List<String> imgs,
-            ReportFeedback feedback,
             Location from,
             Location to,
+            ReportFeedback? feedback,
             RepairReport? report,
             String? imgUrl)?
         finished,
@@ -3874,7 +3878,7 @@ class _$_finished implements _finished {
   }) {
     if (finished != null) {
       return finished(id, cid, pid, created, desc, vehicle, money, moving,
-          this.started, completed, imgs, feedback, from, to, report, imgUrl);
+          this.started, completed, imgs, from, to, feedback, report, imgUrl);
     }
     return orElse();
   }
@@ -3943,9 +3947,9 @@ abstract class _finished implements RepairRecord {
       required final DateTime started,
       required final DateTime completed,
       required final List<String> imgs,
-      required final ReportFeedback feedback,
       required final Location from,
       required final Location to,
+      final ReportFeedback? feedback,
       final RepairReport? report,
       final String? imgUrl}) = _$_finished;
 
@@ -3969,11 +3973,11 @@ abstract class _finished implements RepairRecord {
   DateTime get started;
   DateTime get completed;
   List<String> get imgs;
-  ReportFeedback get feedback;
   @override
   Location get from;
   @override
   Location get to;
+  ReportFeedback? get feedback;
   RepairReport? get report;
   @override
   String? get imgUrl;
