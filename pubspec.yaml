@@ -1,16 +1,16 @@
 name: revup_core
 description: Core package for revup app
-version: 6.3.10-dev
+version: 6.3.10-dev+1
 
 publish_to: none
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
   auto_route: ^5.0.1
   cloud_firestore: ^3.4.6
-  cloud_functions: ^3.3.6
+  cloud_functions: ^3.3.5
   connectivity_plus: ^2.3.6
   dartz: ^0.10.1
   firebase_auth: ^3.7.0
