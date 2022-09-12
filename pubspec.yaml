@@ -14,7 +14,7 @@ dependencies:
   connectivity_plus: ^2.3.6
   dartz: ^0.10.1
   firebase_auth: ^3.7.0
-  firebase_core: ^1.21.1
+  firebase_core: ^1.22.0
   firebase_messaging: ^13.0.0
   firebase_storage: ^10.3.7
   flash: ^2.0.3+2
