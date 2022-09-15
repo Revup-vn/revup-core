@@ -20,7 +20,10 @@ class ConnectivityBloc extends Bloc<ConnectivityEvent, ConnectivityState> {
             switch (rc) {
               case ConnectivityResult.none:
                 return const ConnectivityState.disconnected();
-              default:
+              case ConnectivityResult.bluetooth:
+              case ConnectivityResult.ethernet:
+              case ConnectivityResult.mobile:
+              case ConnectivityResult.wifi:
                 return const ConnectivityState.unknown();
             }
           },
