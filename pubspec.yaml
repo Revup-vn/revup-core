@@ -15,7 +15,7 @@ dependencies:
   dartz: ^0.10.1
   firebase_auth: ^3.7.0
   firebase_core: ^1.21.1
-  firebase_messaging: ^13.0.0
+  firebase_messaging: ^13.0.2
   firebase_storage: ^10.3.7
   flash: ^2.0.3+2
   flutter:
