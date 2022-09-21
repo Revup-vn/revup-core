@@ -1,11 +1,10 @@
 import 'dart:async';
 
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 import '../../stores/stores.dart';
 import '../models/models.dart';
@@ -228,7 +227,9 @@ class AuthenticatorRepository {
             : l is FirebaseException
                 ? l.code == 'invalid-verification-code'
                     ? left(AuthFailure.invalidOTP(phoneNumber))
-                    : left(AuthFailure.server(l.code))
+                    : l.code == 'no-current-user'
+                        ? left(AuthFailure.invalidOTP(phoneNumber))
+                        : left(AuthFailure.server(l.code))
                 : left(AuthFailure.unknown(l.toString())),
         (uc) async {
           if (uc.user == null) {
